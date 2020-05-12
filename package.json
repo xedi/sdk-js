@@ -10,5 +10,8 @@
     "sdk"
   ],
   "author": "Chris Smith <chris@xedi.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/fetch-mock": "^7.3.2"
+  }
 }
