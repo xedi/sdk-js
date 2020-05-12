@@ -1,8 +1,5 @@
-export declare class Config extends Map {}
-
-interface ContainerInterface {
-    resolve(abstract: string): any;
-}
+import ContainerInterface from '../Interfaces/Container';
+import Config from '../Config/Config';
 
 export default class Container implements ContainerInterface {
     private instances: Map<String, Object>;
