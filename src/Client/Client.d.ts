@@ -1,8 +1,11 @@
+import Config from '../Config/Config';
+import HttpResponse from '../Interfaces/HttpResponse';
+
 declare class Client {
-    constructor(...configurations: String[]);
-    delete(uri: String): Promise<Response>;
-    post(uri: String, params?: Object): Promise<Response>;
-    patch(uri: String, params?: Object): Promise<Response>;
+    constructor(config: Config);
+    delete<T>(uri: string): Promise<HttpResponse<T>>;
+    post<T>(uri: string, params: object): Promise<HttpResponse<T>>;
+    patch<T>(uri: string, params: object): Promise<HttpResponse<T>>;
 }
 
 export default Client;

@@ -1,6 +1,8 @@
 import Service from './Service';
 import { User, Business } from '../Models/Models';
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import AuthResponse from '../Interfaces/AuthResponse';
+import HttpResponse from '../Interfaces/HttpResponse';
 
 /**
  * Auth
@@ -10,22 +12,27 @@ class Auth extends Service
     /**
      * Logged in User
      */
-    private _user: User;
+    private _user: User | null | void = undefined;
 
     /**
      * Current business context
      */
-    private _business: Business;
+    private _business: Business | null | void = undefined;
 
     /**
      * Logs the user out
      * @returns logout 
      */
-    async logout(): Promise<Boolean> {
+    async logout(): Promise<HttpResponse<boolean>> {
         return this.client
-            .delete('1/auth/token')
-            .catch((err: PromiseRejectionEvent) => false)
-            .then((resp: Response) => true);
+            .delete<boolean>('1/auth/token')
+            .then((resp: HttpResponse<boolean>) => {
+                this._user = null;
+                this._business = null;
+                [ 'access_token', 'refresh_token' ].forEach(this.config.delete);
+
+                return resp;
+            });
     }
 
     /**
@@ -34,11 +41,17 @@ class Auth extends Service
      * @param password 
      * @returns Object 
      */
-    async login(email: String, password: String): Promise<Object> {
+    async login(email: String, password: String): Promise<HttpResponse<AuthResponse>> {
         return this.client
-            .post('1/auth', { email, password })
-            .then((resp: Response) => {
-                return resp.json();
+            .post<AuthResponse>('1/auth', { email, password })
+            .then((resp: HttpResponse<AuthResponse>) => {
+                if (resp.parsedBody !== null) {
+                    this._user = (resp.parsedBody?.user as User);
+                    this.config.set('access_token', resp.parsedBody?.tokens.access_token);
+                    this.config.set('refresh_token', resp.parsedBody?.tokens.refresh_token);
+                }
+                
+                return resp;
             });
     }
 
@@ -47,11 +60,16 @@ class Auth extends Service
      * @param business_uuid 
      * @returns Object
      */
-    async switchContexts(business_uuid: Xuid<SupportedXuid.Business>): Promise<Object> {
+    async switchContexts(business_uuid: Xuid<SupportedXuid.Business>): Promise<HttpResponse<AuthResponse>> {
         return this.client
-            .patch('1/auth/token', { business_uuid })
-            .then((resp: Response) => {
-                return resp.json();
+            .patch<AuthResponse>('1/auth/token', { business_uuid })
+            .then((resp: HttpResponse<AuthResponse>) => {
+                if (resp.parsedBody !== null) {
+                    this._user = (resp.parsedBody?.user as User);
+                    this._business = (resp.parsedBody?.business as Business);
+                }
+                
+                return resp;
             });
     }
 
@@ -59,7 +77,7 @@ class Auth extends Service
      * Gets the current user
      * @returns User|void
      */
-    get user(): User | void {
+    get user(): User | null | void {
         return this._user;
     }
 
@@ -67,7 +85,7 @@ class Auth extends Service
      * Gets the current business context
      * @returns Business|void
      */
-    get business(): Business | void {
+    get business(): Business | null | void {
         return this._business;
     }
 }

@@ -8,26 +8,26 @@ class Xedi extends Container {
         super.boot();
 
         this.singleton('client', function(app: Container, config: Config) {
-            return new Client(...config.get('auth'));
+            return new Client(config);
         });
 
         this.singleton('services.auth', (app: Container, config: Config) => {
             return new Services.Auth(
-                config.get('services.auth'),
+                config,
                 app.resolve('client')
             );
         });
 
         this.singleton('services.users', (app: Container, config: Config) => {
             return new Services.Users(
-                config.get('services.users'),
+                config,
                 app.resolve('client')
             );
         });
 
         this.singleton('services.businesses', (app: Container, config: Config) => {
             return new Services.Businesses(
-                config.get('services.businesses'),
+                config,
                 app.resolve('client')
             );
         });
