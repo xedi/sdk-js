@@ -2,6 +2,9 @@ import Config from "../Config/Config";
 import { MissingTokenError, ExpiredTokenError, InvalidTokenError } from "./Errors/Errors";
 import HttpResponse from "../Interfaces/HttpResponse";
 
+/**
+ * Http methods
+ */
 enum HTTP_METHODS {
     "delete" = "DELETE",
     "get" = "GET",
@@ -10,25 +13,64 @@ enum HTTP_METHODS {
     "put" = "PUT",
 };
 
+/**
+ * Client
+ */
 class Client {
+    /**
+     * Config 
+     */
     private config: Config;
 
+    /**
+     * Creates an instance of client.
+     * @param configuration 
+     */
     constructor(configuration: Config) {
         this.config = configuration;
     }
 
+    /**
+     * Performs a DELETE HTTP request
+     * @template T 
+     * @param uri 
+     * @returns delete 
+     */
     async delete<T>(uri: string): Promise<HttpResponse<T>> {
         return this.request<T>(HTTP_METHODS.delete, uri);
     }
 
+    /**
+     * Performs a POST HTTP request
+     * @template T 
+     * @param uri 
+     * @param [params] 
+     * @returns post 
+     */
     async post<T>(uri: string, params: object = {}): Promise<HttpResponse<T>> {
         return this.request(HTTP_METHODS.post, uri, params);
     }
 
+    /**
+     * Performs a PATCH HTTP request
+     * @template T 
+     * @param uri 
+     * @param [params] 
+     * @returns patch 
+     */
     async patch<T>(uri: string, params: object = {}): Promise<HttpResponse<T>> {
         return this.request<T>(HTTP_METHODS.patch, uri, params);
     }
 
+    /**
+     * Performs a HTTP request
+     * @template T 
+     * @param method 
+     * @param uri 
+     * @param [params] 
+     * @param [headers] 
+     * @returns request 
+     */
     async request<T>(method: HTTP_METHODS, uri: string, params: object = {}, headers: HeadersInit = {}): Promise<HttpResponse<T>>
     {
         headers = new Headers(headers);

@@ -1,5 +1,8 @@
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 
+/**
+ * Userß
+ */
 export default interface User extends Object {
     _id: Xuid<SupportedXuid.User>;
     first_name: String;

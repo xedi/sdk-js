@@ -3,7 +3,13 @@ import Config from './Config/Config';
 import Client from './Client/Client';
 import * as Services from './Services/Services';
 
+/**
+ * Xedi
+ */
 class Xedi extends Container {
+    /**
+     * Boots the Container
+     */
     protected boot(): void {
         super.boot();
 
@@ -33,23 +39,35 @@ class Xedi extends Container {
         });
     }
 
+    /**
+     * Get an instance of the HttpClient
+     */
     static get Client(): Client {
         return this.resolveInstance()
             .resolve('client');
     }
 
+    /**
+     * Get an instance of the Auth API
+     */
     static get Auth(): Services.Auth
     {
         return this.resolveInstance()
             .resolve('services.auth');
     }
 
+    /**
+     * Get an instance of the Users API
+     */
     static get Users(): Services.Users
     {
         return this.resolveInstance()
             .resolve('services.users');
     }
 
+    /**
+     * Get an instance of the Businesses API
+     */
     static get Businesses(): Services.Businesses
     {
         return this.resolveInstance()

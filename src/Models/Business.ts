@@ -1,5 +1,8 @@
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 
+/**
+ * Business
+ */
 export default interface Business extends Object {
     _id: Xuid<SupportedXuid.Business>;
     business_name: String;

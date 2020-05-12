@@ -1,3 +1,6 @@
+/**
+ * Supported xuidß
+ */
 export enum SupportedXuid {
     Business,
     User
