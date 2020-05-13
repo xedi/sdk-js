@@ -1,32 +1,23 @@
-import Config from "../Config/Config";
+import { ClientInterface } from "../Interfaces/Client";
+import { ConfigInterface } from "../Interfaces/Config";
 import { MissingTokenError, ExpiredTokenError, InvalidTokenError } from "./Errors/Errors";
 import HttpResponse from "../Interfaces/HttpResponse";
-
-/**
- * Http methods
- */
-enum HTTP_METHODS {
-    "delete" = "DELETE",
-    "get" = "GET",
-    "patch" = "PATCH",
-    "post" = "POST",
-    "put" = "PUT",
-};
+import HTTP_METHODS from "../Enums/HTTP_METHODS";
 
 /**
  * Client
  */
-class Client {
+class Client implements ClientInterface {
     /**
      * Config 
      */
-    private config: Config;
+    private config: ConfigInterface;
 
     /**
      * Creates an instance of client.
      * @param configuration 
      */
-    constructor(configuration: Config) {
+    constructor(configuration: ConfigInterface) {
         this.config = configuration;
     }
 

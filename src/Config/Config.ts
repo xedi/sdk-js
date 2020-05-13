@@ -1,5 +1,7 @@
 import { ConfigInterface } from "../Interfaces/Config";
 
-declare class Config extends Map implements ConfigInterface {}
+class Config extends Map<String, any> implements ConfigInterface {
+
+}
 
 export default Config;

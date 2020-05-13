@@ -14,11 +14,6 @@ export default class Container implements ContainerInterface {
      * Binding function to resolve instances
      */
     private bindings: Map<String, Function>;
-
-    /**
-     * Config
-     */
-    private config: Config;
     
     /**
      * Instance of the container
@@ -31,7 +26,6 @@ export default class Container implements ContainerInterface {
     constructor() {
         this.instances = new Map();
         this.bindings = new Map();
-        this.config = new Config();
 
         this.boot();
     }
@@ -39,7 +33,9 @@ export default class Container implements ContainerInterface {
     /**
      * Boot the container
      */
-    protected boot(): void {}
+    protected boot(): void {
+        this.instance('config', new Config());
+    }
 
     /**
      * Resolves instance
@@ -90,11 +86,20 @@ export default class Container implements ContainerInterface {
 
             let instance: object = (function (callable: Function, container, config) {
                 return callable(container, config);
-            })(this.bindings.get(abstract)!, this, this.config);
+            })(this.bindings.get(abstract)!, this, this.resolve('config'));
 
             this.instances.set(abstract, instance);
         }
 
         return this.instances.get(abstract);
+    }
+
+    /**
+     * Determines whether the container has a binding for an abstract
+     * @param abstract 
+     * @returns true if binding exists
+     */
+    hasBinding(abstract: string): boolean {
+        return this.bindings.has(abstract);
     }
 }
