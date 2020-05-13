@@ -9,13 +9,13 @@ import HTTP_METHODS from "../Enums/HTTP_METHODS";
  */
 class Client implements ClientInterface {
     /**
-     * Config 
+     * Config
      */
     private config: ConfigInterface;
 
     /**
      * Creates an instance of client.
-     * @param configuration 
+     * @param configuration
      */
     constructor(configuration: ConfigInterface) {
         this.config = configuration;
@@ -23,9 +23,9 @@ class Client implements ClientInterface {
 
     /**
      * Performs a DELETE HTTP request
-     * @template T 
-     * @param uri 
-     * @returns delete 
+     * @template T
+     * @param uri
+     * @returns delete
      */
     async delete<T>(uri: string): Promise<HttpResponse<T>> {
         return this.request<T>(HTTP_METHODS.delete, uri);
@@ -33,10 +33,10 @@ class Client implements ClientInterface {
 
     /**
      * Performs a POST HTTP request
-     * @template T 
-     * @param uri 
-     * @param [params] 
-     * @returns post 
+     * @template T
+     * @param uri
+     * @param [params]
+     * @returns post
      */
     async post<T>(uri: string, params: object = {}): Promise<HttpResponse<T>> {
         return this.request(HTTP_METHODS.post, uri, params);
@@ -44,23 +44,34 @@ class Client implements ClientInterface {
 
     /**
      * Performs a PATCH HTTP request
-     * @template T 
-     * @param uri 
-     * @param [params] 
-     * @returns patch 
+     * @template T
+     * @param uri
+     * @param [params]
+     * @returns patch
      */
     async patch<T>(uri: string, params: object = {}): Promise<HttpResponse<T>> {
         return this.request<T>(HTTP_METHODS.patch, uri, params);
     }
 
     /**
+     * Performs a GET HTTP request
+     * @template T
+     * @param uri
+     * @param [params]
+     * @returns get
+     */
+    async get<T>(uri: string, params: object = {}): Promise<HttpResponse<T>> {
+        return this.request<T>(HTTP_METHODS.get, uri, params);
+    }
+
+    /**
      * Performs a HTTP request
-     * @template T 
-     * @param method 
-     * @param uri 
-     * @param [params] 
-     * @param [headers] 
-     * @returns request 
+     * @template T
+     * @param method
+     * @param uri
+     * @param [params]
+     * @param [headers]
+     * @returns request
      */
     async request<T>(method: HTTP_METHODS, uri: string, params: object = {}, headers: HeadersInit = {}): Promise<HttpResponse<T>>
     {
