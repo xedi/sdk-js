@@ -1,9 +1,9 @@
-interface JsonResponse extends Object {
+interface JsonResponse<T> extends Object {
     status: {
         success: boolean;
         code: number;
     },
-    data: {},
+    data: T,
 }
 
 export default JsonResponse;

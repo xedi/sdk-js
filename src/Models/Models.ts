@@ -2,7 +2,7 @@ import User from './User';
 import Business from './Business';
 
 type Models = User | Business;
-type Collection<T = Models> = Array<T | Models>;
+interface Collection<T = Models> extends Array<T | Models> {}
 
 export {
     Models,
