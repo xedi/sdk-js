@@ -1,6 +1,6 @@
+import axios, { AxiosInstance } from 'axios';
 import Container from './Container/Container';
 import Config from './Config/Config';
-import Client from './Client/Client';
 import * as Services from './Services/Services';
 
 /**
@@ -14,7 +14,21 @@ class Xedi extends Container {
         super.boot();
 
         this.singleton('client', function(app: Container, config: Config) {
-            return new Client(config);
+            const client: AxiosInstance = axios.create({
+                baseURL: config.get('base_url', 'https://api.xedi.com/'),
+                headers: {
+                    accept: 'application/json'
+                },
+                transformRequest: [
+                    (data, headers) => {
+                        headers.Authorization = `Bearer ${config.get('access_token')}`;
+
+                        return data;
+                    }
+                ]
+            });
+
+            return client;
         });
 
         this.singleton('services.auth', (app: Container, config: Config) => {
@@ -42,7 +56,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the HttpClient
      */
-    static get Client(): Client {
+    static get Client(): AxiosInstance {
         return this.resolveInstance()
             .resolve('client');
     }

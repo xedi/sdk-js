@@ -1,4 +1,4 @@
-import { ClientInterface } from '../Interfaces/Client';
+import { AxiosInstance } from "axios";
 import { ConfigInterface } from '../Interfaces/Config';
 
 /**
@@ -8,7 +8,7 @@ abstract class Service {
     /**
      * HTTP Client
      */
-    protected client: ClientInterface;
+    protected client: AxiosInstance;
 
     /**
      * Config
@@ -17,10 +17,10 @@ abstract class Service {
 
     /**
      * Creates an instance of service.
-     * @param config 
-     * @param client 
+     * @param config
+     * @param client
      */
-    constructor(config: ConfigInterface, client: ClientInterface) {
+    constructor(config: ConfigInterface, client: AxiosInstance) {
         this.client = client;
         this.config = config;
     }

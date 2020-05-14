@@ -1,8 +1,8 @@
+import { AxiosResponse } from 'axios';
 import Service from './Service';
 import { User, Business } from '../Models/Models';
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 import AuthResponse from '../Interfaces/AuthResponse';
-import HttpResponse from '../Interfaces/HttpResponse';
 
 /**
  * Auth
@@ -21,12 +21,12 @@ class Auth extends Service
 
     /**
      * Logs the user out
-     * @returns logout 
+     * @returns logout
      */
-    async logout(): Promise<HttpResponse<boolean>> {
+    logout() {
         return this.client
-            .delete<boolean>('1/auth/token')
-            .then((resp: HttpResponse<boolean>) => {
+            .delete('1/auth/token')
+            .then(resp => {
                 this._user = null;
                 this._business = null;
                 [ 'access_token', 'refresh_token' ].forEach(this.config.delete);
@@ -37,38 +37,42 @@ class Auth extends Service
 
     /**
      * Login and obtain a token pair
-     * @param email 
-     * @param password 
-     * @returns Object 
+     * @param email
+     * @param password
+     * @returns Object
      */
-    async login(email: String, password: String): Promise<HttpResponse<AuthResponse>> {
+    login(email: String, password: String) {
         return this.client
             .post<AuthResponse>('1/auth', { email, password })
-            .then((resp: HttpResponse<AuthResponse>) => {
-                if (resp.parsedBody !== null) {
-                    this._user = (resp.parsedBody?.user as User);
-                    this.config.set('access_token', resp.parsedBody?.tokens.access_token);
-                    this.config.set('refresh_token', resp.parsedBody?.tokens.refresh_token);
+            .then((resp: AxiosResponse<AuthResponse>) => {
+                const body = resp.data;
+
+                if (body.data !== null) {
+                    this._user = (body.data.user as User);
+                    this.config.set('access_token', body.data.tokens.access_token);
+                    this.config.set('refresh_token', body.data.tokens.refresh_token);
                 }
-                
+
                 return resp;
             });
     }
 
     /**
      * Switches business context
-     * @param business_uuid 
+     * @param business_uuid
      * @returns Object
      */
-    async switchContexts(business_uuid: Xuid<SupportedXuid.Business>): Promise<HttpResponse<AuthResponse>> {
+    switchContexts(business_uuid: Xuid<SupportedXuid.Business>) {
         return this.client
             .patch<AuthResponse>('1/auth/token', { business_uuid })
-            .then((resp: HttpResponse<AuthResponse>) => {
-                if (resp.parsedBody !== null) {
-                    this._user = (resp.parsedBody?.user as User);
-                    this._business = (resp.parsedBody?.business as Business);
+            .then((resp: AxiosResponse<AuthResponse>) => {
+                const body = resp.data;
+
+                if (body.data !== null) {
+                    this._user = (body.data.user as User);
+                    this._business = (body.data.business as Business);
                 }
-                
+
                 return resp;
             });
     }
