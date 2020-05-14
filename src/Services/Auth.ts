@@ -29,7 +29,7 @@ class Auth extends Service
             .then(resp => {
                 this._user = null;
                 this._business = null;
-                [ 'access_token', 'refresh_token' ].forEach(this.config.delete);
+                [ 'access_token', 'refresh_token' ].forEach(this.config.delete.bind(this.config));
 
                 return resp;
             });
@@ -47,11 +47,9 @@ class Auth extends Service
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
-                if (body.data !== null) {
-                    this._user = (body.data.user as User);
-                    this.config.set('access_token', body.data.tokens.access_token);
-                    this.config.set('refresh_token', body.data.tokens.refresh_token);
-                }
+                this._user = (body.data.user as User);
+                this.config.set('access_token', body.data.tokens.access_token);
+                this.config.set('refresh_token', body.data.tokens.refresh_token);
 
                 return resp;
             });
@@ -68,10 +66,10 @@ class Auth extends Service
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
-                if (body.data !== null) {
-                    this._user = (body.data.user as User);
-                    this._business = (body.data.business as Business);
-                }
+                this._user = (body.data.user as User);
+                this._business = (body.data.business as Business);
+                this.config.set('access_token', body.data.tokens.access_token);
+                this.config.set('refresh_token', body.data.tokens.refresh_token);
 
                 return resp;
             });
