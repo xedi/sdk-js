@@ -14,7 +14,7 @@ export default class Container implements ContainerInterface {
      * Binding function to resolve instances
      */
     private bindings: Map<String, Function>;
-    
+
     /**
      * Instance of the container
      */
@@ -39,11 +39,11 @@ export default class Container implements ContainerInterface {
 
     /**
      * Resolves instance
-     * @returns instance 
+     * @returns instance
      */
     static resolveInstance(): ContainerInterface {
         if (this.instance === undefined) {
-            this.instance = new Container();
+            this.instance = new this();
         }
 
         return this.instance;
@@ -51,9 +51,9 @@ export default class Container implements ContainerInterface {
 
     /**
      * Singletons container
-     * @param abstract 
-     * @param factory 
-     * @returns singleton 
+     * @param abstract
+     * @param factory
+     * @returns singleton
      */
     singleton(abstract: string, factory: Function): ContainerInterface {
         this.bindings.set(abstract, factory);
@@ -63,9 +63,9 @@ export default class Container implements ContainerInterface {
 
     /**
      * Provide an instance to the container
-     * @param abstract 
-     * @param concrete 
-     * @returns instance 
+     * @param abstract
+     * @param concrete
+     * @returns instance
      */
     instance(abstract: string, concrete: any): ContainerInterface {
         this.instances.set(abstract, concrete);
@@ -75,8 +75,8 @@ export default class Container implements ContainerInterface {
 
     /**
      * Resolves an instance from a binding
-     * @param abstract 
-     * @returns resolve 
+     * @param abstract
+     * @returns resolve
      */
     resolve(abstract: string): any | void {
         if (! this.instances.has(abstract)) {
@@ -96,7 +96,7 @@ export default class Container implements ContainerInterface {
 
     /**
      * Determines whether the container has a binding for an abstract
-     * @param abstract 
+     * @param abstract
      * @returns true if binding exists
      */
     hasBinding(abstract: string): boolean {
