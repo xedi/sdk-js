@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import Container from './Container/Container';
 import Config from './Config/Config';
 import * as Services from './Services/Services';
@@ -17,15 +17,18 @@ class Xedi extends Container {
             const client: AxiosInstance = axios.create({
                 baseURL: config.get('base_url', 'https://api.xedi.com/'),
                 headers: {
-                    accept: 'application/json'
-                },
-                transformRequest: [
-                    (data, headers) => {
-                        headers.Authorization = `Bearer ${config.get('access_token')}`;
+                    "Accepts": 'application/json',
+                    "Access-Control-Allow-Origin": '*',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
 
-                        return data;
-                    }
-                ]
+            client.interceptors.request.use((value: AxiosRequestConfig): AxiosRequestConfig | Promise<AxiosRequestConfig> => {
+                if (config.has('access_token')) {
+                    value.headers.Authorization = `Bearer ${config.get('access_token')}`;
+                }
+
+                return value;
             });
 
             return client;

@@ -25,7 +25,14 @@ class Auth extends Service
      */
     logout() {
         return this.client
-            .delete('1/auth/token')
+            .delete(
+                '1/auth/token',
+                {
+                    params: {
+                        refresh_token: this.config.get('refresh_token')
+                    }
+                }
+            )
             .then(resp => {
                 this._user = null;
                 this._business = null;
@@ -48,8 +55,8 @@ class Auth extends Service
                 const body = resp.data;
 
                 this._user = (body.data.user as User);
-                this.config.set('access_token', body.data.tokens.access_token);
-                this.config.set('refresh_token', body.data.tokens.refresh_token);
+                this.config.set('access_token', body.data.tokens.access);
+                this.config.set('refresh_token', body.data.tokens.refresh);
 
                 return resp;
             });
@@ -68,8 +75,8 @@ class Auth extends Service
 
                 this._user = (body.data.user as User);
                 this._business = (body.data.business as Business);
-                this.config.set('access_token', body.data.tokens.access_token);
-                this.config.set('refresh_token', body.data.tokens.refresh_token);
+                this.config.set('access_token', body.data.tokens.access);
+                this.config.set('refresh_token', body.data.tokens.refresh);
 
                 return resp;
             });

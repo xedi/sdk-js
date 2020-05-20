@@ -102,4 +102,10 @@ export default class Container implements ContainerInterface {
     hasBinding(abstract: string): boolean {
         return this.bindings.has(abstract);
     }
+
+    static get Config(): Config
+    {
+        return this.resolveInstance()
+            .resolve('config');
+    }
 }
