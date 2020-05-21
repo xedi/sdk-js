@@ -95,6 +95,21 @@ export default class Container implements ContainerInterface {
     }
 
     /**
+     * Resets the stored instance
+     * @param abstract
+     * @returns instance
+     */
+    resetInstance(abstract: string): ContainerInterface {
+        if (this.instances.has(abstract)) {
+            this.instances.delete(abstract);
+        }
+
+        this.resolve(abstract);
+
+        return this;
+    }
+
+    /**
      * Determines whether the container has a binding for an abstract
      * @param abstract
      * @returns true if binding exists
@@ -103,6 +118,9 @@ export default class Container implements ContainerInterface {
         return this.bindings.has(abstract);
     }
 
+    /**
+     * Gets an instance of the Config bag
+     */
     static get Config(): Config
     {
         return this.resolveInstance()

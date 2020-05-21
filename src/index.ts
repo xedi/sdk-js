@@ -1,7 +1,8 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Container from './Container/Container';
 import Config from './Config/Config';
 import * as Services from './Services/Services';
+import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
 
 /**
  * Xedi
@@ -13,7 +14,7 @@ class Xedi extends Container {
     protected boot(): void {
         super.boot();
 
-        this.singleton('client', function(app: Container, config: Config) {
+        this.singleton('client', (app: Container, config: Config) => {
             const client: AxiosInstance = axios.create({
                 baseURL: config.get('base_url', 'https://api.xedi.com/'),
                 headers: {
@@ -30,6 +31,44 @@ class Xedi extends Container {
 
                 return value;
             });
+
+            client.interceptors.response.use(
+                (value: AxiosResponse<any>): AxiosResponse<any> | Promise<AxiosResponse<any>> => {
+                    return value;
+                },
+                (error) => {
+                    const response = error.response;
+                    const is_client_error = /40[0,1]/.test(response.status.toString());
+
+                    if (is_client_error && 'www-authenticate' in response.headers) {
+                        const authenticate_header = AuthenticateHeader.parse(response.headers['www-authenticate']);
+                        const requires_refresh = (authenticate_header.error_description || '').includes('token expired');
+
+                        if (requires_refresh) {
+                            this.resolve('config').delete('access_token');
+
+                            return this.resolve('services.auth')
+                                .refreshAccessToken()
+                                .then(() => {
+                                    const config = error.config;
+
+                                    delete config.headers.Authorization;
+
+                                    return client.request(config);
+                                });
+                        }
+
+                        const requires_reauth = authenticate_header.error === 'invalid_token';
+                        if (requires_reauth) {
+                            this.resetInstance('services.auth');
+
+                            return Promise.reject('Re-Authentication required');
+                        }
+                    }
+
+                    return Promise.reject(error);
+                }
+            );
 
             return client;
         });
