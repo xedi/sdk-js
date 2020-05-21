@@ -62,6 +62,28 @@ class Auth extends Service
             });
     }
 
+
+    /**
+     * Refreshs access token
+     * @returns Object
+     */
+    refreshAccessToken() {
+        const refresh_token = this.config.get('refresh_token');
+
+        return this.client
+            .post<AuthResponse>('1/auth/token', { refresh_token })
+            .then((resp: AxiosResponse<AuthResponse>) => {
+                const body = resp.data;
+
+                this._user = (body.data.user as User);
+                this._business = (body.data.business as Business);
+                this.config.set('access_token', body.data.tokens.access);
+                this.config.set('refresh_token', body.data.tokens.refresh);
+
+                return resp;
+            });
+    }
+
     /**
      * Switches business context
      * @param business_uuid
