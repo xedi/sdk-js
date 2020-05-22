@@ -9,7 +9,7 @@ import User from '../../../src/Models/User';
 describe('Auth@logout', () => {
     it('should remove tokens and stored contexts', async() => {
         nock('http://api.xedi.com')
-            .delete('/1/auth/token')
+            .delete('/1/auth/token?refresh_token=refresh-token')
             .reply(200);
 
         const mock_config = new Config([

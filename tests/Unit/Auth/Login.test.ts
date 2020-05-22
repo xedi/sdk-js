@@ -41,7 +41,7 @@ describe('Auth@login', () => {
 
         await auth_service.login('test@example.com', 'my-password');
 
-        expect(mock_config).to.have.keys('access', 'refresh').and
+        expect(mock_config).to.have.keys('access_token', 'refresh_token').and
             .to.include('access-token').and
             .to.include('refresh-token');
 

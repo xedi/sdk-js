@@ -50,9 +50,9 @@ describe('Auth@switchContexts', () => {
 
         await auth_service.switchContexts('business-uuid');
 
-        expect(mock_config).to.have.keys('access', 'refresh_token');
-        expect(mock_config.get('access')).to.equal('new-access-token');
-        expect(mock_config.get('refresh')).to.equal('new-refresh-token');
+        expect(mock_config).to.have.keys('access_token', 'refresh_token');
+        expect(mock_config.get('access_token')).to.equal('new-access-token');
+        expect(mock_config.get('refresh_token')).to.equal('new-refresh-token');
 
         const user: User = Reflect.get(auth_service, '_user');
         const business: Business = Reflect.get(auth_service, '_business');
