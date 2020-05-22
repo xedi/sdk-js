@@ -1,5 +1,5 @@
 {
-  "name": "@xedi/sdk",
+  "name": "@xedi/sdk-js",
   "version": "1.0.0",
   "description": "JavaScript wrapper for XEDI API",
   "main": "./lib/sdk.min.js",
@@ -10,9 +10,10 @@
     "start": "webpack-dev-server"
   },
   "files": [
-    "lib/sdk.min.js"
+    "lib/sdk.min.js",
+    "lib/sdk.d.ts"
   ],
-  "types": "./lib/sdk.t.ts",
+  "types": "./lib/sdk.d.ts",
   "keywords": [
     "sdk"
   ],
@@ -34,5 +35,6 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
