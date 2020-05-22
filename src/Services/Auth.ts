@@ -19,6 +19,14 @@ class Auth extends Service
      */
     private _business: Business | null | void = undefined;
 
+    boot(): Service {
+        [ 'auth_updated', 'auth_deleted' ].forEach(event => {
+            this.registerEvent(event);
+        });
+
+        return Service.prototype.boot.call(this);
+    }
+
     /**
      * Logs the user out
      * @returns logout
@@ -37,6 +45,8 @@ class Auth extends Service
                 this._user = null;
                 this._business = null;
                 [ 'access_token', 'refresh_token' ].forEach(this.config.delete.bind(this.config));
+
+                this.trigger('auth_deleted', { method: 'logout' });
 
                 return resp;
             });
@@ -58,10 +68,18 @@ class Auth extends Service
                 this.config.set('access_token', body.data.tokens.access);
                 this.config.set('refresh_token', body.data.tokens.refresh);
 
+                this.trigger('auth_updated', {
+                    method: 'login',
+                    data: {
+                        user: body.data.user,
+                        refresh_token: body.data.tokens.refresh,
+                        access_token: body.data.tokens.access,
+                    }
+                });
+
                 return resp;
             });
     }
-
 
     /**
      * Refreshs access token
@@ -79,6 +97,16 @@ class Auth extends Service
                 this._business = (body.data.business as Business);
                 this.config.set('access_token', body.data.tokens.access);
                 this.config.set('refresh_token', body.data.tokens.refresh);
+
+                this.trigger('auth_updated', {
+                    method: 'refresh',
+                    data: {
+                        user: body.data.user,
+                        business: body.data.business,
+                        refresh_token: body.data.tokens.refresh,
+                        access_token: body.data.tokens.access,
+                    }
+                });
 
                 return resp;
             });
@@ -99,6 +127,16 @@ class Auth extends Service
                 this._business = (body.data.business as Business);
                 this.config.set('access_token', body.data.tokens.access);
                 this.config.set('refresh_token', body.data.tokens.refresh);
+
+                this.trigger('auth_updated', {
+                    method: 'switch_context',
+                    data: {
+                        user: body.data.user,
+                        business: body.data.business,
+                        refresh_token: body.data.tokens.refresh,
+                        access_token: body.data.tokens.access,
+                    }
+                });
 
                 return resp;
             });
