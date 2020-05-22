@@ -79,6 +79,18 @@
                         element.removeAttribute('hidden');
                     };
 
+                    const show_panel = (panel_name) => {
+                        const panels = Array.from(document.querySelectorAll('[is=panel]'));
+
+                        panels.filter(panel => !panel.hasAttribute('hidden'))
+                            .forEach(panel => panel.setAttribute('hidden', true));
+
+                        const target = panels.find(panel => panel.id === `panel-${panel_name}`);
+
+                        target.className += ' anim-fade-in';
+                        target.removeAttribute('hidden');
+                    };
+
                     document.querySelector('form').addEventListener('submit', (ev) => {
                         ev.preventDefault();
 
@@ -98,10 +110,7 @@
 
                         Xedi.Auth.login(user_credentials_email.value, user_credentials_pwd.value)
                             .then((resp) => {
-                                ev.srcElement.addEventListener('animationend', (ev) => {
-                                    ev.srcElement.setAttribute('hidden', true);
-                                });
-                                ev.srcElement.className += ' anim-fade-out';
+                                show_panel('success');
                             },
                             (error) => {
                                 switch(error.response.status) {
@@ -110,7 +119,7 @@
                                         unlock_submit_btn();
                                         break;
                                     default:
-                                        show_panel('#unknown_error');
+                                        show_panel('unknown_error');
                                         break;
                                 }
                             });
@@ -135,7 +144,7 @@
             </nav>
         </header>
         <main class="container-xl pt-6 clearfix">
-            <div class="row-fluid" id="panel-config">
+            <div class="row-fluid" id="panel-config" is="panel">
                   <div class="col-9 mx-auto" id="content">
                     <section>
                         <form class="Box Box--spacious col-6 mx-auto">
@@ -186,7 +195,7 @@
                     </section>
                 </div>
             </div>
-            <div class="row-fluid" id="panel-success" hidden>
+            <div class="row-fluid" id="panel-success" hidden is="panel">
                 <div class="Box Box--spacious col-6 mx-auto">
                     <div class="Box-row text-center py-8">
                         <svg class="checkmark mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
