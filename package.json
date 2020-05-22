@@ -2,7 +2,15 @@
   "name": "@xedi/sdk-js",
   "version": "1.0.0",
   "description": "JavaScript wrapper for XEDI API",
-  "main": "./lib/sdk.min.js",
+  "browser": "./lib/sdk.min.js",
+  "homepage": "https://github.com/xedi/sdk-js",
+  "bugs": {
+      "url": "https://github.com/xedi/sdk-js/issues"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/xedi/sdk-js"
+  },
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
@@ -18,7 +26,7 @@
     "sdk"
   ],
   "author": "Chris Smith <chris@xedi.com>",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.11",
