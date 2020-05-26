@@ -10,21 +10,9 @@ import { AxiosResponse } from 'axios';
 class Products extends Service
 {
     /**
-     * Lists products
-     * @returns
-     */
-    list() {
-        return this.client
-            .get<JsonResponse<Collection<Product>>>(`1/products`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Product>>>) => {
-                return response.data.data;
-            });
-    }
-
-    /**
-     * Gets by business
+     * Get by business
      * @param business_id
-     * @returns
+     * @returns <Promise>Product[]>
      */
     getByBusiness(business_id: Xuid<SupportedXuid.Business>)
     {
@@ -38,7 +26,7 @@ class Products extends Service
     /**
      * Gets products
      * @param product_id
-     * @returns
+     * @returns Promise<Product>
      */
     get(product_id: Xuid<SupportedXuid.Product>) {
         return this.client
@@ -51,11 +39,11 @@ class Products extends Service
     /**
      * Creates products
      * @param product
-     * @returns
+     * @returns Promise<Product>
      */
     create(product: Product) {
         return this.client
-            .post<JsonResponse<Product>>(`1/products`)
+            .post<JsonResponse<Product>>(`1/products`, product)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response.data.data
             });
@@ -64,7 +52,7 @@ class Products extends Service
     /**
      * Updates products
      * @param product
-     * @returns
+     * @returns Promise<Product>
      */
     update(product: Product) {
         return this.client
@@ -77,12 +65,12 @@ class Products extends Service
     /**
      * Deletes products
      * @param product_id
-     * @returns
+     * @returns Promise<Product>
      */
     delete(product_id: Xuid<SupportedXuid.Product>) {
         return this.client
-            .delete<JsonResponse<Boolean>>(`1/products/${ product_id }`)
-            .then((response: AxiosResponse<JsonResponse<Boolean>>) => {
+            .delete<JsonResponse<Product>>(`1/products/${ product_id }`)
+            .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response;
             });
     }
