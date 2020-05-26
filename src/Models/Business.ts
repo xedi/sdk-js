@@ -13,7 +13,7 @@ export default interface Business extends Object {
     post_code?: String;
     vat_code?: String;
     invoice_name?: String;
-    country_code?: String;
+    country_code: String;
     contact_name?: String;
     contact_email?: String;
     contact_no?: Number;
