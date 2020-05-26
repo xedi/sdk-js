@@ -93,6 +93,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.products', (app: Container, config: Config) => {
+            return new Services.Products(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -128,6 +135,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.businesses');
+    }
+
+    /**
+     * Get an instance of the Products API
+     */
+    static get Products(): Services.Products
+    {
+        return this.resolveInstance()
+            .resolve('services.products');
     }
 }
 
