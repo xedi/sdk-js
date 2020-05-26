@@ -4,7 +4,8 @@
 export enum SupportedXuid {
     Business,
     User,
-    Product
+    Product,
+    Mailbox,
 };
 
 type Xuid<SupportedXuid> = String;
