@@ -27,7 +27,8 @@ describe('Auth@switchContexts', () => {
             },
             business: {
                 _id: "business-uuid",
-                business_name: "Business"
+                business_name: "Business",
+                country_code: "GB"
             }
         }
     };
