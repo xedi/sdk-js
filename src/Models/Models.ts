@@ -1,8 +1,10 @@
 import User from './User';
 import Business from './Business';
 import Product from './Product';
+import Mailbox from './Mailbox';
 
-type Models = User | Business | Product;
+type Models = User | Business | Mailbox | Product;
+
 interface Collection<T = Models> extends Array<T | Models> {}
 
 export {
@@ -11,4 +13,5 @@ export {
     User,
     Business,
     Product,
+    Mailbox,
 };

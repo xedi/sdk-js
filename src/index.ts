@@ -100,6 +100,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.mailboxes', (app: Container, config: Config) => {
+            return new Services.Mailboxes(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -144,6 +151,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.products');
+    }
+
+    /**
+     * Get an instance of the Mailboxes API
+     */
+    static get Mailboxes(): Services.Mailboxes
+    {
+        return this.resolveInstance()
+            .resolve('services.mailboxes');
     }
 }
 
