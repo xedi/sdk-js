@@ -82,6 +82,19 @@ class Auth extends Service
     }
 
     /**
+     * Authenticate using a refresh token
+     *
+     * @param {string} refresh_token - The provided refresh token
+     *
+     * @returns Promise<AuthResponse>
+     */
+    withToken(refresh_token: String) {
+        this.config.set('refresh_token', refresh_token);
+
+        return this.refreshAccessToken();
+    }
+
+    /**
      * Refreshs access token
      * @returns Object
      */
