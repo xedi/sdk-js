@@ -7,7 +7,7 @@ import nock from 'nock';
 import User from '../../../src/Models/User';
 
 describe('Auth@login', () => {
-    const positive_authentication_response: AuthResponse = {
+    const positiveAuthenticationResponse: AuthResponse = {
         status: {
             success: true,
             code: 200
@@ -30,22 +30,22 @@ describe('Auth@login', () => {
     it('should store user details and tokens', async () => {
         nock('http://api.xedi.com')
             .post('/1/auth', { email: 'test@example.com', password: 'my-password' })
-            .reply(200, positive_authentication_response);
+            .reply(200, positiveAuthenticationResponse);
 
-        const mock_config = new Config();
+        const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
             baseURL: 'http://api.xedi.com/'
         });
 
-        const auth_service = new Auth(mock_config, axios);
+        const authService = new Auth(mockConfig, axios);
 
-        await auth_service.login('test@example.com', 'my-password');
+        await authService.login('test@example.com', 'my-password');
 
-        expect(mock_config).to.have.keys('access_token', 'refresh_token').and
+        expect(mockConfig).to.have.keys('access_token', 'refresh_token').and
             .to.include('access-token').and
             .to.include('refresh-token');
 
-        const user: User = Reflect.get(auth_service, '_user');
+        const user: User = Reflect.get(authService, '_user');
 
         expect(user).to.not.be.null;
     });

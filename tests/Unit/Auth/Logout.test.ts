@@ -12,7 +12,7 @@ describe('Auth@logout', () => {
             .delete('/1/auth/token?refresh_token=refresh-token')
             .reply(200);
 
-        const mock_config = new Config([
+        const mockConfig = new Config([
             [ 'access_token', 'access-token' ],
             [ 'refresh_token', 'refresh-token' ],
         ]);
@@ -20,20 +20,20 @@ describe('Auth@logout', () => {
             baseURL: 'http://api.xedi.com/'
         });
 
-        const auth_service = new Auth(mock_config, axios);
-        Reflect.set(auth_service, '_user', ({} as User));
-        Reflect.set(auth_service, '_business', ({} as Business));
+        const authService = new Auth(mockConfig, axios);
+        Reflect.set(authService, '_user', ({} as User));
+        Reflect.set(authService, '_business', ({} as Business));
 
-        await auth_service.logout();
+        await authService.logout();
 
-        const user: User = Reflect.get(auth_service, '_user');
-        const business: Business = Reflect.get(auth_service, '_business');
+        const user: User = Reflect.get(authService, '_user');
+        const business: Business = Reflect.get(authService, '_business');
 
         expect(user).to.be.null;
         expect(business).to.be.null;
 
-        expect(mock_config).to.not.have.keys('access_token', 'refresh_token');
-        expect(mock_config).to.not.include('access-token');
-        expect(mock_config).to.not.include('refresh-token');
+        expect(mockConfig).to.not.have.keys('access_token', 'refresh_token');
+        expect(mockConfig).to.not.include('access-token');
+        expect(mockConfig).to.not.include('refresh-token');
     });
 });

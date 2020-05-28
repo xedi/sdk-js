@@ -1,5 +1,7 @@
 import { expect } from 'chai';
-import Container from '../../../src/Container/Container';
+import Container, { FactoryFunction } from '../../../src/Container/Container';
+import ContainerInterface from '../../../src/Interfaces/Container';
+import Config from '../../../src/Interfaces/Config';
 
 describe('Container@hasBinding', () => {
     it('returns whether or not a binding is set', () => {
@@ -9,8 +11,13 @@ describe('Container@hasBinding', () => {
         Reflect.set(
             container,
             'bindings',
-            new Map<String, Function>([
-                [ 'test', () => {} ]
+            new Map<string, FactoryFunction>([
+                [
+                    'test',
+                    (app: ContainerInterface, config: Config): object => {
+                        return {};
+                    }
+                ]
             ])
         );
 

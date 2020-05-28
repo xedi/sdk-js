@@ -132,7 +132,7 @@ class Auth extends Service
      */
     switchContexts(businessUuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .patch<AuthResponse>('1/auth/token', { businessUuid })
+            .patch<AuthResponse>('1/auth/token', { 'business_uuid': businessUuid })
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
