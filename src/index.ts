@@ -38,28 +38,28 @@ class Xedi extends Container {
                 },
                 (error) => {
                     const response = error.response;
-                    const is_client_error = /40[0,1]/.test(response.status.toString());
+                    const isClientError = /40[0,1]/.test(response.status.toString());
 
-                    if (is_client_error && 'www-authenticate' in response.headers) {
-                        const authenticate_header = AuthenticateHeader.parse(response.headers['www-authenticate']);
-                        const requires_refresh = (authenticate_header.error_description || '').includes('token expired');
+                    if (isClientError && 'www-authenticate' in response.headers) {
+                        const authenticateHeader = AuthenticateHeader.parse(response.headers['www-authenticate']);
+                        const requiresRefresh = (authenticateHeader.error_description || '').includes('token expired');
 
-                        if (requires_refresh) {
+                        if (requiresRefresh) {
                             this.resolve('config').delete('access_token');
 
                             return this.resolve('services.auth')
                                 .refreshAccessToken()
                                 .then(() => {
-                                    const config = error.config;
+                                    const request = error.config;
 
-                                    delete config.headers.Authorization;
+                                    delete request.headers.Authorization;
 
-                                    return client.request(config);
+                                    return client.request(request);
                                 });
                         }
 
-                        const requires_reauth = authenticate_header.error === 'invalid_token';
-                        if (requires_reauth) {
+                        const requiresReauth = authenticateHeader.error === 'invalid_token';
+                        if (requiresReauth) {
                             this.resetInstance('services.auth');
 
                             return Promise.reject('Re-Authentication required');
