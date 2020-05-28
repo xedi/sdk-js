@@ -3,8 +3,8 @@ import JsonResponse from "./JsonResponse";
 
 interface Payload extends Object {
     tokens: {
-        access: String;
-        refresh: String;
+        access: string;
+        refresh: string;
     };
     user: User;
     business?: Business;
