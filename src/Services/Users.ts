@@ -14,9 +14,9 @@ class Users extends Service
             });
     }
 
-    get(user_uuid: Xuid<SupportedXuid.User>) {
+    get(userUuid: Xuid<SupportedXuid.User>) {
         return this.client
-            .get<JsonResponse<User>>(`1/users/${ user_uuid }`)
+            .get<JsonResponse<User>>(`1/users/${ userUuid }`)
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data;
             });

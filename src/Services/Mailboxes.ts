@@ -22,12 +22,12 @@ class Mailboxes extends Service {
 
     /**
      * Lists by business
-     * @param business_uuid
+     * @param businessIuid
      * @returns Promise<Mailbox[]>
      */
-    listByBusiness(business_uuid: Xuid<SupportedXuid.Business>) {
+    listByBusiness(businessIuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${ business_uuid }/mailboxes`)
+            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${ businessIuid }/mailboxes`)
             .then((response: AxiosResponse<JsonResponse<Collection<Mailbox>>>) => {
                 return response.data.data;
             });
@@ -35,12 +35,12 @@ class Mailboxes extends Service {
 
     /**
      * Gets mailboxes
-     * @param mailbox_id
+     * @param mailboxId
      * @returns Promise<Mailbox>
      */
-    get(mailbox_id: Xuid<SupportedXuid.Mailbox>) {
+    get(mailboxId: Xuid<SupportedXuid.Mailbox>) {
         return this.client
-            .get<JsonResponse<Mailbox>>(`1/mailboxes/${ mailbox_id }`)
+            .get<JsonResponse<Mailbox>>(`1/mailboxes/${ mailboxId }`)
             .then((response: AxiosResponse<JsonResponse<Mailbox>>) => {
                 return response.data.data;
             });
