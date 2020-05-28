@@ -1,6 +1,13 @@
 import { AxiosInstance } from "axios";
 import { ConfigInterface } from '../Interfaces/Config';
 
+interface EventPayload extends Object {
+    method: string;
+    data: object;
+};
+
+type EventHandler = (( payload: EventPayload ) => void);
+
 /**
  * Service
  */
@@ -18,7 +25,7 @@ abstract class Service {
     /**
      * Subscriptions
      */
-    protected subscriptions: Map<string, Function[]>;
+    protected subscriptions: Map<string, EventHandler[]>;
 
     /**
      * Creates an instance of service.
@@ -28,7 +35,7 @@ abstract class Service {
     constructor(config: ConfigInterface, client: AxiosInstance) {
         this.client = client;
         this.config = config;
-        this.subscriptions = new Map<string, Function[]>();
+        this.subscriptions = new Map<string, EventHandler[]>();
 
         this.boot();
     }
@@ -40,17 +47,17 @@ abstract class Service {
     /**
      * Event Subscriber
      * @param event
-     * @param callable
+     * @param handler
      * @returns Service
      */
-    on(event: string, callable: Function): Service {
+    on(event: string, handler: EventHandler): Service {
         if (! this.subscriptions.has(event)) {
            return this;
         }
 
-        let existing_subscriptions = this.subscriptions.get(event)!;
+        const existingSubscriptions = this.subscriptions.get(event)!;
 
-        this.subscriptions.set(event, existing_subscriptions.concat([ callable ]));
+        this.subscriptions.set(event, existingSubscriptions.concat([ handler ]));
 
         return this;
     }
@@ -80,8 +87,8 @@ abstract class Service {
         }
 
         this.subscriptions.get(event)
-            ?.forEach((callable) => {
-                callable(payload);
+            ?.forEach((handler) => {
+                handler(payload);
             });
 
         return this;

@@ -3,16 +3,16 @@ import JsonResponse from "../Interfaces/JsonResponse";
 import User from "../Models/User";
 import { AxiosResponse } from "axios";
 
-type Email = String;
+type Email = string;
 
 type RegistrationParameters = {
     email: Email;
-    first_name: String;
-    last_name: String;
-    contact_no?: Number;
-    job_title?: String;
+    first_name: string;
+    last_name: string;
+    contact_no?: number;
+    job_title?: string;
     avatar?: URL;
-    password: String;
+    password: string;
 };
 
 /**
@@ -23,21 +23,21 @@ class Accounts extends Service
     /**
      * Registers an account
      *
-     * @param {Object} account_details - Account Details
-     * @param {string} account_details.email - The email for the Account
-     * @param {string} account_details.first_name - The account holders given name
-     * @param {string} account_details.last_name - The account holders family name
-     * @param {string} account_details.password - The password for the account
-     * @param {number} [account_details.contact_no] - The account holders contact number
-     * @param {string} [account_details.job_title] - The account holders job title
-     * @param {url} [account_details.avatar] - The account holders avatar
+     * @param {Object} accountDetails - Account Details
+     * @param {string} accountDetails.email - The email for the Account
+     * @param {string} accountDetails.first_name - The account holders given name
+     * @param {string} accountDetails.last_name - The account holders family name
+     * @param {string} accountDetails.password - The password for the account
+     * @param {number} [accountDetails.contact_no] - The account holders contact number
+     * @param {string} [accountDetails.job_title] - The account holders job title
+     * @param {url} [accountDetails.avatar] - The account holders avatar
      *
      *
      * @returns Promise<User>
      */
-    register(account_details: RegistrationParameters) {
+    register(accountDetails: RegistrationParameters) {
         return this.client
-            .post<JsonResponse<User>>('1/auth/accounts', account_details)
+            .post<JsonResponse<User>>('1/auth/accounts', accountDetails)
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data;
             });
@@ -46,13 +46,13 @@ class Accounts extends Service
     /**
      * Verifies account email addresses
      *
-     * @param {string} verification_token
+     * @param {string} verificationToken
      *
      * @returns Promise<User>
      */
-    verify(verification_token: String) {
+    verify(verificationToken: string) {
         return this.client
-            .post<JsonResponse<User>>('1/auth/verification', { token: verification_token })
+            .post<JsonResponse<User>>('1/auth/verification', { token: verificationToken })
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data;
             });

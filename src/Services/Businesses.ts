@@ -24,12 +24,12 @@ class Businesses extends Service
 
     /**
      * Gets businesses
-     * @param business_id
+     * @param businessId
      * @returns Promise<Business>
      */
-    get(business_id: Xuid<SupportedXuid.Business>) {
+    get(businessId: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Business>>(`1/businesses/${ business_id }`)
+            .get<JsonResponse<Business>>(`1/businesses/${ businessId }`)
             .then((response: AxiosResponse<JsonResponse<Business>>) => {
                 return response.data.data;
             });
@@ -50,12 +50,12 @@ class Businesses extends Service
 
     /**
      * Gets by user
-     * @param user_id
+     * @param userId
      * @returns Promise<Business[]>
      */
-    getByUser(user_id: Xuid<SupportedXuid.User>) {
+    getByUser(userId: Xuid<SupportedXuid.User>) {
         return this.client
-            .get<JsonResponse<Collection<Business>>>(`1/users/${ user_id }/businesses`)
+            .get<JsonResponse<Collection<Business>>>(`1/users/${ userId }/businesses`)
             .then((response: AxiosResponse<JsonResponse<Collection<Business>>>) => {
                 return response.data.data;
             });

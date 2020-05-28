@@ -11,13 +11,13 @@ class Products extends Service
 {
     /**
      * Get by business
-     * @param business_id
+     * @param businessId
      * @returns <Promise>Product[]>
      */
-    getByBusiness(business_id: Xuid<SupportedXuid.Business>)
+    getByBusiness(businessId: Xuid<SupportedXuid.Business>)
     {
         return this.client
-            .get<JsonResponse<Collection<Product>>>(`1/businesses/${ business_id }/products`)
+            .get<JsonResponse<Collection<Product>>>(`1/businesses/${ businessId }/products`)
             .then((response: AxiosResponse<JsonResponse<Collection<Product>>>) => {
                 return response.data.data;
             });
@@ -25,12 +25,12 @@ class Products extends Service
 
     /**
      * Gets products
-     * @param product_id
+     * @param productId
      * @returns Promise<Product>
      */
-    get(product_id: Xuid<SupportedXuid.Product>) {
+    get(productId: Xuid<SupportedXuid.Product>) {
         return this.client
-            .get<JsonResponse<Product>>(`1/products/${ product_id }`)
+            .get<JsonResponse<Product>>(`1/products/${ productId }`)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response.data.data;
             });
@@ -64,12 +64,12 @@ class Products extends Service
 
     /**
      * Deletes products
-     * @param product_id
+     * @param productId
      * @returns Promise<Product>
      */
-    delete(product_id: Xuid<SupportedXuid.Product>) {
+    delete(productId: Xuid<SupportedXuid.Product>) {
         return this.client
-            .delete<JsonResponse<Product>>(`1/products/${ product_id }`)
+            .delete<JsonResponse<Product>>(`1/products/${ productId }`)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response;
             });

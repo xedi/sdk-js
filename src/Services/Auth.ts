@@ -58,7 +58,7 @@ class Auth extends Service
      * @param password
      * @returns Object
      */
-    login(email: String, password: String) {
+    login(email: string, password: string) {
         return this.client
             .post<AuthResponse>('1/auth', { email, password })
             .then((resp: AxiosResponse<AuthResponse>) => {
@@ -84,12 +84,12 @@ class Auth extends Service
     /**
      * Authenticate using a refresh token
      *
-     * @param {string} refresh_token - The provided refresh token
+     * @param {string} refreshToken - The provided refresh token
      *
      * @returns Promise<AuthResponse>
      */
-    withToken(refresh_token: String) {
-        this.config.set('refresh_token', refresh_token);
+    withToken(refreshToken: string) {
+        this.config.set('refresh_token', refreshToken);
 
         return this.refreshAccessToken();
     }
@@ -99,10 +99,10 @@ class Auth extends Service
      * @returns Object
      */
     refreshAccessToken() {
-        const refresh_token = this.config.get('refresh_token');
+        const refreshToken = this.config.get('refresh_token');
 
         return this.client
-            .post<AuthResponse>('1/auth/token', { refresh_token })
+            .post<AuthResponse>('1/auth/token', { 'refresh_token' : refreshToken })
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
@@ -127,12 +127,12 @@ class Auth extends Service
 
     /**
      * Switches business context
-     * @param business_uuid
+     * @param businessUuid
      * @returns Object
      */
-    switchContexts(business_uuid: Xuid<SupportedXuid.Business>) {
+    switchContexts(businessUuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .patch<AuthResponse>('1/auth/token', { business_uuid })
+            .patch<AuthResponse>('1/auth/token', { businessUuid })
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
