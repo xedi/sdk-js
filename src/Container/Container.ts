@@ -1,6 +1,8 @@
 import ContainerInterface from '../Interfaces/Container';
 import Config from '../Config/Config';
 
+type FactoryFunction = ((app: ContainerInterface, config: Config) => object);
+
 /**
  * Container
  */
@@ -8,12 +10,12 @@ export default class Container implements ContainerInterface {
     /**
      * Resolved instances
      */
-    private instances: Map<String, Object>;
+    private instances: Map<string, object>;
 
     /**
      * Binding function to resolve instances
      */
-    private bindings: Map<String, Function>;
+    private bindings: Map<string, FactoryFunction>;
 
     /**
      * Instance of the container
@@ -55,7 +57,7 @@ export default class Container implements ContainerInterface {
      * @param factory
      * @returns singleton
      */
-    singleton(abstract: string, factory: Function): ContainerInterface {
+    singleton(abstract: string, factory: FactoryFunction): ContainerInterface {
         this.bindings.set(abstract, factory);
 
         return this;
@@ -84,8 +86,8 @@ export default class Container implements ContainerInterface {
                 return undefined;
             }
 
-            let instance: object = (function (callable: Function, container, config) {
-                return callable(container, config);
+            const instance: object = ((factory: FactoryFunction, container, config) => {
+                return factory(container, config);
             })(this.bindings.get(abstract)!, this, this.resolve('config'));
 
             this.instances.set(abstract, instance);
