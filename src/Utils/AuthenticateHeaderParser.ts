@@ -1,4 +1,4 @@
-type SearchResponse = String | undefined;
+type SearchResponse = string | undefined;
 
 /**
  * Authenticate header
@@ -8,14 +8,14 @@ class AuthenticateHeader
     /**
      * Header string of authenticate header
      */
-    private readonly header_string: string;
+    private readonly headerString: string;
 
     /**
      * Creates an instance of authenticate header.
      * @param header
      */
     constructor(header: string) {
-        this.header_string = header;
+        this.headerString = header;
     }
 
     /**
@@ -59,7 +59,7 @@ class AuthenticateHeader
      */
     get(key: string): SearchResponse {
         const result = (new RegExp(`${ key }=\"([a-z\_\ ]+)\"`, 'i'))
-            .exec(this.header_string);
+            .exec(this.headerString);
 
         if (result && result.length) {
             return result[1];

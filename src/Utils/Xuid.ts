@@ -1,5 +1,5 @@
 /**
- * Supported xuidß
+ * Supported xuid
  */
 export enum SupportedXuid {
     Business,
@@ -7,7 +7,7 @@ export enum SupportedXuid {
     Product,
     Mailbox,
 };
-
-type Xuid<SupportedXuid> = String;
+/* tslint:disable-next-line:no-shadowed-variable */
+type Xuid<SupportedXuid> = string;
 
 export default Xuid;
