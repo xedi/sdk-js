@@ -38,7 +38,7 @@ Xedi.Auth.login('user@example.com', 'supersecretpassword')
 
 The authentication state is managed internally of the library using short-lived refresh tokens. The library will automatically renew your access tokens and retry any command that fails due to expired tokens. Occassionally, this won't be possible; in that instance, the method you ran will return a rejected promise with the string "**Re-authentication required**".
 
-If you need to switch business context, the `Xedi.Auth.switchContext()` method will take the _XUID_ of the Business whose context you wish to operate in. This operation returns updated `access` and `refresh` tokens so be sure tho update any references you are tracking. It will also return a representation of the Business.
+If you need to switch business context, the `Xedi.Auth.switchContext()` method will take the _XUID_ of the Business whose context you wish to operate in. This operation returns updated `access` and `refresh` tokens so be sure to update any references you are tracking. It will also return a representation of the Business.
 
 When you are done and wish to invalidate your authenticate tokens, call then `Xedi.Auth.logout()` method.
 
