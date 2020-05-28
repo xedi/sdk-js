@@ -8,7 +8,7 @@ import nock from 'nock';
 import User from '../../../src/Models/User';
 
 describe('Auth@switchContexts', () => {
-    const positive_response: AuthResponse = {
+    const positiveResponse: AuthResponse = {
         status: {
             code: 200,
             success: true
@@ -36,9 +36,9 @@ describe('Auth@switchContexts', () => {
     it('should update the store tokens and contexts', async () => {
         nock('http://api.xedi.com')
             .patch('/1/auth/token', { business_uuid: 'business-uuid' })
-            .reply(200, positive_response);
+            .reply(200, positiveResponse);
 
-        const mock_config = new Config([
+        const mockConfig = new Config([
             [ 'access_token', 'og-access-token' ],
             [ 'refresh_token', 'og-refresh-token' ],
         ]);
@@ -47,16 +47,16 @@ describe('Auth@switchContexts', () => {
             baseURL: 'http://api.xedi.com/'
         });
 
-        const auth_service = new Auth(mock_config, axios);
+        const authService = new Auth(mockConfig, axios);
 
-        await auth_service.switchContexts('business-uuid');
+        await authService.switchContexts('business-uuid');
 
-        expect(mock_config).to.have.keys('access_token', 'refresh_token');
-        expect(mock_config.get('access_token')).to.equal('new-access-token');
-        expect(mock_config.get('refresh_token')).to.equal('new-refresh-token');
+        expect(mockConfig).to.have.keys('access_token', 'refresh_token');
+        expect(mockConfig.get('access_token')).to.equal('new-access-token');
+        expect(mockConfig.get('refresh_token')).to.equal('new-refresh-token');
 
-        const user: User = Reflect.get(auth_service, '_user');
-        const business: Business = Reflect.get(auth_service, '_business');
+        const user: User = Reflect.get(authService, '_user');
+        const business: Business = Reflect.get(authService, '_business');
 
         expect(user).to.not.be.null;
         expect(business).to.not.be.null;

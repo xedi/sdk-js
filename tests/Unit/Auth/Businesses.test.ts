@@ -6,9 +6,9 @@ import Business from '../../../src/Models/Business';
 
 describe('Auth@business', () => {
     it('should return and instance of the business', () => {
-        const auth_service = new Auth(new Config(), Axios.create());
-        Reflect.set(auth_service, '_business', ({} as Business));
+        const authService = new Auth(new Config(), Axios.create());
+        Reflect.set(authService, '_business', ({} as Business));
 
-        expect(auth_service.business).to.not.be.null;
+        expect(authService.business).to.not.be.null;
     });
 });

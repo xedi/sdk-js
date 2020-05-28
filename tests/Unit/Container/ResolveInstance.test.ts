@@ -9,11 +9,11 @@ describe('Container::resolveInstance', () => {
     });
 
     it('returns a singleton instance of the container', () => {
-        const preset_container = new Container;
-        Reflect.set(Container, 'instance', preset_container);
+        const presetContainer = new Container();
+        Reflect.set(Container, 'instance', presetContainer);
         const result = Container.resolveInstance();
 
-        expect(result).to.be.equal(preset_container);
+        expect(result).to.be.equal(presetContainer);
     });
 
     afterEach(() => {

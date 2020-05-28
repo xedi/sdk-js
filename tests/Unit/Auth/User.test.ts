@@ -6,9 +6,10 @@ import User from '../../../src/Models/User';
 
 describe('Auth@user', () => {
     it('should return and instance of the user', () => {
-        const auth_service = new Auth(new Config(), Axios.create());
-        Reflect.set(auth_service, '_user', ({} as User));
+        const authService = new Auth(new Config(), Axios.create());
 
-        expect(auth_service.user).to.not.be.null;
+        Reflect.set(authService, '_user', ({} as User));
+
+        expect(authService.user).to.not.be.null;
     });
 });

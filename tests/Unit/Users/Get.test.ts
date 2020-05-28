@@ -8,7 +8,7 @@ import JsonResponse from '../../../src/Interfaces/JsonResponse';
 
 describe('Users@get', () => {
     it('should return a user by id', async () => {
-        const positive_response: JsonResponse<User> = {
+        const positiveResponse: JsonResponse<User> = {
             status: {
                 code: 200,
                 success: true
@@ -24,15 +24,15 @@ describe('Users@get', () => {
 
         nock('http://api.xedi.com')
             .get('/1/users/user-id')
-            .reply(200, positive_response);
+            .reply(200, positiveResponse);
 
-        const mock_config = new Config();
+        const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
             baseURL: 'http://api.xedi.com'
         });
 
-        const users_service = new Users(mock_config, axios);
-        const response = await users_service.get('user-id');
+        const usersService = new Users(mockConfig, axios);
+        const response = await usersService.get('user-id');
 
         assert.isObject(response);
         assert.deepEqual(

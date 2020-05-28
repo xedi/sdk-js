@@ -8,7 +8,7 @@ import JsonResponse from '../../../src/Interfaces/JsonResponse';
 
 describe('Users@list', () => {
     it('should return a list of users', async () => {
-        const positive_response: JsonResponse<Collection<User>> = {
+        const positiveResponse: JsonResponse<Collection<User>> = {
             status: {
                 code: 200,
                 success: true
@@ -33,16 +33,16 @@ describe('Users@list', () => {
 
         nock('http://api.xedi.com')
             .get('/1/users')
-            .reply(200, positive_response);
+            .reply(200, positiveResponse);
 
-        const mock_config = new Config();
+        const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
             baseURL: 'http://api.xedi.com'
         });
 
-        const users_service = new Users(mock_config, axios);
+        const usersService = new Users(mockConfig, axios);
 
-        const response = await users_service.list();
+        const response = await usersService.list();
 
         assert.isArray(response);
         assert.lengthOf(response, 2);

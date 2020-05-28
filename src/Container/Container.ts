@@ -1,7 +1,7 @@
 import ContainerInterface from '../Interfaces/Container';
 import Config from '../Config/Config';
 
-type FactoryFunction = ((app: ContainerInterface, config: Config) => object);
+export type FactoryFunction = ((app: ContainerInterface, config: Config) => object);
 
 /**
  * Container
