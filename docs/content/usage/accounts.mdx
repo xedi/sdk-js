@@ -1,0 +1,91 @@
+---
+title: Accounts
+description: Using the Accounts API
+status: New
+source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Accounts.ts'
+---
+
+## Introduction
+
+The Accounts API allows you to register, and verify a user account.
+
+## Usage
+
+### Register
+
+Register a User Account
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| email | String | ✔ | t.stark@avengers.org |
+| first_name | String | ✔ | Anthony |
+| last_name | String | ✔ | Stark |
+| password | String | ✔ | izJ7Y0MBwcJ8 |
+| contact_no | String | | (970) 517-1743 x67916 |
+| job_title | String | | Iron Man |
+| avatar | String | | https://assets.avengers.org/images/iron_man.png |
+
+**Usage**
+
+```javascript
+const user = await Xedi.Accounts.register({
+    email: 't.stark@avengers.org',
+    first_name: 'Anthony',
+    last_name: 'Stark',
+    password: 'izJ7Y0MBwcJ8',
+    contact_no: '(970) 517-1743 x67916',
+    job_title: 'Iron Man',
+    avatar: 'https://assets.avengers.org/images/iron_man.png'
+});
+```
+
+**Response**
+
+```json
+{
+    "_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "email": "t.stark@avengers.org",
+    "first_name": "Anthony",
+    "last_name": "Stark",
+    "job_title": "Iron Man",
+    "contact_no": "(970) 517-1743 x67916",
+    "avatar": "https://assets.avengers.org/images/iron_man.png",
+    "created_at": "2020-05-11 10:27:03",
+    "is_active": 0
+}
+```
+---
+### Verify
+
+Verify the email address attached to a User account.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| verificationToken | String | ✔︎ | de99a620c50f2990e87144735cd357e7
+
+**Usage**
+
+```javascript
+const user = Xedi.Accounts.verify('de99a620c50f2990e87144735cd357e7');
+```
+
+**Response**
+
+```json
+{
+    "_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "email": "t.stark@avengers.org",
+    "first_name": "Anthony",
+    "last_name": "Start",
+    "job_title": "Iron Man",
+    "contact_no": "(970) 517-1743 x67916",
+    "avatar": "https://assets.avengers.org/images/iron_man.png",
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:30:14",
+    "is_active": 1
+}
+```

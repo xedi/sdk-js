@@ -1,7 +1,50 @@
-- title: Page 1
-  url: /page-1
-- title: Example
-  url: /example
+- title: About
   children:
-    - title: Page 2
-      url: /example/page-2
+    - title: Installation
+      url: /about/installation
+    - title: Configuration
+      url: /about/configuration
+- title: Usage
+  children:
+    - title: Accounts
+      url: /usage/accounts
+    - title: Auth
+      url: /usage/auth
+    - title: Businesses
+      url: /usage/businesses
+    - title: Mailboxes
+      url: /usage/mailboxes
+    - title: Products
+      url: /usage/products
+    - title: Users
+      url: /usage/users
+- title: Architecture
+  children:
+    - title: Authentication
+      url: /architecture/authentication
+    - title: Singletons
+      url: /architecture/singletons
+    - title: HTTP Requests
+      url: /architecture/http_requests
+- title: Development
+  children:
+    - title: API Classes
+      url: /development/api
+    - title: Configuration
+      url: /development/configuration
+    - title: Events
+      url: /development/events
+    - title: Models
+      url: /development/models
+    - title: Utilities
+      url: /development/utilities
+- title: Tooling
+  children:
+    - title: Build
+      url: /tooling/build
+    - title: Debugging
+      url: /tooling/debugging
+    - title: Linting
+      url: /tooling/linting
+    - title: Testing
+      url: /tooling/testing
