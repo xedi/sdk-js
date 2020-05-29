@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'XEDI.JS Documentation',
+    title: 'XEDI.JS',
     shortName: 'XEDI.JS',
     description: 'Documentation for the XEDI JavaScript SDK'
   },
