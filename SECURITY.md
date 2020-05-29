@@ -1,6 +1,6 @@
 # Reporting Security Issues
 
-Should you discover a security issue in Xedi\SendGrid, please report it by emailing us at [development@xedi.com][SECURITY_REPORTING_LINK]
+Should you discover a security issue in xedi\sdk-js, please report it by emailing us at [development@xedi.com][SECURITY_REPORTING_LINK]
 
 This allows us to privately assess and fix any potential issues before adding a bug report to the repository.
 
