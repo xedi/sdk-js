@@ -1,0 +1,20 @@
+---
+title: Configuration
+description: Configurating XEDI.js
+status: New
+source: 'https://github.com/xedi/sdk-js/blob/master/src/Config/Config.ts'
+---
+
+You can configure the SDK using the `Xedi.Config` class. This class extends a JavaScript `Map` object, so the usual `get`, `set`, and `delete` methods will work as per the original object. For example, you can configure which `base_url` should be used to contact a API Gateway instance.
+
+```javascript
+Xedi.Config.set('base_url', 'https://api.staging.xedi.com');
+```
+
+Below you will find a list of all configurations.
+
+| Configuration | Default Value | Comments |
+|--------------|---------------|----------|
+| `base_url` | `https://api.xedi.com` | |
+| `refresh_token` | | Set and managed by `Xedi.Auth` |
+| `access_token` | | Set and managed by `Xedi.Auth` |

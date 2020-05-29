@@ -1,8 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: 'Doctocat Template',
-    shortName: 'Template',
-    description: 'My site description',
+    title: 'XEDI.JS Documentation',
+    shortName: 'XEDI.JS',
+    description: 'Documentation for the XEDI JavaScript SDK'
   },
-  plugins: ['@primer/gatsby-theme-doctocat'],
+  plugins: [
+        {
+            resolve: '@primer/gatsby-theme-doctocat',
+            options: {
+                repoRootPath: '..',
+                icon: './src/images/xedi-logo-dark.png'
+            }
+        }
+    ],
 }
