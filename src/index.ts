@@ -3,6 +3,7 @@ import Container from './Container/Container';
 import Config from './Config/Config';
 import * as Services from './Services/Services';
 import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
+import ContainerInterface from './Interfaces/Container';
 
 /**
  * Xedi
@@ -14,7 +15,7 @@ class Xedi extends Container {
     protected boot(): void {
         super.boot();
 
-        this.singleton('client', (app: Container, config: Config) => {
+        this.singleton('client', (app: ContainerInterface, config: Config) => {
             const client: AxiosInstance = axios.create({
                 baseURL: config.get('base_url', 'https://api.xedi.com/'),
                 headers: {
@@ -73,42 +74,42 @@ class Xedi extends Container {
             return client;
         });
 
-        this.singleton('services.auth', (app: Container, config: Config) => {
+        this.singleton('services.auth', (app: ContainerInterface, config: Config) => {
             return new Services.Auth(
                 config,
                 app.resolve('client')
             );
         });
 
-        this.singleton('services.users', (app: Container, config: Config) => {
+        this.singleton('services.users', (app: ContainerInterface, config: Config) => {
             return new Services.Users(
                 config,
                 app.resolve('client')
             );
         });
 
-        this.singleton('services.businesses', (app: Container, config: Config) => {
+        this.singleton('services.businesses', (app: ContainerInterface, config: Config) => {
             return new Services.Businesses(
                 config,
                 app.resolve('client')
             );
         });
 
-        this.singleton('services.products', (app: Container, config: Config) => {
+        this.singleton('services.products', (app: ContainerInterface, config: Config) => {
             return new Services.Products(
                 config,
                 app.resolve('client')
             );
         });
 
-        this.singleton('services.mailboxes', (app: Container, config: Config) => {
+        this.singleton('services.mailboxes', (app: ContainerInterface, config: Config) => {
             return new Services.Mailboxes(
                 config,
                 app.resolve('client')
             );
         });
 
-        this.singleton('services.accounts', (app: Container, config: Config) => {
+        this.singleton('services.accounts', (app: ContainerInterface, config: Config) => {
             return new Services.Accounts(
                 config,
                 app.resolve('client')

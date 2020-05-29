@@ -14,6 +14,7 @@
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
+    "build:dev": "webpack --config webpack.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "start": "webpack-dev-server",
     "lint": "run-s lint:source lint:tests",
