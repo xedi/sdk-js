@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "sdk-js",
   siteMetadata: {
     title: 'XEDI.JS',
     shortName: 'XEDI.JS',
