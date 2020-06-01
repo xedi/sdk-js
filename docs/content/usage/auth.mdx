@@ -1,0 +1,220 @@
+---
+title: Auth
+description: Using the Auth API
+status: New
+source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Auth.ts'
+---
+
+import {Link} from '@primer/components'
+
+# Introduction
+
+The Auth api controls access to the system. Read more about our <Link href="/architecture/authentication">authentication architecture here</Link>.
+
+# Events
+
+This service emits events. To learn more about events <Link href="/architecture/events">here</Link>.
+
+## auth_updated
+
+When the authentication state changes; `auth_updated` is emitted.
+
+```typescript
+type AuthenticationUpdatedEvent {
+    method: string;
+    date: {
+        user: User;
+        business?: Business;
+        refresh_token: RefreshToken;
+        access_token: AccessToken;
+    }
+}
+```
+
+## auth_deleted
+
+When the authentication state is revoked; `auth_deleted` is emitted.
+
+```typescript
+type AuthenticationDeletedEvent {
+    method: string;
+}
+```
+
+# Properties
+
+## business
+
+Gets the current business context.
+
+```javascript
+const currentBusiness: Business = Xedi.Auth.business;
+```
+
+## users
+
+Gets the logged in user.
+
+```javascript
+const currentUser: User = Xedi.Auth.user;
+```
+
+# Usage
+
+## login
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| email | String | ✔ | t.stark@avengers.org |
+| password | String | ✔ | izJ7Y0MBwcJ8 |
+
+**Usage**
+
+```javascript
+await Xedi.Auth.login('t.stark@avengers.org', 'izJ7Y0MBwcJ8');
+```
+
+**Events**
+
+Emits `auth_updated` on successful authentication.
+
+**Response**
+
+```typescript
+type AuthenticationResponse {
+    data: {
+        tokens: {
+            access: AccessToken;
+            refresh: RefreshToken;
+        };
+        user: User;
+    };
+}
+```
+
+## withToken
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| refreshToken | String | ✔ | eyJhbGciO6IkpXVCJ9.e30.Et9HFtf9RY7kkTX1wr4qCyhIf58U |
+
+**Usage**
+
+```javascript
+await Xedi.Auth.withToken('eyJhbGciO6IkpXVCJ9.e30.Et9HFtf9RY7kkTX1wr4qCyhIf58U');
+```
+
+**Events**
+
+Emits `auth_updated` on successful authentication.
+
+**Response**
+
+```typescript
+type AuthenticationResponse {
+    data: {
+        tokens: {
+            access: AccessToken;
+            refresh: RefreshToken;
+        };
+        user: User;
+        business?: Business;
+    };
+}
+```
+
+## refreshAccessToken
+
+**Parameters**
+
+`null`
+
+**Usage**
+
+```javascript
+await Xedi.Auth.refreshAccessToken();
+```
+
+**Events**
+
+Emits `auth_updated` on successful renewal of the authentication state.
+
+**Response**
+
+```typescript
+type AuthenticationResponse {
+    data: {
+        tokens: {
+            access: AccessToken;
+            refresh: RefreshToken;
+        };
+        user: User;
+        business?: Business;
+    };
+}
+```
+
+## switchContexts
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| business_uuid | String | ✔ | 92ac7274-9369-11ea-9521-01002da17977 |
+
+**Usage**
+
+```javascript
+await Xedi.Auth.switchContexts('92ac7274-9369-11ea-9521-01002da17977');
+```
+
+**Events**
+
+Emits `auth_updated` on successful updating of the authentication context.
+
+**Response**
+
+```typescript
+type AuthenticationResponse {
+    data: {
+        tokens: {
+            access: AccessToken;
+            refresh: RefreshToken;
+        };
+        user: User;
+        business: Business;
+    };
+}
+```
+
+## logout
+
+Perminently revoke your refresh token.
+
+**Parameters**
+
+`null`
+
+**Usage**
+
+```javascript
+await Xedi.Auth.logout();
+```
+
+**Events**
+
+Emits `auth_deleted` on successful revocation of the refresh token.
+
+```json
+{
+    "method": "logout"
+}
+```
+
+**Response**
+
+`null`
