@@ -16,7 +16,7 @@
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
     "build:dev": "webpack --config webpack.config.js",
     "build": "webpack --config webpack.prod.config.js",
-    "start": "webpack-dev-server",
+    "playground": "webpack-dev-server",
     "lint": "run-s lint:source lint:tests",
     "lint:source": "tslint -c ./tslint.json -p tsconfig.json",
     "lint:tests": "tslint -c ./tests/tslint.json -p tsconfig.json"
