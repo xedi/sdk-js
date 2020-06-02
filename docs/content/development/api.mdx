@@ -64,7 +64,7 @@ Accounts,
 +}
 ```
 
-Next, you need to register your <Link href="architecture/singletons">singleton</Link>. This will ensure, configuration and state persistence.
+Next, you need to register your <Link href="architecture/singletons">singleton</Link>. This will ensure configuration and state persistence.
 
 ## Invocation
 
@@ -112,7 +112,7 @@ list() {
 ```
 <Text as="p" mt={2} mb={3} fontSize={1} color="gray.5">An indexing method</Text>
 
-Lets look at line three of the above example. In JavaScript this would look like `.get(`1/examples`)`, so whats the extra stuff? This how we tell TypeScript, what we expect the <Link href="architecture/http_requests">HTTP Client</Link> to return in the promise. Here we tell it we want a `JsonResponse` which itself, most contain an `Example`.
+Lets look at line three of the above example. In JavaScript this would look like <InlineCode>.get(`1/examples`)</InlineCode>, so whats the extra stuff? This how we tell TypeScript, what we expect the <Link href="architecture/http_requests">HTTP Client</Link> to return in the promise. Here we tell it we want a `JsonResponse` which itself, must contain an `Example`.
 
 <Flash varient="info" mb={2}>
 <Text fontWeight="bold"><InfoIcon /> What is an <InlineCode>Example</InlineCode>?</Text>
