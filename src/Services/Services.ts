@@ -4,6 +4,7 @@ import Products from "./Products";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
 import Accounts from "./Accounts";
+import Templates from "./Templates";
 
 export {
     Accounts,
@@ -12,4 +13,5 @@ export {
     Products,
     Users,
     Mailboxes,
+    Templates,
 };

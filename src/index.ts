@@ -115,6 +115,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.templates', (app: ContainerInterface, config: Config) => {
+            return new Services.Templates(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -177,6 +184,12 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.accounts');
+    }
+
+    static get Templates(): Services.Templates
+    {
+        return this.resolveInstance()
+            .resolve('services.templates');
     }
 }
 

@@ -6,6 +6,7 @@ export enum SupportedXuid {
     User,
     Product,
     Mailbox,
+    Template,
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
