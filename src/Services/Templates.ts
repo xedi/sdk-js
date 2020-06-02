@@ -30,7 +30,7 @@ class Templates extends Service
      */
     get(templateId: Xuid<SupportedXuid.Template>) {
         return this.client
-            .get<JsonResponse<Template>>(`1/templates${ templateId }`)
+            .get<JsonResponse<Template>>(`1/templates/${ templateId }`)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data;
             });
