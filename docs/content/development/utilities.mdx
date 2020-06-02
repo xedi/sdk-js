@@ -1,3 +1,36 @@
 ---
 title: Utilities
+description: Helper functions and classes
 ---
+
+import {Link, Text} from '@primer/components'
+import {LinkExternalIcon, CodeIcon} from '@primer/styled-octicons'
+
+The <Link href="https://github.com/xedi/sdk-js/tree/master/src/Utils">`Utils`<LinkExternalIcon /></Link> directory contains a number of classes which provide help functionality or features when developing aspects of the SDK.
+
+## AuthenticateHeaderParser
+
+As part of our <Link href="/architecture/authentication">authentication flow</Link> the <Link href="https://tools.ietf.org/html/rfc6750#page-9">`WWW-Authenticate`<LinkExternalIcon /></Link> is returned from the API Gateway. This is provided to us as a single string which makes it difficult to parse.
+```
+Bearer realm="api.xedi", error="invalid_token", error_description="The access token expired"
+```
+<Text as="p" mb={3} fontSize={1} color="gray.5">Example WWW-Authenticate header</Text>
+<Text as="p" mb={3}>To simplify the logic of interogating this string, the `AuthenticateHeaderParser` was devised.</Text>
+
+```javascript
+const authenticateHeader = AuthenticateHeaderParser.parse(headers['www-authenticate']);
+
+authenticateHeader.realm; // "api.xedi"
+
+authenticateHeader.error; // "invalid_token"
+
+authenticateHeader.error_description; // "The access token expired"
+```
+
+## XUID
+
+Identifing Entities without explicit type attributes across an eco-system like XEDI is problematic at best, impossible in the main. At XEDI, we found an answer to this in the problem of another. <Link href="https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)">UUID Version 1<LinkExternalIcon ml={1} /></Link> are consider inherently insecure due to the use of the issuing computers MAC address as the "node" component. We seized this vulnerability and turned it on it's head by replacing the node of a UUIDv1 with our own series of hashes. Each hash is tied to an identifier which a service can use to determine what a generic entity is.
+
+## Supported XUIDs
+
+As above, at XEDI we utilitize a series of known hashes to identify anonymized json objects as certain entities. In TypeScript, we represent these as an Enum known as SupportedXuid. Because this has little to no practical runtime use, we don't include the associated hashes with the inclusion of a supported type.
