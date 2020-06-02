@@ -24,7 +24,7 @@ class Templates extends Service
     }
 
     /**
-     * Gets tempaltes
+     * Gets templates
      * @param templateId 
      * @returns Promise<Template>
      */
