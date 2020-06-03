@@ -28,16 +28,16 @@ authenticateHeader.error; // "invalid_token"
 authenticateHeader.error_description; // "The access token expired"
 ```
 
-<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/AuthenticateHeaderParser.ts"><CodeIcon mr={1} />View sources<LinkExternalIcon ml={1} /></Link>
+<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/AuthenticateHeaderParser.ts"><CodeIcon mr={1} />View source<LinkExternalIcon ml={1} /></Link>
 
 ## XUID
 
 Identifing Entities without explicit type attributes across an eco-system like XEDI is problematic at best, impossible in the main. At XEDI, we found the answer by introducing an identifier that could be typed. <Link href="https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)">Version 1 UUIDs<LinkExternalIcon ml={1} /></Link> are considered inherently insecure due to the use of the issuing computers MAC address as the "node" component. We seized this vulnerability and turned it on it's head by replacing the node of a UUIDv1 with our own series of hashes. Each hash is tied to an identifier which a service can use to determine what a generic entity is.
 
-<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/Xuid.ts"><CodeIcon mr={1} />View sources<LinkExternalIcon ml={1} /></Link>
+<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/Xuid.ts"><CodeIcon mr={1} />View source<LinkExternalIcon ml={1} /></Link>
 
 ## Supported XUIDs
 
 As above, at XEDI we utilitize a series of known hashes to identify anonymized json objects as certain entities. In TypeScript, we represent these as an Enum known as SupportedXuid. Because this has little to no practical runtime use, we don't include the associated hashes with the inclusion of a supported type.
 
-<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/Xuid.ts"><CodeIcon mr={1} />View sources<LinkExternalIcon ml={1} /></Link>
+<Link href="https://github.com/xedi/sdk-js/blob/master/src/Utils/Xuid.ts"><CodeIcon mr={1} />View source<LinkExternalIcon ml={1} /></Link>
