@@ -53,15 +53,15 @@ Remember `src/Services/Services.ts`? This is the first step of building the reso
 Firstly, import your newly created "Service" class.
 
 ```diff
-import Accounts from './Accounts';
--
-+ import Example from './Example';
-+
+diff a/src/Services/Services.ts b/src/Services/Services.ts
+ import Accounts from './Accounts';
++import Example from './Example';
 ```
 
 Then, you should add the imported class to the end of the `export` object.
 ```diff
-Accounts,
+diff a/src/Services/Services.ts b/src/Services/Services.ts
+     Accounts,
 -}
 +    Example,
 +}
@@ -77,12 +77,15 @@ The first step here is to register a <Link href="architecture/singletons">single
 Find the `boot` method, and go to the bottom of that method. Here we are going to add a binding that the container will use to build a single instance of your class.
 
 ```typescript
-this.singleton('services.example', (app: ContainerInterface, config: Config) => {
-    return new Services.Example(
-        config,
-        app.resolve('client')
-    );
-});
+this.singleton(
+    'services.example',
+    (app: ContainerInterface, config: Config) => {
+        return new Services.Example(
+            config,
+            app.resolve('client')
+        );
+    }
+);
 ```
 
 The counterpart to this registration is the resolution of its abstract definition; here `'services.example'`.
@@ -98,11 +101,11 @@ static get Example(): Services.Example
 
 ```
 
-Congratulations! You can now resolve you new class, statically. If you want, go ahead and jump into the <Link href="tooling/debugging">playground</Link> and type `Xedi.Example`. It should resolve you an instance of your new class and inside, you will find a <Link href="architecture/config">config bag</Link> and a <Link href="architecture/http_requests">HTTP client</Link>.
+Congratulations! You can now resolve you new class. If you want, go ahead and jump into the <Link href="tooling/debugging">playground</Link> and type `Xedi.Example`. It should resolve you an instance of your new class and inside, you will find a <Link href="architecture/config">config bag</Link> and a <Link href="architecture/http_requests">HTTP client</Link>.
 
 # Modifying API Classes
 
-You want to start giving your class some abilities. Depending on your situation, you might be adding a series of CRUD endpoints, or something entirely different. In most cases, you will be sending requests to an instance of the XEDI API Gateway. Most endpoints are the same, but there will be a few caveats and edge-cases. Consider the following examples:
+You want to start giving your class some abilities. Depending on your situation you might be adding a series of CRUD endpoints, or something entirely different. In most cases, you will be sending HTTP requests to an instance of the XEDI API Gateway. Most endpoints are the same, but there will be a few caveats and edge-cases. Consider the following examples:
 
 ```typescript
 list() {

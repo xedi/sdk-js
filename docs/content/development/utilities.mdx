@@ -2,6 +2,7 @@
 title: Utilities
 description: Helper functions and classes
 status: Stable
+source: https://github.com/xedi/sdk-js/tree/master/src/Utils
 ---
 
 import {Link, Text} from '@primer/components'
@@ -13,13 +14,17 @@ The <Link href="https://github.com/xedi/sdk-js/tree/master/src/Utils">`Utils`<Li
 
 As part of our <Link href="/architecture/authentication">authentication flow</Link> the <Link href="https://tools.ietf.org/html/rfc6750#page-9">`WWW-Authenticate` header<LinkExternalIcon /></Link> is returned from the API Gateway. This is provided to us as a single string which makes it difficult to parse.
 ```
-Bearer realm="api.xedi", error="invalid_token", error_description="The access token expired"
+Bearer realm="api.xedi",
+    error="invalid_token",
+    error_description="The access token expired"
 ```
 <Text as="p" mb={3} fontSize={1} color="gray.5">Example WWW-Authenticate header</Text>
 <Text as="p" mb={3}>To simplify the logic of interogating this string, the `AuthenticateHeaderParser` was devised.</Text>
 
 ```javascript
-const authenticateHeader = AuthenticateHeaderParser.parse(headers['www-authenticate']);
+const authenticateHeader = AuthenticateHeaderParser.parse(
+    headers['www-authenticate']
+);
 
 authenticateHeader.realm; // "api.xedi"
 
