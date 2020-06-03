@@ -14,8 +14,7 @@ class Templates extends Service
      * Get all templates
      * @returns Promise<Template>
      */
-    list()
-    {
+    list() {
         return this.client
             .get<JsonResponse<Collection<Template>>>(`1/templates`)
             .then((response: AxiosResponse<JsonResponse<Collection<Template>>>) => {
@@ -33,6 +32,45 @@ class Templates extends Service
             .get<JsonResponse<Template>>(`1/templates/${ templateId }`)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data;
+            });
+    }
+
+    /**
+     * Creates templates
+     * @param template 
+     * @returns Promise<Template>
+     */
+    create(template: Template) {
+        return this.client
+            .post<JsonResponse<Template>>(`1/templates`, template)
+            .then((response: AxiosResponse<JsonResponse<Template>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
+     * Updates templates
+     * @param template 
+     * @returns Promise<Template>
+     */
+    update(template: Template) {
+        return this.client
+            .patch<JsonResponse<Template>>(`1/templates${ template._id }`, template)
+            .then((response: AxiosResponse<JsonResponse<Template>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
+     * Deletes templates
+     * @param templateId
+     * @returns Promise<Template> 
+     */
+    delete(templateId: Xuid<SupportedXuid.Template>) {
+        return this.client
+            .delete<JsonResponse<Template>>(`1/templates/${ templateId }`)
+            .then((response: AxiosResponse<JsonResponse<Template>>) => {
+                return response;
             });
     }
 }
