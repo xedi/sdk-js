@@ -40,7 +40,7 @@ describe('Templates@get', () => {
                 _id: "template-id",
                 name: "test-template",
                 description: 'test-template',
-                is_template: true,       
+                is_template: true,
             }
         );
     });

@@ -30,7 +30,7 @@ describe('Templates@list', () => {
                 }
             ]
         };
-    
+
         nock('http://api-gateway.localhost')
             .get('/1/templates')
             .reply(200, positiveResponse);
@@ -41,7 +41,6 @@ describe('Templates@list', () => {
         });
 
         const templatesService = new Templates(mockConfig, axios);
-        
         const response = await templatesService.list();
 
         assert.isArray(response);

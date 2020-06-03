@@ -24,7 +24,7 @@ class Templates extends Service
 
     /**
      * Gets templates
-     * @param templateId 
+     * @param templateId
      * @returns Promise<Template>
      */
     get(templateId: Xuid<SupportedXuid.Template>) {
@@ -37,7 +37,7 @@ class Templates extends Service
 
     /**
      * Creates templates
-     * @param template 
+     * @param template
      * @returns Promise<Template>
      */
     create(template: Template) {
@@ -50,7 +50,7 @@ class Templates extends Service
 
     /**
      * Updates templates
-     * @param template 
+     * @param template
      * @returns Promise<Template>
      */
     update(template: Template) {
@@ -64,7 +64,7 @@ class Templates extends Service
     /**
      * Deletes templates
      * @param templateId
-     * @returns Promise<Template> 
+     * @returns Promise<Template>
      */
     delete(templateId: Xuid<SupportedXuid.Template>) {
         return this.client
