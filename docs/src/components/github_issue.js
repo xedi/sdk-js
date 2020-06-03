@@ -1,5 +1,5 @@
-import {Box, Flex, BorderBox, Link, StateLabel} from '@primer/components';
-import {LinkExternalIcon} from '@primer/styled-octicons';
+import {Box, Flex, StateLabel} from '@primer/components';
+import ExternalLink from './external_link';
 import React, {useState, useEffect} from 'react';
 import {startCase} from 'lodash';
 
@@ -13,7 +13,7 @@ function GithubIssue({issueId}) {
 
                 setIssueData({
                     title: result.title,
-                    url: result.url,
+                    url: result.html_url,
                     state: state,
                     class: `issue${state}ed`,
                 });
@@ -21,16 +21,16 @@ function GithubIssue({issueId}) {
     }, []);
 
     return (
-        <BorderBox px={1} py={2} mb={2}>
+        <Box px={1} py={2}>
             <Flex flexWrap="nowrap" flexDirection="row">
                 <Box as={Flex} alignSelf="center" alignContent="center" justifyContent="center">
                     <StateLabel status={issueData.class} mr={1}>{issueData.state}</StateLabel>
                 </Box>
                 <Box as={Flex} alignSelf="center" alignContent="center" justifyContent="center">
-                    <Link href={issueData.url}>{issueData.title}<LinkExternalIcon ml={1}/></Link>
+                    <ExternalLink href={issueData.url} title={issueData.title}>{issueData.title}</ExternalLink>
                 </Box>
             </Flex>
-        </BorderBox>
+        </Box>
     );
 }
 

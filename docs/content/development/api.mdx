@@ -5,11 +5,11 @@ status: Stable
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Service.ts'
 ---
 
-import {Flash, Link, Label, Text, BorderBox, StateLabel} from '@primer/components'
-import {InfoIcon, GitPullRequestIcon, LinkExternalIcon} from '@primer/styled-octicons'
+import {Flash, Link, Text, BorderBox} from '@primer/components'
+import {Caption, Container} from '@primer/gatsby-theme-doctocat'
+import {InfoIcon} from '@primer/styled-octicons'
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
-import Container from '@primer/gatsby-theme-doctocat/src/components/container'
-import GithubIssue from '../../src/components/github_issue'
+import {GithubIssue} from '../../src/components'
 
 # Adding API Classes
 
@@ -23,7 +23,9 @@ There are three main stages to adding a API class:
 
 Within the `src/Services/` directory you should find a number of files. Most notable for us is the `Service.ts` and `Services.ts` files.
 
-<GithubIssue issue-id="24" />
+<BorderBox mb={2}>
+    <GithubIssue issue-id="24" />
+</BorderBox>
 
 `Service.ts` is the abstract class from which all our "Service" classes extend. It is responsible for the construction of the class, for handling the <Link href="architecture/events">classes events</Link>, and holding memory references to the <Link href="architecture/configuration">config bag</Link> and the <Link href="architecture/http_requests">HTTP client</Link>.
 
@@ -114,7 +116,7 @@ list() {
         });
 }
 ```
-<Text as="p" mt={2} mb={3} fontSize={1} color="gray.5">An indexing method</Text>
+<Caption>An indexing method</Caption>
 
 Lets look at line three of the above example. In JavaScript this would look like <InlineCode>.get('1/examples')</InlineCode>, so whats the extra stuff? This how we tell TypeScript, what we expect the <Link href="architecture/http_requests">HTTP Client</Link> to return in the promise. Here we tell it we want a `JsonResponse` which itself, must contain an `Example`.
 

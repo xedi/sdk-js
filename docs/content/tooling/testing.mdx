@@ -8,6 +8,8 @@ source: https://github.com/xedi/sdk-js/tree/master/testing
 import {Text, Link, Flash} from '@primer/components'
 import {InfoIcon} from '@primer/styled-octicons'
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
+import {ExternalLink} from '../../src/components'
+import {Caption} from '@primer/gatsby-theme-doctocat'
 
 Testing our code often feels like a chore, or something we leave until last. For most, testing is the mashed potatoes of development. It makes up the majority of the task and isn't the most attractive thing on our plate.
 
@@ -30,7 +32,7 @@ Next I need to test each function in my Avengers API. At present I have one func
 
 ## Authoring a test
 
-Once I have my file, I can start writing my test. Because we are using <Link href="https://mochajs.org/">MochaJS</Link> as a testing framework we get a couple of functions included by default.
+Once I have my file, I can start writing my test. Because we are using <ExternalLink href="https://mochajs.org/">MochaJS</ExternalLink> as a testing framework we get a couple of functions included by default.
 
 ```typescript
 import { assert } from 'chai';
@@ -80,7 +82,7 @@ describe('Avengers@list', () => {
     });
 });
 ```
-<Text as="p" mt={2} mb={3} fontSize={1} color="gray.5">tests/Unit/Avengers/List.test.ts</Text>
+<Caption>tests/Unit/Avengers/List.test.ts</Caption>
 
 Lets examine this test.
 
@@ -90,13 +92,13 @@ Lets examine this test.
 
 * Personal preference, I have added a fixture at the top of the test. This could easily be done inline or in a separate file.
 
-* We use <Link href="https://github.com/nock/nock">Nock</Link> to intercept requests to the API Gateway and return predefined responses to matching endpoints.
+* We use <ExternalLink href="https://github.com/nock/nock">Nock</ExternalLink> to intercept requests to the API Gateway and return predefined responses to matching endpoints.
 
 * We then need to setup our class. This concludes the the setup phase of our tests.
 
 * We invoke the subject function `list()` and assign the response to a `const` value.
 
-* We enter the assert phase, and utilize functions from <Link href="https://chaijs.com">Chai.js</Link> to test the response.
+* We enter the assert phase, and utilize functions from <ExternalLink href="https://chaijs.com">Chai.js</ExternalLink> to test the response.
 
 <Flash scheme="yellow">
     <InfoIcon mr={2}/>

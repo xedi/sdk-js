@@ -5,8 +5,10 @@ status: Experimental
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Service.ts'
 ---
 
-import {Link, Text, Flash} from '@primer/components'
-import {LinkExternalIcon, InfoIcon} from '@primer/styled-octicons'
+import {Link, Flash} from '@primer/components'
+import {Caption} from '@primer/gatsby-theme-doctocat'
+import {InfoIcon} from '@primer/styled-octicons'
+import {ExternalLink} from '../../src/components'
 
 Events are a mechanism supporting decoupled communication between components. They are part of the underlying <Link href="/development/api">API abstract class</Link> meaning they are available to all child classes. The usage for Events is simple and familiar.
 
@@ -26,9 +28,11 @@ this.trigger('auth_updated', {
     }
 });
 ```
-<Text as="p" mb={3} fontSize={1} color="gray.5">
-    <Link href="https://github.com/xedi/sdk-js/blob/master/src/Services/Auth.ts#L144">Auth.switchContexts<LinkExternalIcon ml={2} /></Link>
-</Text>
+<Caption>
+    <ExternalLink href="https://github.com/xedi/sdk-js/blob/master/src/Services/Auth.ts#L144">
+        Auth.switchContexts
+    </ExternalLink>
+</Caption>
 
 Subscribing to the `auth_updated` topic is also as straightforward as this.
 ```javascript
