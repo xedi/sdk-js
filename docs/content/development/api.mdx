@@ -5,7 +5,7 @@ status: Stable
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Service.ts'
 ---
 
-import {Flash, Link, Label, Text, BorderBox} from '@primer/components'
+import {Flash, Link, Label, Text, BorderBox, StateLabel} from '@primer/components'
 import {InfoIcon, GitPullRequestIcon, LinkExternalIcon} from '@primer/styled-octicons'
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
 import Container from '@primer/gatsby-theme-doctocat/src/components/container'
@@ -22,11 +22,8 @@ There are three main stages to adding a API class:
 
 Within the `src/Services/` directory you should find a number of files. Most notable for us is the `Service.ts` and `Services.ts` files.
 
-<BorderBox p={2} mb={2}>
-    <Label title="Status: Open" size="large" bg="green.5" mr={2}>
-        <GitPullRequestIcon mr={1} />
-        Open
-    </Label>
+<BorderBox px={1} py={2} mb={2}>
+    <StateLabel status="pullOpened" mr={1}>Open</StateLabel>
     <Link href="https://github.com/xedi/sdk-js/issues/24">[RFC] Rename `Services` to `API` to more accurately reflect what they are <LinkExternalIcon /></Link>
 </BorderBox>
 
