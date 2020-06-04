@@ -30,7 +30,7 @@ describe('Templates@create', () => {
             baseURL: 'http://api-gateway.localhost'
         });
 
-        var template: Template = {
+        const template: Template = {
             _id: "template-id",
             name: "test-template",
             description: "test-template",
