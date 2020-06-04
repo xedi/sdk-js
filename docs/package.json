@@ -14,6 +14,7 @@
     "@primer/styled-octicons": "0.0.0-44a8bc7",
     "D": "^1.0.0",
     "gatsby": "^2.13.25",
+    "gatsby-plugin-offline": "^3.2.8",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.8.6"
