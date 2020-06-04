@@ -6,8 +6,9 @@ source: https://github.com/xedi/sdk-js/blob/src/Container/Container.ts
 ---
 
 import {Caption} from '@primer/gatsby-theme-doctocat'
-import {Flash} from '@primer/components'
+import {Flash,Text} from '@primer/components'
 import {InfoIcon} from '@primer/styled-octicons'
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
 
 To maintain configuration and state, whilst making the API easy to use, singletons have been employed. This section will go demonstrate the usage of this pattern within the SDK and provide guidance on its use for development.
 
@@ -50,10 +51,10 @@ this.resetInstance('myclass');
 ```
 <Caption>Resetting 'myclass'</Caption>
 
-Invoking `resetInstance` will clear the concrete instance from the store, and then invoke the associated factory.
+Invoking <InlineCode>resetInstance</InlineCode> will clear the concrete instance from the store, and then invoke the associated factory.
 
 <Flash>
-    <InfoIcon mr={1} />Don't confuse `resolveInstance` and `resolve`. `resolveInstance` is a state method which can be used to resolve the active container for static methods.
+    <InfoIcon mr={1} /><Text>Don't confuse <InlineCode>resolveInstance</InlineCode> and <InlineCode>resolve</InlineCode>. <InlineCode>resolveInstance</InlineCode> is a state method which can be used to resolve the active container for static methods.</Text>
 
 ```typescript
 static get MyClass(): MyClass {
