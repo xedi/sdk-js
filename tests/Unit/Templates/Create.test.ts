@@ -1,16 +1,16 @@
-import { assert } from 'chai';
 import JsonResponse from "../../../src/Interfaces/JsonResponse"
+import { Template } from "../../../src/Models/Models"
 import nock from "nock";
-import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
+import Config from "../../../src/Config/Config";
 import { Templates } from "../../../src/Services/Services";
-import Template from '../../../src/Models/Template';
+import { assert } from "chai";
 
-describe('Templates@get', () => {
-    it('should return a template by id', async () => {
+describe('Templates@create', () => {
+    it('should create a template', async () => {
         const positiveResponse: JsonResponse<Template> = {
             status: {
-                code: 200,
+                code: 201,
                 success: true
             },
             data: {
@@ -22,26 +22,32 @@ describe('Templates@get', () => {
         };
 
         nock('http://api-gateway.localhost')
-            .get('/1/templates/template-id')
-            .reply(200, positiveResponse);
+            .post('/1/templates')
+            .reply(201, positiveResponse);
 
         const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
             baseURL: 'http://api-gateway.localhost'
         });
 
-        const templatesService = new Templates(mockConfig, axios);
-        const response = await templatesService.get('template-id');
+        var template: Template = {
+            _id: "template-id",
+            name: "test-template",
+            description: "test-template",
+            is_template: true,
+        };
 
+        const templatesService = new Templates(mockConfig, axios);
+        const response = await templatesService.create(template);
         assert.isObject(response);
         assert.deepEqual(
             response,
             {
                 _id: "template-id",
                 name: "test-template",
-                description: 'test-template',
+                description: "test-template",
                 is_template: true,
             }
         );
     });
-});
+})
