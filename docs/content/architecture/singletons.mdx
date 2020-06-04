@@ -1,4 +1,65 @@
 ---
 title: Singletons
 description: Ensuring configuration persistence in a static world.
+status: Stable
+source: https://github.com/xedi/sdk-js/blob/src/Container/Container.ts
 ---
+
+import {Caption} from '@primer/gatsby-theme-doctocat'
+import {Flash} from '@primer/components'
+import {InfoIcon} from '@primer/styled-octicons'
+
+To maintain configuration and state, whilst making the API easy to use, singletons have been employed. This section will go demonstrate the usage of this pattern within the SDK and provide guidance on its use for development.
+
+## Registration
+
+To use register a singleton for use, first it needs a factory function binding to the `Container` instance.
+
+```typescript
+this.singleton('myclass', function (app: ContainerInterface, config: Config) {
+    return new MyClass();
+});
+```
+<Caption>Binding a factory function to the abstract key 'myclass'</Caption>
+
+The factory function takes two parameters, the `Container` instance and an instance of the `Config` bag. What is returned is known as the "Concrete" instance.
+
+The "abstract" is the key that the binding will be accessible by. This should be a string that is unique to this factory.
+
+<Flash scheme="yellow">
+    <InfoIcon mr={1} />Binding an abstract with a non-unique name will overwrite the previous factory
+</Flash>
+
+## Resolution
+
+Retrieving an instance from the `Container` is simple.
+
+```typescript
+this.resolve<MyClass>('myclass');
+```
+<Caption>Retrieving an instance of MyClass from the Container</Caption>
+
+When a Concrete instance is returned, it is stored within the `Container` against the abstract. The next time the `resolve` method is run, it will retrieve the concrete instance from the store.
+
+## Resetting
+
+It is sometimes necessary to refresh a concrete instance.
+
+```typescript
+this.resetInstance('myclass');
+```
+<Caption>Resetting 'myclass'</Caption>
+
+Invoking `resetInstance` will clear the concrete instance from the store, and then invoke the associated factory.
+
+<Flash>
+    <InfoIcon mr={1} />Don't confuse `resolveInstance` and `resolve`. `resolveInstance` is a state method which can be used to resolve the active container for static methods.
+
+```typescript
+static get MyClass(): MyClass {
+    return this.resolveInstance()
+        .resolve('myclass');
+}
+```
+<Caption>Resolving 'myclass' statically</Caption>
+</Flash>
