@@ -53,9 +53,9 @@ class Templates extends Service
      * @param template
      * @returns Promise<Template>
      */
-    update(template: Template) {
+    update(templateId: Xuid<SupportedXuid.Template>, template: Template) {
         return this.client
-            .patch<JsonResponse<Template>>(`1/templates${ template._id }`, template)
+            .patch<JsonResponse<Template>>(`1/templates/${ templateId }`, template)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data
             });
