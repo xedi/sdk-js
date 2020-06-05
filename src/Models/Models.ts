@@ -1,5 +1,6 @@
 import User from './User';
 import Business from './Business';
+import Price from './Price';
 import Product from './Product';
 import Mailbox from './Mailbox';
 
@@ -12,6 +13,7 @@ export {
     Collection,
     User,
     Business,
+    Price,
     Product,
     Mailbox,
 };
