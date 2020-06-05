@@ -7,6 +7,8 @@ export enum SupportedXuid {
     Product,
     Mailbox,
     Price,
+    Partnership,
+    TaxRate
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;

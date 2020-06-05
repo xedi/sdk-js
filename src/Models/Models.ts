@@ -3,6 +3,7 @@ import Business from './Business';
 import Price from './Price';
 import Product from './Product';
 import Mailbox from './Mailbox';
+import TaxRate from './TaxRate';
 
 type Models = User | Business | Mailbox | Product;
 
@@ -15,5 +16,6 @@ export {
     Business,
     Price,
     Product,
+    TaxRate,
     Mailbox,
 };
