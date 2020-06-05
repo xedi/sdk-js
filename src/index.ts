@@ -122,6 +122,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.tax-rates', (app: ContainerInterface, config: Config) => {
+            return new Services.TaxRates(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -160,6 +167,15 @@ class Xedi extends Container {
     }
 
     /**
+     * Get an instance of the Prices API
+     */
+    static get Prices(): Services.Prices
+    {
+        return this.resolveInstance()
+            .resolve('services.prices');
+    }
+
+    /**
      * Get an instance of the Products API
      */
     static get Products(): Services.Products
@@ -184,6 +200,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.accounts');
+    }
+
+    /**
+     * Get an instance of the Tax Rates API
+     */
+    static get TaxRates(): Services.TaxRates
+    {
+        return this.resolveInstance()
+            .resolve('services.tax-rates');
     }
 }
 

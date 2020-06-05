@@ -5,6 +5,7 @@ import Products from "./Products";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
 import Accounts from "./Accounts";
+import TaxRates from "./TaxRates";
 
 export {
     Accounts,
@@ -14,4 +15,5 @@ export {
     Products,
     Users,
     Mailboxes,
+    TaxRates
 };
