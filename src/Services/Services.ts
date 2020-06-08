@@ -5,6 +5,7 @@ import Users from "./Users";
 import Mailboxes from "./Mailboxes";
 import Accounts from "./Accounts";
 import Templates from "./Templates";
+import Transitions from "./Transitions";
 
 export {
     Accounts,
@@ -14,4 +15,5 @@ export {
     Users,
     Mailboxes,
     Templates,
+    Transitions,
 };
