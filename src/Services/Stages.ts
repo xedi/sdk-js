@@ -17,7 +17,7 @@ class Stages extends Service
     list() {
         return this.client
             .get<JsonResponse<Collection<Stage>>>(`1/stages`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Template>>>) => {
+            .then((response: AxiosResponse<JsonResponse<Collection<Stage>>>) => {
                 return response.data.data;
             });
     }
@@ -37,12 +37,12 @@ class Stages extends Service
 
     /**
      * Create a stage
-     * @param template
+     * @param Stage
      * @returns Promise<Stage>
      */
     create(stage: Stage) {
         return this.client
-            .post<JsonResponse<Stage>>(`1/templates`, stage)
+            .post<JsonResponse<Stage>>(`1/stages`, stage)
             .then((response: AxiosResponse<JsonResponse<Stage>>) => {
                 return response.data.data
             });
@@ -50,8 +50,8 @@ class Stages extends Service
 
     /**
      * Update a  stage
-     * @param templateId
-     * @param template
+     * @param stageId
+     * @param stage
      * @returns Promise<Stage>
      */
     update(stageId: Xuid<SupportedXuid.Stage>, stage: Stage) {
