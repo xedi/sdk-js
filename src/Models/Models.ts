@@ -5,7 +5,7 @@ import Mailbox from './Mailbox';
 import Template from './Template';
 import Transitions from './Transition';
 import Instance from './Instance';
-import Stage from './Stages.ts';
+import Stage from './Stage';
 
 type Models = User | Business | Mailbox | Product | Template | Transitions | Stage | Instance;
 
@@ -21,6 +21,5 @@ export {
     Template,
     Transitions,
     Instance,
-    Stages
-
+    Stage
 };
