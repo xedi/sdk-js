@@ -16,7 +16,7 @@ describe('Template@update', () => {
             data:
             {
                 _id: "template-id",
-                name: "test-template",
+                name: "template-updated",
                 description: "test-template",
                 is_template: true,
             }
@@ -43,7 +43,7 @@ describe('Template@update', () => {
             response,
             {
                 _id: "template-id",
-                name: "test-template",
+                name: "template-updated",
                 description: 'test-template',
                 is_template: true,
             }

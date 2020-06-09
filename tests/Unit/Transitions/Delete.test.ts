@@ -1,24 +1,24 @@
 import JsonResponse from "../../../src/Interfaces/JsonResponse"
 import nock from "nock";
-import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
+import Config from "../../../src/Config/Config";
+import { Transitions } from "../../../src/Services/Services";
 import { assert } from "chai";
-import { Templates } from "../../../src/Services/Services";
 
-describe('Templates@delete', () => {
-    it('should delete a template by id', async () => {
+describe('Transistions@delete', () => {
+    it('should delete a transition by id', async () => {
         const positiveResponse: JsonResponse<object> = {
             status: {
                 code: 200,
                 success: true
             },
             data: {
-                _id: "template-id"
+                _id: "transition-id"
             }
         };
 
         nock('http://api-gateway.localhost')
-            .delete('/1/templates/template-id')
+            .delete('/1/transitions/transition-id')
             .reply(200, positiveResponse);
 
         const mockConfig = new Config();
@@ -26,9 +26,9 @@ describe('Templates@delete', () => {
             baseURL: 'http://api-gateway.localhost'
         });
 
-        const templatesService = new Templates(mockConfig, axios);
-        const response = await templatesService.delete('template-id')
+        const transitionsService = new Transitions(mockConfig, axios);
+        const response = await transitionsService.delete('transition-id');
 
         assert.isObject(response);
-    });
-});
+    })
+})

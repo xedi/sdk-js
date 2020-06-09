@@ -36,7 +36,7 @@ class Transitions extends Service
         return this.client
             .patch<JsonResponse<Transition>>(`1/transitions/${ transitionId }`, transition)
             .then((response: AxiosResponse<JsonResponse<Transition>>) => {
-                return response;
+                return response.data.data;
             });
     }
 
