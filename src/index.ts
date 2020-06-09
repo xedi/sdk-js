@@ -129,6 +129,21 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.instances', (app: ContainerInterface, config: Config) => {
+            return new Services.Instances(
+
+                config,
+                app.resolve('client')
+            );
+        });
+        this.singleton('services.stages', (app: ContainerInterface, config: Config) => {
+            return new Services.Stages(
+
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -200,10 +215,25 @@ class Xedi extends Container {
     }
 
 
+
     static get Transitions(): Services.Transitions
+        {
+            return this.resolveInstance()
+                .resolve('services.transitions');
+
+        }
+    static get Instances(): Services.Instances
     {
         return this.resolveInstance()
-            .resolve('services.transitions');
+            .resolve('services.instances');
+
+    }
+
+    static get Stages(): Services.Stages
+    {
+        return this.resolveInstance()
+            .resolve('services.Stages.ts');
+
     }
 }
 

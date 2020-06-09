@@ -8,6 +8,8 @@ export enum SupportedXuid {
     Mailbox,
     Template,
     Transition,
+    Instance,
+    Stage
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
