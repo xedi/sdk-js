@@ -58,7 +58,45 @@ class Instances extends Service
         return this.client
             .delete<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
-                return response;
+                return response.data.data;
+            });
+    }
+
+    /**
+     * Restore an Instance
+     * @param instanceId
+     * @returns Promise<Instance>
+     */
+    restore(instanceId: Xuid<SupportedXuid.Instance>) {
+        return this.client
+            .put<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
+            .then((response: AxiosResponse<JsonResponse<Instance>>) => {
+                return response.data.data
+            });
+    };
+
+    /**
+     * Run an Instance
+     * @param instanceId
+     * @returns Promise<Instance>
+     */
+    run(instanceId: Xuid<SupportedXuid.Instance>) {
+        return this.client
+            .put<JsonResponse<Instance>>(`1/instances/run/${ instanceId }`)
+            .then((response: AxiosResponse<JsonResponse<Instance>>) => {
+                return response.data.data
+            });
+    };
+
+    /**
+     * Get all  trashed Instances
+     * @returns Promise<Instance>
+     */
+    showTrashed() {
+        return this.client
+            .get<JsonResponse<Collection<Instance>>>(`1/instances/trashed`)
+            .then((response: AxiosResponse<JsonResponse<Collection<Instance>>>) => {
+                return response.data.data;
             });
     }
 }
