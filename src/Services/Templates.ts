@@ -73,6 +73,31 @@ class Templates extends Service
                 return response;
             });
     }
+
+       /**
+     * Restore an Template
+     * @param TemplateId
+     * @returns Promise<Template>
+     */
+    restore(TemplateId: Xuid<SupportedXuid.Template>) {
+        return this.client
+            .put<JsonResponse<Template>>(`1/templates/${ TemplateId }`)
+            .then((response: AxiosResponse<JsonResponse<Template>>) => {
+                return response.data.data
+            });
+    };
+
+    /**
+     * Get all  trashed Templates
+     * @returns Promise<Template>
+     */
+    showTrashed() {
+        return this.client
+            .get<JsonResponse<Collection<Template>>>(`1/templates/trashed`)
+            .then((response: AxiosResponse<JsonResponse<Collection<Template>>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default Templates;
