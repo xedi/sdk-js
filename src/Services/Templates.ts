@@ -74,7 +74,7 @@ class Templates extends Service
             });
     }
 
-       /**
+    /**
      * Restore an Template
      * @param TemplateId
      * @returns Promise<Template>
