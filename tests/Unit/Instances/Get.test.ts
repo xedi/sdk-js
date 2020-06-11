@@ -4,7 +4,7 @@ import nock from "nock";
 import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { Instances } from "../../../src/Services/Services";
-import Instance from '../../../src/Models/Template';
+import Instance from '../../../src/Models/Instance';
 
 describe('Instance@get', () => {
     it('should return an instance by id', async () => {
@@ -22,7 +22,7 @@ describe('Instance@get', () => {
         };
 
         nock('http://api-gateway.localhost')
-            .get('/1/instance/instance-id')
+            .get('/1/instances/instance-id')
             .reply(200, positiveResponse);
 
         const mockConfig = new Config();
