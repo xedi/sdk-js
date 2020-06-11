@@ -21,7 +21,7 @@ describe('Instances@restore', () => {
                 is_template: false,
             }
         };
-        
+
         nock('http://api-gateway.localhost')
             .put('/1/instances/instance-id')
             .reply(201, positiveResponse);

@@ -29,7 +29,8 @@ describe('Instances@showTrashed' , () => {
                     is_template: false,
                 }
             ]
-        };       
+        };
+
         nock('http://api-gateway.localhost')
             .put('/1/instances/trashed')
             .reply(201, positiveResponse);

@@ -21,7 +21,7 @@ describe('Instances@run', () => {
                 is_template: false,
             }
         };
-        
+
         nock('http://api-gateway.localhost')
             .put('/1/instances/run/instance-id')
             .reply(201, positiveResponse);
