@@ -40,8 +40,8 @@ describe('Instances@list', () => {
             baseURL: 'http://api-gateway.localhost'
         });
 
-        const templatesService = new Instances(mockConfig, axios);
-        const response = await templatesService.list();
+        const instancesService = new Instances(mockConfig, axios);
+        const response = await instancesService.list();
 
         assert.isArray(response);
         assert.lengthOf(response, 2);

@@ -28,7 +28,7 @@ describe('Stages@update', () => {
 
         const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
-            baseURL: 'http://api-gatway.localhost'
+            baseURL: 'http://api-gateway.localhost'
         });
 
         const data: any = {
