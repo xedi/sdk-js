@@ -27,7 +27,7 @@ class Instances extends Service
      * @param instanceId
      * @returns Promise<Instance>
      */
-    get(instanceId: Xuid<SupportedXuid.Template>) {
+    get(instanceId: Xuid<SupportedXuid.Instance>) {
         return this.client
             .get<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
@@ -94,7 +94,7 @@ class Instances extends Service
      */
     showTrashed() {
         return this.client
-            .get<JsonResponse<Collection<Instance>>>(`1/instances/trashed`)
+            .put<JsonResponse<Collection<Instance>>>(`1/instances/trashed`)
             .then((response: AxiosResponse<JsonResponse<Collection<Instance>>>) => {
                 return response.data.data;
             });
