@@ -94,7 +94,7 @@ class Instances extends Service
      */
     showTrashed() {
         return this.client
-            .put<JsonResponse<Collection<Instance>>>(`1/instances/trashed`)
+            .get<JsonResponse<Collection<Instance>>>(`1/instances/trashed`)
             .then((response: AxiosResponse<JsonResponse<Collection<Instance>>>) => {
                 return response.data.data;
             });
