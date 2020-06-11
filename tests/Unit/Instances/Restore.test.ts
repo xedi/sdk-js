@@ -45,6 +45,5 @@ describe('Instances@restore', () => {
                 is_template: false,
             }
         );
-
     })
 })

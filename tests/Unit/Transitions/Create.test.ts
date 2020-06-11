@@ -20,7 +20,7 @@ describe('Transitions@create', () => {
                 workflow_id: 'test-workflow',
                 workflow_type: 'template',
                 description: 'test-transition',
-                is_automatic: true,
+                is_automatic: false,
             }
         };
 
@@ -56,7 +56,7 @@ describe('Transitions@create', () => {
                 workflow_id: 'test-workflow',
                 workflow_type: 'template',
                 description: 'test-transition',
-                is_automatic: true,
+                is_automatic: false,
             }
         );
     });
