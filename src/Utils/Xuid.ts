@@ -9,7 +9,7 @@ export enum SupportedXuid {
     Template,
     Transition,
     Instance,
-    Stage
+    Stage,
     Price,
     Partnership,
     TaxRate
