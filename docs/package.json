@@ -5,14 +5,18 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "now-build": "npm run build"
+    "now-build": "npm run build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
-    "@primer/gatsby-theme-doctocat": "^0.9.0",
+    "@primer/gatsby-theme-doctocat": "^0.21.0",
+    "@primer/octicons-react": "^9.6.0",
     "@primer/styled-octicons": "0.0.0-44a8bc7",
+    "D": "^1.0.0",
     "gatsby": "^2.13.25",
+    "gatsby-plugin-offline": "^3.2.8",
     "pluralize": "^8.0.0",
-    "react": "^16.8.6",
+    "react": "^16.13.1",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {

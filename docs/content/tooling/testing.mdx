@@ -1,4 +1,112 @@
 ---
 title: Testing
 description: How to test your code
+status: Stable
+source: https://github.com/xedi/sdk-js/tree/master/testing
 ---
+
+import {Text, Link, Flash} from '@primer/components'
+import {InfoIcon} from '@primer/styled-octicons'
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
+import {ExternalLink} from '../../src/components'
+import {Caption} from '@primer/gatsby-theme-doctocat'
+
+Testing our code often feels like a chore, or something we leave until last. For most, testing is the mashed potatoes of development. It makes up the majority of the task and isn't the most attractive thing on our plate.
+
+In this section we'll look at using unit tests to test our code to provide confidence that any changes we make don't break other behaviours within the SDK.
+
+<Flash>
+    <InfoIcon mr={2} />
+    If you are looking for information on manual testing, read the <Link href="/tooling/debugging">debugging</Link> section.
+</Flash>
+
+## Directory Structure
+
+Testing (at the time of writing) focusses on the behaviors of the SDK, rather than a broad spread approach. This maps to how the files and directories are structured. Rather than mimicking the `src` directory structure, the directories are structured based on the hierarchy at runtime. So for `Xedi.Auth`, you would find those tests in `tests/Unit/Auth` and so on.
+
+Through-out this page, I will continue to use Marvel's Avengers as a subject material. I'm going to test an API that lists the members of the Avengers.
+
+First I need a directory, so I will create `tests/Unit/Avengers`.
+
+Next I need to test each function in my Avengers API. At present I have one function, `list()`, so I create `List.test.ts` in my `Avengers` directory.
+
+## Authoring a test
+
+Once I have my file, I can start writing my test. Because we are using <ExternalLink href="https://mochajs.org/">MochaJS</ExternalLink> as a testing framework we get a couple of functions included by default.
+
+```typescript
+import { assert } from 'chai';
+import { Collection, Avenger } from '../../../src/Models/Models';
+import Avengers from '../../../src/Services/Avengers';
+import Axios, { AxiosInstance } from 'axios';
+import Config from '../../../src/Config/Config;
+import JsonResponse from '../../../src/Interfaces/JsonResponse;
+import nock from 'nock';
+
+describe('Avengers@list', () => {
+    it('should return a list of avengers', async () => {
+        const positiveResponse: JsonResponse<Collection<Avenger>> = {
+            data: [
+                {
+                    "_id": 1,
+                    "email": "t.stark@avengers.org",
+                    "first_name": "Anthony",
+                    "last_name": "Stark",
+                    "job_title": "Iron Man"
+                },
+                {
+                    "_id": 2,
+                    "email": "s.rogers@avengers.org",
+                    "first_name": "Steve",
+                    "last_name": "Rogers",
+                    "job_title": "Captain America"
+                }
+            ]
+        };
+
+        nock("https://api.xedi.com")
+            .get("/1/avengers")
+            .reply(200, positiveResponse);
+
+        const configBag = new Config();
+        const httpClient: AxiosInstance = new Axios({
+            baseUrl: 'https://api.xedi.com'
+        });
+
+        const avengersAPI = new Avengers(configBag, httpClient);
+
+        const result = await avengersApi.list();
+
+        assert.isArray(result);
+        assert.lengthOf(result, 2);
+    });
+});
+```
+<Caption>tests/Unit/Avengers/List.test.ts</Caption>
+
+Lets examine this test.
+
+* Below the `import` statements is the entrypoint for the framework. In this file we are describing the list functionality of the Avengers API. Therefore, `Avengers@list` is what will appear in the results output.
+
+* We have one behavioural test, in which we assert `it should return a list of avengers`. Because this method contains a <Text as="em">asynchronous</Text> http request, we denote that the this test is also asynchronous with the `async` keyword.
+
+* Personal preference, I have added a fixture at the top of the test. This could easily be done inline or in a separate file.
+
+* We use <ExternalLink href="https://github.com/nock/nock">Nock</ExternalLink> to intercept requests to the API Gateway and return predefined responses to matching endpoints.
+
+* We then need to setup our class. This concludes the the setup phase of our tests.
+
+* We invoke the subject function `list()` and assign the response to a `const` value.
+
+* We enter the assert phase, and utilize functions from <ExternalLink href="https://chaijs.com">Chai.js</ExternalLink> to test the response.
+
+<Flash scheme="yellow">
+    <InfoIcon mr={2}/>
+    It's important to remember that Mocha will pass any test that doesn't error. This is the primary reason I've used <InlineCode>async/await</InlineCode> rather than <InlineCode>then/catch</InlineCode>.
+</Flash>
+
+## Running your test
+
+Now that I've written my test, lets see if it will run. Simply run: <InlineCode>npm run test</InlineCode>.
+
+I will also check my code conforms to best-practice. For this run: <InlineCode>npm run lint:tests</InlineCode>. If you want to know more about this, read the section on <Link href="/tooling/linting">Linting</Link>.

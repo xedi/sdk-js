@@ -10,6 +10,9 @@ export enum SupportedXuid {
     Transition,
     Instance,
     Stage
+    Price,
+    Partnership,
+    TaxRate
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;

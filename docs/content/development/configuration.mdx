@@ -1,4 +1,17 @@
 ---
 title: Configuration
 description: Accessing and managing configuration
+status: New
+source: 'https://github.com/xedi/sdk-js/blob/master/src/Config/Config.ts'
 ---
+
+import {Flash} from '@primer/components'
+import {GithubIssue, ExternalLink} from '../../src/components'
+
+A key goal of this SDK is that it manages it's configuration as transparently as possible; but without the need for human intervention. This means that you should be able to access and modify any configuration value, at any time, and the internals of the SDK should respect your updated values.
+
+<Flash variant="info">
+    <GithubIssue issue-id="1" />
+</Flash>
+
+Under the hood, the Config Bag is a standard JavaScript <ExternalLink href="https://tc39.es/ecma262/#sec-map-objects" title="Map specification">Map</ExternalLink>

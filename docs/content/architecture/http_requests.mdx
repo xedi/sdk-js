@@ -1,3 +1,19 @@
 ---
 title: HTTP Requests
 description: How are HTTP requests handled
+source: https://github.com/axios/axios
+status: Stable
+---
+
+import {Flash} from '@primer/components'
+import {InfoIcon} from '@primer/styled-octicons'
+
+XEDI.js includes Axios in its bundle. It is contained so should not interfere with other instances of Axios you may be running.
+
+Axios allows XEDI.js to be used in browsers and (in theory) in Node.js applications.
+
+<Flash scheme="yellow" mb={2}>
+    <InfoIcon mr={1} /> Node.js applications aren't currently supported.
+</Flash>
+
+Just like the API classes, XEDI.js uses an instance of Axios.

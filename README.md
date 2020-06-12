@@ -1,7 +1,7 @@
 # XEDI JS SDK
 
 ![Tests](https://github.com/xedi/sdk-js/workflows/Test/badge.svg?event=push)
-
+![Linting](https://github.com/xedi/sdk-js/workflows/Linting/badge.svg)
 ---
 ## Setup
 

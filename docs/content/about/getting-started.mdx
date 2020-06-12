@@ -1,0 +1,43 @@
+---
+title: Getting Started
+description: Getting started with XEDI.js
+---
+
+import {Flash, Link, BorderBox} from '@primer/components'
+import {InfoIcon} from '@primer/styled-octicons'
+import {ExternalLink, GithubIssue} from '../../src/components'
+
+## Installation
+
+<Flash mb={2}>
+    <InfoIcon ml={1} /> XEDI.js is currently published to the GitHub Package Repository. You can find out more about the GitHub Package Repository <ExternalLink href="https://help.github.com/en/packages">here</ExternalLink>.
+    <BorderBox mt={1} bg="white">
+        <GithubIssue issue-id="29" />
+    </BorderBox>
+</Flash>
+
+**Using NPM**
+
+```shell
+npm install @xedi/sdk-js
+```
+
+XEDI.js also ships with TypeScript typings!
+
+## Configuration
+
+You can configure the SDK using the `Xedi.Config` class. This class extends a JavaScript `Map` object, so the usual `get`, `set`, and `delete` methods will work as per the original object. For example, you can configure which `base_url` should be used to contact a API Gateway instance.
+
+```javascript
+Xedi.Config.set('base_url', 'https://api.staging.xedi.com');
+```
+
+Below you will find a list of all configurations.
+
+| Configuration | Default Value | Comments |
+|--------------|---------------|----------|
+| `base_url` | `https://api.xedi.com` | |
+| `refresh_token` | | Set and managed by `Xedi.Auth` |
+| `access_token` | | Set and managed by `Xedi.Auth` |
+
+Learn more about using the `Xedi.Config` class <Link href="development/configuration">here</Link>.

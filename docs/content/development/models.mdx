@@ -1,4 +1,44 @@
 ---
 title: Models
 description: Added & Modifying Models
+status: Stable
+source: https://github.com/xedi/sdk-js/tree/master/src/Models
 ---
+
+import {Text, Link} from '@primer/components'
+import {FileCodeIcon, CodeIcon} from '@primer/styled-octicons'
+
+Models mean a lot of things to alot of people. Here, they are simple definitions of the data we expect when we refer to a certain entity. At runtime, they provide little benefit, however, in TypeScript, they can help us understand the code that uses them, and ensures we use the correct attribute names when interacting with the data.
+
+## Authoring a Model
+
+Models can be found in the `src/Models` directory. Model files <Text as="em">should</Text> be in title-case, for example `Example.ts` rather than `example.ts`. These files should also then be imported into `Models.ts` and added to the union type defining `Models`.
+
+Lets break down the User model and examine how its built.
+
+```typescript
+import Xuid, { SupportedXuid } from '../Utils/Xuid';
+
+
+/**
+ * User
+ */
+export default interface User extends Object {
+    _id: Xuid<SupportedXuid.User>;
+    first_name: string;
+    last_name: string;
+    email: string;
+    contact_no?: number;
+    job_title?: string;
+    avatar?: string;
+    is_active: boolean;
+}
+```
+<Link href="https://github.com/xedi/sdk-js/blob/master/src/Models/User.ts" lineHeight="condensedUltra" fontSize={1}>
+    <CodeIcon mr={2}/>
+    View Source
+</Link>
+
+* Note that whilst this looks like your everyday household JavaScript object, after each line, there is a semi-colon. This tells TypeScript that we have finished defining that attribute.
+* Some attributes have a `?` at the end of the attribute name. This denotes that it is optional.
+* `_id` is using a custom type definition. It is an <Link href="/development/utilities#xuid">XUID</Link> of type `User` as enumerated by the <Link href="/development/utilities#supported-xuid">SupportedXuid</Link> enum.

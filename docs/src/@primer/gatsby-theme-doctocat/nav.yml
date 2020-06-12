@@ -1,9 +1,9 @@
 - title: About
   children:
-    - title: Installation
-      url: /about/installation
-    - title: Configuration
-      url: /about/configuration
+    - title: Getting Started
+      url: /about/getting-started
+    - title: Contributing
+      url: /about/contributing
 - title: Usage
   children:
     - title: Accounts

@@ -5,6 +5,8 @@ status: New
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Accounts.ts'
 ---
 
+import {CheckIcon} from '@primer/styled-octicons'
+
 ## Introduction
 
 The Accounts API allows you to register, and verify a user account.
@@ -19,10 +21,10 @@ Register a User Account
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
-| email | String | ✔ | t.stark@avengers.org |
-| first_name | String | ✔ | Anthony |
-| last_name | String | ✔ | Stark |
-| password | String | ✔ | izJ7Y0MBwcJ8 |
+| email | String | <CheckIcon color="green.5"/> | t.stark@avengers.org |
+| first_name | String | <CheckIcon color="green.5"/> | Anthony |
+| last_name | String | <CheckIcon color="green.5"/> | Stark |
+| password | String | <CheckIcon color="green.5"/> | izJ7Y0MBwcJ8 |
 | contact_no | String | | (970) 517-1743 x67916 |
 | job_title | String | | Iron Man |
 | avatar | String | | https://assets.avengers.org/images/iron_man.png |
@@ -65,7 +67,7 @@ Verify the email address attached to a User account.
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
-| verificationToken | String | ✔︎ | de99a620c50f2990e87144735cd357e7
+| verificationToken | String | <CheckIcon color="green.5"/>︎ | de99a620c50f2990e87144735cd357e7
 
 **Usage**
 

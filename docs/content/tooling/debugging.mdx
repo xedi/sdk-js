@@ -1,4 +1,44 @@
 ---
 title: Debugging
 description: How to debug issues
+status: Experimental
+source: https://github.com/xedi/sdk-js/blob/master/index.html
 ---
+
+import {Link} from '@primer/components'
+
+Whilst TypeScript helps us eliminate most of the silly bugs that vanilla JavaScript would allow, there is still room for mistakes to be made. To aid in the discover of these issues, there is a playground provided within the repository.
+
+## Starting the playground
+
+To initialize the playground, simply run `npm run playground`. You should do this in a separate console window as this is a foreground task. This task will watch your `src` directory for changes, compiles them, and utilizing the `webpack-dev-server`, perform module hot swapping. When the command has finished it's first run, it should prompt you to open your browser to http://localhost:8080.
+
+## Preparing the playground
+
+When you open the playground in your browser, you will be presented with a form to configure the it. There will be three fields: API Gateway Address, Login (Email Address), and Password. At this time, Login and Password are required.
+
+On successful authentication with your choice of API Gateway instance, the form will be replaced with a green tick and instructions to open DevTools and "start hacking".
+
+## Using the playground
+
+As mentioned previous, you need to open your browsers DevTools. From here, you can enter a variety of commands into the console to interact with XEDI.js. A good first command might be retreiving your user record from the <Link href="/usage/auth#user">Auth api</Link>.
+
+```javascript
+const me = Xedi.Auth.user;
+```
+```javascript
+{
+    "_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "email": "t.stark@avengers.org",
+    "first_name": "Anthony",
+    "last_name": "Start",
+    "job_title": "Iron Man",
+    "contact_no": "(970) 517-1743 x67916",
+    "avatar": "https://assets.avengers.org/images/iron_man.png",
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:30:14",
+    "is_active": 1
+}
+```
+
+When you done, terminate the server running in your console.
