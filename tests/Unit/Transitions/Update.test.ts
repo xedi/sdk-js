@@ -30,7 +30,7 @@ describe('Transitions@update', () => {
 
         const mockConfig = new Config();
         const axios: AxiosInstance = Axios.create({
-            baseURL: 'http://api-gatway.localhost'
+            baseURL: 'http://api-gateway.localhost'
         });
 
         const data: any = {
@@ -49,7 +49,7 @@ describe('Transitions@update', () => {
                 to_id: 'test-stage',
                 workflow_id: 'test-workflow',
                 workflow_type: 'template',
-                description: 'test-transition',
+                description: 'updated transition description',
                 is_automatic: true,
             }
         );
