@@ -13,5 +13,7 @@ jobs:
           scope: '@xedi'
       - name: Install Dependencies
         run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Test for errors
         run: npm run test
