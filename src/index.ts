@@ -152,7 +152,6 @@ class Xedi extends Container {
         });
         this.singleton('services.tax-rates', (app: ContainerInterface, config: Config) => {
             return new Services.TaxRates(
-
                 config,
                 app.resolve('client')
             );
@@ -235,8 +234,6 @@ class Xedi extends Container {
         return this.resolveInstance()
             .resolve('services.templates');
     }
-
-
 
     static get Transitions(): Services.Transitions
         {
