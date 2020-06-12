@@ -1,14 +1,15 @@
 import JsonResponse from "../../../src/Interfaces/JsonResponse"
 import { Collection } from "../../../src/Models/Models"
-import { Templates, Transitions } from "../../../src/Services/Services"
 import nock from "nock"
 import Config from "../../../src/Config/Config"
 import Axios, { AxiosInstance } from "axios"
 import { assert } from "chai"
+import Transitions from "../../../src/Services/Transitions"
+import Transition from "../../../src/Models/Transition"
 
 describe('Transitions@list', () => {
     it('should return a list of transitions', async () => {
-        const positiveResponse: JsonResponse<Collection<Transitions>> = {
+        const positiveResponse: JsonResponse<Collection<Transition>> = {
             status: {
                 code: 200,
                 success: true
