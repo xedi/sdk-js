@@ -18,6 +18,8 @@
       url: /usage/products
     - title: Users
       url: /usage/users
+    - title: Workflows
+      url: /usage/workflows
 - title: Architecture
   children:
     - title: Authentication
