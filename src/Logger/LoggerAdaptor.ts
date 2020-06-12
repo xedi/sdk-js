@@ -1,5 +1,5 @@
 import { LoggerInterface } from '../Interfaces/Logger';
-
+/* tslint:disable:no-console */
 abstract class LoggerAdaptor implements LoggerInterface
 {
     log(message?: any, ...optionalParams: any[]): void
