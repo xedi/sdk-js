@@ -17,6 +17,7 @@ export enum SupportedXuid {
     DocumentGroup,
     DocumentType,
     Partner,
+    DocType
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
