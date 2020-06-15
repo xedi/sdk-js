@@ -58,7 +58,7 @@ class Prices extends Service
         return this.client
             .delete<JsonResponse<Price>>(`1/prices/${ priceId }`)
             .then((response: AxiosResponse<JsonResponse<Price>>) => {
-                return response;
+                return response.data.data;
             });
     }
 }
