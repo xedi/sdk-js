@@ -13,6 +13,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@xedi'
       - run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES }}
       - run: npm run build
       - run: npm publish
         env:

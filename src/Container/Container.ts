@@ -1,5 +1,7 @@
 import ContainerInterface from '../Interfaces/Container';
 import Config from '../Config/Config';
+import Translator from '../Translator/Translator';
+import LogManager from '../Logger/LogManager';
 
 export type FactoryFunction = ((app: ContainerInterface, config: Config) => object);
 
@@ -37,6 +39,17 @@ export default class Container implements ContainerInterface {
      */
     protected boot(): void {
         this.instance('config', new Config());
+
+        this.singleton('logger', (app: ContainerInterface, config: Config) => {
+            return new LogManager(config);
+        });
+
+        this.singleton('translator', (app: ContainerInterface, config: Config) => {
+            return new Translator(
+                app.resolve('logger'),
+                config
+            );
+        });
     }
 
     /**
@@ -127,5 +140,23 @@ export default class Container implements ContainerInterface {
     {
         return this.resolveInstance()
             .resolve('config');
+    }
+
+    /**
+     * Gets an instance of the LogManager
+     */
+    static get Log(): LogManager
+    {
+        return this.resolveInstance()
+            .resolve('logger');
+    }
+
+    /**
+     * Gets an instance of the translator
+     */
+    static get Translator(): Translator
+    {
+        return this.resolveInstance()
+            .resolve('translator');
     }
 }
