@@ -22,12 +22,12 @@ class Mailboxes extends Service {
 
     /**
      * Lists by business
-     * @param businessIuid
+     * @param businessXuid
      * @returns Promise<Mailbox[]>
      */
-    listByBusiness(businessIuid: Xuid<SupportedXuid.Business>) {
+    listByBusiness(businessXuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${ businessIuid }/mailboxes`)
+            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${ businessXuid }/mailboxes`)
             .then((response: AxiosResponse<JsonResponse<Collection<Mailbox>>>) => {
                 return response.data.data;
             });
