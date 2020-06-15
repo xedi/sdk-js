@@ -1,6 +1,7 @@
 import User from './User';
 import Business from './Business';
 import Price from './Price';
+import Partner from "./Partner";
 import Product from './Product';
 import Mailbox from './Mailbox';
 import Template from './Template';
@@ -18,6 +19,7 @@ export {
     Collection,
     User,
     Business,
+    Partner,
     Price,
     Product,
     TaxRate,

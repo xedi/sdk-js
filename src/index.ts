@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import Container from './Container/Container';
 import Config from './Config/Config';
 import * as Services from './Services/Services';
@@ -95,6 +95,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.partners', (app: ContainerInterface, config: Config) => {
+            return new Services.Partners(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.prices', (app: ContainerInterface, config: Config) => {
             return new Services.Prices(
                 config,
@@ -169,8 +176,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Auth API
      */
-    static get Auth(): Services.Auth
-    {
+    static get Auth(): Services.Auth {
         return this.resolveInstance()
             .resolve('services.auth');
     }
@@ -178,8 +184,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Users API
      */
-    static get Users(): Services.Users
-    {
+    static get Users(): Services.Users {
         return this.resolveInstance()
             .resolve('services.users');
     }
@@ -187,17 +192,23 @@ class Xedi extends Container {
     /**
      * Get an instance of the Businesses API
      */
-    static get Businesses(): Services.Businesses
-    {
+    static get Businesses(): Services.Businesses {
         return this.resolveInstance()
             .resolve('services.businesses');
     }
 
     /**
+     * Get an instance of the Partners API
+     */
+    static get Partners(): Services.Partners {
+        return this.resolveInstance()
+            .resolve('services.partners');
+    }
+
+    /**
      * Get an instance of the Prices API
      */
-    static get Prices(): Services.Prices
-    {
+    static get Prices(): Services.Prices {
         return this.resolveInstance()
             .resolve('services.prices');
     }
@@ -205,8 +216,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Products API
      */
-    static get Products(): Services.Products
-    {
+    static get Products(): Services.Products {
         return this.resolveInstance()
             .resolve('services.products');
     }
@@ -214,8 +224,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Mailboxes API
      */
-    static get Mailboxes(): Services.Mailboxes
-    {
+    static get Mailboxes(): Services.Mailboxes {
         return this.resolveInstance()
             .resolve('services.mailboxes');
     }
@@ -223,8 +232,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Accounts API
      */
-    static get Accounts(): Services.Accounts
-    {
+    static get Accounts(): Services.Accounts {
         return this.resolveInstance()
             .resolve('services.accounts');
     }
@@ -270,8 +278,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Tax Rates API
      */
-    static get TaxRates(): Services.TaxRates
-    {
+    static get TaxRates(): Services.TaxRates {
         return this.resolveInstance()
             .resolve('services.tax-rates');
     }

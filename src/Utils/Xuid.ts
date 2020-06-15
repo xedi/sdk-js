@@ -15,7 +15,8 @@ export enum SupportedXuid {
     TaxRate,
     Connection,
     DocumentGroup,
-    DocumentType
+    DocumentType,
+    Partner,
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
