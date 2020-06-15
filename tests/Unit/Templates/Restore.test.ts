@@ -17,7 +17,6 @@ describe('Templates@restore', () => {
                 _id: "template-id",
                 name: "test-template",
                 description: "test-template",
-                document_group_id: "test-document-id",
                 is_template: false,
             }
         };
@@ -41,7 +40,6 @@ describe('Templates@restore', () => {
                 _id: "template-id",
                 name: "test-template",
                 description: "test-template",
-                document_group_id: "test-document-id",
                 is_template: false,
             }
         );
