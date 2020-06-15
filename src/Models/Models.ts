@@ -1,5 +1,6 @@
 import User from './User';
 import Business from './Business';
+import Partnership from "./Partnership";
 import Price from './Price';
 import Partner from "./Partner";
 import Product from './Product';
@@ -22,6 +23,7 @@ export {
     Business,
     Partner,
     Permission,
+    Partnership,
     Price,
     Product,
     TaxRate,

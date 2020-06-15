@@ -2,6 +2,7 @@ import Auth from "./Auth";
 import Businesses from "./Businesses";
 import Partners from "./Partners";
 import Prices from "./Prices";
+import Partnerships from "./Partnerships";
 import Products from "./Products";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
@@ -16,6 +17,7 @@ export {
     Auth,
     Businesses,
     Partners,
+    Partnerships,
     Prices,
     Products,
     Users,
