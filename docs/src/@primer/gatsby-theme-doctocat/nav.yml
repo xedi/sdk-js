@@ -36,6 +36,8 @@
       url: /development/configuration
     - title: Events
       url: /development/events
+    - title: Logging
+      url: /development/logging
     - title: Models
       url: /development/models
     - title: Utilities
