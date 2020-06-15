@@ -16,6 +16,8 @@
       url: /usage/mailboxes
     - title: Products
       url: /usage/products
+    - title: Translations
+      url: /usage/translations
     - title: Users
       url: /usage/users
     - title: Workflows

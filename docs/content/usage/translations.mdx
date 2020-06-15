@@ -1,0 +1,61 @@
+---
+title: Translations
+description: Accessing XEDI's pool of translations.
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/Translator/Translator.ts
+---
+
+import {Flash} from '@primer/components'
+import {InfoIcon, CheckIcon} from '@primer/styled-octicons'
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
+import {TranslationsReference} from '../../src/components'
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
+
+XEDI.js comes bundled with our Translation packs.
+
+## Registration
+
+Our `Translator` is registered with the application `Container` as `translator`.
+
+It is also exposed statically.
+
+## Usage
+
+<Flash>
+    <InfoIcon mr={1} /><InlineCode>Translator</InlineCode> is available statically, or as a parameter via the <InlineCode>Container</InlineCode>'s <InlineCode>resolve()</InlineCode> method.
+    Here we will display the static usage, which is no different to the resolved usage.
+</Flash>
+
+### The Underscore Method
+
+**Parameters**
+
+| Parameter | Required | Default Value | Notes |
+| :-- | :-: | :-- | :-- |
+| label | <CheckIcon color="green.5" /> | | Case insensitive |
+| parameters | | <InlineCode>[]</InlineCode> | Array of parameters to pass to <InlineCode>Sprintf</InlineCode> |
+| language | | <InlineCode>en</InlineCode> | Uses the <InlineCode>language</InlineCode> configuration value |
+
+**Examples**
+#### Basic Usage
+```javascript
+Xedi.Translator._('languages.spanish'); // Spanish
+```
+
+#### With Parameters
+```javascript
+// workflows.transition.between = transition between %from and %to
+Xedi.Translator._(
+    'workflows.transition.between',
+    [{ from: 'Stage 1', to: 'Stage 2' }]
+); // transition between Stage 1 and Stage 2
+```
+
+#### Language override
+```javascript
+Xedi.Translator._('languages.spanish', [], 'es'); // Espanol
+```
+
+## Translations
+
+<TranslationsReference />
