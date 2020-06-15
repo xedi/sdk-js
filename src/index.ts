@@ -102,6 +102,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.partnerships', (app: ContainerInterface, config: Config) => {
+            return new Services.Partnerships(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.prices', (app: ContainerInterface, config: Config) => {
             return new Services.Prices(
                 config,
@@ -203,6 +210,15 @@ class Xedi extends Container {
     static get Partners(): Services.Partners {
         return this.resolveInstance()
             .resolve('services.partners');
+    }
+
+    /**
+     * Get an instance of the Partnerships API
+     */
+    static get Partnerships(): Services.Partnerships
+    {
+        return this.resolveInstance()
+            .resolve('services.partnerships');
     }
 
     /**
