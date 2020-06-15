@@ -25,12 +25,12 @@ class Partnerships extends Service
 
     /**
      * Gets partnerships
-     * @param productId
+     * @param partnershipId
      * @returns Promise<Partnership>
      */
-    get(productId: Xuid<SupportedXuid.Partnership>) {
+    get(partnershipId: Xuid<SupportedXuid.Partnership>) {
         return this.client
-            .get<JsonResponse<Partnership>>(`1/partnerships/${ productId }`)
+            .get<JsonResponse<Partnership>>(`1/partnerships/${ partnershipId }`)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data;
             });
@@ -38,12 +38,12 @@ class Partnerships extends Service
 
     /**
      * Creates partnerships
-     * @param product
+     * @param partnership
      * @returns Promise<Partnership>
      */
-    create(product: Partnership) {
+    create(partnership: Partnership) {
         return this.client
-            .post<JsonResponse<Partnership>>(`1/partnerships`, product)
+            .post<JsonResponse<Partnership>>(`1/partnerships`, partnership)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data
             });
@@ -51,12 +51,12 @@ class Partnerships extends Service
 
     /**
      * Updates partnerships
-     * @param product
+     * @param partnership
      * @returns Promise<Partnership>
      */
-    update(product: Partnership) {
+    update(partnership: Partnership) {
         return this.client
-            .patch<JsonResponse<Partnership>>(`1/partnerships/${ product._id }`, product)
+            .patch<JsonResponse<Partnership>>(`1/partnerships/${ partnership._id }`, partnership)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data
             });
@@ -64,12 +64,12 @@ class Partnerships extends Service
 
     /**
      * Deletes partnerships
-     * @param productId
+     * @param partnershipId
      * @returns Promise<Partnership>
      */
-    delete(productId: Xuid<SupportedXuid.Partnership>) {
+    delete(partnershipId: Xuid<SupportedXuid.Partnership>) {
         return this.client
-            .delete<JsonResponse<Partnership>>(`1/partnerships/${ productId }`)
+            .delete<JsonResponse<Partnership>>(`1/partnerships/${ partnershipId }`)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response;
             });
