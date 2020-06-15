@@ -1,6 +1,7 @@
 import Auth from "./Auth";
 import Businesses from "./Businesses";
 import Partners from "./Partners";
+import DocTypes from "./DocTypes";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
@@ -18,6 +19,7 @@ export {
     Businesses,
     Partners,
     Partnerships,
+    DocTypes,
     Prices,
     Products,
     Users,
