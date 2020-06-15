@@ -6,6 +6,8 @@ import Axios, { AxiosInstance } from "axios";
 import { Stages } from "../../../src/Services/Services";
 import { assert } from "chai";
 import Xuid, {SupportedXuid} from "../../../src/Utils/Xuid";
+import State from "../../../src/Enums/State";
+import WorkflowType from "../../../src/Enums/WorkflowType";
 
 describe('Stages@create', () => {
     it('should create a stage', async () => {
@@ -19,7 +21,8 @@ describe('Stages@create', () => {
                 name: "test-stage",
                 workflow_id: 'test-workflow',
                 document_type_id: 'test-document-id',
-                state: 'test-stage'
+                workflow_type: WorkflowType.instance,
+                state: State.pending
             }
         };
 
@@ -37,7 +40,8 @@ describe('Stages@create', () => {
             name: "test-stage",
             workflow_id: 'test-workflow',
             document_type_id: 'test-document-id',
-            state: 'test-stage'
+            workflow_type: WorkflowType.instance,
+            state: State.pending
         }
 
         const stagesService = new Stages(mockConfig, axios);
@@ -51,7 +55,8 @@ describe('Stages@create', () => {
                 name: "test-stage",
                 workflow_id: 'test-workflow',
                 document_type_id: 'test-document-id',
-                state: 'test-stage'
+                workflow_type: WorkflowType.instance,
+                state: State.pending
             }
         );
     });

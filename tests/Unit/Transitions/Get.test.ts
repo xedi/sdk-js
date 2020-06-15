@@ -5,6 +5,7 @@ import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { Transitions } from "../../../src/Services/Services";
 import { assert } from "chai";
+import WorkflowType from "../../../src/Enums/WorkflowType";
 
 describe('Transitions@get', () => {
     it('should return a transition by id', async () => {
@@ -18,7 +19,7 @@ describe('Transitions@get', () => {
                 from_id: "test-stage",
                 to_id: 'test-stage',
                 workflow_id: 'test-workflow',
-                workflow_type: 'template',
+                workflow_type: WorkflowType.instance,
                 description: 'test-transition',
                 is_automatic: true,
             }
@@ -44,7 +45,7 @@ describe('Transitions@get', () => {
                 from_id: "test-stage",
                 to_id: 'test-stage',
                 workflow_id: 'test-workflow',
-                workflow_type: 'template',
+                workflow_type: WorkflowType.instance,
                 description: 'test-transition',
                 is_automatic: true,
             }

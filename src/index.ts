@@ -229,18 +229,28 @@ class Xedi extends Container {
             .resolve('services.accounts');
     }
 
+    /**
+     * Get an instance of Templates API
+     */
     static get Templates(): Services.Templates
     {
         return this.resolveInstance()
             .resolve('services.templates');
     }
 
+    /**
+     * Get an instance of Transitoins API
+     */
     static get Transitions(): Services.Transitions
-        {
-            return this.resolveInstance()
-                .resolve('services.transitions');
+    {
+        return this.resolveInstance()
+            .resolve('services.transitions');
 
-        }
+    }
+
+    /**
+     * Get an instance of Instances API
+     */
     static get Instances(): Services.Instances
     {
         return this.resolveInstance()
@@ -248,6 +258,9 @@ class Xedi extends Container {
 
     }
 
+    /**
+     * Get an instance of Stages API
+     */
     static get Stages(): Services.Stages
     {
         return this.resolveInstance()

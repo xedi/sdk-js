@@ -5,6 +5,8 @@ import nock from "nock"
 import Config from "../../../src/Config/Config"
 import Axios, { AxiosInstance } from "axios"
 import { assert } from "chai"
+import WorkflowType from "../../../src/Enums/WorkflowType"
+import State from "../../../src/Enums/State"
 
 describe('Stages@list', () => {
     it('should return a list of stages', async () => {
@@ -19,14 +21,16 @@ describe('Stages@list', () => {
                     name: "test-stage",
                     workflow_id: 'test-workflow',
                     document_type_id: 'test-document-id',
-                    state: 'test-stage'
+                    workflow_type: WorkflowType.instance,
+                    state: State.pending
                 },
                 {
                     _id: "stage-id",
                     name: "test-stage",
                     workflow_id: 'test-workflow',
                     document_type_id: 'test-document-id',
-                    state: 'test-stage'
+                    workflow_type: WorkflowType.instance,
+                    state: State.pending
                 }
             ]
         };

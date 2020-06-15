@@ -5,6 +5,8 @@ import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { Stages } from "../../../src/Services/Services";
 import { assert } from "chai";
+import WorkflowType from "../../../src/Enums/WorkflowType";
+import State from "../../../src/Enums/State";
 
 describe('Stages@get', () => {
     it('should return a stage by id', async () => {
@@ -18,7 +20,8 @@ describe('Stages@get', () => {
                 name: "test-stage",
                 workflow_id: 'test-workflow',
                 document_type_id: 'test-document-id',
-                state: 'test-stage'
+                workflow_type: WorkflowType.instance,
+                state: State.pending
             }
         };
 
@@ -42,7 +45,8 @@ describe('Stages@get', () => {
                 name: "test-stage",
                 workflow_id: 'test-workflow',
                 document_type_id: 'test-document-id',
-                state: 'test-stage'
+                workflow_type: WorkflowType.instance,
+                state: State.pending
             }
         );
     });

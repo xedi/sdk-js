@@ -5,6 +5,7 @@ import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { Transitions } from "../../../src/Services/Services";
 import { assert } from "chai";
+import WorkflowType from "../../../src/Enums/WorkflowType";
 
 describe('Transitions@create', () => {
     it('should create a transition', async () => {
@@ -18,7 +19,7 @@ describe('Transitions@create', () => {
                 from_id: "test-stage",
                 to_id: 'test-stage',
                 workflow_id: 'test-workflow',
-                workflow_type: 'template',
+                workflow_type: WorkflowType.instance,
                 description: 'test-transition',
                 is_automatic: false,
             }
@@ -38,7 +39,7 @@ describe('Transitions@create', () => {
             from_id: "test-stage",
             to_id: 'test-stage',
             workflow_id: 'test-workflow',
-            workflow_type: 'template',
+            workflow_type: WorkflowType.instance,
             description: 'test-transition',
             is_automatic: true,
         }
@@ -54,7 +55,7 @@ describe('Transitions@create', () => {
                 from_id: "test-stage",
                 to_id: 'test-stage',
                 workflow_id: 'test-workflow',
-                workflow_type: 'template',
+                workflow_type: WorkflowType.instance,
                 description: 'test-transition',
                 is_automatic: false,
             }

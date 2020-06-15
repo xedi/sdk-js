@@ -7,10 +7,9 @@ export default interface Template extends Object {
     _id: Xuid<SupportedXuid.Template>;
     name: string;
     description?: string;
-    template_id?: string;
     is_template: boolean;
-    owner_id?: string;
-    creator_id?: string;
-    connection_id?: string;
-    document_group_id?: string;
+    owner_id?: Xuid<SupportedXuid.Business>
+    creator_id?: Xuid<SupportedXuid.User>
+    connection_id?:Xuid<SupportedXuid.Connection>
+    document_group_id?: Xuid<SupportedXuid.DocumentGroup>
 }
