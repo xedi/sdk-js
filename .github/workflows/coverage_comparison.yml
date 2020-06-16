@@ -50,6 +50,6 @@ jobs:
       - name: Install jq
         run: npm install -g jq
       - name: Compare coverage
-        run: cat coverage/coverage-summay.json | jq '.total.lines.pct > ${{ needs.Base.outputs.total_lines }} / 1.05' -e
+        run: cat coverage/coverage-summary.json | jq '.total.lines.pct > ${{ needs.Base.outputs.total_lines }} / 1.05' -e
 
 
