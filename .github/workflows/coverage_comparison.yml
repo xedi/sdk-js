@@ -25,8 +25,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES }}
       - name: Generate coverage
         run: npm run coverage:json
-      - name: Install jq
-        run: npm install -g jq
       - name: Extract coverage
         id: extract
         run: echo "::set-output name=lines::$(cat coverage/coverage-summary.json | jq '.total.lines.pct')"
@@ -47,8 +45,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES }}
       - name: Generate coverage
         run: npm run coverage:json
-      - name: Install jq
-        run: npm install -g jq
       - name: Compare coverage
         run: cat coverage/coverage-summary.json | jq '.total.lines.pct > ${{ needs.Base.outputs.total_lines }} / 1.05' -e
 
