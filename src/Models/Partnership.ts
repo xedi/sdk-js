@@ -8,5 +8,5 @@ export default interface Partnership extends Object {
     sender_id: Xuid<SupportedXuid.Business>;
     receiver_id: Xuid<SupportedXuid.Business>;
     supplier_code: string;
-    workflow_id: Xuid<SupportedXuid.Workflow>;
+    workflow_id: Xuid<SupportedXuid.Template>;
 }
