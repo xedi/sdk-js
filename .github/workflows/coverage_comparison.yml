@@ -1,0 +1,57 @@
+name: Coverage Comparison
+
+on:
+  pull_request:
+    type: [ synchronize, edited, reopened, opened ]
+
+jobs:
+  Base:
+    runs-on: ubuntu-latest
+    shell: bash
+    outputs:
+      total_lines: ${{ steps.extract.outputs.lines }}
+    steps:
+      - name: Checkout base branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.base_ref }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@xedi'
+      - name: Install Dependencies
+        run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES }}
+      - name: Generate coverage
+        run: npm run coverage:json
+      - name: Install jq
+        run: npm install -g jq
+      - name: Extract coverage
+        id: extract
+        run: echo "::set-output name=lines::$(cat coverage/coverage-summary.json | jq '.total.lines.pct')"
+  Comparison:
+    needs: Base
+    runs-on: ubuntu-latest
+    shell: bash
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@xedi'
+      - name: Install Dependencies
+        run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES }}
+      - name: Generate coverage
+        run: npm run coverage:json
+      - name: Install jq
+        run: npm install -g jq
+      - name: Compare coverage
+        run: cat coverage/coverage-summay.json | jq '.total.lines.pct > ${{ needs.Base.outputs.total_lines }} / 1.05' -e
+
+
