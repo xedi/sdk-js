@@ -4,13 +4,14 @@ import Price from './Price';
 import Partner from "./Partner";
 import Product from './Product';
 import Mailbox from './Mailbox';
+import Permission from './Permission';
 import Template from './Template';
 import Transitions from './Transition';
 import Instance from './Instance';
 import Stage from './Stage';
 import TaxRate from './TaxRate';
 
-type Models = User | Business | Mailbox | Product | Template | Transitions | Stage | Instance;
+type Models = User | Business | Mailbox | Product | Template | Transitions | Stage | Instance | Permission | Partner;
 
 interface Collection<T = Models> extends Array<T | Models> {}
 
@@ -20,6 +21,7 @@ export {
     User,
     Business,
     Partner,
+    Permission,
     Price,
     Product,
     TaxRate,

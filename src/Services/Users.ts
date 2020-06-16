@@ -1,6 +1,6 @@
 import Service from './Service';
 import {AxiosResponse} from 'axios';
-import {Collection, User} from '../Models/Models';
+import {Collection, User, Permission} from '../Models/Models';
 import JsonResponse from '../Interfaces/JsonResponse';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
@@ -41,6 +41,19 @@ class Users extends Service {
             .patch<JsonResponse<User>>(`1/users/${user._id}`, user)
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data
+            });
+    }
+
+    /**
+     * Retrieve a users permissions
+     *
+     * @param userUuid
+     */
+    getPermissions(userUuid: Xuid<SupportedXuid.User>) {
+        return this.client
+            .get<JsonResponse<Collection<Permission>>>(`1/users/${userUuid}/permissions`)
+            .then((response: AxiosResponse<JsonResponse<Collection<Permission>>>) => {
+                return response.data.data;
             });
     }
 }
