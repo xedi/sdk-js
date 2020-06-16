@@ -1,9 +1,9 @@
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 
 /**
- * Business
+ * DocType
  */
-export default interface Business extends Object {
+export default interface DocType extends Object {
     _id: Xuid<SupportedXuid.DocType>;
     type: string;
     message_types: object;
