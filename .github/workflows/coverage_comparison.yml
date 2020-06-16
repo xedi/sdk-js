@@ -7,7 +7,6 @@ on:
 jobs:
   Base:
     runs-on: ubuntu-latest
-    shell: bash
     outputs:
       total_lines: ${{ steps.extract.outputs.lines }}
     steps:
@@ -34,7 +33,6 @@ jobs:
   Comparison:
     needs: Base
     runs-on: ubuntu-latest
-    shell: bash
     steps:
       - name: Checkout head branch
         uses: actions/checkout@v2
