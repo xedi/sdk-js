@@ -2,6 +2,7 @@ import Config from '../../Interfaces/Config';
 import {LogManagerInterface} from '../../Interfaces/Logger';
 import Translator from '../../Translator/Translator';
 import ContainerInterface from '../../Interfaces/Container';
+import Cards from './Cards'
 import Customers from "./Customers";
 import Invoices from "./Invoices";
 import InvoiceItems from "./InvoiceItems";
@@ -30,6 +31,14 @@ class Billing extends Container {
             DO NOT register instances in here.
             config, logger, translate and client aren't bound yet
         */
+
+        /* istanbul ignore next Simple Method */
+        super.singleton('cards', (app: ContainerInterface, config: Config) => {
+            return new Cards(
+                config,
+                app.resolve('client')
+            );
+        });
 
         /* istanbul ignore next Simple Method */
         super.singleton('customers', (app: ContainerInterface, config: Config) => {
@@ -139,7 +148,18 @@ class Billing extends Container {
     }
 
     /**
-     * Gets an instance of the Customers API
+     * Gets an instance of the Card API
+     *
+     * @return Cards
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Cards(): Cards {
+        return super.resolve('cards');
+    }
+
+    /**
+     * Gets an instance of the Customer API
      *
      * @return Customers
      */

@@ -1,4 +1,5 @@
 import Business from './Business';
+import Card from './Card';
 import Customer from "./Customer";
 import DocType from "./DocType";
 import Event from './Event';
@@ -25,6 +26,7 @@ import User from './User';
 
 type Models =
     Business
+    | Card
     | Customer
     | DocType
     | Event
@@ -54,6 +56,7 @@ interface Collection<T = Models> extends Array<T | Models> {
 
 export {
     Business,
+    Card,
     Collection,
     Customer,
     DocType,
