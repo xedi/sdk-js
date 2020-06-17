@@ -165,12 +165,14 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
         this.singleton('services.stages', (app: ContainerInterface, config: Config) => {
             return new Services.Stages(
                 config,
                 app.resolve('client')
             );
         });
+
         this.singleton('services.tax-rates', (app: ContainerInterface, config: Config) => {
             return new Services.TaxRates(
                 config,
@@ -182,6 +184,12 @@ class Xedi extends Container {
             return new Services.Events(
                 config,
                 app.resolve('client')
+            );
+        });
+
+        this.singleton('services.billing', (app: ContainerInterface, config: Config) => {
+            return new Services.Billing(
+                this
             );
         });
     }
@@ -329,6 +337,11 @@ class Xedi extends Container {
     static get TaxRates(): Services.TaxRates {
         return this.resolveInstance()
             .resolve('services.tax-rates');
+    }
+
+    static get Billing(): Services.Billing {
+        return this.resolveInstance()
+            .resolve('services.billing');
     }
 }
 

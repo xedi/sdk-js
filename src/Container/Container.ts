@@ -38,7 +38,7 @@ export default class Container implements ContainerInterface {
      * Boot the container
      */
     protected boot(): void {
-        this.instance('config', new Config());
+        this.setInstance('config', new Config());
 
         this.singleton('logger', (app: ContainerInterface, config: Config) => {
             return new LogManager(config);
@@ -82,7 +82,7 @@ export default class Container implements ContainerInterface {
      * @param concrete
      * @returns instance
      */
-    instance(abstract: string, concrete: any): ContainerInterface {
+    setInstance(abstract: string, concrete: any): ContainerInterface {
         this.instances.set(abstract, concrete);
 
         return this;
