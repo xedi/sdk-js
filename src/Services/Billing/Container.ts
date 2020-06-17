@@ -23,7 +23,7 @@ class Billing extends Container
             DO NOT register instances in here.
             config, logger, translate and client aren't bound yet
         */
-
+        /* istanbul ignore next Simple Method */
         super.singleton('subscription-item', (app: ContainerInterface, config: Config) => {
             return new SubscriptionItem(
                 config,
@@ -33,18 +33,42 @@ class Billing extends Container
 
     }
 
+    /**
+     * Gets an instance of the Config Bag
+     *
+     * @returns Config
+     */
+    /* istanbul ignore next Simple Method */
     get Config(): Config {
         return super.resolve('config');
     }
 
+    /**
+     * Gets an instance of the LogManager
+     *
+     * @return LogManager
+     */
+    /* istanbul ignore next Simple Method */
     get Logger(): LogManagerInterface {
         return super.resolve('logger');
     }
 
+    /**
+     * Gets an instance of the Translator
+     *
+     * @return Translator
+     */
+    /* istanbul ignore next Simple Method */
     get Translator(): Translator {
         return super.resolve('translator');
     }
 
+    /**
+     * Gets an instance of the SubscriptionItem API
+     *
+     * @return SubscriptionItem
+     */
+    /* istanbul ignore next Simple Method */
     get SubscriptionItem(): SubscriptionItem {
         return super.resolve('subscription-item');
     }
