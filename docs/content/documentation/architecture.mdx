@@ -4,10 +4,48 @@ description: Technical Components of the Documentation Framework
 status: Stable
 ---
 
+import {ExternalLink} from '../../src/components';
+
 There are several elements to this "framework":
 
 1. GatsbyJS - Site Generator (uses React)
-1. Doctocat - Theme by GitHub
+1. Primer.Doctocat - Theme by GitHub
 1. Primer.Components - React Components
 1. Primer.StyledOcticons - GitHub Icons (SVG)
 1. MDX - Extended Markdown
+
+## GatsbyJS
+
+GatsbyJS is a site generator that uses modern web technologies to produce in their words "blazing fast websites and apps".
+
+It is based on the React JavaScript framework from Facebook and uses Webpack, GraphQL and the latest development techniques to provide really fast user experiences.
+
+<ExternalLink href="https://gatsbyjs.org">Click here to learn more</ExternalLink>
+
+## Primer
+
+Primer is the design system built by, and for GitHub. It encompasses everything from Iconography and Web Components, through to the companies presentation master slides. We use a small subset of their open-source tools which are detailed below.
+
+<ExternalLink href="https://primer.style">Click here to learn more</ExternalLink>
+
+### Doctocat
+
+Doctocat is the GatsbyJS theme GitHub have developed for their documentation. It is preconfigured for working within the Primer team, so requires some modification out-of-the-box to remove branding etc.
+
+It also contains a number of useful components and datasources that link back to GitHub data such as the list of Contributors at the bottom of each page.
+
+<ExternalLink href="https://primer.style/doctocat">Click here to learn more</ExternalLink>
+
+### Components
+
+Primer Components are useful implementations of the Primer CSS library, implemented as ReactJS Components.
+
+<ExternalLink href="https://primer.style/components">Click here to learn more</ExternalLink>
+
+### StyledOcticons
+
+Primer StyledOcticons are ReactJs Components that are wrapped with system props from the <ExternalLink href="https://styled-system.com">styled-system</ExternalLink> package.
+
+Not only are these easy to style, but the base package, `@primer/octicons-react` supports tree-shaking to ensure only used components are bundled.
+
+## MDX
