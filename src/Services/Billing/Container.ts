@@ -89,7 +89,7 @@ class Billing extends Container {
 
         /* istanbul ignore next Simple Method */
         super.singleton('tax', (app: ContainerInterface, config: Config) => {
-            return new SubscriptionItem(
+            return new Tax(
                 config,
                 app.resolve('client')
             );
