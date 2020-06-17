@@ -1,54 +1,82 @@
-import User from './User';
 import Business from './Business';
-import Partnership from "./Partnership";
+import Customer from "./Customer";
 import DocType from "./DocType";
-import Price from './Price';
-import Partner from "./Partner";
-import Product from './Product';
-import Mailbox from './Mailbox';
-import Permission from './Permission';
-import Template from './Template';
-import Transitions from './Transition';
-import Instance from './Instance';
-import Stage from './Stage';
-import TaxRate from './TaxRate';
 import Event from './Event';
+import Instance from './Instance';
+import Invoice from "./Invoice";
+import InvoiceItem from "./InvoiceItem";
+import Mailbox from './Mailbox';
+import Partner from "./Partner";
+import Partnership from "./Partnership";
+import Permission from './Permission';
+import Plan from './Plan';
+import Price from './Price';
+import Product from './Product';
+import Stage from './Stage';
+import StripeProduct from "./StripeProduct";
+import StripeTax from "./StripeTax";
+import Subscription from './Subscription';
+import SubscriptionItem from './SubscriptionItem';
+import TaxRate from './TaxRate';
+import Template from './Template';
+import Transition from './Transition';
+import Usage from './Usage'
+import User from './User';
 
 type Models =
     Business
+    | Customer
     | DocType
     | Event
     | Instance
+    | Invoice
+    | InvoiceItem
     | Mailbox
     | Partner
     | Partnership
     | Permission
+    | Plan
     | Price
     | Product
     | Stage
+    | StripeProduct
+    | StripeTax
+    | Subscription
+    | SubscriptionItem
     | TaxRate
     | Template
-    | Transitions
+    | Transition
+    | Usage
     | User;
 
-interface Collection<T = Models> extends Array<T | Models> {}
+interface Collection<T = Models> extends Array<T | Models> {
+}
 
 export {
-    Models,
-    Collection,
-    User,
-    DocType,
     Business,
+    Collection,
+    Customer,
+    DocType,
+    Event,
+    Instance,
+    Invoice,
+    InvoiceItem,
+    Mailbox,
+    Models,
     Partner,
-    Permission,
     Partnership,
+    Permission,
+    Plan,
     Price,
     Product,
-    TaxRate,
-    Mailbox,
-    Template,
-    Transitions,
-    Instance,
     Stage,
-    Event,
+    StripeProduct,
+    StripeTax,
+    Subscription,
+    SubscriptionItem,
+    TaxRate,
+    Template,
+    Transition,
+    Usage,
+    User
 };
