@@ -2,16 +2,16 @@ import Config from '../../Interfaces/Config';
 import {LogManagerInterface} from '../../Interfaces/Logger';
 import Translator from '../../Translator/Translator';
 import ContainerInterface from '../../Interfaces/Container';
-import Customer from "./Customer";
-import Invoice from "./Invoice";
-import InvoiceItem from "./InvoiceItem";
-import Plan from './Plan';
-import Product from './Product';
-import Subscription from './Subscription';
-import SubscriptionItem from './SubscriptionItem';
-import Usage from './Usage';
+import Customers from "./Customers";
+import Invoices from "./Invoices";
+import InvoiceItems from "./InvoiceItems";
+import Plans from './Plans';
+import Products from './Products';
+import Subscriptions from './Subscriptions';
+import SubscriptionItems from './SubscriptionItems';
+import Usages from './Usages';
 import Container from '../../Container/Container';
-import Tax from "./Tax";
+import Taxes from "./Taxes";
 
 class Billing extends Container {
     constructor(app: Container) {
@@ -20,7 +20,7 @@ class Billing extends Container {
         /* Share instances between the two containers */
         super.setInstance('config', app.resolve('config'));
         super.setInstance('logger', app.resolve('logger'));
-        super.setInstance('translator', app.resolve('translater'));
+        super.setInstance('translator', app.resolve('translator'));
         super.setInstance('client', app.resolve('client'));
     }
 
@@ -32,72 +32,72 @@ class Billing extends Container {
         */
 
         /* istanbul ignore next Simple Method */
-        super.singleton('customer', (app: ContainerInterface, config: Config) => {
-            return new Customer(
+        super.singleton('customers', (app: ContainerInterface, config: Config) => {
+            return new Customers(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('invoice', (app: ContainerInterface, config: Config) => {
-            return new Invoice(
+        super.singleton('invoices', (app: ContainerInterface, config: Config) => {
+            return new Invoices(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('invoice-item', (app: ContainerInterface, config: Config) => {
-            return new InvoiceItem(
+        super.singleton('invoice-items', (app: ContainerInterface, config: Config) => {
+            return new InvoiceItems(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('plan', (app: ContainerInterface, config: Config) => {
-            return new Plan(
+        super.singleton('plans', (app: ContainerInterface, config: Config) => {
+            return new Plans(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('product', (app: ContainerInterface, config: Config) => {
-            return new Product(
+        super.singleton('products', (app: ContainerInterface, config: Config) => {
+            return new Products(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('subscription', (app: ContainerInterface, config: Config) => {
-            return new Subscription(
+        super.singleton('subscriptions', (app: ContainerInterface, config: Config) => {
+            return new Subscriptions(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('subscription-item', (app: ContainerInterface, config: Config) => {
-            return new SubscriptionItem(
+        super.singleton('subscription-items', (app: ContainerInterface, config: Config) => {
+            return new SubscriptionItems(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('tax', (app: ContainerInterface, config: Config) => {
-            return new Tax(
+        super.singleton('taxes', (app: ContainerInterface, config: Config) => {
+            return new Taxes(
                 config,
                 app.resolve('client')
             );
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('usage', (app: ContainerInterface, config: Config) => {
-            return new Usage(
+        super.singleton('usages', (app: ContainerInterface, config: Config) => {
+            return new Usages(
                 config,
                 app.resolve('client')
             );
@@ -139,102 +139,102 @@ class Billing extends Container {
     }
 
     /**
-     * Gets an instance of the Customer API
+     * Gets an instance of the Customers API
      *
-     * @return Customer
+     * @return Customers
      */
 
     /* istanbul ignore next Simple Method */
-    get Customer(): Customer {
+    get Customers(): Customers {
         return super.resolve('customer');
     }
 
     /**
      * Gets an instance of the Invoice API
      *
-     * @return Invoice
+     * @return Invoices
      */
 
     /* istanbul ignore next Simple Method */
-    get Invoice(): Invoice {
-        return super.resolve('invoice');
+    get Invoices(): Invoices {
+        return super.resolve('invoices');
     }
 
     /**
      * Gets an instance of the InvoiceItem API
      *
-     * @return InvoiceItem
+     * @return InvoiceItems
      */
 
     /* istanbul ignore next Simple Method */
-    get InvoiceItem(): InvoiceItem {
-        return super.resolve('invoice-item');
+    get InvoiceItems(): InvoiceItems {
+        return super.resolve('invoice-items');
     }
 
     /**
      * Gets an instance of the Plan API
      *
-     * @return Plan
+     * @return Plans
      */
 
     /* istanbul ignore next Simple Method */
-    get Plan(): Plan {
-        return super.resolve('plan');
+    get Plans(): Plans {
+        return super.resolve('plans');
     }
 
     /**
      * Gets an instance of the Product API
      *
-     * @return Product
+     * @return Products
      */
 
     /* istanbul ignore next Simple Method */
-    get Product(): Product {
-        return super.resolve('product');
+    get Products(): Products {
+        return super.resolve('products');
     }
 
     /**
      * Gets an instance of the Subscription API
      *
-     * @return Subscription
+     * @return Subscriptions
      */
 
     /* istanbul ignore next Simple Method */
-    get Subscription(): Subscription {
-        return super.resolve('subscription');
+    get Subscriptions(): Subscriptions {
+        return super.resolve('subscriptions');
     }
 
     /**
      * Gets an instance of the SubscriptionItem API
      *
-     * @return SubscriptionItem
+     * @return SubscriptionItems
      */
 
     /* istanbul ignore next Simple Method */
-    get SubscriptionItem(): SubscriptionItem {
-        return super.resolve('subscription-item');
+    get SubscriptionItems(): SubscriptionItems {
+        return super.resolve('subscription-items');
     }
 
     /**
      * Gets an instance of the Tax API
      *
-     * @return Tax
+     * @return Taxes
      */
 
     /* istanbul ignore next Simple Method */
-    get Tax(): Tax {
-        return super.resolve('tax');
+    get Taxes(): Taxes {
+        return super.resolve('taxes');
     }
 
     /**
      * Gets an instance of the Usage API
      *
-     * @return Usage
+     * @return Usages
      */
 
     /* istanbul ignore next Simple Method */
-    get Usage(): Usage {
-        return super.resolve('usage');
+    get Usages(): Usages {
+        return super.resolve('usages');
     }
 }
 
