@@ -1,0 +1,59 @@
+---
+title: Getting Started
+description: Documenting XEDI.js
+status: New
+source: https://github.com/xedi/sdk-js/tree/master/docs
+---
+
+import {BorderBox, Flash} from '@primer/components'
+import {Caption} from '@primer/gatsby-theme-doctocat'
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
+import {InfoIcon} from '@primer/styled-octicons'
+import {GithubIssue} from '../../src/components'
+
+All documentation, including the framework and it's dependencies, are in the `docs/` directory. This should be your working directory.
+
+## Environment
+
+<Flash mb={2}><InfoIcon mr={1} />At present, you must use a copy of node locally on your machine to compile and use XEDI.js documentation. In the future, this will be containerized.
+
+<BorderBox mt={1} bg="white">
+    <GithubIssue issue-id="58" />
+</BorderBox>
+
+</Flash>
+
+Due to runtime bug in node 14.3, one our dependencies is unable to build. As such, you must use either:
+
+* `10.20.1` (`lts/dubnium`)
+* `12.17.0` (`lts/erbium`)
+
+As soon as this is rectified, this requirement will be removed.
+
+### Variables
+
+To allow various functionalities of the documentation to work, a personal access token is required. This should be placed within a `.env` file in the root of the `docs/` directory.
+
+```shell
+GITHUB_TOKEN=<my personal access token>
+```
+<Caption>.env</Caption>
+
+## Local Builds
+
+The documentation framework ships with a development server that allows hotswap development.
+
+```shell
+npm run develop
+```
+<Caption>Launching the development server</Caption>
+This triggers a build, followed by the provision of a localhost link. It defaults to port <InlineCode>8000</InlineCode>, however if something is already using that port, the framework will use the next numerically available port.
+
+<Flash mt={2}><InfoIcon mr={1} />If you are XEDI staff, when you go to <InlineCode>http://localhost:8000</InlineCode> you may find that your browser automatically may redirect your to <InlineCode>http://localhost:8000/dashboard</InlineCode>. This is because Traefik, our development loadbalancer issues a <InlineCode>308 Permanent Redirect</InlineCode> response when you go to <InlineCode>http://localhost:8000</InlineCode>
+
+In this event, you will be greeted with a "Development 404" page. Simply select one of the pages in the site map displayed centrally in the page.
+
+<BorderBox bg="white">
+    <GithubIssue issue-id="57" />
+</BorderBox>
+</Flash>
