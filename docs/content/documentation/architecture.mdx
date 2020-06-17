@@ -5,6 +5,8 @@ status: Stable
 ---
 
 import {ExternalLink} from '../../src/components';
+import {Box} from '@primer/components';
+import Blockquote from '@primer/gatsby-theme-doctocat/src/components/blockquote';
 
 There are several elements to this "framework":
 
@@ -48,4 +50,14 @@ Primer StyledOcticons are ReactJs Components that are wrapped with system props 
 
 Not only are these easy to style, but the base package, `@primer/octicons-react` supports tree-shaking to ensure only used components are bundled.
 
+<ExternalLink href="https://primer.style/octicons">Click here to learn more</ExternalLink>
+
 ## MDX
+
+<Box mb={2}>
+<Blockquote cite="https://www.gatsbyjs.org/docs/mdx/" css="margin-bottom: 0">MDX is Markdown for the component era. It lets you write JSX embedded inside Markdown.
+It's a great combination because it allows you to use Markdown's terse syntax (such as `# Heading`) for your content and JSX for more advanced, or reusable components.
+</Blockquote>
+
+<ExternalLink ml={3} href="https://www.gatsbyjs.org/docs/mdx/">Adding Components to Markdown with MDX | GatsbyJS</ExternalLink>
+</Box>
