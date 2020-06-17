@@ -1,0 +1,38 @@
+---
+title: Structure
+description: Documentation Directory Structure
+status: Stable
+source: https://github.com/xedi/sdk-js/tree/master/docs
+---
+
+import {Link} from '@primer/components';
+
+Within the `docs/` directory, there are a number of important directories and files to be aware of. You probably already know about the `package.json` and `.env` file. If not, read the <Link href="/documentation/set-up">Getting Started</Link> section.
+
+## Content
+
+The `content` directory holds our content. An important note is that the folders you use should match your desired URLS. For example, if I was writing a **character profile** for **Luke Skywalker**, I might want the URL to be `/characters/luke_skywalker`. So my folder structure should match this, therefore my file path should be `docs/content/characters/luke_skywalker.mdx`.
+
+## Sidebar Navigation
+
+The Sidebar navigation is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. Each entry in `nav.yml` should have a `title`, `url`, and an optional `children` list to create nested navigation links.
+
+```yml
+# src/@primer/gatsby-theme-doctocat/nav.yml
+- title: Example
+  url: /example
+  children:
+    - title: Nested Example
+      url: /nested/example
+```
+There are some caveats though:
+
+* Doctocat (the theme) only supports **one** level of nesting.
+* Links are **not** alphabetized; but rendered in the order they are specified.
+* Items without urls default to the index page.
+
+## First Party Components
+
+Between `@primer/components` and `@primer/gatsby-theme-doctocat`, there are a lot of useful components, however it can be useful to create additional components to consolidate multiple components into one, or to add additional functionality.
+
+These are stored in `docs/src/components/` and enumerated for export in `docs/src/components/index.js`.

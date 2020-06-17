@@ -50,6 +50,8 @@
       url: /documentation/set-up
     - title: Technical Components
       url: /documentation/architecture
+    - title: Structure
+      url: /documentation/structure
 - title: Tooling
   children:
     - title: Build
