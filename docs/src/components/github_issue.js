@@ -1,9 +1,28 @@
-import {Box, Flex, StateLabel} from '@primer/components';
+import {Box, Flex, StateLabel, Flash} from '@primer/components';
 import ExternalLink from './external_link';
 import React, {useState, useEffect} from 'react';
 import {startCase} from 'lodash';
+import {IssueOpenedIcon} from '@primer/styled-octicons'
+
+const ISSUE_STATUS_ICONS = {
+    Open: 'issueOpened',
+    Reopened: 'issueReopened',
+    Closed: 'issueClosed',
+};
 
 function GithubIssue({issueId}) {
+    // live-code bug
+    if (arguments[0].hasOwnProperty('issue-id')) {
+        issueId = arguments[0]['issue-id'];
+    }
+    if (!issueId) {
+        return (
+            <Flash scheme="red">
+                <IssueOpenedIcon mr={2} />No issue id provided.
+            </Flash>
+        );
+    }
+
     const [issueData, setIssueData] = useState({});
     useEffect(() => {
         fetch(`https://api.github.com/repos/xedi/sdk-js/issues/${issueId}`)
@@ -15,7 +34,7 @@ function GithubIssue({issueId}) {
                     title: result.title,
                     url: result.html_url,
                     state: state,
-                    class: `issue${state}ed`,
+                    class: ISSUE_STATUS_ICONS[state],
                 });
             })
     }, []);

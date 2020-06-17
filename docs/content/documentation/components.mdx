@@ -1,0 +1,37 @@
+---
+title: First Party Components
+description: Components by XEDI
+source: https://github.com/xedi/sdk-js/tree/master/docs/src/components
+---
+
+import {Box} from '@primer/components';
+import {StatusLabel} from '@primer/gatsby-theme-doctocat';
+
+As previously mentioned, it has been required that a number of components be built to make the documentation better.
+Here is quick breakdown of each one.
+
+## External Link
+
+<Box mb={2}>
+<StatusLabel status="New" />
+</Box>
+
+Useful for defining a link external of this site that will cause the browser to load a new page.
+```jsx live
+Click <ExternalLink href="https://xedi.com">here</ExternalLink> to learn about an awesome EDI company!
+```
+
+## Github Issue
+
+<Box mb={2}>
+<StatusLabel status="New" />
+</Box>
+
+Provides information about a specific Github Issue.
+
+```jsx live
+<GithubIssue issue-id="2" />
+```
+
+Works well when combines with a `<BorderBox></BorderBox>`
+

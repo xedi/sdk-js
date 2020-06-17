@@ -52,6 +52,8 @@
       url: /documentation/architecture
     - title: Structure
       url: /documentation/structure
+    - title: First Party Components
+      url: /documentation/components
 - title: Tooling
   children:
     - title: Build
