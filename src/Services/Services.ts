@@ -14,9 +14,11 @@ import Transitions from "./Transitions";
 import Instances from "./Instances";
 import Stages from "./Stages";
 import TaxRates from "./TaxRates";
+import Billing from "./Billing/Container";
 export {
     Accounts,
     Auth,
+    Billing,
     Businesses,
     Partners,
     Partnerships,
