@@ -1,0 +1,104 @@
+---
+title: Adding a Page
+description: Adding Documentation
+---
+
+import {Link, Flash} from '@primer/components';
+import {ExternalLink} from '../../../src/components';
+import {Caption,DoDontContainer,Do,Dont} from '@primer/gatsby-theme-doctocat';
+import {InfoIcon} from '@primer/styled-octicons';
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code';
+
+## Step 1 - Create a page
+
+Within the `docs/content` directory is where all the pages are stored. From `docs/content/` the folder structure should match the desired URL. For this particular page, a recipe for adding pages, I wanted the URL to be something like `documentation/recipes/adding-a-page`. This meant I would need to add a directory with `docs/content/documentation` called recipes.
+
+## Step 2 - Front matter
+
+**Front Matter** is information about the page you are authoring. There are four "variables" that are supported.
+
+### Title and description
+
+`title` is used to render the page heading and generate the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">page title</ExternalLink>.
+
+`description` is used to create a <ExternalLink href="https://moz.com/learn/seo/meta-description">meta description tag</ExternalLink>
+which is important for SEO. **These are required on every page**
+
+```mdx
+---
+title: Adding a Page
+description: Adding Documentation
+---
+```
+
+### Status
+
+The `status` variable is provided by the <ExternalLink href="https://primer.style/doctocat/usage/front-matter#status">doctocat theme</ExternalLink> and provides a label at the top of the page indicating the status of your subject.
+
+```mdx
+---
+status: New
+---
+```
+
+
+### Source
+
+The `source` variable is provided by the <ExternalLink href="https://primer.style/doctocat/usage/front-matter#status">doctocat theme</ExternalLink> and provides a link at the top of the page back to the source code of your subject.
+
+```mdx
+---
+source: https://github.com/xedi/sdk-js/blob/master/docs/content/documentation/recipes/adding-a-page.mdx
+---
+```
+
+### Additional contributors
+
+At the bottom of each page is a list of people who have contributed to that page. From time to time, you may find yourself needing to use code or content from other authors. For example, you may choose to use fixtures written by another developer. In this situation, its nice to recognise those contributions. You can do this by adding the `additionalContributors` variable.
+
+```mdx
+---
+additionalContributors:
+  - midmiddlton
+  - ehtishamSaleem
+---
+```
+
+## Step 3 - Adding to the nav
+
+If you want your page to appear within the sites navigation, you will need to place an entry within the `nav.yml` file thats in `docs/src/@primer/gatsby-theme-doctocat/`.
+
+Inside the file, find the where you want your page to appear in the listing (the nav is rendered in the order defined). You **should** provide a `title` and `url`. If you are defining a new section, then you should also provide a list of `children`.
+
+```yml
+- title: Recipe - Adding a Page
+  url: documentation/recipes/adding-a-page
+```
+<Caption>Adding a page</Caption>
+
+```yml
+- title: Recipes
+  url: documentation/recipes
+  children:
+    - title: Recipe - Adding a Page
+      url: documentation/recipes/adding-a-page
+```
+<Caption>Adding a new section</Caption>
+
+<Flash>
+<InfoIcon mr={1} />When defining a new section there are a couple of caveats to be aware of, and these are covered in the <Link href="/documentation/structure#sidebar-navigation">section about the Sidebar</Link>.
+</Flash>
+
+## Step 4 - Authoring
+
+Depending what you are writing about, how you write about it and the components you will use will differ.
+
+API documentation is relatively simplistic compared to technical documentation. Here are some general guidelines.
+
+<DoDontContainer stacked>
+    <Do>Complete front-matter as completely as is necessary.</Do>
+    <Do>Document all issues and workarounds.</Do>
+    <Do>Provide links to all issues use the <InlineCode>&lt;GithubIssue&gt;</InlineCode> component.</Do>
+    <Dont>Put sensitive information like keys, access tokens or passwords into documentation.</Dont>
+    <Do>Use the <InlineCode>&lt;Flash&gt;</InlineCode> component to emphasis important sections.</Do>
+</DoDontContainer>

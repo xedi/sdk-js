@@ -54,6 +54,8 @@
       url: /documentation/structure
     - title: First Party Components
       url: /documentation/components
+    - title: Recipe - Adding a Page
+      url: /documentation/recipes/adding-a-page
 - title: Tooling
   children:
     - title: Build
