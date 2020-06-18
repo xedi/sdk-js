@@ -3,6 +3,23 @@ title: Contributing
 description: How to contribute to XEDI.js
 ---
 
-import { GithubIssue } from '../../src/components'
+import { GithubIssues, ExternalLink } from '../../src/components'
+import {Label, Link} from '@primer/components';
 
-<GithubIssue issue-id="44" />
+A great place to start is our issues tracker! Anything without a <Label bg="#e99695">triage</Label> label has been reviewed by our team and is considered as a valid issue.
+
+## Contributing code
+
+When opening a pull request, please make sure you link the respective issue into the Pull Request via the "Linked Issues" section or using closing terms in your description.
+
+Please note that as per our <ExternalLink href="https://github.com/xedi/sdk-js/blob/master/CONTRIBUTING.md">contribution guide</ExternalLink> pull requests that fail testing, linting or that cause our coverage to decrease significantly may not be accepted.
+
+## Non code contributions
+
+If you find a bug, have a feature request, or think there is a better way to do something please open an issue. When you create an issue there will be a number of options. Please select the one most appropriate to your issue. If you find a security vulnerability, please consult our <ExternalLink href="https://github.com/xedi/sdk-js/blob/master/SECURITY.md">security policy</ExternalLink>.
+
+## Contributing Documentation
+
+Please feel free to add to or fix this documentation. For more information about contributing to this documentation check out the <Link href="/documentation/contributing">Contributing section</Link>.
+
+<GithubIssues sort="created" direction="asc" render-labels assignee="none"/>
