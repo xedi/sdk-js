@@ -1,0 +1,148 @@
+---
+title: Stages
+description: Using the Stages API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Stages.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons'
+import {GithubIssue} from '../../src/components'
+
+<BorderBox>
+    <GithubIssue issue-id="62" />
+</BorderBox>
+
+## Introduction
+
+The stages api gives the ability to fully configure each stage of a workflow template. (link)
+
+## Usage
+
+### list
+
+retreive the list of stages.
+
+#### Usage 
+
+``` javascript
+const stages = await stagesService.list();
+```
+
+#### Response
+
+``` json
+test
+```
+
+### get
+
+retrieve a stage by Id.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'f188a18a-a0fe-11ea-afae-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const stage = await stagesService.get('f188a18a-a0fe-11ea-afae-0242ac120002');
+```
+
+#### Response
+
+``` json
+test
+```
+
+### Create
+
+Create a new stage
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| name | string |  |  Stage name |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | cec6b1ae-a63b-11ea-ae1c-01009cb3fa40 |
+| document_type_id | Xuid | | cec6b1ae-a63b-11ea-ae1c-01009cb3fa40 todo change this for a document_type_id |
+| workflow_type | enum | <CheckIcon color="green.5"/> | template |
+| state | enum | <CheckIcon color="green.5"/> |  pending |
+
+#### Usage 
+
+``` javascript
+const stage = await stagesService.create(
+    {
+        name: 'Stage name',
+        workflow_id: 'cec6b1ae-a63b-11ea-ae1c-01009cb3fa40',
+        document_type_id: 'cec6b1ae-a63b-11ea-ae1c-01009cb3fa40',
+        workflow_type: template,
+        state: pending
+    }
+);
+```
+
+#### Response
+
+``` json
+test
+```
+
+### Update
+
+Update an existing stage.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| name | string |  |  Stage name |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | cec6b1ae-a63b-11ea-ae1c-01009cb3fa40 |
+| document_type_id | Xuid | | cec6b1ae-a63b-11ea-ae1c-01009cb3fa40 todo change this for a document_type_id |
+| workflow_type | enum | <CheckIcon color="green.5"/> | template |
+| state | enum | <CheckIcon color="green.5"/> |  pending |
+
+#### Usage 
+
+``` javascript
+const stage = await stagesService.update(
+    {
+        _id: 
+        name: 'Stage name',
+        workflow_id: 'cec6b1ae-a63b-11ea-ae1c-01009cb3fa40',
+        document_type_id: 'cec6b1ae-a63b-11ea-ae1c-01009cb3fa40',
+        workflow_type: template,
+        state: pending
+    }
+);
+```
+
+#### Response
+
+``` json
+test
+```
+
+### Delete
+
+Delete a stage.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'f188a18a-a0fe-11ea-afae-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const stage = await stagesService.delete('f188a18a-a0fe-11ea-afae-0242ac120002');
+```
+
+#### Response
+
+``` json
+test
+```

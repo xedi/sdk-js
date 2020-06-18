@@ -20,6 +20,8 @@
       url: /usage/users
     - title: Workflows
       url: /usage/workflows
+    - title: Stages
+      url: /usage/stages
 - title: Architecture
   children:
     - title: Authentication
