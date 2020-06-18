@@ -7,11 +7,11 @@ class Plans extends Service {
 
     /**
      * Get a products plan by its entity ID
-     * @param entity_id
+     * @param entityId
      */
-    getByEntity(entity_id: string) {
+    getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<Plan>>(`api/functional/product/${entity_id}/plan`)
+            .get<JsonResponse<Plan>>(`api/functional/product/${entityId}/plan`)
             .then((response: AxiosResponse<JsonResponse<Plan>>) => {
                 return response
             });
