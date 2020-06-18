@@ -8,12 +8,12 @@ class Subscriptions extends Service {
     /**
      * Check if current business is subscribed to entity
      * TODO@CE: @CS what do you reckon we do for "boolean" responses
-     * @param entity_id
+     * @param entityId
      * @returns Promise<Business>
      */
-    isSubscribed(entity_id: string) {
+    isSubscribed(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entity_id}/isSubscribed`)
+            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/isSubscribed`)
             .then((response: AxiosResponse) => {
                 return response
             });
@@ -21,11 +21,11 @@ class Subscriptions extends Service {
 
     /**
      * Get subscription for current business for a given entity (any purchasable)
-     * @param entity_id
+     * @param entityId
      */
-    getByEntity(entity_id: string) {
+    getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<Subscription>>(`api/functional/product/${entity_id}/subscription`)
+            .get<JsonResponse<Subscription>>(`api/functional/product/${entityId}/subscription`)
             .then((response: AxiosResponse<JsonResponse<Subscription>>) => {
                 return response
             });
@@ -34,11 +34,11 @@ class Subscriptions extends Service {
     /**
      * Subscribe to entity (Purchase)
      * TODO@CE: @CS what do you reckon we do for "boolean" responses - may need to check what this returns first
-     * @param entity_id
+     * @param entityId
      */
-    subscribe(entity_id: string) {
+    subscribe(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entity_id}/subscribe`)
+            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/subscribe`)
             .then((response: AxiosResponse) => {
                 return response
             });
@@ -47,11 +47,11 @@ class Subscriptions extends Service {
     /**
      * Unsubscribe from entity (Cancel)
      * TODO@CE: @CS what do you reckon we do for "boolean" responses - may need to check what this returns first
-     * @param entity_id
+     * @param entityId
      */
-    unsubscribe(entity_id: string) {
+    unsubscribe(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entity_id}/unsubscribe`)
+            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/unsubscribe`)
             .then((response: AxiosResponse) => {
                 return response
             });

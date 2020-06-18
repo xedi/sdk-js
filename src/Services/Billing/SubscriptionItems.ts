@@ -8,11 +8,11 @@ class SubscriptionItems extends Service
 
     /**
      * Get subscription item by its entity id
-     * @param entity_id
+     * @param entityId
      */
-    getByEntity(entity_id: string) {
+    getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<SubscriptionItem>>(`api/functional/product/${entity_id}/subscriptionItem`)
+            .get<JsonResponse<SubscriptionItem>>(`api/functional/product/${entityId}/subscriptionItem`)
             .then((response: AxiosResponse<JsonResponse<SubscriptionItem>>) => {
                 return response
             });

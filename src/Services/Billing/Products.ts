@@ -7,11 +7,11 @@ class Products extends Service {
 
     /**
      * Get a product by its entity ID
-     * @param entity_id
+     * @param entityId
      */
-    getByEntity(entity_id: string) {
+    getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<Product>>(`api/functional/product/${entity_id}`)
+            .get<JsonResponse<Product>>(`api/functional/product/${entityId}`)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response
             });
