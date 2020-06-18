@@ -48,6 +48,8 @@
   children:
     - title: Getting Started
       url: /documentation/set-up
+    - title: Contributing
+      url: /documentation/contributing
     - title: Technical Components
       url: /documentation/architecture
     - title: Structure
