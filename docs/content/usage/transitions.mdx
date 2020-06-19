@@ -1,0 +1,78 @@
+---
+title: Transitions
+description: Using the Transitions API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Transitions.ts
+---
+
+## Introduction
+
+The transitions api gives the ability to fully configure each transition between the stages (link) of a work flow template. (link)
+
+## Usage
+
+### list
+
+retreive the list of transitions.
+
+#### Usage 
+
+``` javascript
+const transitions = await transitionsService.list();
+```
+
+#### Response
+
+``` json
+{
+
+}
+```
+
+### get
+
+retrieve a transition by Id.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const transition = await transitionsService.get('5076455a-a18e-11ea-8618-0242ac120002');
+```
+
+#### Response
+
+``` json
+{
+
+}
+```
+
+### Delete
+
+Delete a transiton.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const transition = await transitionsService.delete('5076455a-a18e-11ea-8618-0242ac120002');
+```
+
+#### Response
+
+``` json
+{
+  "_id": "5076455a-a18e-11ea-8618-0242ac120002"  
+}
+```

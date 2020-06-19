@@ -20,6 +20,8 @@
       url: /usage/users
     - title: Workflows
       url: /usage/workflows
+    - title: Transitions
+      url: /usage/transitions
     - title: Stages
       url: /usage/stages
 - title: Architecture
