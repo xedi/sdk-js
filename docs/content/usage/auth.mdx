@@ -20,14 +20,47 @@ This service emits events. To learn more about events <Link to="/architecture/ev
 
 When the authentication state changes; `auth_updated` is emitted.
 
-```typescript
-type AuthenticationUpdatedEvent {
-    method: string;
-    date: {
-        user: User;
-        business?: Business;
-        refresh_token: RefreshToken;
-        access_token: AccessToken;
+```json
+{
+    "method": "switchContexts",
+    "data": {
+        "user": {
+            "_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "email": "t.stark@avengers.org",
+            "first_name": "Anthony",
+            "last_name": "Stark",
+            "job_title": "Iron Man",
+            "contact_no": "(970) 517-1743 x67916",
+            "avatar": "https://assets.avengers.org/images/iron_man.png",
+            "created_at": "2020-05-11 10:27:03",
+            "updated_at": "2020-05-11 10:30:14",
+            "is_active": 1
+        },
+        "business": {
+            "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+            "business_name": "Avengers",
+            "address_1": "TOP_SECRET",
+            "address_2": "TOP_SECRET",
+            "address_3": "New York",
+            "address_4": null,
+            "post_code": "TOP_SECRET",
+            "currency": "usd",
+            "vat_code": "123",
+            "invoice_name": "123",
+            "country_code": "USA",
+            "contact_name": "Anthony Stark",
+            "contact_email": "t.stark@avengers.org",
+            "contact_no": "(970) 517-1743 x67916",
+            "website": "https://avengers.org",
+            "logo": "https://assets.avengers.org/images/logo.png",
+            "requires_gln": false,
+            "gs1_prefix": "123",
+            "slug": "avengers",
+            "external": false,
+            "public": true
+        },
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5MjkzMDY0MCJ9.e4uj4pCw3qDZqrmWL3ylhThtIEWNAnVnwQOUz67sGys",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5Mjg0MzcwMCJ9.Yapd6upCu_bFHP983WXdbtz5kg2L6lcz_tVp2cSTuOM"
     }
 }
 ```
@@ -36,9 +69,9 @@ type AuthenticationUpdatedEvent {
 
 When the authentication state is revoked; `auth_deleted` is emitted.
 
-```typescript
-type AuthenticationDeletedEvent {
-    method: string;
+```json
+{
+    "method": "logout"
 }
 ```
 
@@ -48,16 +81,49 @@ type AuthenticationDeletedEvent {
 
 Gets the current business context.
 
-```javascript
-const currentBusiness: Business = Xedi.Auth.business;
+```json
+{
+    "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+    "business_name": "Avengers",
+    "address_1": "TOP_SECRET",
+    "address_2": "TOP_SECRET",
+    "address_3": "New York",
+    "address_4": null,
+    "post_code": "TOP_SECRET",
+    "currency": "usd",
+    "vat_code": "123",
+    "invoice_name": "123",
+    "country_code": "USA",
+    "contact_name": "Anthony Stark",
+    "contact_email": "t.stark@avengers.org",
+    "contact_no": "(970) 517-1743 x67916",
+    "website": "https://avengers.org",
+    "logo": "https://assets.avengers.org/images/logo.png",
+    "requires_gln": false,
+    "gs1_prefix": "123",
+    "slug": "avengers",
+    "external": false,
+    "public": true
+}
 ```
 
 ## user
 
 Gets the logged in user.
 
-```javascript
-const currentUser: User = Xedi.Auth.user;
+```json
+{
+    "_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "email": "t.stark@avengers.org",
+    "first_name": "Anthony",
+    "last_name": "Stark",
+    "job_title": "Iron Man",
+    "contact_no": "(970) 517-1743 x67916",
+    "avatar": "https://assets.avengers.org/images/iron_man.png",
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:30:14",
+    "is_active": 1
+}
 ```
 
 # Usage
@@ -83,15 +149,25 @@ Emits `auth_updated` on successful authentication.
 
 **Response**
 
-```typescript
-type AuthenticationResponse {
-    data: {
-        tokens: {
-            access: AccessToken;
-            refresh: RefreshToken;
-        };
-        user: User;
-    };
+```json
+{
+    "method": "switchContexts",
+    "data": {
+        "user": {
+            "_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "email": "t.stark@avengers.org",
+            "first_name": "Anthony",
+            "last_name": "Stark",
+            "job_title": "Iron Man",
+            "contact_no": "(970) 517-1743 x67916",
+            "avatar": "https://assets.avengers.org/images/iron_man.png",
+            "created_at": "2020-05-11 10:27:03",
+            "updated_at": "2020-05-11 10:30:14",
+            "is_active": 1
+        },
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyOTMwNjQwIn0.i1ClUUwYB-O9Q1u-u2J9bCu58YFdGJ4ZC8yXl9CGTsg",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzcifQ.zct6dNkNq8QMSvgq4fcYLRyXZTIhVU3QJ2R6oSZorFU"
+    }
 }
 ```
 
@@ -101,12 +177,14 @@ type AuthenticationResponse {
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
-| refreshToken | String | <CheckIcon color="green.5"/> | eyJhbGciO6IkpXVCJ9.e30.Et9HFtf9RY7kkTX1wr4qCyhIf58U |
+| refreshToken | String | <CheckIcon color="green.5"/> | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyOTMwNjQwIn0.i1ClUUwYB-O9Q1u-u2J9bCu58YFdGJ4ZC8yXl9CGTsg |
 
 **Usage**
 
 ```javascript
-await Xedi.Auth.withToken('eyJhbGciO6IkpXVCJ9.e30.Et9HFtf9RY7kkTX1wr4qCyhIf58U');
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyOTMwNjQwIn0.i1ClUUwYB-O9Q1u-u2J9bCu58YFdGJ4ZC8yXl9CGTsg";
+
+await Xedi.Auth.withToken(token);
 ```
 
 **Events**
@@ -115,16 +193,25 @@ Emits `auth_updated` on successful authentication.
 
 **Response**
 
-```typescript
-type AuthenticationResponse {
-    data: {
-        tokens: {
-            access: AccessToken;
-            refresh: RefreshToken;
-        };
-        user: User;
-        business?: Business;
-    };
+```json
+{
+    "method": "switchContexts",
+    "data": {
+        "user": {
+            "_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "email": "t.stark@avengers.org",
+            "first_name": "Anthony",
+            "last_name": "Stark",
+            "job_title": "Iron Man",
+            "contact_no": "(970) 517-1743 x67916",
+            "avatar": "https://assets.avengers.org/images/iron_man.png",
+            "created_at": "2020-05-11 10:27:03",
+            "updated_at": "2020-05-11 10:30:14",
+            "is_active": 1
+        },
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyOTMwNjQwIn0.i1ClUUwYB-O9Q1u-u2J9bCu58YFdGJ4ZC8yXl9CGTsg",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyODQzNzAwIn0.OQcWEyCGNz_oNQGe0BAOgOq4GwIOXH3kevoCpj7sp5w"
+    }
 }
 ```
 
@@ -147,15 +234,24 @@ Emits `auth_updated` on successful renewal of the authentication state.
 **Response**
 
 ```typescript
-type AuthenticationResponse {
-    data: {
-        tokens: {
-            access: AccessToken;
-            refresh: RefreshToken;
-        };
-        user: User;
-        business?: Business;
-    };
+{
+    "method": "switchContexts",
+    "data": {
+        "user": {
+            "_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "email": "t.stark@avengers.org",
+            "first_name": "Anthony",
+            "last_name": "Stark",
+            "job_title": "Iron Man",
+            "contact_no": "(970) 517-1743 x67916",
+            "avatar": "https://assets.avengers.org/images/iron_man.png",
+            "created_at": "2020-05-11 10:27:03",
+            "updated_at": "2020-05-11 10:30:14",
+            "is_active": 1
+        },
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyOTMwNjQwIn0.i1ClUUwYB-O9Q1u-u2J9bCu58YFdGJ4ZC8yXl9CGTsg",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJleHAiOiIxNTkyODQzNzAwIn0.OQcWEyCGNz_oNQGe0BAOgOq4GwIOXH3kevoCpj7sp5w"
+    }
 }
 ```
 
@@ -179,16 +275,48 @@ Emits `auth_updated` on successful updating of the authentication context.
 
 **Response**
 
-```typescript
-type AuthenticationResponse {
-    data: {
-        tokens: {
-            access: AccessToken;
-            refresh: RefreshToken;
-        };
-        user: User;
-        business: Business;
-    };
+```json
+{
+    "method": "switchContexts",
+    "data": {
+        "user": {
+            "_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "email": "t.stark@avengers.org",
+            "first_name": "Anthony",
+            "last_name": "Stark",
+            "job_title": "Iron Man",
+            "contact_no": "(970) 517-1743 x67916",
+            "avatar": "https://assets.avengers.org/images/iron_man.png",
+            "created_at": "2020-05-11 10:27:03",
+            "updated_at": "2020-05-11 10:30:14",
+            "is_active": 1
+        },
+        "business": {
+            "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+            "business_name": "Avengers",
+            "address_1": "TOP_SECRET",
+            "address_2": "TOP_SECRET",
+            "address_3": "New York",
+            "address_4": null,
+            "post_code": "TOP_SECRET",
+            "currency": "usd",
+            "vat_code": "123",
+            "invoice_name": "123",
+            "country_code": "USA",
+            "contact_name": "Anthony Stark",
+            "contact_email": "t.stark@avengers.org",
+            "contact_no": "(970) 517-1743 x67916",
+            "website": "https://avengers.org",
+            "logo": "https://assets.avengers.org/images/logo.png",
+            "requires_gln": false,
+            "gs1_prefix": "123",
+            "slug": "avengers",
+            "external": false,
+            "public": true
+        },
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5MjkzMDY0MCJ9.e4uj4pCw3qDZqrmWL3ylhThtIEWNAnVnwQOUz67sGys",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5Mjg0MzcwMCJ9.Yapd6upCu_bFHP983WXdbtz5kg2L6lcz_tVp2cSTuOM"
+    }
 }
 ```
 
