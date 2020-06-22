@@ -1,0 +1,49 @@
+---
+title: Adding Links
+description: Adding Links within documentation
+---
+import {Link} from 'gatsby';
+import {ExternalLink} from '../../../src/components';
+import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code';
+
+There are different types of linking within this framework. Here is a run down of each one and when to use it.
+
+## Internal Links
+
+If you want to link to something internally, you should use the <ExternalLink href="https://www.gatsbyjs.org/docs/gatsby-link/">Gatsby Link component</ExternalLink> as it enables the SPA-like browsing experience.
+
+```jsx live
+Click <Link to="/documentation/recipes/adding-links#internal-links">here</Link> to learn about Links.
+```
+
+## External Links
+
+If you want to link to something external of the documentation, you should use the <Link to="/documentation/components#external-link">ExternalLink</Link> component.
+
+```jsx live
+Click <ExternalLink href="https://xedi.github.io/sdk-js/documentation/components#external-link">here</ExternalLink> to learn about external links
+```
+
+## Source Links
+
+If you want to link to source code, you should use the <InlineCode>&lt;SourceLink&gt;</InlineCode> component.
+
+```jsx live
+<SourceLink href="https://github.com/xedi/sdk-js/blob/master/docs/src/components/source_link.js">View Source</SourceLink>
+```
+
+## Repo Links
+
+If you want to link to a page within the GitHub repository then use the <InlineCode>&lt;RepoLink&gt;</InlineCode> component.
+
+```jsx live
+<RepoLink href="packages">Packages on GitHub</RepoLink>
+```
+
+### Different Icon
+
+You can also change the icon using the <InlineCode>icon</InlineCode> property.
+
+```jsx live
+<RepoLink icon={Package} href="packages">Packages on GitHub</RepoLink>
+```

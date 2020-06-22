@@ -63,6 +63,8 @@
       url: /documentation/components
     - title: Recipe - Adding a Page
       url: /documentation/recipes/adding-a-page
+    - title: Recipe - Adding Links
+      url: /documentation/recipes/adding-links
 - title: Tooling
   url: /tooling/build
   children:

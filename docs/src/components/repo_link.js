@@ -1,16 +1,20 @@
 import React from 'react';
-import {Link} from '@primer/components';
+import {Link, StyledOcticon} from '@primer/components';
 import {LinkExternalIcon} from '@primer/styled-octicons';
 
 function ExternalLink({ children, ...props }) {
     if (props.hasOwnProperty('href')) {
-        props.href = (new URL('https://github.com/xedi/sdk/', props.href)).toString();
+        props.href = (new URL(props.href, 'https://github.com/xedi/sdk-js/')).toString();
     }
 
     return (
         <Link {...props} target="_blank">
             {children}
-            <LinkExternalIcon ml={1} />
+            {
+                props.icon
+                ? <StyledOcticon icon={props.icon} ml={1} />
+                : <LinkExternalIcon ml={1} />
+            }
         </Link>
     );
 }
