@@ -53,6 +53,82 @@ const transition = await transitionsService.get('5076455a-a18e-11ea-8618-0242ac1
 }
 ```
 
+### create
+
+Create a transition
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| from_id | Xuid |  | "9cabdeca-a0fe-11ea-8530-0242ac120002" |
+| to_id | Xuid | <CheckIcon color="green.5"/> | "a099e2de-a0fe-11ea-b9be-0242ac120002" |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | "9c82245e-a0fe-11ea-b1cf-01009cb3fa40" |
+| description | string | | My first transition |
+| is_automtic | bool | <CheckIcon color="green.5"/> | true |
+
+#### Usage
+
+``` javascript
+const transition = await transitionsService.create(
+  {
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: My first transition,
+    is_automtic: true
+  }
+);
+```
+
+#### Response
+
+``` json
+{
+
+}
+```
+
+### update
+
+Update a transition
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| _id | Xuid | <CheckIcon color="green.5"/> | "5076455a-a18e-11ea-8618-0242ac120002" |
+| from_id | Xuid |  | "9cabdeca-a0fe-11ea-8530-0242ac120002" |
+| to_id | Xuid | <CheckIcon color="green.5"/> | "a099e2de-a0fe-11ea-b9be-0242ac120002" |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | "9c82245e-a0fe-11ea-b1cf-01009cb3fa40" |
+| description | string | | My first transition |
+| is_automtic | bool | <CheckIcon color="green.5"/> | true |
+
+#### Usage
+
+``` javascript
+const transition = await transitionsService.create(
+  {
+    _id: "5076455a-a18e-11ea-8618-0242ac120002",
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: My updated transition,
+    is_automtic: true
+  }
+);
+```
+
+#### Response
+
+``` json
+{
+
+}
+```
+
 ### Delete
 
 Delete a transiton.
