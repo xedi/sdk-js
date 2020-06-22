@@ -1,10 +1,12 @@
 - title: About
+  url: /about/getting-started
   children:
     - title: Getting Started
       url: /about/getting-started
     - title: Contributing
       url: /about/contributing
 - title: Usage
+  url: /usage/accounts
   children:
     - title: Accounts
       url: /usage/accounts
@@ -23,6 +25,7 @@
     - title: Workflows
       url: /usage/workflows
 - title: Architecture
+  url: /architecture/authentication
   children:
     - title: Authentication
       url: /architecture/authentication
@@ -31,6 +34,7 @@
     - title: HTTP Requests
       url: /architecture/http_requests
 - title: Development
+  url: /development/api
   children:
     - title: API Classes
       url: /development/api
@@ -45,6 +49,7 @@
     - title: Utilities
       url: /development/utilities
 - title: Documentation
+  url: /documentation/set-up
   children:
     - title: Getting Started
       url: /documentation/set-up
@@ -59,6 +64,7 @@
     - title: Recipe - Adding a Page
       url: /documentation/recipes/adding-a-page
 - title: Tooling
+  url: /tooling/build
   children:
     - title: Build
       url: /tooling/build
