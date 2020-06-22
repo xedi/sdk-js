@@ -5,11 +5,12 @@ status: Stable
 source: https://github.com/xedi/sdk-js/tree/master/testing
 ---
 
-import {Text, Link, Flash, BorderBox} from '@primer/components'
+import {Text, Flash, BorderBox} from '@primer/components'
 import {InfoIcon} from '@primer/styled-octicons'
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
 import {ExternalLink, GithubIssue} from '../../src/components'
 import {Caption} from '@primer/gatsby-theme-doctocat'
+import {Link} from 'gatsby';
 
 Testing our code often feels like a chore, or something we leave until last. For most, testing is the mashed potatoes of development. It makes up the majority of the task and isn't the most attractive thing on our plate.
 
@@ -17,7 +18,7 @@ In this section we'll look at using unit tests to test our code to provide confi
 
 <Flash>
     <InfoIcon mr={2} />
-    If you are looking for information on manual testing, read the <Link href="/tooling/debugging">debugging</Link> section.
+    If you are looking for information on manual testing, read the <Link to="/tooling/debugging">debugging</Link> section.
 </Flash>
 
 ## Directory Structure
@@ -109,7 +110,7 @@ Lets examine this test.
 
 Now that I've written my test, lets see if it will run. Simply run: <InlineCode>npm run test</InlineCode>.
 
-I will also check my code conforms to best-practice. For this run: <InlineCode>npm run lint:tests</InlineCode>. If you want to know more about this, read the section on <Link href="/tooling/linting">Linting</Link>.
+I will also check my code conforms to best-practice. For this run: <InlineCode>npm run lint:tests</InlineCode>. If you want to know more about this, read the section on <Link to="/tooling/linting">Linting</Link>.
 
 ## Coverage Reports
 

@@ -5,7 +5,7 @@ status: Experimental
 source: https://github.com/xedi/sdk-js/blob/master/index.html
 ---
 
-import {Link} from '@primer/components'
+import {Link} from 'gatsby';
 
 Whilst TypeScript helps us eliminate most of the silly bugs that vanilla JavaScript would allow, there is still room for mistakes to be made. To aid in the discover of these issues, there is a playground provided within the repository.
 
@@ -21,7 +21,7 @@ On successful authentication with your choice of API Gateway instance, the form 
 
 ## Using the playground
 
-As mentioned previous, you need to open your browsers DevTools. From here, you can enter a variety of commands into the console to interact with XEDI.js. A good first command might be retreiving your user record from the <Link href="/usage/auth#user">Auth api</Link>.
+As mentioned previous, you need to open your browsers DevTools. From here, you can enter a variety of commands into the console to interact with XEDI.js. A good first command might be retreiving your user record from the <Link to="/usage/auth#user">Auth api</Link>.
 
 ```javascript
 const me = Xedi.Auth.user;

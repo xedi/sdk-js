@@ -5,16 +5,17 @@ status: Stable
 source: https://github.com/xedi/sdk-js/tree/master/src/Utils
 ---
 
-import {Link, Text} from '@primer/components'
+import {Text} from '@primer/components'
 import {CodeIcon} from '@primer/styled-octicons'
 import {Caption} from '@primer/gatsby-theme-doctocat'
 import {ExternalLink} from '../../src/components'
+import {Link} from 'gatsby';
 
 The <ExternalLink href="https://github.com/xedi/sdk-js/tree/master/src/Utils">`Utils`</ExternalLink> directory contains a number of classes which provide help functionality or features when developing aspects of the SDK.
 
 ## AuthenticateHeaderParser
 
-As part of our <Link href="/architecture/authentication">authentication flow</Link> the <ExternalLink href="https://tools.ietf.org/html/rfc6750#page-9">`WWW-Authenticate` header</ExternalLink> is returned from the API Gateway. This is provided to us as a single string which makes it difficult to parse.
+As part of our <Link to="/architecture/authentication">authentication flow</Link> the <ExternalLink href="https://tools.ietf.org/html/rfc6750#page-9">`WWW-Authenticate` header</ExternalLink> is returned from the API Gateway. This is provided to us as a single string which makes it difficult to parse.
 ```
 Bearer realm="api.xedi",
     error="invalid_token",

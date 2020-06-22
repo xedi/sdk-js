@@ -5,11 +5,12 @@ status: Stable
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Service.ts'
 ---
 
-import {Flash, Link, Text, BorderBox} from '@primer/components'
+import {Flash, Text, BorderBox} from '@primer/components'
 import {Caption, Container} from '@primer/gatsby-theme-doctocat'
 import {InfoIcon} from '@primer/styled-octicons'
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code'
 import {GithubIssue} from '../../src/components'
+import {Link} from 'gatsby';
 
 # Adding API Classes
 
@@ -27,7 +28,7 @@ Within the `src/Services/` directory you should find a number of files. Most not
     <GithubIssue issue-id="24" />
 </BorderBox>
 
-`Service.ts` is the abstract class from which all our "Service" classes extend. It is responsible for the construction of the class, for handling the <Link href="architecture/events">classes events</Link>, and holding memory references to the <Link href="architecture/configuration">config bag</Link> and the <Link href="architecture/http_requests">HTTP client</Link>.
+`Service.ts` is the abstract class from which all our "Service" classes extend. It is responsible for the construction of the class, for handling the <Link to="architecture/events">classes events</Link>, and holding memory references to the <Link to="architecture/configuration">config bag</Link> and the <Link to="architecture/http_requests">HTTP client</Link>.
 
 Within `src/Services` create a new file with the same name as the entity it will host. For example, `Example.ts` should look like this:
 
@@ -67,13 +68,13 @@ diff a/src/Services/Services.ts b/src/Services/Services.ts
 +}
 ```
 
-Next, you need to register your <Link href="architecture/singletons">singleton</Link>. This will ensure configuration and state persistence.
+Next, you need to register your <Link to="architecture/singletons">singleton</Link>. This will ensure configuration and state persistence.
 
 ## Invocation
 
 This is where things start to come together. Locate `src/index.ts` and open it. Inside here, you will find our root object. It is the home of our application container.
 
-The first step here is to register a <Link href="architecture/singletons">singleton</Link> for your "Service" class.
+The first step here is to register a <Link to="architecture/singletons">singleton</Link> for your "Service" class.
 Find the `boot` method, and go to the bottom of that method. Here we are going to add a binding that the container will use to build a single instance of your class.
 
 ```typescript
@@ -101,7 +102,7 @@ static get Example(): Services.Example
 
 ```
 
-Congratulations! You can now resolve you new class. If you want, go ahead and jump into the <Link href="tooling/debugging">playground</Link> and type `Xedi.Example`. It should resolve you an instance of your new class and inside, you will find a <Link href="architecture/config">config bag</Link> and a <Link href="architecture/http_requests">HTTP client</Link>.
+Congratulations! You can now resolve you new class. If you want, go ahead and jump into the <Link to="tooling/debugging">playground</Link> and type `Xedi.Example`. It should resolve you an instance of your new class and inside, you will find a <Link to="architecture/config">config bag</Link> and a <Link to="architecture/http_requests">HTTP client</Link>.
 
 # Modifying API Classes
 
@@ -118,12 +119,12 @@ list() {
 ```
 <Caption>An indexing method</Caption>
 
-Lets look at line three of the above example. In JavaScript this would look like <InlineCode>.get('1/examples')</InlineCode>, so whats the extra stuff? This how we tell TypeScript, what we expect the <Link href="architecture/http_requests">HTTP Client</Link> to return in the promise. Here we tell it we want a `JsonResponse` which itself, must contain an `Example`.
+Lets look at line three of the above example. In JavaScript this would look like <InlineCode>.get('1/examples')</InlineCode>, so whats the extra stuff? This how we tell TypeScript, what we expect the <Link to="architecture/http_requests">HTTP Client</Link> to return in the promise. Here we tell it we want a `JsonResponse` which itself, must contain an `Example`.
 
 <Flash varient="info" mb={2}>
 <Text fontWeight="bold"><InfoIcon /> What is an <InlineCode>Example</InlineCode>?</Text>
 
-In this instance, Example is a <Link href="development/models">model</Link>. A model is a simple definition of the data structure we expect. If you aren't familiar with this concept, read the section on <Link href="development/models">models</Link>.
+In this instance, Example is a <Link to="development/models">model</Link>. A model is a simple definition of the data structure we expect. If you aren't familiar with this concept, read the section on <Link to="development/models">models</Link>.
 </Flash>
 
-On line four, we see that our response expectation is defined again, but this time within an <Link href="architecture/http_requests"><InlineCode>AxiosResponse</InlineCode></Link>. Translated to plain english this reads: <Text as="em">Where <InlineCode>response</InlineCode> is a JSON representation of a Example within an AxiosResponse</Text>. Again, at runtime, this compiles down to nothing, but here in TypeScript it helps us understand the intent of the code.
+On line four, we see that our response expectation is defined again, but this time within an <Link to="architecture/http_requests"><InlineCode>AxiosResponse</InlineCode></Link>. Translated to plain english this reads: <Text as="em">Where <InlineCode>response</InlineCode> is a JSON representation of a Example within an AxiosResponse</Text>. Again, at runtime, this compiles down to nothing, but here in TypeScript it helps us understand the intent of the code.

@@ -5,16 +5,17 @@ status: Experimental
 source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Service.ts'
 ---
 
-import {Link, Flash} from '@primer/components'
+import {Flash} from '@primer/components'
 import {Caption} from '@primer/gatsby-theme-doctocat'
 import {InfoIcon} from '@primer/styled-octicons'
 import {ExternalLink} from '../../src/components'
+import {Link} from 'gatsby';
 
-Events are a mechanism supporting decoupled communication between components. They are part of the underlying <Link href="/development/api">API abstract class</Link> meaning they are available to all child classes. The usage for Events is simple and familiar.
+Events are a mechanism supporting decoupled communication between components. They are part of the underlying <Link to="/development/api">API abstract class</Link> meaning they are available to all child classes. The usage for Events is simple and familiar.
 
 On a given service, you can subscribe to a topic using the `on()` method, or you can fire an event using `trigger()`.
 
-The best example of this is the usage as part of the <Link href="/architecture/authentication">authentication flow</Link>.
+The best example of this is the usage as part of the <Link to="/architecture/authentication">authentication flow</Link>.
 
 In a number of the methods within the Auth API, the `trigger()` method is called.
 ```javascript

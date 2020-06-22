@@ -3,11 +3,12 @@ title: Adding a Page
 description: Adding Documentation
 ---
 
-import {Link, Flash} from '@primer/components';
+import {Flash} from '@primer/components';
 import {ExternalLink} from '../../../src/components';
 import {Caption,DoDontContainer,Do,Dont} from '@primer/gatsby-theme-doctocat';
 import {InfoIcon} from '@primer/styled-octicons';
 import InlineCode from '@primer/gatsby-theme-doctocat/src/components/inline-code';
+import {Link} from 'gatsby';
 
 ## Step 1 - Create a page
 
@@ -86,7 +87,7 @@ Inside the file, find the where you want your page to appear in the listing (the
 <Caption>Adding a new section</Caption>
 
 <Flash>
-<InfoIcon mr={1} />When defining a new section there are a couple of caveats to be aware of, and these are covered in the <Link href="/documentation/structure#sidebar-navigation">section about the Sidebar</Link>.
+<InfoIcon mr={1} />When defining a new section there are a couple of caveats to be aware of, and these are covered in the <Link to="/documentation/structure#sidebar-navigation">section about the Sidebar</Link>.
 </Flash>
 
 ## Step 4 - Authoring
