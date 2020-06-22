@@ -22,7 +22,7 @@ export default function Header() {
             >
                 <Flex alignItems="center">
                     <Link href="https://xedi.com" color="blue.4" mr={3}>
-                        <Avatar size="40" src="https://avatars.githubusercontent.com/xedi" />
+                        <Avatar size={40} src="https://avatars.githubusercontent.com/xedi" />
                     </Link>
                     <Flex display={['none', null, 'flex']} alignItems="center">
                         <Link href="https://dev.xedi.com" color="blue.4" fontFamily="mono">
