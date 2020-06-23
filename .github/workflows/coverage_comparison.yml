@@ -3,7 +3,8 @@ name: Coverage Comparison
 on:
   pull_request:
     type: [ synchronize, edited, reopened, opened ]
-
+    paths-ignore:
+      - 'docs/**'
 jobs:
   Base:
     runs-on: ubuntu-latest
