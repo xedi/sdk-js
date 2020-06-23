@@ -5,44 +5,273 @@ status: Stable
 source: https://github.com/xedi/sdk-js/blob/master/src/Services/Businesses.ts
 ---
 
-import {Flash} from '@primer/components';
+import {CheckIcon} from '@primer/styled-octicons'
 
 ## Introduction
 
-The Businesses API provides access and functionality to business data.
-
-<Flash>Expand on what behaviours are provided</Flash>
+The Businesses API allows you to create and access information about businesses.
 
 ## Usage
 
 ### List
 
-**Parameters**
+List all Businesses that the user has the authority to see.
 
 **Usage**
 
+```js
+const businesses = await Xedi.Businesses.list();
+```
+
 **Response**
+
+```json
+[
+    {
+        "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+        "business_name": "Avengers",
+        "address_1": "TOP_SECRET",
+        "address_2": "TOP_SECRET",
+        "address_3": "New York",
+        "address_4": null,
+        "post_code": "TOP_SECRET",
+        "currency": "usd",
+        "vat_code": "123",
+        "invoice_name": "123",
+        "country_code": "USA",
+        "contact_name": "Anthony Stark",
+        "contact_email": "t.stark@avengers.org",
+        "contact_no": "(970) 517-1743 x67916",
+        "website": "https://avengers.org",
+        "logo": "https://assets.avengers.org/images/logo.png",
+        "requires_gln": false,
+        "gs1_prefix": "030",
+        "slug": "avengers",
+        "external": false,
+        "public": true
+    },
+    {
+        "_id": "d1dfb302-b53d-11ea-95d2-0100f1a50c6e",
+        "business_name": "Hydra",
+        "address_1": "EVERYWHERE",
+        "address_2": "EVERYWHERE",
+        "address_3": "EVERYWHERE",
+        "address_4": null,
+        "post_code": "EVERYWHERE",
+        "currency": "usd",
+        "vat_code": "456",
+        "invoice_name": "456",
+        "country_code": "USA",
+        "contact_name": null,
+        "contact_email": null,
+        "contact_no": null,
+        "website": null,
+        "logo": null,
+        "requires_gln": false,
+        "gs1_prefix": "030",
+        "slug": "hydra",
+        "external": false,
+        "public": false
+    }
+]
+```
 
 ### Get
 
+Get a Business by ID.
+
 **Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| business_id | UUID | <CheckIcon color="green.5"/> | c52abc50-b499-11ea-a48c-0100f1a50c6e |
 
 **Usage**
 
+```js
+const business = await Xedi.Businsses.get('c52abc50-b499-11ea-a48c-0100f1a50c6e');
+```
+
 **Response**
+
+```json
+{
+    "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+    "business_name": "Avengers",
+    "address_1": "TOP_SECRET",
+    "address_2": "TOP_SECRET",
+    "address_3": "New York",
+    "address_4": null,
+    "post_code": "TOP_SECRET",
+    "currency": "usd",
+    "vat_code": "123",
+    "invoice_name": "123",
+    "country_code": "USA",
+    "contact_name": "Anthony Stark",
+    "contact_email": "t.stark@avengers.org",
+    "contact_no": "(970) 517-1743 x67916",
+    "website": "https://avengers.org",
+    "logo": "https://assets.avengers.org/images/logo.png",
+    "requires_gln": false,
+    "gs1_prefix": "030",
+    "slug": "avengers",
+    "external": false,
+    "public": true
+}
+```
 
 ### Create
 
+Create a Business.
+
 **Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| business_name | String | <CheckIcon color="green.5"/> | Microsoft |
+| address_1 | String |  | Microsoft Corporation |
+| address_2 | String |  | One Microsoft Way |
+| address_3 | String |  | Redmond |
+| address_4 | String |  | WA |
+| post_code | String |  | 98052-6399 |
+| currency | String (ISO-4217) |  | usd |
+| vat_code | String |  | 91-1144442 |
+| invoice_name | String |  | MSFT |
+| country_code | String (ISO-3166) | <CheckIcon color="green.5"/> | USA |
+| contact_name | String |  | Satya Nadella |
+| contact_email | String |  | s.nadella@microsoft.com |
+| contact_no | String |  | 	(425) 882-8080 |
+| website | String |  | https://www.microsoft.com |
+| logo | String |  | https://assets.microsoft.com/logo.png |
+| requires_gln | Boolean |  | true |
+| gs1_prefix | Number |  | 030 |
+| slug | String |  | MSFT |
+| external | Boolean |  | true |
+| public | Boolean |  | true |
+
 
 **Usage**
 
+```js
+const business = Xedi.Businesses.create({
+    business_name: "Microsoft",
+    address_1: "Microsof Corporation",
+    address_2: "One Microsoft Way",
+    address_3: "Redmond",
+    address_4: "WA",
+    post_code: "98052-6399",
+    currency: "usd",
+    vat_code: "91-1144442",
+    invoice_name: "MSFT",
+    country_code: "USA",
+    contact_name: "Satya Nadella",
+    contact_email: "s.nadella@microsoft.com",
+    contact_no: "(425) 882-8080",
+    website: "https://www.microsoft.com",
+    logo: "https://assets.microsoft.com/logo.png",
+    requires_gln: false,
+    gs1_prefix: 030,
+    slug: "MSFT",
+    external: false,
+    public: true,
+});
+```
+
 **Response**
+
+```json
+{
+    "_id": "3f580f3e-b542-11ea-a254-0100f1a50c6e",
+    "business_name": "Microsoft",
+    "address_1": "Microsof Corporation",
+    "address_2": "One Microsoft Way",
+    "address_3": "Redmond",
+    "address_4": "WA",
+    "post_code": "98052-6399",
+    "currency": "usd",
+    "vat_code": "91-1144442",
+    "invoice_name": "MSFT",
+    "country_code": "USA",
+    "contact_name": "Satya Nadella",
+    "contact_email": "s.nadella@microsoft.com",
+    "contact_no": "(425) 882-8080",
+    "website": "https://www.microsoft.com",
+    "logo": "https://assets.microsoft.com/logo.png",
+    "requires_gln": false,
+    "gs1_prefix": 030,
+    "slug": "MSFT",
+    "external": false,
+    "public": true,
+    "created_at": "2020-06-23 12:10:16",
+    "updated_at": null
+}
+```
 
 ### Get by User
 
+List all the businesses a particular user is associated with.
+
 **Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| user_id | UUID | <CheckIcon color="green.5"/> | f3ce14b8-b542-11ea-aded-01002da17977 |
 
 **Usage**
 
+```js
+const businesses = await Xedi.Businesses.getByUser('f3ce14b8-b542-11ea-aded-01002da17977');
+```
+
 **Response**
+
+```json
+[
+    {
+        "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+        "business_name": "Avengers",
+        "address_1": "TOP_SECRET",
+        "address_2": "TOP_SECRET",
+        "address_3": "New York",
+        "address_4": null,
+        "post_code": "TOP_SECRET",
+        "currency": "usd",
+        "vat_code": "123",
+        "invoice_name": "123",
+        "country_code": "USA",
+        "contact_name": "Anthony Stark",
+        "contact_email": "t.stark@avengers.org",
+        "contact_no": "(970) 517-1743 x67916",
+        "website": "https://avengers.org",
+        "logo": "https://assets.avengers.org/images/logo.png",
+        "requires_gln": false,
+        "gs1_prefix": "030",
+        "slug": "avengers",
+        "external": false,
+        "public": true
+    },
+    {
+        "_id": "d1dfb302-b53d-11ea-95d2-0100f1a50c6e",
+        "business_name": "Hydra",
+        "address_1": "EVERYWHERE",
+        "address_2": "EVERYWHERE",
+        "address_3": "EVERYWHERE",
+        "address_4": null,
+        "post_code": "EVERYWHERE",
+        "currency": "usd",
+        "vat_code": "456",
+        "invoice_name": "456",
+        "country_code": "USA",
+        "contact_name": null,
+        "contact_email": null,
+        "contact_no": null,
+        "website": null,
+        "logo": null,
+        "requires_gln": false,
+        "gs1_prefix": "030",
+        "slug": "hydra",
+        "external": false,
+        "public": false
+    }
+]
+```
