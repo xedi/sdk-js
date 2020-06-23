@@ -1,0 +1,201 @@
+---
+title: Transitions
+description: Using the Transitions API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Transitions.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons'
+
+## Introduction
+
+The transitions api gives the ability to fully configure each transition between the stages (link) of a work flow template. (link)
+
+## Usage
+
+### list
+
+retreive the list of transitions.
+
+#### Usage 
+
+``` javascript
+const transitions = await transitionsService.list();
+```
+
+#### Response
+
+``` json
+[
+  {
+      "_id": "5076455a-a18e-11ea-8618-0242ac120002",
+      from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+      to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+      workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+      workflow_type: "template",
+      description: "My first transition",
+      is_automtic: 1,
+      "created_at": "2020-05-11 10:27:03",
+      "updated_at": "2020-05-11 10:27:03"
+  }
+  {
+    "_id": "574612ac-a18e-11ea-ac77-0242ac120002",
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: "My second transition",
+    is_automtic: 1,
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:27:03"
+  }
+]
+```
+
+### get
+
+retrieve a transition by Id.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const transition = await transitionsService.get('5076455a-a18e-11ea-8618-0242ac120002');
+```
+
+#### Response
+
+``` json
+{
+    "_id": "5076455a-a18e-11ea-8618-0242ac120002",
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: "My first transition",
+    is_automtic: 1,
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:27:03"
+}
+```
+
+### create
+
+Create a transition
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| from_id | Xuid |  | "9cabdeca-a0fe-11ea-8530-0242ac120002" |
+| to_id | Xuid | <CheckIcon color="green.5"/> | "a099e2de-a0fe-11ea-b9be-0242ac120002" |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | "9c82245e-a0fe-11ea-b1cf-01009cb3fa40" |
+| description | string | | My first transition |
+| is_automtic | bool | <CheckIcon color="green.5"/> | 1 |
+
+#### Usage
+
+``` javascript
+const transition = await transitionsService.create(
+  {
+    from_id: '9cabdeca-a0fe-11ea-8530-0242ac120002',
+    to_id: 'a099e2de-a0fe-11ea-b9be-0242ac120002',
+    workflow_id: '9c82245e-a0fe-11ea-b1cf-01009cb3fa40',
+    workflow_type: 'template',
+    description: 'My first transition',
+    is_automtic: 1
+  }
+);
+```
+
+#### Response
+
+``` json
+{
+    "_id": "5076455a-a18e-11ea-8618-0242ac120002",
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: "My first transition",
+    is_automtic: 1,
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:27:03"
+}
+```
+
+### update
+
+Update a transition
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| _id | Xuid | <CheckIcon color="green.5"/> | "5076455a-a18e-11ea-8618-0242ac120002" |
+| from_id | Xuid |  | "9cabdeca-a0fe-11ea-8530-0242ac120002" |
+| to_id | Xuid | <CheckIcon color="green.5"/> | "a099e2de-a0fe-11ea-b9be-0242ac120002" |
+| workflow_id | Xuid | <CheckIcon color="green.5"/> | "9c82245e-a0fe-11ea-b1cf-01009cb3fa40" |
+| description | string | | My first transition |
+| is_automtic | bool | <CheckIcon color="green.5"/> | 1 |
+
+#### Usage
+
+``` javascript
+const transition = await transitionsService.create(
+  {
+    _id: '5076455a-a18e-11ea-8618-0242ac120002',
+    from_id: '9cabdeca-a0fe-11ea-8530-0242ac120002',
+    to_id: 'a099e2de-a0fe-11ea-b9be-0242ac120002',
+    workflow_id: '9c82245e-a0fe-11ea-b1cf-01009cb3fa40',
+    workflow_type: 'template',
+    description: My updated transition,
+    is_automtic: 1
+  }
+);
+```
+
+#### Response
+
+``` json
+{
+    "_id": "5076455a-a18e-11ea-8618-0242ac120002",
+    from_id: "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    to_id: "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    workflow_id: "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    workflow_type: "template",
+    description: "My updated transition",
+    is_automtic: 1,
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:27:03"
+}
+```
+
+### Delete
+
+Delete a transiton.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
+
+#### Usage 
+
+``` javascript
+const transition = await transitionsService.delete('5076455a-a18e-11ea-8618-0242ac120002');
+```
+
+#### Response
+
+``` json
+{
+  "_id": "5076455a-a18e-11ea-8618-0242ac120002"  
+}
+```

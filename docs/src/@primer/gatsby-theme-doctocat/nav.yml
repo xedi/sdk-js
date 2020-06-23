@@ -26,6 +26,10 @@
       url: /usage/instances
     - title: Templates
       url: /usage/Templates
+    - title: Transitions
+      url: /usage/transitions
+    - title: Stages
+      url: /usage/stages
 - title: Architecture
   children:
     - title: Authentication
