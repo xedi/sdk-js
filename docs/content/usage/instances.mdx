@@ -8,32 +8,11 @@ source: https://github.com/xedi/sdk-js/blob/master/src/Services/Instances.ts
 import {CheckIcon} from '@primer/styled-octicons'
 import {GithubIssue} from '../../src/components'
 
-<BorderBox>
-    <GithubIssue issue-id="62" />
-</BorderBox>
 
 ## Introduction
 
-A workflow can be of be a type of instance or template. A workflow without a business defined is referred to as a template (link)
+A workflow can be of be a type of instance or template. A workflow without a business defined is referred to as a template (link). An Instance is a deep clone of a Workflow and is associated with a Document group.
 
-  dictionary Workflow : Instance {
-
-     'name',
-          'description',
-          'template_id',
-          'owner_id',
-          'creator_id',
-          'connection_id',
-          'document_group_id',
-          'updated_by',
-
-                required ByteString name;
-
-                required User creater;
-                required PartnershipConnection connection;
-                DocumentGroup document;
-                required Business owner;
-            };
 
 ## Usage
 
@@ -58,7 +37,8 @@ const instances = await instancesService.list();
         "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-         "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "created_at": "2020-05-11 10:27:03",
         "updated_at": "2020-05-11 10:27:03"
@@ -70,6 +50,7 @@ const instances = await instancesService.list();
         "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "created_at": "2020-05-11 10:27:03",
         "updated_at": "2020-05-11 10:27:03"
@@ -106,6 +87,7 @@ const instance = await instancesService.get('af6d8dfc-88b5-41f6-bbf5-825130390d6
      "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
      "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
      'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+     "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
      "created_at": "2020-05-11 10:27:03",
      "updated_at": "2020-05-11 10:27:03"
   }
@@ -120,24 +102,27 @@ Create a new Instance
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
-| name | string | |  'template name (order)' |
-| description | string |  |  'template name (order)' |
+| name | string | |  'instance name (order)' |
+| description | string |  |  'instance name (order)' |
 | creator_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 | connection_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 | document_group_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 | owner_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| template_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 
 #### Usage
 
 ``` javascript
 const instance = await instancesService.create(
     {
-        "name": "Instance of Order",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+          "name": "instance (Invoice)",
+          "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          'template_id': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+
     }
 );
 ```
@@ -152,6 +137,7 @@ const instance = await instancesService.create(
        "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
        'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       'template_id': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
        "created_at": "2020-05-11 10:27:03",
        "updated_at": "2020-05-11 10:27:03"
 ```
@@ -165,12 +151,13 @@ Update an existing instance.
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
 | id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
-| name | string | |  'template name (order)' | //  update
-| description | string |  |  'template name (order)' | update
-| creator_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
-| connection_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
-| document_group_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
-| owner_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| name | string | |  'Instance name (order)' | //  update
+| description | string |  |  'Instance name (order)' | update
+| creator_id | Xuid || 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| connection_id | Xuid |  | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| document_group_id | Xuid |  | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| owner_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| template_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 
 #### Usage
 
@@ -185,6 +172,8 @@ const instances = await instancesService.update(
       "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
       "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
       'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+      "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+
 
     }
 );
@@ -203,6 +192,7 @@ const instances = await instancesService.update(
         "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
         "created_at": "2020-05-11 10:27:03",
         "updated_at": "2020-05-11 10:27:03"
       }
@@ -237,6 +227,7 @@ const instance = await instancesService.delete('af6d8dfc-88b5-41f6-bbf5-82513039
          "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+         "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "deleted_at" : "2020-05-11 10:27:03"
      }
@@ -270,6 +261,7 @@ const instances = await instancesService.restore('af6d8dfc-88b5-41f6-bbf5-825130
          "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+         "template_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
          'updated_by': "af6d8dfc-88b5-41f6-bbf5-825130390d64",
      }
