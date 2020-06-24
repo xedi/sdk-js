@@ -34,18 +34,26 @@ const templates = await templateService.list();
 
 [
     {
-        "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
         "name": "template name (order)",
         "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
         "created_at": "2020-05-11 10:27:03",
         "updated_at": "2020-05-11 10:27:03"
-    }
+    },
     {
-      "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-      "name": "template name (invoice)",
-      "is_template": 1,
-      "created_at": "2020-05-11 10:27:03",
-      "updated_at": "2020-05-11 10:27:03"
+        "_id": "e997904e-6a3b-40db-b1e0-19c13b541ed7",
+        "name": "template name (invoice)",
+        "is_template": 1,
+        "creator_id": "33e887f0-1709-4475-b78d-95bae3ac0349",
+        "connection_id": "2ece6a69-8d57-4f77-9e3e-55a017ba66b0",
+        "document_group_id" : "42c30ce2-1463-4877-b8a4-9d9b6e294859",
+        "owner_id": "ab994a41-db9d-4583-8b80-080029c0c569",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03"
     }
 ]
 
@@ -64,7 +72,7 @@ retrieve a template by Id.
 #### Usage
 
 ``` javascript
-const template = await templateService.get('af6d8dfc-88b5-41f6-bbf5-825130390d64');
+const template = await templateService.get('c490e097-b232-4ee7-8958-2310a6060063');
 ```
 
 #### Response
@@ -72,15 +80,15 @@ const template = await templateService.get('af6d8dfc-88b5-41f6-bbf5-825130390d64
 ``` json
 [
   {
-        "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "name": "template name (order)",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "created_at": "2020-05-11 10:27:03",
-        "updated_at": "2020-05-11 10:27:03"
+       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+       "name": "template name (order)",
+       "is_template": 1,
+       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
   }
 ]
 ```
@@ -94,7 +102,7 @@ Create a new template
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
 | id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
-| name | string | <CheckIcon color="green.5"/> |  'template name (order)' |
+| name | string | |  'template name (order)' |
 | is_template | boolean | <CheckIcon color="green.5"/> | true |
 | creator_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
 | connection_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
@@ -106,12 +114,12 @@ Create a new template
 ``` javascript
 const template = await templateService.create(
     {
-        "name": "Template Order",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+         "name": "template name (order)",
+         "is_template": 1,
+         "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+         "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+         "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+         "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
     }
 );
 ```
@@ -119,12 +127,19 @@ const template = await templateService.create(
 #### Response
 
 ``` json
-        "name": "Template Order",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" :  "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+[
+  {
+       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+       "name": "template name (order)",
+       "is_template": 1,
+       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
+  }
+]
 ```
 
 ### Update
@@ -148,13 +163,13 @@ Update an existing Template.
 ``` javascript
 const template = await templatesService.update(
     {
-       "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "name": "Template Order V2",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" : "updated-document-id",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+        "name": "template name (order) v2",
+        "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
     }
 );
 ```
@@ -164,13 +179,15 @@ const template = await templatesService.update(
 ``` json
     [
       {
-        "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "name": "Template Order V2",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" : "updated-document-id",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+          "name": "template name (order) v2",
+          "is_template": 1,
+          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03"
       }
     ]
 ```
@@ -188,7 +205,7 @@ Delete a Template. Response contains a deleted_at flag which signifies it has be
 #### Usage
 
 ``` javascript
-const template = await templatesService.delete('af6d8dfc-88b5-41f6-bbf5-825130390d64');
+const template = await templatesService.delete('c490e097-b232-4ee7-8958-2310a6060063');
 ```
 
 #### Response
@@ -196,13 +213,16 @@ const template = await templatesService.delete('af6d8dfc-88b5-41f6-bbf5-82513039
 ``` json
    [
      {
-       "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "name": "Template Order V2",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" : "updated-document-id",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+        "name": "template name (order) v2",
+        "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03",
+        "deleted_at": "2020-06-11 10:27:03"
      }
    ]
 ```
@@ -228,16 +248,15 @@ const template = await templatesService.restore('af6d8dfc-88b5-41f6-bbf5-8251303
 ``` json
    [
      {
-       "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "name": "Template Order V2",
-        "is_template": true,
-        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "connection_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
-        "document_group_id" : "updated-document-id",
-        "owner_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64"
-        "deleted_at": "2020-05-11 10:27:03",
-        "created_at": "2020-05-11 10:27:03",
-        "updated_at": "2020-05-11 10:27:03"
+          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+          "name": "template name (order) v2",
+          "is_template": 1,
+          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03",
      }
    ]
 ```
