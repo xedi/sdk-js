@@ -1,0 +1,275 @@
+---
+title: Instances
+description: Using the Instances API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Instances.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons'
+import {GithubIssue} from '../../src/components'
+
+
+## Introduction
+
+A workflow can be of be a type of instance or template. A workflow without a business defined is referred to as a template. An Instance is a deep clone of a Workflow and is associated with a Document group.
+
+
+## Usage
+
+### list
+
+Retrieve a list of Instances.
+
+#### Usage
+
+``` javascript
+const instances = await instancesService.list();
+```
+
+#### Response
+
+``` json
+
+[
+    {
+        "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "name": "instance (order)",
+        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+        "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+        "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+        "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+        "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03"
+    }
+    {
+        "_id": "3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31",
+        "name": "instance (Invoice)",
+        "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+        "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+        "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+        "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+        "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+        "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03"
+    }
+]
+
+```
+
+### get
+
+retrieve a instance by Id.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const instance = await instancesService.get('af6d8dfc-88b5-41f6-bbf5-825130390d64');
+```
+
+#### Response
+
+``` json
+[
+  {
+       "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       "name": "instance (order)",
+       "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+       "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+       "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+       "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+       "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
+  }
+]
+```
+
+### Create
+
+Create a new Instance
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| name | string | |  'instance name (order)' |
+| description | string |  |  'instance name (order)' |
+| creator_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| connection_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| document_group_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| owner_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| template_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const instance = await instancesService.create(
+    {
+       "name": "instance (order)",
+       "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+       "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+       "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+       "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+       "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+    }
+);
+```
+
+#### Response
+
+``` json
+[
+  {
+       "_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       "name": "instance (order)",
+       "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+       "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+       "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+       "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+       "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+       "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
+  }
+]
+```
+
+### Update
+
+Update an existing instance.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| name | string | |  'Instance name (order)' | //  update
+| description | string |  |  'Instance name (order)' | update
+| creator_id | Xuid || 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| connection_id | Xuid |  | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| document_group_id | Xuid |  | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| owner_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| template_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const instances = await instancesService.update(
+    {
+         "_id": "3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31",
+         "name": "instance (order) v2",
+         "description" : "instance of an invoice",
+         "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+         "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+         "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+         "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+         "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+         "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+    }
+);
+```
+
+#### Response
+
+``` json
+    [
+      {
+           "_id": "3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31",
+           "name": "instance (order) v2",
+           "description" : "instance of an invoice",
+           "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+           "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+           "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+           "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+           "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+           "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+           "created_at": "2020-05-11 10:27:03",
+           "updated_at": "2020-05-11 10:27:03"
+      }
+    ]
+```
+
+### Delete
+
+Delete a Instance. Response contains a deleted_at flag which signifies it has been deleted.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | '3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31' |
+
+#### Usage
+
+``` javascript
+const instance = await instancesService.delete('3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31');
+```
+
+#### Response
+
+``` json
+   [
+     {
+          "_id": "3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31",
+          "name": "instance (order) v2",
+          "description" : "instance of an invoice",
+          "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+          "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+          "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+          "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+          "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03",
+          "deleted_at" : "2020-05-11 10:27:03"
+     }
+   ]
+```
+
+### Restore
+
+Restore will reinstate a deleted instance.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const instances = await instancesService.restore('3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31');
+```
+
+#### Response
+
+``` json
+   [
+     {
+          "_id": "3n1jnj13-88b5-41f6-bbf5-m31kmk31mk1m31",
+          "name": "instance (order) v2",
+          "description" : "instance of an invoice",
+          "creator_id": "af6d8dfc-88b5-41f6-bbf5-825130390d64",
+          "connection_id": "cefda3331-ds33-41f6-bbf5-825130390d64",
+          "document_group_id" : "e939d2d7-1376-4ecb-bff4-e32356e3ae78",
+          "owner_id": "a56fd6e37-0048-4369-b438-cfcac7ea4a51",
+          "template_id": "83ca5c99-1e9d-4f1d-a33a-777682f94890",
+          "updated_by": "e5f3a20d-f6be-468f-b02c-c722ed8bbb4c",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03",
+          "deleted_at" : null
+     }
+   ]
+```

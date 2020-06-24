@@ -1,0 +1,258 @@
+---
+title: Templates
+description: Using the Templates API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/template.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons'
+import {GithubIssue} from '../../src/components'
+
+## Introduction
+
+A workflow can be of be a type of instance or template. A workflow without a business defined is referred to as a template (link)
+
+## Usage
+
+### list
+
+Retrieve a list of Templates.
+
+#### Usage
+
+``` javascript
+const templates = await templateService.list();
+```
+
+#### Response
+
+``` json
+
+[
+    {
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+        "name": "template name (order)",
+        "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03"
+    },
+    {
+        "_id": "e997904e-6a3b-40db-b1e0-19c13b541ed7",
+        "name": "template name (invoice)",
+        "is_template": 1,
+        "creator_id": "33e887f0-1709-4475-b78d-95bae3ac0349",
+        "connection_id": "2ece6a69-8d57-4f77-9e3e-55a017ba66b0",
+        "document_group_id" : "42c30ce2-1463-4877-b8a4-9d9b6e294859",
+        "owner_id": "ab994a41-db9d-4583-8b80-080029c0c569",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03"
+    }
+]
+
+```
+
+### get
+
+retrieve a template by Id.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const template = await templateService.get('c490e097-b232-4ee7-8958-2310a6060063');
+```
+
+#### Response
+
+``` json
+[
+  {
+       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+       "name": "template name (order)",
+       "is_template": 1,
+       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
+  }
+]
+```
+
+### Create
+
+Create a new template
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| name | string | |  'template name (order)' |
+| is_template | boolean | <CheckIcon color="green.5"/> | true |
+| creator_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| connection_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| document_group_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| owner_id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const template = await templateService.create(
+    {
+         "name": "template name (order)",
+         "is_template": 1,
+         "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+         "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+         "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+         "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+    }
+);
+```
+
+#### Response
+
+``` json
+[
+  {
+       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+       "name": "template name (order)",
+       "is_template": 1,
+       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+       "created_at": "2020-05-11 10:27:03",
+       "updated_at": "2020-05-11 10:27:03"
+  }
+]
+```
+
+### Update
+
+Update an existing Template.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| name | string | |  'template name (order)' | // Update template name
+| is_template | boolean |  | true |
+| creator_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| connection_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| document_group_id | Xuid | | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+| owner_id | Xuid |  | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const template = await templatesService.update(
+    {
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+        "name": "template name (order) v2",
+        "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+    }
+);
+```
+
+#### Response
+
+``` json
+    [
+      {
+          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+          "name": "template name (order) v2",
+          "is_template": 1,
+          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03"
+      }
+    ]
+```
+
+### Delete
+
+Delete a Template. Response contains a deleted_at flag which signifies it has been deleted.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const template = await templatesService.delete('c490e097-b232-4ee7-8958-2310a6060063');
+```
+
+#### Response
+
+``` json
+   [
+     {
+        "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+        "name": "template name (order) v2",
+        "is_template": 1,
+        "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+        "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+        "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+        "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:27:03",
+        "deleted_at": "2020-06-11 10:27:03"
+     }
+   ]
+```
+
+### Restore
+
+Restore will reinstate a deleted template.
+
+#### Parameters
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5"/> | 'af6d8dfc-88b5-41f6-bbf5-825130390d64' |
+
+#### Usage
+
+``` javascript
+const template = await templatesService.restore('af6d8dfc-88b5-41f6-bbf5-825130390d64');
+```
+
+#### Response
+
+``` json
+   [
+     {
+          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+          "name": "template name (order) v2",
+          "is_template": 1,
+          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+          "created_at": "2020-05-11 10:27:03",
+          "updated_at": "2020-05-11 10:27:03",
+     }
+   ]
+```
