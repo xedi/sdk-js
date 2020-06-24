@@ -18,20 +18,20 @@
       url: /usage/mailboxes
     - title: Products
       url: /usage/products
+    - title: Instances
+      url: /usage/instances
+    - title: Stages
+      url: /usage/stages
+    - title: Templates
+      url: /usage/Templates
+    - title: Transitions
+      url: /usage/transitions
     - title: Translations
       url: /usage/translations
     - title: Users
       url: /usage/users
     - title: Workflows
       url: /usage/workflows
-    - title: Instances
-      url: /usage/instances
-    - title: Templates
-      url: /usage/Templates
-    - title: Transitions
-      url: /usage/transitions
-    - title: Stages
-      url: /usage/stages
 - title: Architecture
   url: /architecture/authentication
   children:

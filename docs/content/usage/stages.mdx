@@ -9,13 +9,9 @@ import {CheckIcon} from '@primer/styled-octicons'
 import {GithubIssue} from '../../src/components'
 import {Link} from '@primer/components'
 
-<BorderBox>
-    <GithubIssue issue-id="62" />
-</BorderBox>
-
 ## Introduction
 
-The stages api gives the ability to fully configure each stage of a workflow <Link to="/docs/usage/templates">template</Link>.
+The stages api gives the ability to fully configure each stage of a workflow <Link to="/usage/templates">template</Link>.
 
 ## Usage
 
@@ -26,7 +22,7 @@ retreive the list of stages.
 #### Usage 
 
 ``` javascript
-const stages = await stagesService.list();
+const stages = await Xedi.Stages.list();
 ```
 
 #### Response
@@ -69,7 +65,7 @@ retrieve a stage by Id.
 #### Usage 
 
 ``` javascript
-const stage = await stagesService.get('f188a18a-a0fe-11ea-afae-0242ac120002');
+const stage = await Xedi.Stages.get('f188a18a-a0fe-11ea-afae-0242ac120002');
 ```
 
 #### Response
@@ -104,7 +100,7 @@ Create a new stage
 #### Usage 
 
 ``` javascript
-const stage = await stagesService.create(
+const stage = await Xedi.Stages.create(
     {
         name: 'new Stage',
         workflow_id: 'cec6b1ae-a63b-11ea-ae1c-01009cb3fa40',
@@ -147,7 +143,7 @@ Update an existing stage.
 #### Usage 
 
 ``` javascript
-const stage = await stagesService.update(
+const stage = await Xedi.Stages.update(
     {
         _id: 'f188a18a-a0fe-11ea-afae-0242ac120002'
         name: 'Updated Stage',
@@ -187,7 +183,7 @@ Delete a stage.
 #### Usage 
 
 ``` javascript
-const stage = await stagesService.delete('f188a18a-a0fe-11ea-afae-0242ac120002');
+const stage = await Xedi.Stages.delete('f188a18a-a0fe-11ea-afae-0242ac120002');
 ```
 
 #### Response

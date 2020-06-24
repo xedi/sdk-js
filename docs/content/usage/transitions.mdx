@@ -21,7 +21,7 @@ retreive the list of transitions.
 #### Usage 
 
 ``` javascript
-const transitions = await transitionsService.list();
+const transitions = await Xedi.Transitions.list();
 ```
 
 #### Response
@@ -66,7 +66,7 @@ retrieve a transition by Id.
 #### Usage 
 
 ``` javascript
-const transition = await transitionsService.get('5076455a-a18e-11ea-8618-0242ac120002');
+const transition = await Xedi.Transitions.get('5076455a-a18e-11ea-8618-0242ac120002');
 ```
 
 #### Response
@@ -102,7 +102,7 @@ Create a transition
 #### Usage
 
 ``` javascript
-const transition = await transitionsService.create(
+const transition = await Xedi.Transitions.create(
   {
     from_id: '9cabdeca-a0fe-11ea-8530-0242ac120002',
     to_id: 'a099e2de-a0fe-11ea-b9be-0242ac120002',
@@ -148,7 +148,7 @@ Update a transition
 #### Usage
 
 ``` javascript
-const transition = await transitionsService.create(
+const transition = await Xedi.Transitions.create(
   {
     _id: '5076455a-a18e-11ea-8618-0242ac120002',
     from_id: '9cabdeca-a0fe-11ea-8530-0242ac120002',
@@ -190,7 +190,7 @@ Delete a transiton.
 #### Usage 
 
 ``` javascript
-const transition = await transitionsService.delete('5076455a-a18e-11ea-8618-0242ac120002');
+const transition = await Xedi.Transitions.delete('5076455a-a18e-11ea-8618-0242ac120002');
 ```
 
 #### Response
