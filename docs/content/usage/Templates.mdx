@@ -6,7 +6,6 @@ source: https://github.com/xedi/sdk-js/blob/master/src/Services/template.ts
 ---
 
 import {CheckIcon} from '@primer/styled-octicons'
-import {GithubIssue} from '../../src/components'
 
 ## Introduction
 
@@ -21,7 +20,7 @@ Retrieve a list of Templates.
 #### Usage
 
 ``` javascript
-const templates = await templateService.list();
+const templates = await Xedi.Templates.list();
 ```
 
 #### Response
@@ -68,25 +67,23 @@ retrieve a template by Id.
 #### Usage
 
 ``` javascript
-const template = await templateService.get('c490e097-b232-4ee7-8958-2310a6060063');
+const template = await Xedi.Templates.get('c490e097-b232-4ee7-8958-2310a6060063');
 ```
 
 #### Response
 
 ``` json
-[
-  {
-       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
-       "name": "template name (order)",
-       "is_template": 1,
-       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
-       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
-       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
-       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
-       "created_at": "2020-05-11 10:27:03",
-       "updated_at": "2020-05-11 10:27:03"
-  }
-]
+{
+   "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+   "name": "template name (order)",
+   "is_template": 1,
+   "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+   "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+   "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+   "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+   "created_at": "2020-05-11 10:27:03",
+   "updated_at": "2020-05-11 10:27:03"
+}
 ```
 
 ### Create
@@ -108,7 +105,7 @@ Create a new template
 #### Usage
 
 ``` javascript
-const template = await templateService.create(
+const template = await Xedi.Templates.create(
     {
          "name": "template name (order)",
          "is_template": 1,
@@ -123,19 +120,17 @@ const template = await templateService.create(
 #### Response
 
 ``` json
-[
-  {
-       "_id": "c490e097-b232-4ee7-8958-2310a6060063",
-       "name": "template name (order)",
-       "is_template": 1,
-       "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
-       "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
-       "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
-       "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
-       "created_at": "2020-05-11 10:27:03",
-       "updated_at": "2020-05-11 10:27:03"
-  }
-]
+{
+   "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+   "name": "template name (order)",
+   "is_template": 1,
+   "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+   "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+   "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+   "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+   "created_at": "2020-05-11 10:27:03",
+   "updated_at": "2020-05-11 10:27:03"
+}
 ```
 
 ### Update
@@ -157,7 +152,7 @@ Update an existing Template.
 #### Usage
 
 ``` javascript
-const template = await templatesService.update(
+const template = await Xedi.Templates.update(
     {
         "_id": "c490e097-b232-4ee7-8958-2310a6060063",
         "name": "template name (order) v2",
@@ -173,19 +168,17 @@ const template = await templatesService.update(
 #### Response
 
 ``` json
-    [
-      {
-          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
-          "name": "template name (order) v2",
-          "is_template": 1,
-          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
-          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
-          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
-          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
-          "created_at": "2020-05-11 10:27:03",
-          "updated_at": "2020-05-11 10:27:03"
-      }
-    ]
+    {
+      "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+      "name": "template name (order) v2",
+      "is_template": 1,
+      "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+      "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+      "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+      "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+      "created_at": "2020-05-11 10:27:03",
+      "updated_at": "2020-05-11 10:27:03"
+    }
 ```
 
 ### Delete
@@ -201,15 +194,15 @@ Delete a Template. Response contains a deleted_at flag which signifies it has be
 #### Usage
 
 ``` javascript
-const template = await templatesService.delete('c490e097-b232-4ee7-8958-2310a6060063');
+const template = await Xedi.Templates.delete('c490e097-b232-4ee7-8958-2310a6060063');
 ```
 
 #### Response
 
 ``` json
-   [
-      "_id": "c490e097-b232-4ee7-8958-2310a6060063",
-   ]
+   {
+      "_id": "c490e097-b232-4ee7-8958-2310a6060063"
+   }
 ```
 
 ### Restore
@@ -225,23 +218,21 @@ Restore will reinstate a deleted template.
 #### Usage
 
 ``` javascript
-const template = await templatesService.restore('af6d8dfc-88b5-41f6-bbf5-825130390d64');
+const template = await Xedi.Templates.restore('c490e097-b232-4ee7-8958-2310a6060063');
 ```
 
 #### Response
 
 ``` json
-   [
-     {
-          "_id": "c490e097-b232-4ee7-8958-2310a6060063",
-          "name": "template name (order) v2",
-          "is_template": 1,
-          "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
-          "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
-          "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
-          "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
-          "created_at": "2020-05-11 10:27:03",
-          "updated_at": "2020-05-11 10:27:03",
-     }
-   ]
+   {
+      "_id": "c490e097-b232-4ee7-8958-2310a6060063",
+      "name": "template name (order) v2",
+      "is_template": 1,
+      "creator_id": "fe615d30-05aa-448a-bd2a-0859816f0922",
+      "connection_id": "4cd84112-bd8b-481b-adc8-3fd9483c3d71",
+      "document_group_id" : "71aff4cc-9de2-4f4f-b140-d6d25982dd09",
+      "owner_id": "8b3e0c15-65fd-4588-afd6-ae4fa0f40351",
+      "created_at": "2020-05-11 10:27:03",
+      "updated_at": "2020-05-11 10:27:03"
+   }
 ```
