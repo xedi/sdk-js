@@ -30,8 +30,6 @@
       url: /usage/translations
     - title: Users
       url: /usage/users
-    - title: Workflows
-      url: /usage/workflows
 - title: Architecture
   url: /architecture/authentication
   children:
