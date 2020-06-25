@@ -78,6 +78,8 @@
   children:
     - title: Build
       url: /tooling/build
+    - title: Coverage
+      url: /tooling/coverage
     - title: Debugging
       url: /tooling/debugging
     - title: Linting
