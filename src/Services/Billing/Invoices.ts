@@ -11,7 +11,7 @@ class Invoices extends Service {
      */
     upcoming() {
         return this.client
-            .get<JsonResponse<Invoice>>('api/v1/invoices/upcoming')
+            .get<JsonResponse<Invoice>>('1/billing/invoice/upcoming')
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data.data;
             });

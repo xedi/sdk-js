@@ -1,0 +1,5 @@
+const METERED_USAGE_PRODUCT = 'ae8e1794-5c88-11ea-bc55-0242ac130003';
+
+export default {
+    METERED_USAGE_PRODUCT
+};

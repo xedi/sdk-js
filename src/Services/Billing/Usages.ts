@@ -1,9 +1,17 @@
 import Service from "../Service";
+import JsonResponse from "../../Interfaces/JsonResponse";
+import {AxiosResponse} from "axios";
+import Usage from "../../Models/Usage";
 
 class Usages extends Service
 {
-    recordUsage(usage: number) {
-        // Noop - need to confirm if we will need this in the UI
+
+    list() {
+        return this.client
+            .get<JsonResponse<Usage>>('1/billing/usages')
+            .then((response: AxiosResponse<JsonResponse<Usage>>) => {
+                return response.data.data;
+            });
     }
 }
 
