@@ -13,6 +13,7 @@ import SubscriptionItems from './SubscriptionItems';
 import Usages from './Usages';
 import Container from '../../Container/Container';
 import Taxes from "./Taxes";
+import Constants from './../../Constants/Billing';
 
 class Billing extends Container {
     constructor(app: Container) {
@@ -134,6 +135,17 @@ class Billing extends Container {
     /* istanbul ignore next Simple Method */
     get Logger(): LogManagerInterface {
         return super.resolve('logger');
+    }
+
+    /**
+     * Gets Constants instance
+     *
+     * @return LogManager
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Constants() {
+        return Constants;
     }
 
     /**

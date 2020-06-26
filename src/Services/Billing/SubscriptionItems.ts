@@ -12,9 +12,17 @@ class SubscriptionItems extends Service
      */
     getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<SubscriptionItem>>(`api/functional/product/${entityId}/subscriptionItem`)
+            .get<JsonResponse<SubscriptionItem>>(`1/billing/subscriptionItem/${entityId}`)
             .then((response: AxiosResponse<JsonResponse<SubscriptionItem>>) => {
-                return response
+                return response.data.data
+            });
+    }
+
+    upcomingUsage() {
+        return this.client
+            .get<JsonResponse<SubscriptionItem>>(`1/billing/invoice/upcoming/usage`)
+            .then((response: AxiosResponse<JsonResponse<SubscriptionItem>>) => {
+                return response.data
             });
     }
 }
