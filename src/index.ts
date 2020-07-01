@@ -177,6 +177,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.events', (app: ContainerInterface, config: Config) => {
+            return new Services.Events(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -226,6 +233,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.doc-types');
+    }
+
+    /**
+     * Get an instance of the Events API
+     */
+    static get Events(): Services.Events
+    {
+        return this.resolveInstance()
+            .resolve('services.events');
     }
 
     /**
