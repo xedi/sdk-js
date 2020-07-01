@@ -1,0 +1,95 @@
+---
+title: Events API
+description: Using the Events API
+status: New
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Events.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons'
+
+## Introduction
+
+The Events API allows you to retreive event information for given context.
+
+## Usage
+
+### List
+
+Returns a list of events.
+
+**Example**
+```js
+const events = await Xedi.Events.list();
+```
+
+**Response**
+```json
+[
+    {
+      "_id": "94fb96b4-bba4-11ea-b267-0242ac140008",
+      "translation_key": "events.user.modified.self",
+      "translation_params": {
+          "field": {
+              "translation_key": "user.fields.first_name"
+          },
+          "from": "Anthony",
+          "to": "Tony"
+      },
+      "context_id": "92ac7274-9369-11ea-9521-01002da17977",
+      "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
+      "updated_at": "2020-07-01 15:10:13",
+      "created_at": "2020-07-01 15:10:13"
+    },
+    {
+      "_id": "4a1d2cca-bba9-11ea-8d7c-0100bc2a1e29",
+      "translation_key": "events.business.joined",
+      "translation_params": {
+          "user": {
+              "_id": "c0575730-bba9-11ea-8da8-01002da17977"
+          }
+      },
+      "context_id": "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
+      "actor_id": "39868f46-bba9-11ea-9f87-01002da17977",
+      "updated_at": "2020-07-01 15:10:13",
+      "created_at": "2020-07-01 15:10:13"
+    }
+]
+
+```
+
+
+### Get
+
+Retrieves a given Event by ID
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| userID | XUID | <CheckIcon color="green.5"/> | 94fb96b4-bba4-11ea-b267-0242ac140008 |
+
+**Example**
+```js
+const event = await Xedi.Events.get(
+    '94fb96b4-bba4-11ea-b267-0242ac140008'
+);
+```
+
+**Response**
+```json
+{
+    "_id": "94fb96b4-bba4-11ea-b267-0242ac140008",
+    "translation_key": "events.user.modified.self",
+    "translation_params": {
+        "field": {
+            "translation_key": "user.fields.first_name"
+        },
+        "from": "Anthony",
+        "to": "Tony"
+    },
+    "context_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "updated_at": "2020-07-01 15:10:13",
+    "created_at": "2020-07-01 15:10:13"
+}
+```
