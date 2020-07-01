@@ -12,10 +12,12 @@ import Transitions from './Transition';
 import Instance from './Instance';
 import Stage from './Stage';
 import TaxRate from './TaxRate';
+import Event from './Event';
 
 type Models =
     Business
     | DocType
+    | Event
     | Instance
     | Mailbox
     | Partner
@@ -47,5 +49,6 @@ export {
     Template,
     Transitions,
     Instance,
-    Stage
+    Stage,
+    Event,
 };
