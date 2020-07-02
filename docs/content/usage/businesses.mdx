@@ -5,7 +5,9 @@ status: Stable
 source: https://github.com/xedi/sdk-js/blob/master/src/Services/Businesses.ts
 ---
 
-import {CheckIcon} from '@primer/styled-octicons'
+import {CheckIcon} from '@primer/styled-octicons';
+import {Box,Flex,Label} from '@primer/components';
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
 
 ## Introduction
 
@@ -13,9 +15,19 @@ The Businesses API allows you to create and access information about businesses.
 
 ## Usage
 
-### List
+<Flex alignItems="center">
+    <H3>List</H3>
+    <Box mx="auto" />
+    <Label bg="#A575FF">Pagination Enabled</Label>
+</Flex>
 
 List all Businesses that the user has the authority to see.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| pageNumber | Number |  | 1 |
 
 **Usage**
 
@@ -26,54 +38,67 @@ const businesses = await Xedi.Businesses.list();
 **Response**
 
 ```json
-[
-    {
-        "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
-        "business_name": "Avengers",
-        "address_1": "TOP_SECRET",
-        "address_2": "TOP_SECRET",
-        "address_3": "New York",
-        "address_4": null,
-        "post_code": "TOP_SECRET",
-        "currency": "usd",
-        "vat_code": "123",
-        "invoice_name": "123",
-        "country_code": "USA",
-        "contact_name": "Anthony Stark",
-        "contact_email": "t.stark@avengers.org",
-        "contact_no": "(970) 517-1743 x67916",
-        "website": "https://avengers.org",
-        "logo": "https://assets.avengers.org/images/logo.png",
-        "requires_gln": false,
-        "gs1_prefix": "030",
-        "slug": "avengers",
-        "external": false,
-        "public": true
-    },
-    {
-        "_id": "d1dfb302-b53d-11ea-95d2-0100f1a50c6e",
-        "business_name": "Hydra",
-        "address_1": "EVERYWHERE",
-        "address_2": "EVERYWHERE",
-        "address_3": "EVERYWHERE",
-        "address_4": null,
-        "post_code": "EVERYWHERE",
-        "currency": "usd",
-        "vat_code": "456",
-        "invoice_name": "456",
-        "country_code": "USA",
-        "contact_name": null,
-        "contact_email": null,
-        "contact_no": null,
-        "website": null,
-        "logo": null,
-        "requires_gln": false,
-        "gs1_prefix": "030",
-        "slug": "hydra",
-        "external": false,
-        "public": false
-    }
-]
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+            "business_name": "Avengers",
+            "address_1": "TOP_SECRET",
+            "address_2": "TOP_SECRET",
+            "address_3": "New York",
+            "address_4": null,
+            "post_code": "TOP_SECRET",
+            "currency": "usd",
+            "vat_code": "123",
+            "invoice_name": "123",
+            "country_code": "USA",
+            "contact_name": "Anthony Stark",
+            "contact_email": "t.stark@avengers.org",
+            "contact_no": "(970) 517-1743 x67916",
+            "website": "https://avengers.org",
+            "logo": "https://assets.avengers.org/images/logo.png",
+            "requires_gln": false,
+            "gs1_prefix": "030",
+            "slug": "avengers",
+            "external": false,
+            "public": true
+        },
+        {
+            "_id": "d1dfb302-b53d-11ea-95d2-0100f1a50c6e",
+            "business_name": "Hydra",
+            "address_1": "EVERYWHERE",
+            "address_2": "EVERYWHERE",
+            "address_3": "EVERYWHERE",
+            "address_4": null,
+            "post_code": "EVERYWHERE",
+            "currency": "usd",
+            "vat_code": "456",
+            "invoice_name": "456",
+            "country_code": "USA",
+            "contact_name": null,
+            "contact_email": null,
+            "contact_no": null,
+            "website": null,
+            "logo": null,
+            "requires_gln": false,
+            "gs1_prefix": "030",
+            "slug": "hydra",
+            "external": false,
+            "public": false
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/businesses?page=1",
+    "from": 1,
+    "last_page": "https://api.xedi.com/1/businesses?page=1",
+    "last_page_url": null,
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/businesses",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 2,
+    "total": 2
+}
 ```
 
 ### Get
@@ -207,7 +232,11 @@ const business = Xedi.Businesses.create({
 }
 ```
 
-### Get by User
+<Flex alignItems="center">
+    <H3>Get by User</H3>
+    <Box mx="auto" />
+    <Label bg="#A575FF">Pagination Enabled</Label>
+</Flex>
 
 List all the businesses a particular user is associated with.
 
@@ -216,6 +245,7 @@ List all the businesses a particular user is associated with.
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
 | user_id | UUID | <CheckIcon color="green.5"/> | f3ce14b8-b542-11ea-aded-01002da17977 |
+| pageNumber | number | | 1 |
 
 **Usage**
 
@@ -226,52 +256,42 @@ const businesses = await Xedi.Businesses.getByUser('f3ce14b8-b542-11ea-aded-0100
 **Response**
 
 ```json
-[
-    {
-        "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
-        "business_name": "Avengers",
-        "address_1": "TOP_SECRET",
-        "address_2": "TOP_SECRET",
-        "address_3": "New York",
-        "address_4": null,
-        "post_code": "TOP_SECRET",
-        "currency": "usd",
-        "vat_code": "123",
-        "invoice_name": "123",
-        "country_code": "USA",
-        "contact_name": "Anthony Stark",
-        "contact_email": "t.stark@avengers.org",
-        "contact_no": "(970) 517-1743 x67916",
-        "website": "https://avengers.org",
-        "logo": "https://assets.avengers.org/images/logo.png",
-        "requires_gln": false,
-        "gs1_prefix": "030",
-        "slug": "avengers",
-        "external": false,
-        "public": true
-    },
-    {
-        "_id": "d1dfb302-b53d-11ea-95d2-0100f1a50c6e",
-        "business_name": "Hydra",
-        "address_1": "EVERYWHERE",
-        "address_2": "EVERYWHERE",
-        "address_3": "EVERYWHERE",
-        "address_4": null,
-        "post_code": "EVERYWHERE",
-        "currency": "usd",
-        "vat_code": "456",
-        "invoice_name": "456",
-        "country_code": "USA",
-        "contact_name": null,
-        "contact_email": null,
-        "contact_no": null,
-        "website": null,
-        "logo": null,
-        "requires_gln": false,
-        "gs1_prefix": "030",
-        "slug": "hydra",
-        "external": false,
-        "public": false
-    }
-]
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+            "business_name": "Avengers",
+            "address_1": "TOP_SECRET",
+            "address_2": "TOP_SECRET",
+            "address_3": "New York",
+            "address_4": null,
+            "post_code": "TOP_SECRET",
+            "currency": "usd",
+            "vat_code": "123",
+            "invoice_name": "123",
+            "country_code": "USA",
+            "contact_name": "Anthony Stark",
+            "contact_email": "t.stark@avengers.org",
+            "contact_no": "(970) 517-1743 x67916",
+            "website": "https://avengers.org",
+            "logo": "https://assets.avengers.org/images/logo.png",
+            "requires_gln": false,
+            "gs1_prefix": "030",
+            "slug": "avengers",
+            "external": false,
+            "public": true
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/businesses?page=1",
+    "from": 1,
+    "last_page": "https://api.xedi.com/1/businesses?page=1",
+    "last_page_url": null,
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/businesses",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
 ```

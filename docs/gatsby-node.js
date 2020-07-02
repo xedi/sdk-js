@@ -6,6 +6,21 @@ exports.onCreatePage = ({ page, actions }) => {
     const { createPage, deletePage } = actions;
 
     switch(page.path) {
+        case '/usage/businesses':
+            deletePage(page);
+
+            page.context.tableOfContents.items[1].items.unshift({
+                title: "List",
+                url: '#list'
+            });
+
+            page.context.tableOfContents.items[1].items.push({
+                title: "Get By User",
+                url: "#get-by-user"
+            });
+
+            createPage(page);
+            break;
         case '/usage/translations':
             deletePage(page);
 
