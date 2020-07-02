@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
+import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
 import { Collection, Business } from '../Models/Models';
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 
@@ -11,14 +12,17 @@ class Businesses extends Service
 {
     /**
      * Lists businesses
-     * @returns Promise<Business[]>
+     *
+     * @param pageNumber
+     *
+     * @returns Promise<PaginatedJsonResponse<Business[]>>
      */
-    list()
+    list(pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>>
     {
         return this.client
-            .get<JsonResponse<Collection<Business>>>(`1/businesses`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Business>>>) => {
-                return response.data.data;
+            .get<PaginatedJsonResponse<Business>>(`1/businesses`, { params: { page: pageNumber }})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
+                return response.data;
             });
     }
 
@@ -50,14 +54,17 @@ class Businesses extends Service
 
     /**
      * Gets by user
+     *
      * @param userId
-     * @returns Promise<Business[]>
+     * @param pageNumber
+     *
+     * @returns Promise<PaginatedJsonResponse<Business[]>>
      */
-    getByUser(userId: Xuid<SupportedXuid.User>) {
+    getByUser(userId: Xuid<SupportedXuid.User>, pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>> {
         return this.client
-            .get<JsonResponse<Collection<Business>>>(`1/users/${ userId }/businesses`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Business>>>) => {
-                return response.data.data;
+            .get<PaginatedJsonResponse<Business>>(`1/users/${ userId }/businesses`, { params: { page: pageNumber }})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
+                return response.data;
             });
     }
 }
