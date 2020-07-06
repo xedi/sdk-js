@@ -178,7 +178,7 @@ class Billing extends Container {
 
     /* istanbul ignore next Simple Method */
     get Customers(): Customers {
-        return super.resolve('customer');
+        return super.resolve('customers');
     }
 
     /**

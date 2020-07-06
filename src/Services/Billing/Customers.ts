@@ -11,9 +11,9 @@ class Customers extends Service {
      * @param businessId
      * @returns Promise<Business>
      */
-    get(businessId: Xuid<SupportedXuid.Business>) {
+    getByBusiness(businessId: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Customer>>(`api/v1/customers/${businessId}`)
+            .get<JsonResponse<Customer>>(`1/billing/customers/${businessId}`)
             .then((response: AxiosResponse<JsonResponse<Customer>>) => {
                 return response.data.data;
             });
@@ -26,7 +26,7 @@ class Customers extends Service {
      */
     update(customer: Customer) {
         return this.client
-            .patch<JsonResponse<Customer>>(`api/v1/customers/${customer.id}`)
+            .patch<JsonResponse<Customer>>(`1/billing/customers/${customer.id}`)
             .then((response: AxiosResponse<JsonResponse<Customer>>) => {
                 return response.data.data;
             });
