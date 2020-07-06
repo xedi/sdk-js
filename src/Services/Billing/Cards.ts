@@ -11,7 +11,7 @@ class Cards extends Service {
      */
     list() {
         return this.client
-            .get<JsonResponse<Collection<Card>>>(`api/v1/cards`)
+            .get<JsonResponse<Collection<Card>>>(`1/billing/cards`)
             .then((response: AxiosResponse<JsonResponse<Collection<Card>>>) => {
                 return response.data.data;
             });
@@ -24,7 +24,7 @@ class Cards extends Service {
      */
     get(cardId: string) {
         return this.client
-            .get<JsonResponse<Card>>(`api/v1/cards/${cardId}`)
+            .get<JsonResponse<Card>>(`1/billing/cards/${cardId}`)
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
                 return response.data.data;
             });
@@ -50,7 +50,7 @@ class Cards extends Service {
      */
     update(card: Card) {
         return this.client
-            .patch<JsonResponse<Card>>(`api/v1/cards/${card.id}`, card)
+            .patch<JsonResponse<Card>>(`1/billing/cards/${card.id}`, card)
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
                 return response.data.data
             });
@@ -63,7 +63,7 @@ class Cards extends Service {
      */
     delete(cardId: string) {
         return this.client
-            .delete<JsonResponse<Card>>(`api/v1/cards/${cardId}`)
+            .delete<JsonResponse<Card>>(`1/billing/cards/${cardId}`)
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
                 return response;
             });
