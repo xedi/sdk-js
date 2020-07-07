@@ -17,50 +17,68 @@ The Events API allows you to retreive event information for given context.
 
 Returns a list of events.
 
-**Example**
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| pageNumber | number |  | 1 |
+
+**Usage**
 ```js
 const events = await Xedi.Events.list();
 ```
 
 **Response**
 ```json
-[
-    {
-      "_id": "94fb96b4-bba4-11ea-b267-0242ac140008",
-      "translation_key": "events.user.modified.self",
-      "translation_params": {
-          "field": {
-              "translation_key": "user.fields.first_name"
-          },
-          "from": "Anthony",
-          "to": "Tony"
-      },
-      "context_id": "92ac7274-9369-11ea-9521-01002da17977",
-      "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
-      "updated_at": "2020-07-01 15:10:13",
-      "created_at": "2020-07-01 15:10:13"
-    },
-    {
-      "_id": "4a1d2cca-bba9-11ea-8d7c-0100bc2a1e29",
-      "translation_key": "events.business.joined",
-      "translation_params": {
-          "user": {
-              "_id": "c0575730-bba9-11ea-8da8-01002da17977"
-          }
-      },
-      "context_id": "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
-      "actor_id": "39868f46-bba9-11ea-9f87-01002da17977",
-      "updated_at": "2020-07-01 15:10:13",
-      "created_at": "2020-07-01 15:10:13"
-    }
-]
-
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "94fb96b4-bba4-11ea-b267-0242ac140008",
+            "translation_key": "events.user.modified.self",
+            "translation_params": {
+                "field": {
+                    "translation_key": "user.fields.first_name"
+                },
+                "from": "Anthony",
+                "to": "Tony"
+            },
+            "context_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "updated_at": "2020-07-01 15:10:13",
+            "created_at": "2020-07-01 15:10:13"
+        },
+        {
+            "_id": "4a1d2cca-bba9-11ea-8d7c-0100bc2a1e29",
+            "translation_key": "events.business.joined",
+            "translation_params": {
+                "user": {
+                    "_id": "c0575730-bba9-11ea-8da8-01002da17977"
+                }
+            },
+            "context_id": "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
+            "actor_id": "39868f46-bba9-11ea-9f87-01002da17977",
+            "updated_at": "2020-07-01 15:10:13",
+            "created_at": "2020-07-01 15:10:13"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/events?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://api.xedi.com/1/events?page=1",
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/events",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 2
+}
 ```
 
 
 ### Get
 
-Retrieves a given Event by ID
+Retrieves a given event by ID
 
 **Parameters**
 
@@ -68,7 +86,7 @@ Retrieves a given Event by ID
 | :-- | :-- | :-: | :-- |
 | userID | XUID | <CheckIcon color="green.5"/> | 94fb96b4-bba4-11ea-b267-0242ac140008 |
 
-**Example**
+**Usage**
 ```js
 const event = await Xedi.Events.get(
     '94fb96b4-bba4-11ea-b267-0242ac140008'
@@ -91,5 +109,165 @@ const event = await Xedi.Events.get(
     "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
     "updated_at": "2020-07-01 15:10:13",
     "created_at": "2020-07-01 15:10:13"
+}
+```
+
+### Get By User
+
+Retrieves a list of events for a specified user.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| userID | XUID | <CheckIcon color="green.5"/> | 94fb96b4-bba4-11ea-b267-0242ac140008 |
+| pageNumber | number |  | 1 |
+
+**Usage**
+
+```javascript
+const events = await Xedi.Events.getByUser(
+    "94fb96b4-bba4-11ea-b267-0242ac140008"
+);
+```
+
+**Response**
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "94fb96b4-bba4-11ea-b267-0242ac140008",
+            "translation_key": "events.user.modified.self",
+            "translation_params": {
+                "field": {
+                    "translation_key": "user.fields.first_name"
+                },
+                "from": "Anthony",
+                "to": "Tony"
+            },
+            "context_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "actor_id": "92ac7274-9369-11ea-9521-01002da17977",
+            "updated_at": "2020-07-01 15:10:13",
+            "created_at": "2020-07-01 15:10:13"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/events?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://api.xedi.com/1/events?page=1",
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/events",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+
+### Get By Business
+
+Retrieves a list of events for a specified business.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| businessID | XUID | <CheckIcon color="green.5"/> | 2ff01e20-bba9-11ea-8f25-0100f1a50c6e |
+| pageNumber | number |  | 1 |
+
+**Usage**
+
+```javascript
+const events = await Xedi.Events.getByBusiness(
+    "2ff01e20-bba9-11ea-8f25-0100f1a50c6e"
+);
+```
+
+**Response**
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "4a1d2cca-bba9-11ea-8d7c-0100bc2a1e29",
+            "translation_key": "events.business.joined",
+            "translation_params": {
+                "user": {
+                    "_id": "c0575730-bba9-11ea-8da8-01002da17977"
+                }
+            },
+            "context_id": "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
+            "actor_id": "39868f46-bba9-11ea-9f87-01002da17977",
+            "updated_at": "2020-07-01 15:10:13",
+            "created_at": "2020-07-01 15:10:13"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/events?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://api.xedi.com/1/events?page=1",
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/events",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+
+### Get By User for Business
+
+Retrieves a list of events for a specified business filtered by a given user.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| businessID | XUID | <CheckIcon color="green.5"/> | 2ff01e20-bba9-11ea-8f25-0100f1a50c6e |
+| userID | XUID | <CheckIcon color="green.5"/> | 94fb96b4-bba4-11ea-b267-0242ac140008 |
+| pageNumber | number |  | 1 |
+
+**Usage**
+
+```javascript
+const events = await Xedi.Events.getByUserForBusiness(
+    "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
+    "94fb96b4-bba4-11ea-b267-0242ac140008"
+);
+```
+
+**Response**
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "4a1d2cca-bba9-11ea-8d7c-0100bc2a1e29",
+            "translation_key": "events.business.joined",
+            "translation_params": {
+                "user": {
+                    "_id": "c0575730-bba9-11ea-8da8-01002da17977"
+                }
+            },
+            "context_id": "2ff01e20-bba9-11ea-8f25-0100f1a50c6e",
+            "actor_id": "39868f46-bba9-11ea-9f87-01002da17977",
+            "updated_at": "2020-07-01 15:10:13",
+            "created_at": "2020-07-01 15:10:13"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/events?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://api.xedi.com/1/events?page=1",
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/events",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
 }
 ```
