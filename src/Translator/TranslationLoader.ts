@@ -1,4 +1,4 @@
-import * as English from '@xedi/translations/dist/en.collapse.json';
+import * as English from '@xedi/translations/dist/en.json';
 
 const SUPPORTED_LANGUAGES = new Map<string, LanguagePack>([
     [

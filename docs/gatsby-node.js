@@ -1,4 +1,4 @@
-const English = require('@xedi/translations/dist/en.collapse.json');
+const English = require('@xedi/translations/dist/en.json');
 const uniq = require('lodash.uniq');
 const titleCase =  require('title-case');
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box} from '@primer/components'
-import * as English from '@xedi/translations/dist/en.collapse.json';
+import * as English from '@xedi/translations/dist/en.json';
 import Table from '@primer/gatsby-theme-doctocat/src/components/table';
 import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
 import styled from 'styled-components';
