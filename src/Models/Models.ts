@@ -13,7 +13,21 @@ import Instance from './Instance';
 import Stage from './Stage';
 import TaxRate from './TaxRate';
 
-type Models = User | Business | Mailbox | Product | Template | Transitions | Stage | Instance | Permission | Partner | Partnership | DocType;
+type Models =
+    Business
+    | DocType
+    | Instance
+    | Mailbox
+    | Partner
+    | Partnership
+    | Permission
+    | Price
+    | Product
+    | Stage
+    | TaxRate
+    | Template
+    | Transitions
+    | User;
 
 interface Collection<T = Models> extends Array<T | Models> {}
 
