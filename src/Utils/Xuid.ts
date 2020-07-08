@@ -19,6 +19,7 @@ export enum SupportedXuid {
     Partner,
     DocType,
     Event,
+    NetworkConnection,
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
