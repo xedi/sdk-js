@@ -4,6 +4,7 @@ import { AxiosResponse } from "axios";
 import Service from "./Service";
 import NetworkConnection from "../Models/NetworkConnection";
 import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * NetworkConnections

@@ -187,6 +187,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.network-connections', (app: ContainerInterface, config: Config) => {
+            return new Services.NetworkConnections(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.billing', (app: ContainerInterface, config: Config) => {
             return new Services.Billing(
                 this
@@ -342,6 +349,14 @@ class Xedi extends Container {
     static get Billing(): Services.Billing {
         return this.resolveInstance()
             .resolve('services.billing');
+    }
+
+    /**
+     * Get an instance of the Network Connections API
+     */
+    static get NetworkConnections(): Services.NetworkConnections {
+        return this.resolveInstance()
+            .resolve('services.network-connections');
     }
 }
 
