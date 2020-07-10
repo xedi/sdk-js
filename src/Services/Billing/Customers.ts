@@ -21,12 +21,13 @@ class Customers extends Service {
 
     /**
      * Update Customer
+     * @param businessId
      * @param customer
      * @returns Promise<Business>
      */
-    update(customer: Customer) {
+    update(businessId: Xuid<SupportedXuid.Business>, customer: Customer) {
         return this.client
-            .patch<JsonResponse<Customer>>(`1/billing/customers/${customer.id}`)
+            .patch<JsonResponse<Customer>>(`1/billing/customers/${businessId}`, customer)
             .then((response: AxiosResponse<JsonResponse<Customer>>) => {
                 return response.data.data;
             });

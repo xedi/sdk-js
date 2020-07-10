@@ -37,7 +37,7 @@ class Cards extends Service {
      */
     create(card: Card) {
         return this.client
-            .post<JsonResponse<Card>>(`1/cards`, card)
+            .post<JsonResponse<Card>>(`1/billing/cards`, card)
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
                 return response.data.data
             });
@@ -65,7 +65,7 @@ class Cards extends Service {
         return this.client
             .delete<JsonResponse<Card>>(`1/billing/cards/${cardId}`)
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
-                return response;
+                return response.data.data;
             });
     }
 }
