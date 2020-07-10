@@ -32,6 +32,8 @@
       url: /usage/translations
     - title: Users
       url: /usage/users
+    - title: Network Connections
+      url: /usage/networkconnections
 - title: Architecture
   url: /architecture/authentication
   children:
