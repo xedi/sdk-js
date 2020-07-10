@@ -1,9 +1,21 @@
 import Service from "../Service";
 import JsonResponse from "../../Interfaces/JsonResponse";
-import {Invoice} from "../../Models/Models";
+import {Collection, Invoice} from "../../Models/Models";
 import {AxiosResponse} from "axios";
 
 class Invoices extends Service {
+
+    /**
+     * Get invoices
+     * @returns Promise<Business>
+     */
+    list() {
+        return this.client
+            .get<JsonResponse<Collection<Invoice>>>('1/billing/invoice')
+            .then((response: AxiosResponse<JsonResponse<Collection<Invoice>>>) => {
+                return response.data.data;
+            });
+    }
 
     /**
      * Get upcoming invoice
