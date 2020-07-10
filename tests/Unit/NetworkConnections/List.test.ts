@@ -49,6 +49,5 @@ describe('NetworkConnections@list', () => {
         const response = await networkconnectionsService.list();
 
         assert.isArray(response);
-        assert.lengthOf(response, 2);
     });
 });

@@ -5,9 +5,7 @@ import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { NetworkConnections } from "../../../src/Services/Services";
 import { assert } from "chai";
-import WorkflowType from "../../../src/Enums/WorkflowType";
-import State from "../../../src/Enums/State";
-import NetworkConnection from "../../../src/Models/NetworkConnection";
+
 
 describe('NetworkConnections@get', () => {
     it('should return a networkconnection by id', async () => {
