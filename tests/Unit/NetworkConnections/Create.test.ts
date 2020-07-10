@@ -18,14 +18,14 @@ describe('NetworkConnections@create', () => {
                 _id: "networkConnection-id",
                 partnership_id: "test-partnetship-id",
                 to_mailbox: "test-mailbox",
-                from_mailbox: 'test-mailbox',
-                network_status: 'active',
-                connection_type: 'FTP'
+                from_mailbox: "test-mailbox",
+                network_status: "active",
+                connection_type: "FTP"
             }
         };
 
         nock('http://api-gateway.localhost')
-            .post('/1/networkConnections')
+            .post('/1/networkconnections')
             .reply(201, positiveResponse);
 
         const mockConfig = new Config();
@@ -37,10 +37,10 @@ describe('NetworkConnections@create', () => {
             _id: "networkConnection-id",
             partnership_id: "test-partnetship-id",
             to_mailbox: "test-mailbox",
-            from_mailbox: 'test-mailbox',
-            network_status: 'active',
-            connection_type: 'FTP'
-        }
+            from_mailbox: "test-mailbox",
+            network_status: "active",
+            connection_type: "FTP"
+        };
 
         const networkConnectionsService = new NetworkConnections(mockConfig, axios);
         const response = await networkConnectionsService.create(networkConnection);
@@ -52,9 +52,9 @@ describe('NetworkConnections@create', () => {
                 _id: "networkConnection-id",
                 partnership_id: "test-partnetship-id",
                 to_mailbox: "test-mailbox",
-                from_mailbox: 'test-mailbox',
-                network_status: 'active',
-                connection_type: 'FTP'
+                from_mailbox: "test-mailbox",
+                network_status: "active",
+                connection_type: "FTP"
             }
         );
     });

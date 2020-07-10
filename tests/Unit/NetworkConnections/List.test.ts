@@ -37,7 +37,7 @@ describe('NetworkConnections@list', () => {
         };
 
         nock('http://api-gateway.localhost')
-            .get('/1/networkconnections')
+            .get('/1/networkconnections?page=1')
             .reply(200, positiveResponse);
 
         const mockConfig = new Config();
@@ -47,7 +47,7 @@ describe('NetworkConnections@list', () => {
 
         const networkconnectionsService = new NetworkConnections(mockConfig, axios);
         const response = await networkconnectionsService.list();
-
-        assert.isArray(response);
+        assert.isArray(response.data);
+        assert.lengthOf(response.data, 2);
     });
 });
