@@ -33,7 +33,7 @@ describe('NetworkConnections@update', () => {
         });
 
         const data: any = {
-            network_status: "pending"
+            network_status: "active"
         };
 
         const networkconnectionsService = new NetworkConnections(mockConfig, axios);
