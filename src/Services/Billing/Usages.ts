@@ -8,7 +8,7 @@ class Usages extends Service
 
     list() {
         return this.client
-            .get<JsonResponse<Usage>>('1/billing/usages')
+            .get<JsonResponse<Usage>>('1/billing/usage')
             .then((response: AxiosResponse<JsonResponse<Usage>>) => {
                 return response.data.data;
             });
