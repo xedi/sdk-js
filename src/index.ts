@@ -194,6 +194,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.events', (app: ContainerInterface, config: Config) => {
+            return new Services.Events(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.billing', (app: ContainerInterface, config: Config) => {
             return new Services.Billing(
                 this
