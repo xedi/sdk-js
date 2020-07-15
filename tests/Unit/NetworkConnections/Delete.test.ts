@@ -31,5 +31,6 @@ describe('NetworkConnections@delete', () => {
         const response = await networkconnectionsService.delete('networkconnection-id');
 
         assert.isObject(response);
+        assert.exists("networkconnection-id")
     })
 })
