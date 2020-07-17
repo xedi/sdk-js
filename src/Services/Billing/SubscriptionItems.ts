@@ -12,7 +12,7 @@ class SubscriptionItems extends Service
      */
     getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<SubscriptionItem>>(`1/billing/subscriptionItem/${entityId}`)
+            .get<JsonResponse<SubscriptionItem>>(`1/billing/subscriptionItems/${entityId}`)
             .then((response: AxiosResponse<JsonResponse<SubscriptionItem>>) => {
                 return response.data.data
             });
@@ -20,7 +20,7 @@ class SubscriptionItems extends Service
 
     upcomingUsage() {
         return this.client
-            .get<JsonResponse<SubscriptionItem>>(`1/billing/invoice/upcoming/usage`)
+            .get<JsonResponse<SubscriptionItem>>(`1/billing/invoices/upcoming/usage`)
             .then((response: AxiosResponse<JsonResponse<SubscriptionItem>>) => {
                 return response.data
             });

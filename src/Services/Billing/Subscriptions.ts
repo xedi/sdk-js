@@ -13,7 +13,7 @@ class Subscriptions extends Service {
      */
     isSubscribed(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/isSubscribed`)
+            .get<JsonResponse<AxiosResponse>>(`1/billing/subscriptions/${entityId}/isSubscribed`)
             .then((response: AxiosResponse) => {
                 return response
             });
