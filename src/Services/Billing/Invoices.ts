@@ -11,7 +11,7 @@ class Invoices extends Service {
      */
     list() {
         return this.client
-            .get<JsonResponse<Collection<Invoice>>>('1/billing/invoice')
+            .get<JsonResponse<Collection<Invoice>>>('1/billing/invoices')
             .then((response: AxiosResponse<JsonResponse<Collection<Invoice>>>) => {
                 return response.data.data;
             });
@@ -23,7 +23,7 @@ class Invoices extends Service {
      */
     upcoming() {
         return this.client
-            .get<JsonResponse<Invoice>>('1/billing/invoice/upcoming')
+            .get<JsonResponse<Invoice>>('1/billing/invoices/upcoming')
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data.data;
             });

@@ -11,9 +11,9 @@ class Plans extends Service {
      */
     getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<Plan>>(`api/functional/product/${entityId}/plan`)
+            .get<JsonResponse<Plan>>(`1/billing/plans/${entityId}`)
             .then((response: AxiosResponse<JsonResponse<Plan>>) => {
-                return response
+                return response.data.data
             });
     }
 }
