@@ -38,7 +38,7 @@ class Subscriptions extends Service {
      */
     subscribe(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/subscribe`)
+            .get<JsonResponse<AxiosResponse>>(`1/billing/subscriptions/${entityId}/subscribe`)
             .then((response: AxiosResponse) => {
                 return response
             });
@@ -51,7 +51,7 @@ class Subscriptions extends Service {
      */
     unsubscribe(entityId: string) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`api/functional/product/${entityId}/unsubscribe`)
+            .get<JsonResponse<AxiosResponse>>(`1/billing/subscriptions/${entityId}/unsubscribe`)
             .then((response: AxiosResponse) => {
                 return response
             });
