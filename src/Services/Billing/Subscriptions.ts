@@ -7,7 +7,7 @@ class Subscriptions extends Service {
 
     /**
      * Check if current business is subscribed to entity
-     * TODO@CE: @CS what do you reckon we do for "boolean" responses
+     *
      * @param entityId
      * @returns Promise<Business>
      */
@@ -33,7 +33,7 @@ class Subscriptions extends Service {
 
     /**
      * Subscribe to entity (Purchase)
-     * TODO@CE: @CS what do you reckon we do for "boolean" responses - may need to check what this returns first
+     *
      * @param entityId
      */
     subscribe(entityId: string) {
@@ -46,7 +46,7 @@ class Subscriptions extends Service {
 
     /**
      * Unsubscribe from entity (Cancel)
-     * TODO@CE: @CS what do you reckon we do for "boolean" responses - may need to check what this returns first
+     *
      * @param entityId
      */
     unsubscribe(entityId: string) {

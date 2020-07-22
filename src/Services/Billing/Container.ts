@@ -5,14 +5,12 @@ import ContainerInterface from '../../Interfaces/Container';
 import Cards from './Cards'
 import Customers from "./Customers";
 import Invoices from "./Invoices";
-import InvoiceItems from "./InvoiceItems";
 import Plans from './Plans';
 import Products from './Products';
 import Subscriptions from './Subscriptions';
 import SubscriptionItems from './SubscriptionItems';
 import Usages from './Usages';
 import Container from '../../Container/Container';
-import Taxes from "./Taxes";
 import Constants from './../../Constants/Billing';
 
 class Billing extends Container {
@@ -58,14 +56,6 @@ class Billing extends Container {
         });
 
         /* istanbul ignore next Simple Method */
-        super.singleton('invoice-items', (app: ContainerInterface, config: Config) => {
-            return new InvoiceItems(
-                config,
-                app.resolve('client')
-            );
-        });
-
-        /* istanbul ignore next Simple Method */
         super.singleton('plans', (app: ContainerInterface, config: Config) => {
             return new Plans(
                 config,
@@ -92,14 +82,6 @@ class Billing extends Container {
         /* istanbul ignore next Simple Method */
         super.singleton('subscription-items', (app: ContainerInterface, config: Config) => {
             return new SubscriptionItems(
-                config,
-                app.resolve('client')
-            );
-        });
-
-        /* istanbul ignore next Simple Method */
-        super.singleton('taxes', (app: ContainerInterface, config: Config) => {
-            return new Taxes(
                 config,
                 app.resolve('client')
             );
@@ -193,17 +175,6 @@ class Billing extends Container {
     }
 
     /**
-     * Gets an instance of the InvoiceItem API
-     *
-     * @return InvoiceItems
-     */
-
-    /* istanbul ignore next Simple Method */
-    get InvoiceItems(): InvoiceItems {
-        return super.resolve('invoice-items');
-    }
-
-    /**
      * Gets an instance of the Plan API
      *
      * @return Plans
@@ -245,17 +216,6 @@ class Billing extends Container {
     /* istanbul ignore next Simple Method */
     get SubscriptionItems(): SubscriptionItems {
         return super.resolve('subscription-items');
-    }
-
-    /**
-     * Gets an instance of the Tax API
-     *
-     * @return Taxes
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Taxes(): Taxes {
-        return super.resolve('taxes');
     }
 
     /**
