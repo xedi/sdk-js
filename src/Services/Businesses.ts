@@ -1,15 +1,14 @@
-import { AxiosResponse } from 'axios';
+import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
-import { Collection, Business } from '../Models/Models';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import {Business} from '../Models/Models';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
 /**
  * Businesses
  */
-class Businesses extends Service
-{
+class Businesses extends Service {
     /**
      * Lists businesses
      *
@@ -17,10 +16,9 @@ class Businesses extends Service
      *
      * @returns Promise<PaginatedJsonResponse<Business[]>>
      */
-    list(pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>>
-    {
+    list(pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>> {
         return this.client
-            .get<PaginatedJsonResponse<Business>>(`1/businesses`, { params: { page: pageNumber }})
+            .get<PaginatedJsonResponse<Business>>(`1/businesses`, {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
                 return response.data;
             });
@@ -33,7 +31,7 @@ class Businesses extends Service
      */
     get(businessId: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Business>>(`1/businesses/${ businessId }`)
+            .get<JsonResponse<Business>>(`1/businesses/${businessId}`)
             .then((response: AxiosResponse<JsonResponse<Business>>) => {
                 return response.data.data;
             });
@@ -56,13 +54,13 @@ class Businesses extends Service
      * Gets by user
      *
      * @param userId
-     * @param pageNumber
+     * @param params
      *
      * @returns Promise<PaginatedJsonResponse<Business[]>>
      */
-    getByUser(userId: Xuid<SupportedXuid.User>, pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>> {
+    getByUser(userId: Xuid<SupportedXuid.User>, params: object): Promise<PaginatedJsonResponse<Business>> {
         return this.client
-            .get<PaginatedJsonResponse<Business>>(`1/users/${ userId }/businesses`, { params: { page: pageNumber }})
+            .get<PaginatedJsonResponse<Business>>(`1/users/${userId}/businesses`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
                 return response.data;
             });
