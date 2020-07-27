@@ -1,25 +1,23 @@
 import Service from './Service';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { TaxRate, Collection } from '../Models/Models';
-import { AxiosResponse } from 'axios';
+import {Collection, TaxRate} from '../Models/Models';
+import {AxiosResponse} from 'axios';
 
 /**
  * TaxRates
  */
-class TaxRates extends Service
-{
+class TaxRates extends Service {
     /**
      * Get by business
-     * @param businessId
+     * @param params
      * @returns <Promise>TaxRate[]>
      */
-    getByBusiness(businessId: Xuid<SupportedXuid.Business>)
-    {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<TaxRate>>>(`1/businesses/${ businessId }/tax`)
+            .get<JsonResponse<Collection<TaxRate>>>(`1/tax`, {params})
             .then((response: AxiosResponse<JsonResponse<Collection<TaxRate>>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
@@ -30,7 +28,7 @@ class TaxRates extends Service
      */
     get(taxRateId: Xuid<SupportedXuid.TaxRate>) {
         return this.client
-            .get<JsonResponse<TaxRate>>(`1/tax/${ taxRateId }`)
+            .get<JsonResponse<TaxRate>>(`1/tax/${taxRateId}`)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response.data.data;
             });
@@ -56,7 +54,7 @@ class TaxRates extends Service
      */
     update(product: TaxRate) {
         return this.client
-            .patch<JsonResponse<TaxRate>>(`1/tax/${ product._id }`, product)
+            .patch<JsonResponse<TaxRate>>(`1/tax/${product._id}`, product)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response.data.data
             });
@@ -69,7 +67,7 @@ class TaxRates extends Service
      */
     delete(taxRateId: Xuid<SupportedXuid.TaxRate>) {
         return this.client
-            .delete<JsonResponse<TaxRate>>(`1/tax/${ taxRateId }`)
+            .delete<JsonResponse<TaxRate>>(`1/tax/${taxRateId}`)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response;
             });

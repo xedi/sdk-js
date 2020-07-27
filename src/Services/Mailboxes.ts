@@ -8,15 +8,17 @@ import Xuid, { SupportedXuid } from "../Utils/Xuid";
  * Mailboxes Service
  */
 class Mailboxes extends Service {
+
     /**
      * Lists mailboxes
+     * @param params
      * @returns Promise<Mailbox[]>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Mailbox>>>(`1/mailboxes`)
+            .get<JsonResponse<Collection<Mailbox>>>(`1/mailboxes`, {params})
             .then((response: AxiosResponse<JsonResponse<Collection<Mailbox>>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 

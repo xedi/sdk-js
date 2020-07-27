@@ -1,25 +1,23 @@
 import Service from './Service';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { Product, Collection } from '../Models/Models';
-import { AxiosResponse } from 'axios';
+import {Collection, Product} from '../Models/Models';
+import {AxiosResponse} from 'axios';
 
 /**
  * Products
  */
-class Products extends Service
-{
+class Products extends Service {
     /**
      * Get by business
-     * @param businessId
+     * @param params
      * @returns <Promise>Product[]>
      */
-    getByBusiness(businessId: Xuid<SupportedXuid.Business>)
-    {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Product>>>(`1/businesses/${ businessId }/products`)
+            .get<JsonResponse<Collection<Product>>>(`1/products`, {params})
             .then((response: AxiosResponse<JsonResponse<Collection<Product>>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
@@ -30,7 +28,7 @@ class Products extends Service
      */
     get(productId: Xuid<SupportedXuid.Product>) {
         return this.client
-            .get<JsonResponse<Product>>(`1/products/${ productId }`)
+            .get<JsonResponse<Product>>(`1/products/${productId}`)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response.data.data;
             });
@@ -56,7 +54,7 @@ class Products extends Service
      */
     update(product: Product) {
         return this.client
-            .patch<JsonResponse<Product>>(`1/products/${ product._id }`, product)
+            .patch<JsonResponse<Product>>(`1/products/${product._id}`, product)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response.data.data
             });
@@ -69,7 +67,7 @@ class Products extends Service
      */
     delete(productId: Xuid<SupportedXuid.Product>) {
         return this.client
-            .delete<JsonResponse<Product>>(`1/products/${ productId }`)
+            .delete<JsonResponse<Product>>(`1/products/${productId}`)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response;
             });
