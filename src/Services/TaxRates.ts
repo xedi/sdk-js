@@ -1,8 +1,9 @@
 import Service from './Service';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {Collection, TaxRate} from '../Models/Models';
+import {TaxRate} from '../Models/Models';
 import {AxiosResponse} from 'axios';
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * TaxRates
@@ -11,12 +12,12 @@ class TaxRates extends Service {
     /**
      * Get by business
      * @param params
-     * @returns <Promise>TaxRate[]>
+     * @returns Promise<PaginatedJsonResponse<TaxRate[]>>
      */
     list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<TaxRate>>>(`1/tax`, {params})
-            .then((response: AxiosResponse<JsonResponse<Collection<TaxRate>>>) => {
+            .get<PaginatedJsonResponse<TaxRate>>(`1/tax`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<TaxRate>>) => {
                 return response.data;
             });
     }

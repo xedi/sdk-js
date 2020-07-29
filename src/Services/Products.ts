@@ -1,8 +1,9 @@
 import Service from './Service';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {Collection, Product} from '../Models/Models';
+import {Product} from '../Models/Models';
 import {AxiosResponse} from 'axios';
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * Products
@@ -11,12 +12,12 @@ class Products extends Service {
     /**
      * Get by business
      * @param params
-     * @returns <Promise>Product[]>
+     * @returns Promise<PaginatedJsonResponse<Product[]>>
      */
     list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Product>>>(`1/products`, {params})
-            .then((response: AxiosResponse<JsonResponse<Collection<Product>>>) => {
+            .get<PaginatedJsonResponse<Product>>(`1/products`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Product>>) => {
                 return response.data;
             });
     }
