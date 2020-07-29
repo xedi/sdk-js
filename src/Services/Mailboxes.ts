@@ -3,6 +3,7 @@ import JsonResponse from "../Interfaces/JsonResponse";
 import { Collection, Mailbox } from "../Models/Models";
 import { AxiosResponse } from "axios";
 import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * Mailboxes Service
@@ -12,12 +13,12 @@ class Mailboxes extends Service {
     /**
      * Lists mailboxes
      * @param params
-     * @returns Promise<Mailbox[]>
+     * @returns Promise<PaginatedJsonResponse<Mailbox[]>>
      */
     list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Mailbox>>>(`1/mailboxes`, {params})
-            .then((response: AxiosResponse<JsonResponse<Collection<Mailbox>>>) => {
+            .get<PaginatedJsonResponse<Mailbox>>(`1/mailboxes`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Mailbox>>) => {
                 return response.data;
             });
     }
