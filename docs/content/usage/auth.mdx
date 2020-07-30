@@ -6,6 +6,7 @@ source: 'https://github.com/xedi/sdk-js/blob/master/src/Services/Auth.ts'
 ---
 
 import {Link} from 'gatsby';
+import {Caption} from '@primer/gatsby-theme-doctocat'
 import {CheckIcon} from '@primer/styled-octicons'
 
 # Introduction
@@ -74,6 +75,56 @@ When the authentication state is revoked; `auth_deleted` is emitted.
     "method": "logout"
 }
 ```
+
+## claim_required
+
+When an API reports that a specified claim is required to access it; `claim_required` is emitted.
+
+```json
+{
+    "claim": "billing:manage"
+}
+```
+
+## claim_granted
+
+When a user is granted a claim by successfully confirming their credentials; `claim_granted` is emitted.
+
+```json
+{
+    "claim": "billing:manage"
+}
+```
+
+## claim_rejected
+
+When a user's attempt to confirm their credentials fails; `claim_rejected` is emitted.
+
+```json
+{
+  "code": 401,
+  "message": "Challenge Attempt Failed.",
+  "attempts": 1,
+  "max_attempts": 5,
+  "reason": {
+    "password": [
+      "Password not valid"
+    ]
+  }
+}
+```
+<Caption>Invalid credentials</Caption>
+
+```json
+{
+  "code": 429,
+  "message": "Too many challenge attempts. You may retry 4 minutes, 57 seconds from now.",
+  "attempts": 5,
+  "remaining_ttl": 298
+}
+```
+<Caption>Too many challenge attempts.</Caption>
+
 
 # Properties
 
@@ -317,6 +368,72 @@ Emits `auth_updated` on successful updating of the authentication context.
         "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5MjkzMDY0MCJ9.e4uj4pCw3qDZqrmWL3ylhThtIEWNAnVnwQOUz67sGys",
         "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5Mjg0MzcwMCJ9.Yapd6upCu_bFHP983WXdbtz5kg2L6lcz_tVp2cSTuOM"
     }
+}
+```
+
+## requestClaim
+
+Request a claim be added to your tokens by confirming your credentials.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| claim | String | <CheckIcon color="green.5"/> | billing:manage |
+| password | String | <CheckIcon color="green.5"/> | super-secret-password |
+
+**Events**
+
+Emits `auth_updated` and `claim_granted` on success.
+Emits `claim_rejected` on failure.
+
+**Usage**
+
+```javascript
+Xedi.Auth.requestClaim('billing:manage', 'super-secret-password');
+```
+
+**Response**
+
+```json
+{
+    "user": {
+        "_id": "92ac7274-9369-11ea-9521-01002da17977",
+        "email": "t.stark@avengers.org",
+        "first_name": "Anthony",
+        "last_name": "Stark",
+        "job_title": "Iron Man",
+        "contact_no": "(970) 517-1743 x67916",
+        "avatar": "https://assets.avengers.org/images/iron_man.png",
+        "created_at": "2020-05-11 10:27:03",
+        "updated_at": "2020-05-11 10:30:14",
+        "is_active": 1
+    },
+    "business": {
+        "_id": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+        "business_name": "Avengers",
+        "address_1": "TOP_SECRET",
+        "address_2": "TOP_SECRET",
+        "address_3": "New York",
+        "address_4": null,
+        "post_code": "TOP_SECRET",
+        "currency": "usd",
+        "vat_code": "123",
+        "invoice_name": "123",
+        "country_code": "USA",
+        "contact_name": "Anthony Stark",
+        "contact_email": "t.stark@avengers.org",
+        "contact_no": "(970) 517-1743 x67916",
+        "website": "https://avengers.org",
+        "logo": "https://assets.avengers.org/images/logo.png",
+        "requires_gln": false,
+        "gs1_prefix": "123",
+        "slug": "avengers",
+        "external": false,
+        "public": true
+    },
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5MjkzMDY0MCIsImNsYWltcyI6eyJiaWxsaW5nOm1hbmFnZSI6ImV5SnBjM01pT2lKb2RIUndPaTh2WVhCcExXZGhkR1YzWVhrdWJHOWpZV3hvYjNOMElpd2lZWFZrSWpvaWFIUjBjRG92TDJGd2FTMW5ZWFJsZDJGNUxteHZZMkZzYUc5emRDSXNJblI1Y0NJNklrcFhWQ0lzSW1Gc1p5STZJa2hUTWpVMkluMC5leUpqYkdGcGJTSTZJbUpwYkd4cGJtYzZiV0Z1WVdkbElpd2lkSGx3WlNJNkltTnNZV2x0SWl3aVpYaHdJam94TlRrMk1URXdOekk1ZlEuQmlkZ29CbTJ5NkZ1aXM3WTc3VVVwYndPdlJ5YkFVY2tBZ2ZWWm5KNHRFMCJ9fQ.2RfsMr_b_oeY3eRwr5iMJkKrcJWN_cAAweFdTmqRj3w",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6Imh0dHBzOi8vYXBpLnhlZGkuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkueGVkaS5jb20ifQ.eyJ1c2VyX3V1aWQiOiI5MmFjNzI3NC05MzY5LTExZWEtOTUyMS0wMTAwMmRhMTc5NzciLCJidXNpbmVzc191dWlkIjoiYzUyYWJjNTAtYjQ5OS0xMWVhLWE0OGMtMDEwMGYxYTUwYzZlIiwiZXhwIjoiMTU5Mjg0MzcwMCIsImNsYWltcyI6eyJiaWxsaW5nOm1hbmFnZSI6ImV5SnBjM01pT2lKb2RIUndPaTh2WVhCcExXZGhkR1YzWVhrdWJHOWpZV3hvYjNOMElpd2lZWFZrSWpvaWFIUjBjRG92TDJGd2FTMW5ZWFJsZDJGNUxteHZZMkZzYUc5emRDSXNJblI1Y0NJNklrcFhWQ0lzSW1Gc1p5STZJa2hUTWpVMkluMC5leUpqYkdGcGJTSTZJbUpwYkd4cGJtYzZiV0Z1WVdkbElpd2lkSGx3WlNJNkltTnNZV2x0SWl3aVpYaHdJam94TlRrMk1URXdOekk1ZlEuQmlkZ29CbTJ5NkZ1aXM3WTc3VVVwYndPdlJ5YkFVY2tBZ2ZWWm5KNHRFMCJ9fQ.UgLS557rCWbLxQMy_TcidK-IMymyKxMMcXSAOV3M-H8"
 }
 ```
 
