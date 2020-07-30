@@ -1,0 +1,61 @@
+---
+title: GraphQL
+description: Interacting with GraphQL
+status: Experimental
+source: https://github.com/xedi/sdk-js/blob/master/src/Utils/GraphQlClient.ts
+---
+
+import {Flash} from '@primer/components'
+import {InfoIcon} from '@primer/styled-octicons'
+import {ExternalLink} from '../../src/components'
+import {CheckIcon} from '@primer/styled-octicons'
+
+Sometimes you need a more specific or complex dataset than our standard RESTful APIs can provide. For this reason, we have also provided a GraphQL API.
+
+<Flash>
+    <InfoIcon mr={1} /> If you are unfamiliar with GraphQL, click <ExternalLink href="https://graphql.org/">here</ExternalLink> to learn more.
+</Flash>
+
+## Usage
+
+### query
+
+Allows you to perform `query` operations on the Graph.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| query | String | <CheckIcon color="green.5"/> | `query whoami($id: String!) { user(_id: $id) { display_name } }` |
+| variables | Object | | `{ id: "92ac7274-9369-11ea-9521-01002da17977" }` |
+| headers | Object | | `{ Accept-Language: "es" }` |
+
+**Usage**
+
+```javascript
+const myName = await Xedi.GraphQL.query(
+    `query whoami($id: String!) {
+        me: user(_id: $id) {
+            display_name
+        }
+    }`,
+    {
+        id: "92ac7274-9369-11ea-9521-01002da17977"
+    },
+    {
+        "Accept-Language": "es"
+    }
+);
+```
+
+**Response**
+
+```json
+{
+    "me": {
+        "display_name": "Anthony Stark"
+    }
+}
+```
+
+If you are wanting to use our GraphQL API, we recommend using <ExternalLink href="https://github.com/graphql/graphiql">GraphiQL</ExternalLink> or <ExternalLink href="https://github.com/getinsomnia/insomnia">Insomia</ExternalLink> as great starting points. Our API supports introspection which means it can provide these clients with uptodate documentation.
