@@ -53,6 +53,14 @@ class AuthenticateHeader
     }
 
     /**
+     * Gets claim
+     */
+    get claim()
+    {
+        return this.get('claim');
+    }
+
+    /**
      * Gets authenticate header
      * @param key
      * @returns get

@@ -19,6 +19,10 @@
                 animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
             }
 
+            .checkmark.error {
+                box-shadow: inset 0px 0px 0px #f44336;
+            }
+
             .checkmark__circle {
                 stroke-dasharray: 166;
                 stroke-dashoffset: 166;
@@ -27,6 +31,10 @@
                 stroke: #7ac142;
                 fill: none;
                 animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+            }
+
+            .checkmark.error .checkmark__circle {
+                stroke: #f44336;
             }
 
             .checkmark__check {
@@ -91,9 +99,76 @@
                         target.removeAttribute('hidden');
                     };
 
+                    const get_panel = (panel_name) => {
+                        return document.querySelector(`#panel-${panel_name}`);
+                    };
+
                     Xedi.Config.set('mode', 'local');
 
-                    document.querySelector('form').addEventListener('submit', (ev) => {
+                    Xedi.Auth.on('claim_required', (ev) => {
+                        show_panel('claim');
+                        const claimPanel = get_panel('claim');
+
+                        claimPanel.querySelector('input[name=claim]')
+                            .setAttribute('value', ev.claim);
+
+                        claimPanel.querySelector('form')
+                            .addEventListener('submit', (evt) => {
+                                evt.preventDefault();
+
+                                claimPanel.querySelector('button[type=submit]')
+                                    .setAttribute('aria-disabled', true);
+
+                                ev.process(claimPanel.querySelector('input[type=password]').value);
+                            });
+                    });
+
+                    Xedi.Auth.on('claim_granted', (ev) => {
+                        show_panel('success');
+
+                        get_panel('claim')
+                            .querySelector('button[type=submit]')
+                            .setAttribute('aria-disabled', false);
+                    });
+
+                    Xedi.Auth.on('claim_rejected', (ev) => {
+                        const panel = get_panel('claim');
+
+                        switch (ev.code) {
+                            case 429:
+                                Array.from(panel.querySelectorAll('div.flash'))
+                                    .forEach((el) => {
+                                        el.setAttribute('hidden', true);
+                                    });
+
+                                panel.querySelector('div.flash#throttled')
+                                    .removeAttribute('hidden');
+
+                                setTimeout(
+                                    () => {
+                                        panel.querySelector('div.flash#throttled')
+                                                .setAttribute('hidden', true);
+
+                                        panel.querySelector('button[type=submit]')
+                                            .setAttribute('aria-disabled', false);
+                                    },
+                                    ev.remaining_ttl * 1000
+                                );
+
+                                break;
+                            case 401:
+                                panel.querySelector('div.flash#validation')
+                                    .removeAttribute('hidden');
+
+                                panel.querySelector('button[type=submit]')
+                                    .setAttribute('aria-disabled', false);
+                                break;
+                            default:
+                                get_panel('unknown_error');
+                        }
+                    });
+
+                    document.querySelector('#panel-config form').addEventListener('submit', (ev) => {
                         ev.preventDefault();
 
                         if (config_btn_locked) {
@@ -209,6 +284,58 @@
                     </div>
                     <div class="Box-footer bg-gray text-center">
                         <p>Jump into DevTools and start hacking!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid" id="panel-claim" hidden is="panel">
+                <div class="col-9 mx-auto" id="content">
+                    <section>
+                        <form class="Box Box--spacious col-6 mx-auto">
+                            <input type="hidden" name="claim" value="" />
+                            <div class="Box-header">
+                                <h3 class="Box-title">Confirm password to continue</h3>
+                            </div>
+                            <div class="Box-body px-4 py-2">
+                                <div class="flash-messages">
+                                    <div class="flash flash-error" id="throttled" hidden>
+                                        Uh oh! You've been throttled! Try again in a few minutes.
+                                    </div>
+                                    <div class="flash flash-error" id="validation" hidden>
+                                        Incorrect Password. Try again.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group-header">
+                                        <label for="claim_password">Password</label>
+                                    </div>
+                                    <div class="form-group-body">
+                                        <input type="password" name="user_password" id="claim_password" class="form-control" aria-describedby="claim_password_help" required />
+                                        <p id="claim_password_help" class="note">The password for the user your want to authenticate as</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Box-footer">
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+            <div class="row-fluid" id="panel-unknown_error" hidden is="panel">
+                <div class="Box Box--spacious col-6 mx-auto">
+                    <div class="Box-row text-center py-8">
+                        <svg class="checkmark mx-auto error" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark__check" fill="none" d="M16 16 36 36" />
+                            <path class="checkmark__check" fill="none" d="M36 16 16 36" />
+                          </svg>
+
+                        <h3 class="fl-light anim-fade-in pt-8">An unknown error has occurred</h3>
+                    </div>
+                    <div class="Box-footer bg-gray text-center">
+                        <p>Try refreshing your browser.</p>
                     </div>
                 </div>
             </div>

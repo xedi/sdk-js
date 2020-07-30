@@ -63,6 +63,33 @@ abstract class Service {
     }
 
     /**
+     * Subscribe a onetime event subscriber
+     * @param event
+     * @param handler
+     * @returns Service
+     */
+    once(event: string, handler: EventHandler): Service {
+        if (! this.subscriptions.has(event)) {
+            return this;
+        }
+
+        const existingSubscriptions = this.subscriptions.get(event)!;
+        const selfDeletingHandler = (payload: EventPayload) => {
+            handler(payload);
+
+            const subscriptions = this.subscriptions.get(event);
+
+            subscriptions?.splice(existingSubscriptions.length, 1);
+
+            this.subscriptions.set(event, subscriptions!);
+        };
+
+        this.subscriptions.set(event, existingSubscriptions.concat([ selfDeletingHandler ]));
+
+        return this;
+    }
+
+    /**
      * Registers events
      * @param event
      * @returns Service
