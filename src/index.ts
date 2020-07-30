@@ -25,6 +25,10 @@ class Xedi extends Container {
                 }
             });
 
+            config.on('base_url.updated', (value) => {
+                client.defaults.baseURL = value;
+            });
+
             client.interceptors.request.use((value: AxiosRequestConfig): AxiosRequestConfig | Promise<AxiosRequestConfig> => {
                 if (config.has('access_token')) {
                     value.headers.Authorization = `Bearer ${config.get('access_token')}`;
