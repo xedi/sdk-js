@@ -20,7 +20,7 @@ class Auth extends Service
     private _business: Business | null | void = undefined;
 
     boot(): Service {
-        [ 'auth_updated', 'auth_deleted' ].forEach(event => {
+        [ 'auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected' ].forEach(event => {
             this.registerEvent(event);
         });
 
@@ -153,6 +153,41 @@ class Auth extends Service
 
                 return resp;
             });
+    }
+
+    requestClaim(claim: string, password: string) {
+        return this.client
+            .post<AuthResponse>('1/auth/challenge', { claim, password })
+            .then(
+                (resp: AxiosResponse<AuthResponse>) => {
+                    const body = resp.data;
+
+                    this.config.set('access_token', body.data.tokens.access);
+                    this.config.set('refresh_token', body.data.tokens.refresh);
+
+                    this.trigger('auth_updated', {
+                        method: 'request_claim',
+                        data: {
+                            user: body.data.user,
+                            business: body.data.business,
+                            refresh_token: body.data.tokens.refresh,
+                            access_token: body.data.tokens.access,
+                        }
+                    });
+
+                    this.trigger(
+                        'claim_granted',
+                        {
+                            claim
+                        }
+                    );
+
+                    return resp
+                },
+                (error) => {
+                    this.trigger('claim_rejected', error.response.data.error );
+                }
+            );
     }
 
     /**

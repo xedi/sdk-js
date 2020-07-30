@@ -69,6 +69,36 @@ class Xedi extends Container {
 
                             return Promise.reject('Re-Authentication required');
                         }
+
+                        const requiresClaim = authenticateHeader.error === 'Challenge is required';
+                        if (requiresClaim) {
+                            return new Promise(
+                                (resolve, reject) => {
+                                    this.resolve('services.auth')
+                                        .once(
+                                            'claim_granted',
+                                            () => {
+                                                const request = error.config;
+
+                                                delete request.headers.Authorization;
+
+                                                client.request(request)
+                                                    .then(resolve);
+                                             }
+                                        )
+                                        .trigger(
+                                            'claim_required',
+                                            {
+                                                claim: authenticateHeader.claim,
+                                                process: (password: string) => {
+                                                    this.resolve('services.auth')
+                                                        .requestClaim(authenticateHeader.claim!, password);
+                                                }
+                                            }
+                                        );
+                                }
+                            );
+                        }
                     }
 
                     return Promise.reject(error);
