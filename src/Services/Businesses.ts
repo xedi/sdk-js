@@ -9,16 +9,17 @@ import Xuid, {SupportedXuid} from '../Utils/Xuid';
  * Businesses
  */
 class Businesses extends Service {
+
     /**
      * Lists businesses
      *
-     * @param pageNumber
+     * @param params object
      *
      * @returns Promise<PaginatedJsonResponse<Business[]>>
      */
-    list(pageNumber: number = 1): Promise<PaginatedJsonResponse<Business>> {
+    list(params: object): Promise<PaginatedJsonResponse<Business>> {
         return this.client
-            .get<PaginatedJsonResponse<Business>>(`1/businesses`, {params: {page: pageNumber}})
+            .get<PaginatedJsonResponse<Business>>(`1/businesses`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
                 return response.data;
             });
