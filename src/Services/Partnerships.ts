@@ -1,25 +1,25 @@
 import Service from './Service';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { Partnership, Collection } from '../Models/Models';
-import { AxiosResponse } from 'axios';
+import {Partnership} from '../Models/Models';
+import {AxiosResponse} from 'axios';
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * Partnerships
  */
-class Partnerships extends Service
-{
+class Partnerships extends Service {
+
     /**
      * Get by business
-     * @param businessId
+     * @param params object
      * @returns <Promise>Partnership[]>
      */
-    getByBusiness(businessId: Xuid<SupportedXuid.Business>)
-    {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Partnership>>>(`1/businesses/${ businessId }/partnerships`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Partnership>>>) => {
-                return response.data.data;
+            .get<PaginatedJsonResponse<Partnership>>(`1/partnerships`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Partnership>>) => {
+                return response.data;
             });
     }
 
@@ -30,7 +30,7 @@ class Partnerships extends Service
      */
     get(partnershipId: Xuid<SupportedXuid.Partnership>) {
         return this.client
-            .get<JsonResponse<Partnership>>(`1/partnerships/${ partnershipId }`)
+            .get<JsonResponse<Partnership>>(`1/partnerships/${partnershipId}`)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data;
             });
@@ -56,7 +56,7 @@ class Partnerships extends Service
      */
     update(partnership: Partnership) {
         return this.client
-            .patch<JsonResponse<Partnership>>(`1/partnerships/${ partnership._id }`, partnership)
+            .patch<JsonResponse<Partnership>>(`1/partnerships/${partnership._id}`, partnership)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data
             });
@@ -69,7 +69,7 @@ class Partnerships extends Service
      */
     delete(partnershipId: Xuid<SupportedXuid.Partnership>) {
         return this.client
-            .delete<JsonResponse<Partnership>>(`1/partnerships/${ partnershipId }`)
+            .delete<JsonResponse<Partnership>>(`1/partnerships/${partnershipId}`)
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response;
             });
