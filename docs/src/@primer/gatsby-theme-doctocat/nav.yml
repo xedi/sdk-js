@@ -16,6 +16,8 @@
       url: /usage/businesses
     - title: Events
       url: /usage/events
+    - title: GraphQL
+      url: /usage/graphql
     - title: Mailboxes
       url: /usage/mailboxes
     - title: Products
@@ -43,6 +45,8 @@
       url: /architecture/singletons
     - title: HTTP Requests
       url: /architecture/http_requests
+    - title: GraphQL
+      url: /architecture/graphql
 - title: Development
   url: /development/api
   children:

@@ -4,6 +4,7 @@ import Config from './Config/Config';
 import * as Services from './Services/Services';
 import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
 import ContainerInterface from './Interfaces/Container';
+import GraphQlClient from './Utils/GraphQlClient';
 
 /**
  * Xedi
@@ -240,6 +241,13 @@ class Xedi extends Container {
                 this
             );
         });
+
+        this.singleton('utilities.graphql', (app: ContainerInterface, config: Config) => {
+            return new GraphQlClient(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -398,6 +406,15 @@ class Xedi extends Container {
     static get NetworkConnections(): Services.NetworkConnections {
         return this.resolveInstance()
             .resolve('services.network-connections');
+    }
+
+    /**
+     * Get an instance of the GraphQL Client
+     */
+    static get GraphQL(): GraphQlClient
+    {
+        return this.resolveInstance()
+            .resolve('utilities.graphql');
     }
 }
 
