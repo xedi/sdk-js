@@ -255,6 +255,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.groups', (app: ContainerInterface, config: Config) => {
+            return new Services.Groups(
+                config,
+                app.resolve('client')
+            );      
+        });
     }
 
     /**
@@ -399,7 +406,7 @@ class Xedi extends Container {
     static get Stages(): Services.Stages
     {
         return this.resolveInstance()
-            .resolve('services.Stages.ts');
+            .resolve('services.Stages');
     }
 
     /**
@@ -430,6 +437,12 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('utilities.graphql');
+    }
+    
+    static get Groups(): Services.Groups
+    {
+        return this.resolveInstance()
+            .resolve('services.groups');
     }
 }
 

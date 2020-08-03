@@ -17,6 +17,7 @@ import TaxRates from "./TaxRates";
 import Billing from "./Billing/Container";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
+import Groups from "./Groups";
 
 export {
     Accounts,
@@ -37,5 +38,6 @@ export {
     Stages,
     TaxRates,
     NetworkConnections,
-    Notifications
+    Notifications,
+    Groups,
 };

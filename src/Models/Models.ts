@@ -3,6 +3,7 @@ import Card from './Card';
 import Customer from "./Customer";
 import DocType from "./DocType";
 import Event from './Event';
+import Group from './Group';
 import Instance from './Instance';
 import Invoice from "./Invoice";
 import InvoiceItem from "./InvoiceItem";
@@ -23,7 +24,7 @@ import SubscriptionItem from './SubscriptionItem';
 import TaxRate from './TaxRate';
 import Template from './Template';
 import Transition from './Transition';
-import Usage from './Usage'
+import Usage from './Usage';
 import User from './User';
 
 type Models =
@@ -32,6 +33,7 @@ type Models =
     | Customer
     | DocType
     | Event
+    | Group
     | Instance
     | Invoice
     | InvoiceItem
@@ -65,6 +67,7 @@ export {
     Customer,
     DocType,
     Event,
+    Group,
     Instance,
     Invoice,
     InvoiceItem,
