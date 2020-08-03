@@ -21,7 +21,9 @@ export enum SupportedXuid {
     Event,
     NetworkConnection,
     Notification,
-    MailingList
+    MailingList,
+    Group,
+    GroupType,
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
