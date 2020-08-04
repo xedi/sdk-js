@@ -16,6 +16,7 @@ import Stages from "./Stages";
 import TaxRates from "./TaxRates";
 import Billing from "./Billing/Container";
 import NetworkConnections from "./NetworkConnections";
+import Notifications from "./Notifications";
 
 export {
     Accounts,
@@ -35,5 +36,6 @@ export {
     Instances,
     Stages,
     TaxRates,
-    NetworkConnections
+    NetworkConnections,
+    Notifications
 };
