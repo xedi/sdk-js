@@ -130,6 +130,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.notifications', (app: ContainerInterface, config: Config) => {
+            return new Services.Notifications(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.partners', (app: ContainerInterface, config: Config) => {
             return new Services.Partners(
                 config,
@@ -339,6 +346,14 @@ class Xedi extends Container {
     static get Mailboxes(): Services.Mailboxes {
         return this.resolveInstance()
             .resolve('services.mailboxes');
+    }
+
+    /**
+     * Get an instance of the Notifications API
+     */
+    static get Notifications(): Services.Notifications {
+        return this.resolveInstance()
+            .resolve('services.notifications');
     }
 
     /**
