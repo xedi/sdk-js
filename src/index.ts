@@ -260,7 +260,7 @@ class Xedi extends Container {
             return new Services.Groups(
                 config,
                 app.resolve('client')
-            );      
+            );
         });
     }
 
@@ -438,7 +438,7 @@ class Xedi extends Container {
         return this.resolveInstance()
             .resolve('utilities.graphql');
     }
-    
+
     static get Groups(): Services.Groups
     {
         return this.resolveInstance()
