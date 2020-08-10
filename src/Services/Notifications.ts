@@ -1,7 +1,7 @@
 import Service from "./Service";
 import JsonResponse from "../Interfaces/JsonResponse";
 import {AxiosResponse} from "axios";
-import Xuid, {SupportedXuid} from "../Utils/Xuid";
+import {Notification} from "../Models/Models";
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
@@ -24,12 +24,13 @@ class Notifications extends Service {
 
     /**
      * Get notification
-     * @param notificationId
+     * @param notification
      * @returns Promise<Notification>
      */
-    get(notificationId: Xuid<SupportedXuid.Notification>) {
+    update(notification: Notification) {
+        console.log(notification);
         return this.client
-            .get<JsonResponse<Notification>>(`1/notifications/${notificationId}`)
+            .patch<JsonResponse<Notification>>(`1/notifications/${notification._id}`, notification)
             .then((response: AxiosResponse<JsonResponse<Notification>>) => {
                 return response.data.data;
             });
