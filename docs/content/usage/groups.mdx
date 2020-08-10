@@ -4,10 +4,6 @@ description: Using the Grousp API
 status: Stable
 source: https://github.com/xedi/sdk-js/blob/dev/groups/src/Services/Groups.ts
 ---
-
-import { GithubIssue } from '../../src/components';
-import { Flash } from '@primer/components';
-
 ## Introduction
 
 The Groups API allows you to interact with our groups data
@@ -32,24 +28,24 @@ const groups = await Xedi.Groups.list();
 
 **Response**
 ```json
-{
+[
     {
-        "_id"; "96GE2a3e-boi0-11e9-b308-013533e48b37",
-        "name";"Team Cap",
-        "owner";"c52abc50-b499-11ea-a48c-0100f1a50c6e",
-        "group_type_id";"79fb3a3e-fcc0-11e9-b308-010060e48b37",
-        "created_at";"2020-07-04 12:00:00",
-        "updated_at";"2020-07-28 02:21:48"
-    },
+        "_id": "96GE2a3e-boi0-11e9-b308-013533e48b37",
+        "name": "Team Cap",
+        "owner": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+        "group_type_id": "79fb3a3e-fcc0-11e9-b308-010060e48b37",
+        "created_at": "2020-07-04 12:00:00",
+        "updated_at": "2020-07-28 02:21:48"
+    }, 
     {
-        "_id"; "69PD8a3e-nic0-11e9-b308-010060e48b37",
-        "name";"Team Iron Man",
-        "owner";"c52abc50-b499-11ea-a48c-0100f1a50c6e",
-        "group_type_id";"79fb3a3e-fcc0-11e9-b308-010060e48b37",
-        "created_at";"2020-07-04 12:00:00",
-        "updated_at";"2020-08-01 21:32:53"
+        "_id": "69PD8a3e-nic0-11e9-b308-010060e48b37",
+        "name": "Team Iron Man",
+        "owner": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+        "group_type_id": "79fb3a3e-fcc0-11e9-b308-010060e48b37",
+        "created_at": "2020-07-04 12:00:00",
+        "updated_at": "2020-08-01 21:32:53"
     }
-}
+]
 ```
 
 ### Get
@@ -71,16 +67,11 @@ const group = await Xedi.Groups.get('96GE2a3e-boi0-11e9-b308-013533e48b37');
 **Response**
 ```json
 {
-    {
-        "_id"; "96GE2a3e-boi0-11e9-b308-013533e48b37",
-        "name";"Team Cap",
-        "owner";"c52abc50-b499-11ea-a48c-0100f1a50c6e",
-        "group_type_id";"79fb3a3e-fcc0-11e9-b308-010060e48b37",
-        "created_at";"2020-07-04 12:00:00",
-        "updated_at";"2020-07-28 02:21:48"
-    }
+	"_id": "96GE2a3e-boi0-11e9-b308-013533e48b37",
+	"name": "Team Cap",
+	"owner": "c52abc50-b499-11ea-a48c-0100f1a50c6e",
+	"group_type_id": "79fb3a3e-fcc0-11e9-b308-010060e48b37",
+	"created_at": "2020-07-04 12:00:00",
+	"updated_at": "2020-07-28 02:21:48"
 }
 ```
-<Flash>
-    <GithubIssue issue-id="73"/>
-</Flash>
