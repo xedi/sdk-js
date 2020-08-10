@@ -18,6 +18,8 @@
       url: /usage/events
     - title: GraphQL
       url: /usage/graphql
+    - title: Groups
+      url: /usage/groups
     - title: Mailboxes
       url: /usage/mailboxes
     - title: Products
