@@ -28,7 +28,6 @@ class Notifications extends Service {
      * @returns Promise<Notification>
      */
     update(notification: Notification) {
-        console.log(notification);
         return this.client
             .patch<JsonResponse<Notification>>(`1/notifications/${notification._id}`, notification)
             .then((response: AxiosResponse<JsonResponse<Notification>>) => {
