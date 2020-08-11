@@ -12,6 +12,16 @@ type LanguagePack = Map<string, string>;
 class TranslationLoader
 {
     /**
+     * Gets a list of supported languages
+     *
+     * @returns languages
+     */
+    public static getLanguages(): string[]
+    {
+        return Array.from(SUPPORTED_LANGUAGES.keys());
+    }
+
+    /**
      * Determines whether the provided language is supported
      * @param language
      * @returns true if language is supported
