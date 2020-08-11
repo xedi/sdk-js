@@ -17,6 +17,16 @@ class Translator
     }
 
     /**
+     * Gets a list of supported languages
+     *
+     * @returns supported languages
+     */
+    public getSupportedLanguages(): string[]
+    {
+        return TranslationLoader.getLanguages();
+    }
+
+    /**
      * Translate
      * @param label
      * @param [parameters]
