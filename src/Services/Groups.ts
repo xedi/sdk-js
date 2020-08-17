@@ -37,6 +37,22 @@ class Groups extends Service
                 return response.data.data;
         });
     }
+
+    /**
+     * Gets by user
+     *
+     * @param userId
+     * @param params
+     *
+     * @returns Promise<PaginatedJsonResponse<Group[]>>
+     */
+    getByUser(userId: Xuid<SupportedXuid.User>, params: object): Promise<PaginatedJsonResponse<Group>> {
+        return this.client
+            .get<PaginatedJsonResponse<Group>>(`1/users/${ userId }/groups`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Groups;
