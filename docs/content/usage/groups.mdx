@@ -5,7 +5,9 @@ status: Stable
 source: https://github.com/xedi/sdk-js/blob/dev/groups/src/Services/Groups.ts
 ---
 
-import {CheckIcon} from '@primer/styled-octicons'
+import {CheckIcon} from '@primer/styled-octicons';
+import {Box,Flex,Label} from '@primer/components';
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
 
 ## Introduction
 
@@ -76,5 +78,54 @@ const group = await Xedi.Groups.get('96GE2a3e-boi0-11e9-b308-013533e48b37');
 	"group_type_id": "79fb3a3e-fcc0-11e9-b308-010060e48b37",
 	"created_at": "2020-07-04 12:00:00",
 	"updated_at": "2020-07-28 02:21:48"
+}
+```
+
+<Flex alignItems="center">
+    <H3>Get by User</H3>
+    <Box mx="auto" />
+    <Label bg="#A575FF">Pagination Enabled</Label>
+</Flex>
+
+List all the groups a particular user is associated with.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| user_id | UUID | <CheckIcon color="green.5"/> | f3ce14b8-b542-11ea-aded-01002da17977 |
+| pageNumber | number | | 1 |
+
+**Usage**
+
+```js
+const groups = await Xedi.Groups.getByUser('f3ce14b8-b542-11ea-aded-01002da17977');
+```
+
+**Response**
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "f3ce14b8-b542-11ea-aded-01002da17977",
+            "name": "users",
+            "owner": "d8cde5a8-3eaa-11ea-9ad1-0100f1a50c6e",
+            "group_type_id": "79fb3a3e-fcc0-11e9-b308-010060e48b37",
+            "created_at": "2020-07-03 13:58:10",
+            "updated_at": "2020-07-03 13:58:10"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/groups?page=1",
+    "from": 1,
+    "last_page": "https://api.xedi.com/1/groups?page=1",
+    "last_page_url": null,
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/groups",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
 }
 ```
