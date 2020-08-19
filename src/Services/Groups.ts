@@ -15,9 +15,9 @@ class Groups extends Service
      *
      * @returns Group[]
      */
-    list(pageNumber: number = 1) {
+    list(userId: Xuid<SupportedXuid.User>, params: object): Promise<PaginatedJsonResponse<Group>> {
         return this.client
-            .get<PaginatedJsonResponse<Group>>('1/groups', { params: { page: pageNumber } })
+            .get<PaginatedJsonResponse<Group>>('1/groups', { params} )
             .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
                 return response.data;
         });
