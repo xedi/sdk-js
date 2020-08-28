@@ -1,11 +1,73 @@
 ---
 title: Users
 description: Using the User API
+status: Stable
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/Users.ts
 ---
 
-import {BorderBox} from '@primer/components'
-import {GithubIssue} from '../../src/components'
+import {CheckIcon} from '@primer/styled-octicons';
+import {Box,Flex,Label} from '@primer/components';
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
 
-<BorderBox>
+## Introduction
+
+The Users API allows you to interact with our users data
+
+## Usage
+
+<Flex alignItems="center">
+    <H3>Get by Group</H3>
+    <Box mx="auto" />
+    <Label bg="#A575FF">Pagination Enabled</Label>
+</Flex>
+
+List all the users associated with a group.
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| group_id | UUID | <CheckIcon color="green.5"/> | f3ce14b8-b542-11ea-aded-01002da17977 |
+| pageNumber | number | | 1 |
+
+**Usage**
+
+```js
+const users = await Xedi.Users.getByGroup('0453b1ec-44d4-31d7-bffb-accfbaab2c90');
+```
+
+**Response**
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "_id": "e7e16998-3d2e-11ea-be36-01002da17977",
+            "first_name": "Tony",
+            "last_name": "Stark",
+            "email": "TonyStark@Avengers.com",
+            "contact_no": null,
+            "job_title": null,
+            "avatar": null,
+            "is_active": "1",
+            "created_at": "2020-07-03 13:58:10",
+            "updated_at": "2020-07-03 13:58:10",
+            "deleted_at": "2020-09-01 13:58:10"
+        }
+    ],
+    "first_page_url": "https://api.xedi.com/1/users?page=1",
+    "from": 1,
+    "last_page": "https://api.xedi.com/1/users?page=1",
+    "last_page_url": null,
+    "next_page_url": null,
+    "path": "https://api.xedi.com/1/users",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+<!-- <BorderBox>
     <GithubIssue issue-id="28" />
-</BorderBox>
+</BorderBox> -->
