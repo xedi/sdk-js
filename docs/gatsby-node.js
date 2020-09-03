@@ -15,7 +15,28 @@ exports.onCreatePage = ({ page, actions }) => {
             });
 
             page.context.tableOfContents.items[1].items.push({
-                title: "Get By User",
+                title: "Get By User", 
+                url: "#get-by-user"
+            });
+
+            createPage(page);
+            break;
+        case '/usage/users':
+            deletePage(page);
+
+            page.context.tableOfContents.items[1].items.push({
+                title: "Get By Group",
+                url: "#get-by-group"
+            });
+
+            createPage(page);
+            break;
+
+        case '/usage/groups':
+            deletePage(page);
+
+            page.context.tableOfContents.items[1].items.push({
+                title: "Get by User",
                 url: "#get-by-user"
             });
 
