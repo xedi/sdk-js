@@ -15,6 +15,7 @@ import Instances from "./Instances";
 import Stages from "./Stages";
 import TaxRates from "./TaxRates";
 import Billing from "./Billing/Container";
+import NetworkConfigurations from "./NetworkConfigurations";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
 import Groups from "./Groups";
@@ -37,6 +38,7 @@ export {
     Instances,
     Stages,
     TaxRates,
+    NetworkConfigurations,
     NetworkConnections,
     Notifications,
     Groups,

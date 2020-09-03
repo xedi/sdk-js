@@ -24,6 +24,7 @@ export enum SupportedXuid {
     MailingList,
     Group,
     GroupType,
+    NetworkConfiguration
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
