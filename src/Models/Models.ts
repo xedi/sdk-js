@@ -8,6 +8,7 @@ import Instance from './Instance';
 import Invoice from "./Invoice";
 import InvoiceItem from "./InvoiceItem";
 import Mailbox from './Mailbox';
+import NetworkConfiguration from "./NetworkConfiguration";
 import NetworkConnection from "./NetworkConnection";
 import Notification from "./Notification";
 import Partner from "./Partner";
@@ -38,6 +39,7 @@ type Models =
     | Invoice
     | InvoiceItem
     | Mailbox
+    | NetworkConfiguration
     | NetworkConnection
     | Notification
     | Partner
@@ -73,6 +75,7 @@ export {
     InvoiceItem,
     Mailbox,
     Models,
+    NetworkConfiguration,
     NetworkConnection,
     Notification,
     Partner,
