@@ -23,9 +23,9 @@ In this section we'll look at using unit tests to test our code to provide confi
 
 ## Directory Structure
 
-Testing (at the time of writing) focusses on the behaviors of the SDK, rather than a broad spread approach. This maps to how the files and directories are structured. Rather than mimicking the `src` directory structure, the directories are structured based on the hierarchy at runtime. So for `Xedi.Auth`, you would find those tests in `tests/Unit/Auth` and so on.
+Testing (at the time of writing) focuses on the behaviors of the SDK, rather than a broad spread approach. This maps to how the files and directories are structured. Rather than mimicking the `src` directory structure, the directories are structured based on the hierarchy at runtime. So for `Xedi.Auth`, you would find those tests in `tests/Unit/Auth` and so on.
 
-Through-out this page, I will continue to use Marvel's Avengers as a subject material. I'm going to test an API that lists the members of the Avengers.
+Throughout this page, I will continue to use Marvel's Avengers as a subject material. I'm going to test an API that lists the members of the Avengers.
 
 First I need a directory, so I will create `tests/Unit/Avengers`.
 
@@ -89,7 +89,7 @@ Lets examine this test.
 
 * Below the `import` statements is the entrypoint for the framework. In this file we are describing the list functionality of the Avengers API. Therefore, `Avengers@list` is what will appear in the results output.
 
-* We have one behavioural test, in which we assert `it should return a list of avengers`. Because this method contains a <Text as="em">asynchronous</Text> http request, we denote that the this test is also asynchronous with the `async` keyword.
+* We have one behavioural test, in which we assert `it should return a list of avengers`. Because this method contains an <Text as="em">asynchronous</Text> http request, we denote that the this test is also asynchronous with the `async` keyword.
 
 * Personal preference, I have added a fixture at the top of the test. This could easily be done inline or in a separate file.
 
