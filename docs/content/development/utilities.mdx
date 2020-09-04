@@ -40,7 +40,7 @@ authenticateHeader.error_description; // "The access token expired"
 
 ## XUID
 
-Identifing Entities without explicit type attributes across an eco-system like XEDI is problematic at best, impossible in the main. At XEDI, we found the answer by introducing an identifier that could be typed. <ExternalLink href="https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)">Version 1 UUIDs</ExternalLink> are considered inherently insecure due to the use of the issuing computers MAC address as the "node" component. We seized this vulnerability and turned it on it's head by replacing the node of a UUIDv1 with our own series of hashes. Each hash is tied to an identifier which a service can use to determine what a generic entity is.
+Identifing Entities without explicit type attributes across an eco-system like XEDI is problematic at best, impossible in the main. At XEDI, we found the answer by introducing an identifier that could be typed. <ExternalLink href="https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)">Version 1 UUIDs</ExternalLink> are considered inherently insecure due to the use of the issuing computers MAC address as the "node" component. We seized this vulnerability and turned it on its head by replacing the node of a UUIDv1 with our own series of hashes. Each hash is tied to an identifier which a service can use to determine what a generic entity is.
 
 <ExternalLink href="https://github.com/xedi/sdk-js/blob/master/src/Utils/Xuid.ts"><CodeIcon mr={1} />View source</ExternalLink>
 
