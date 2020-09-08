@@ -179,6 +179,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.mappings', (app: ContainerInterface, config: Config) => {
+            return new Services.Mappings(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.accounts', (app: ContainerInterface, config: Config) => {
             return new Services.Accounts(
                 config,
@@ -360,6 +367,14 @@ class Xedi extends Container {
     static get Mailboxes(): Services.Mailboxes {
         return this.resolveInstance()
             .resolve('services.mailboxes');
+    }
+
+    /**
+     * Get an instance of the Mappings API
+     */
+    static get Mappings(): Services.Mappings {
+        return this.resolveInstance()
+            .resolve('services.mappings');
     }
 
     /**
