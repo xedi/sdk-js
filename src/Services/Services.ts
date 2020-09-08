@@ -8,6 +8,7 @@ import Partnerships from "./Partnerships";
 import Products from "./Products";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
+import Mappings from "./Mappings";
 import Accounts from "./Accounts";
 import Templates from "./Templates";
 import Transitions from "./Transitions";
@@ -33,6 +34,7 @@ export {
     Products,
     Users,
     Mailboxes,
+    Mappings,
     Templates,
     Transitions,
     Instances,
