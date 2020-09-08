@@ -65,7 +65,7 @@ const users = await Xedi.Users.list();
 
 ### Get
 
-Retrieve a User by ID that the user has the authority to see withing the context of a Business
+Retrieve a User by ID that the user has the authority to see within the context of a Business
 
 **Parameters**
 
@@ -185,6 +185,71 @@ const users = await Xedi.Users.getByGroup('0453b1ec-44d4-31d7-bffb-accfbaab2c90'
     "total": 1
 }
 ```
-<BorderBox>
-    <GithubIssue issue-id="28" />
-</BorderBox>
+
+### Update
+
+Update a user by ID
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| _id           | Xuid      | <CheckIcon color="green.5"/>  | 'e7e16998-3d2e-11ea-be36-01002da17977'    |
+| first_name    | String    |                               | 'Tony'                                    |
+| last_name     | String    |                               | 'Stark'                                   |
+| email         | String    |                               | 'TonyStark@Avengers.com'                  |
+| contact_no    | String    |                               | '01234 567890'                            |
+| job_title     | String    |                               | 'CEO'                                     |
+| avatar        | String    |                               | 'https:\\someurl.com\avatar'              |
+| is_active     | Integer   |                               | 1                                         |
+
+**Usage**
+
+```javascript
+    await Xedi.User.Update({
+        "_id": "e7e16998-3d2e-11ea-be36-01002da17977",
+        "first_name": "Tony",
+        "last_name": "Stark",
+        "email": "TonyStark@Avengers.com",
+        "contact_no": "01234 567890",
+        "job_title": "CEO",
+        "avatar": "https:\\someurl.com\avatar",
+        "is_active": "1",
+    })
+```
+
+**Response**
+
+```json
+{
+    "data": {
+        "_id": "e7e16998-3d2e-11ea-be36-01002da17977",
+        "first_name": "Tony",
+        "last_name": "Stark",
+        "email": "TonyStark@Avengers.com",
+        "contact_no": "01234 567890",
+        "job_title": "CEO",
+        "avatar": "https:\\someurl.com\avatar",
+        "is_active": "1",
+        "created_at": "2020-09-03 14:00:00",
+        "updated_at": "2020-09-07 15:00:00",
+        "deleted_at": null
+    }
+```
+
+### Delete
+
+Delete a user by id
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| _id | Xuid | <CheckIcon color="green.5"/> | 'e7e16998-3d2e-11ea-be36-01002da17977' |
+
+
+**Usage**
+
+```javascript
+await Xedi.User.delete('e7e16998-3d2e-11ea-be36-01002da17977');
+```
