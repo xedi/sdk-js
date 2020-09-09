@@ -24,13 +24,12 @@ class NetworkConfigurations extends Service {
 
     /**
      * Updates network configuration
-     * @param configurationId
-     * @param networkConnection
+     * @param networkConfiguration
      * @returns Promise<NetworkConfiguration>
      */
-    update(configurationId: Xuid<SupportedXuid.NetworkConfiguration>, networkConnection: NetworkConfiguration) {
+    update(networkConfiguration: NetworkConfiguration) {
         return this.client
-            .patch<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/${configurationId}`, networkConnection)
+            .patch<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/${networkConfiguration._id}`, networkConfiguration)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response.data.data
             });
@@ -46,6 +45,18 @@ class NetworkConfigurations extends Service {
             .delete<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/${configurationId}`)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response;
+            });
+    }
+
+    /**
+     * FTP Connector
+     * @param params
+     */
+    ftpConnect(params: Object) {
+        return this.client
+            .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/ftp`, params)
+            .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
+                return response.data.data;
             });
     }
 }
