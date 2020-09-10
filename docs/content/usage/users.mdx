@@ -120,7 +120,7 @@ const permissions = await Xedi.Users.getPermissions('0453b1ec-44d4-31d7-bffb-acc
             "Key": "audit.event.business.read",
             "is_hidden": 0
         },
-        {   
+        {
             "Key": "audit.event.read",
             "is_hidden": 0
         },
@@ -253,4 +253,22 @@ Delete a user by ID
 
 ```javascript
 await Xedi.User.delete('e7e16998-3d2e-11ea-be36-01002da17977');
+```
+
+
+### Restore
+
+Restore a soft deleted user by ID
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| _id | Xuid | <CheckIcon color="green.5"/> | 'e7e16998-3d2e-11ea-be36-01002da17977' |
+
+
+**Usage**
+
+```javascript
+await Xedi.User.restore('e7e16998-3d2e-11ea-be36-01002da17977');
 ```
