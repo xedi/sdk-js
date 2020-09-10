@@ -59,6 +59,18 @@ class NetworkConfigurations extends Service {
                 return response.data.data;
             });
     }
+
+    /**
+     * SFTP Connector
+     * @param params
+     */
+    sftpConnect(params: Object) {
+        return this.client
+            .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/sftp`, params)
+            .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default NetworkConfigurations;
