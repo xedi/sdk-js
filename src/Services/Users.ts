@@ -62,7 +62,7 @@ class Users extends Service {
      */
     restore(user: User) {
         return this.client
-            .patch(`1/users/${user._id}/restore`);
+            .put(`1/users/${user._id}/restore`);
     }
 
     /**
