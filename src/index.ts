@@ -158,6 +158,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.document-settings', (app: ContainerInterface, config: Config) => {
+            return new Services.DocumentSettings(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.prices', (app: ContainerInterface, config: Config) => {
             return new Services.Prices(
                 config,
@@ -325,6 +332,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.doc-types');
+    }
+
+    /**
+     * Get an instance of the DocumentSettings API
+     */
+    static get DocumentSettings(): Services.DocumentSettings
+    {
+        return this.resolveInstance()
+            .resolve('services.document-settings');
     }
 
     /**

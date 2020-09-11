@@ -2,6 +2,7 @@ import Auth from "./Auth";
 import Businesses from "./Businesses";
 import Partners from "./Partners";
 import DocTypes from "./DocTypes";
+import DocumentSettings from "./DocumentSettings";
 import Events from "./Events";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
@@ -29,6 +30,7 @@ export {
     Partners,
     Partnerships,
     DocTypes,
+    DocumentSettings,
     Events,
     Prices,
     Products,

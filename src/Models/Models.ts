@@ -2,6 +2,7 @@ import Business from './Business';
 import Card from './Card';
 import Customer from "./Customer";
 import DocType from "./DocType";
+import DocumentSetting from "./DocumentSetting";
 import Event from './Event';
 import Group from './Group';
 import Instance from './Instance';
@@ -34,6 +35,7 @@ type Models =
     | Card
     | Customer
     | DocType
+    | DocumentSetting
     | Event
     | Group
     | Instance
@@ -70,6 +72,7 @@ export {
     Collection,
     Customer,
     DocType,
+    DocumentSetting,
     Event,
     Group,
     Instance,
