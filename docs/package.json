@@ -12,7 +12,7 @@
     "@primer/gatsby-theme-doctocat": "^0.21.0",
     "@primer/octicons-react": "^9.6.0",
     "@primer/styled-octicons": "0.0.0-44a8bc7",
-    "@xedi/translations": "^2.1.0",
+    "@xedi/translations": "^2.2.0",
     "D": "^1.0.0",
     "gatsby": "^2.24.47",
     "gatsby-plugin-offline": "^3.2.23",
