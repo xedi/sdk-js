@@ -11,12 +11,12 @@ class DocumentSettings extends Service {
 
     /**
      * Creates document setting
-     * @param document_setting
+     * @param documentSetting
      * @returns Promise<DocumentSetting>
      */
-    create(document_setting: DocumentSetting) {
+    create(documentSetting: DocumentSetting) {
         return this.client
-            .post<JsonResponse<DocumentSetting>>(`1/documentsettings`, document_setting)
+            .post<JsonResponse<DocumentSetting>>(`1/documentsettings`, documentSetting)
             .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
                 return response.data.data
             });
@@ -24,12 +24,12 @@ class DocumentSettings extends Service {
 
     /**
      * Deletes document setting
-     * @param document_setting_id
+     * @param documentSettingId
      * @returns Promise<DocumentSetting>
      */
-    delete(document_setting_id: Xuid<SupportedXuid.DocumentSetting>) {
+    delete(documentSettingId: Xuid<SupportedXuid.DocumentSetting>) {
         return this.client
-            .delete<JsonResponse<DocumentSetting>>(`1/documentsettings/${document_setting_id}`)
+            .delete<JsonResponse<DocumentSetting>>(`1/documentsettings/${documentSettingId}`)
             .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
                 return response;
             });
