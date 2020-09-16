@@ -11,10 +11,30 @@ const ISSUE_STATUS_ICONS = {
 };
 
 function GithubIssue({issueId}) {
+    const [issueData, setIssueData] = useState({});
+
     // live-code bug
     if (arguments[0].hasOwnProperty('issue-id')) {
         issueId = arguments[0]['issue-id'];
     }
+
+    useEffect(() => {
+        if (!!issueId) {
+            fetch(`https://api.github.com/repos/xedi/sdk-js/issues/${issueId}`)
+                .then(response => response.json())
+                .then(result => {
+                    const state = startCase(result.state);
+
+                    setIssueData({
+                        title: result.title,
+                        url: result.html_url,
+                        state: state,
+                        class: ISSUE_STATUS_ICONS[state],
+                    });
+                })
+        }
+    }, [issueId]);
+
     if (!issueId) {
         return (
             <Flash scheme="red">
@@ -22,22 +42,6 @@ function GithubIssue({issueId}) {
             </Flash>
         );
     }
-
-    const [issueData, setIssueData] = useState({});
-    useEffect(() => {
-        fetch(`https://api.github.com/repos/xedi/sdk-js/issues/${issueId}`)
-            .then(response => response.json())
-            .then(result => {
-                const state = startCase(result.state);
-
-                setIssueData({
-                    title: result.title,
-                    url: result.html_url,
-                    state: state,
-                    class: ISSUE_STATUS_ICONS[state],
-                });
-            })
-    }, []);
 
     return (
         <Box px={1} py={2}>

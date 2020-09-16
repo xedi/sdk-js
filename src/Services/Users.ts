@@ -46,6 +46,26 @@ class Users extends Service {
     }
 
     /**
+     * Delete a user
+     * @param user
+     * @returns Promise<User>
+     */
+    delete(user: User) {
+        return this.client
+            .delete(`1/users/${user._id}`);
+    }
+
+    /**
+     * Restore a user
+     * @param user
+     * @returns Promise<User>
+     */
+    restore(user: User) {
+        return this.client
+            .put(`1/users/${user._id}`);
+    }
+
+    /**
      * Retrieve a users permissions
      *
      * @param userUuid
