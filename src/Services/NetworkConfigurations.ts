@@ -52,7 +52,7 @@ class NetworkConfigurations extends Service {
      * FTP Connector
      * @param params
      */
-    ftpConnect(params: Object) {
+    ftpConnect(params: object) {
         return this.client
             .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/ftp`, params)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
@@ -64,7 +64,7 @@ class NetworkConfigurations extends Service {
      * SFTP Connector
      * @param params
      */
-    sftpConnect(params: Object) {
+    sftpConnect(params: object) {
         return this.client
             .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/sftp`, params)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
