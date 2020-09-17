@@ -25,7 +25,7 @@ class DocumentSettings extends Service {
     /**
      * Updates document setting
      * @param documentSetting
-     * @returns Promise<Product>
+     * @returns Promise<DocumentSetting>
      */
     update(documentSetting: DocumentSetting) {
         return this.client
