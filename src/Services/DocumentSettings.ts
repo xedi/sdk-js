@@ -23,6 +23,18 @@ class DocumentSettings extends Service {
     }
 
     /**
+     * Updates document setting
+     * @param documentSetting
+     * @returns Promise<Product>
+     */
+    update(documentSetting: DocumentSetting) {
+        return this.client
+            .patch<JsonResponse<DocumentSetting>>(`1/documentsettings/${documentSetting._id}`, documentSetting)
+            .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
+                return response.data.data
+            });
+    }
+    /**
      * Deletes document setting
      * @param documentSettingId
      * @returns Promise<DocumentSetting>
