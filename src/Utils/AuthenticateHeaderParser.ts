@@ -66,7 +66,7 @@ class AuthenticateHeader
      * @returns get
      */
     get(key: string): SearchResponse {
-        const result = (new RegExp(`${ key }=\"([a-z\_\ ]+)\"`, 'i'))
+        const result = (new RegExp(`${ key }=\"([a-z\_\.\ ]+)\"`, 'i'))
             .exec(this.headerString);
 
         if (result && result.length) {
