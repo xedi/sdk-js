@@ -1,0 +1,38 @@
+---
+title: Mailinglists
+description: Using the Mailinglists API
+status: Stable
+---
+
+import {CheckIcon} from '@primer/styled-octicons';
+import {Box,Flex,Label} from '@primer/components';
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
+
+## Introduction
+
+The Mailinglists API allows you to interact with our Mailinglists data.
+
+## Usage
+
+### Create
+
+Create a Mailinglist
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| business_id   | Xuid      | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+| name          | String    | <CheckIcon color="green.5"/>  | 'My List'                                 |
+| description   | String    | <CheckIcon color="green.5"/>  | 'My new shiny Mailinglist'                |
+
+
+**Usage**
+
+```javascript
+    await Xedi.Mailinglist.create({
+        "businees_id": "a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e",
+        "name": "My Mailinglist",
+        "description": "My Shiny new Mailinglist",
+    })
+```
