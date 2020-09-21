@@ -29,6 +29,7 @@ import Template from './Template';
 import Transition from './Transition';
 import Usage from './Usage';
 import User from './User';
+import MailingList from './MailingList';
 
 type Models =
     Business
@@ -61,7 +62,8 @@ type Models =
     | Template
     | Transition
     | Usage
-    | User;
+    | User
+    | MailingList;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -99,5 +101,6 @@ export {
     Template,
     Transition,
     Usage,
-    User
+    User,
+    MailingList
 };
