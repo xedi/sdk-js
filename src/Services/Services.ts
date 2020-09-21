@@ -26,6 +26,7 @@ import NetworkConfigurations from "./NetworkConfigurations";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
 import Groups from "./Groups";
+import MailingLists from "./MailingLists"
 
 export {
     Accounts,
@@ -56,4 +57,5 @@ export {
     NetworkConnections,
     Notifications,
     Groups,
+    MailingLists
 };
