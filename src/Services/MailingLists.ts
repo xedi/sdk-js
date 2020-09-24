@@ -21,7 +21,7 @@ class MailingLists extends Service {
     }
 
     /**
-     * List all mailinglists for a business
+     * List all mailing lists for a business
      * @param businessXuid
      * @returns Promise<Instance>
      */
@@ -43,6 +43,19 @@ class MailingLists extends Service {
             .get<JsonResponse<MailingList>>('1/mailinglists/' + mailinglistXuid )
             .then((response: AxiosResponse<JsonResponse<MailingList>>) => {
                 return response.data.data;
+            });
+    }
+
+    /**
+     * Update a mailing list
+     * @param MailingList
+     * @returns Promise<Instance>
+     */
+    update(mailinglist: MailingList) {
+        return this.client
+            .patch<JsonResponse<MailingList>>('1/mailinglists/' + mailinglist._id , mailinglist)
+            .then((response: AxiosResponse<JsonResponse<MailingList>>) => {
+                return response.data.data
             });
     }
 }
