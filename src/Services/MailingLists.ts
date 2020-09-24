@@ -32,6 +32,19 @@ class MailingLists extends Service {
                 return resp.data.data;
             });
     }
+
+    /**
+     * Get a mailing list
+     * @param mailinglistXuid
+     * @returns Promise<Instance>
+     */
+    get(mailinglistXuid: Xuid<SupportedXuid.MailingList>) {
+        return this.client
+            .get<JsonResponse<MailingList>>('1/mailinglists/' + mailinglistXuid )
+            .then((response: AxiosResponse<JsonResponse<MailingList>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default MailingLists;
