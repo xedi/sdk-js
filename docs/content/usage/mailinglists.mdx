@@ -34,3 +34,20 @@ Create a Mailinglist
         "description": "My Shiny new Mailinglist",
     })
 ```
+
+### List
+
+List All Mailinglists for a business
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| business_id   | Xuid      | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+
+
+**Usage**
+
+```javascript
+    await Xedi.Mailinglist.list("a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e");
+```
