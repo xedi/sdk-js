@@ -58,6 +58,19 @@ class MailingLists extends Service {
                 return response.data.data
             });
     }
+
+    /**
+     * Delete a mailing list
+     * @param mailinglistXuid
+     * @returns Promise<Instance>
+     */
+    delete(mailinglistXuid: Xuid<SupportedXuid.MailingList>) {
+        return this.client
+            .get<JsonResponse<null>>('1/mailinglists/' + mailinglistXuid )
+            .then((response: AxiosResponse<JsonResponse<null>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default MailingLists;
