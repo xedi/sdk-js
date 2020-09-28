@@ -1,7 +1,7 @@
 import Service from "./Service";
 import JsonResponse from "../Interfaces/JsonResponse";
 import User from "../Models/User";
-import { AxiosResponse } from "axios";
+import {AxiosResponse} from "axios";
 
 type Email = string;
 
@@ -18,8 +18,7 @@ type RegistrationParameters = {
 /**
  * Accounts
  */
-class Accounts extends Service
-{
+class Accounts extends Service {
     /**
      * Registers an account
      *
@@ -52,7 +51,7 @@ class Accounts extends Service
      */
     verify(verificationToken: string) {
         return this.client
-            .post<JsonResponse<User>>('1/auth/verification', { token: verificationToken })
+            .post<JsonResponse<User>>('1/auth/verification', {token: verificationToken})
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data;
             });

@@ -1,15 +1,14 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { Collection, Event } from '../Models/Models';
+import {Event} from '../Models/Models';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
 
 /**
  * Events API
  */
-class Events extends Service
-{
+class Events extends Service {
     /**
      * Lists all events
      *
@@ -19,7 +18,7 @@ class Events extends Service
      */
     list(pageNumber: number = 1) {
         return this.client
-            .get<PaginatedJsonResponse<Event>>('1/events', { params: { page: pageNumber } })
+            .get<PaginatedJsonResponse<Event>>('1/events', {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<Event>>) => {
                 return response.data;
             });
@@ -50,7 +49,7 @@ class Events extends Service
      */
     getByUser(userId: Xuid<SupportedXuid.Event>, pageNumber: number = 1) {
         return this.client
-            .get<PaginatedJsonResponse<Event>>(`1/users/${userId}/events`, { params: { page: pageNumber } })
+            .get<PaginatedJsonResponse<Event>>(`1/users/${userId}/events`, {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<Event>>) => {
                 return response.data;
             });
@@ -66,7 +65,7 @@ class Events extends Service
      */
     getByBusiness(businessId: Xuid<SupportedXuid.Business>, pageNumber: number = 1) {
         return this.client
-            .get<PaginatedJsonResponse<Event>>(`1/businesses/${businessId}/events`, { params: { page: pageNumber } })
+            .get<PaginatedJsonResponse<Event>>(`1/businesses/${businessId}/events`, {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<Event>>) => {
                 return response.data;
             });
@@ -83,7 +82,7 @@ class Events extends Service
      */
     getByUserForBusiness(businessId: Xuid<SupportedXuid.Business>, userId: Xuid<SupportedXuid.User>, pageNumber: number = 1) {
         return this.client
-            .get<PaginatedJsonResponse<Event>>(`1/businesses/${businessId}/users/${userId}/events`, { params: { page: pageNumber } })
+            .get<PaginatedJsonResponse<Event>>(`1/businesses/${businessId}/users/${userId}/events`, {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<Event>>) => {
                 return response.data;
             });

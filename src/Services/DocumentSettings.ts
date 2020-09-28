@@ -34,6 +34,7 @@ class DocumentSettings extends Service {
                 return response.data.data
             });
     }
+
     /**
      * Deletes document setting
      * @param documentSettingId

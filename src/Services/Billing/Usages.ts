@@ -3,8 +3,7 @@ import JsonResponse from "../../Interfaces/JsonResponse";
 import {AxiosResponse} from "axios";
 import Usage from "../../Models/Usage";
 
-class Usages extends Service
-{
+class Usages extends Service {
 
     list() {
         return this.client

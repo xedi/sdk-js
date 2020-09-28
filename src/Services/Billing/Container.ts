@@ -24,6 +24,138 @@ class Billing extends Container {
         super.setInstance('client', app.resolve('client'));
     }
 
+    /* istanbul ignore next Simple Method */
+    get Config(): Config {
+        return super.resolve('config');
+    }
+
+    /**
+     * Gets an instance of the Config Bag
+     *
+     * @returns Config
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Logger(): LogManagerInterface {
+        return super.resolve('logger');
+    }
+
+    /**
+     * Gets an instance of the LogManager
+     *
+     * @return LogManager
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Constants() {
+        return Constants;
+    }
+
+    /**
+     * Gets Constants instance
+     *
+     * @return LogManager
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Translator(): Translator {
+        return super.resolve('translator');
+    }
+
+    /**
+     * Gets an instance of the Translator
+     *
+     * @return Translator
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Cards(): Cards {
+        return super.resolve('cards');
+    }
+
+    /**
+     * Gets an instance of the Card API
+     *
+     * @return Cards
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Customers(): Customers {
+        return super.resolve('customers');
+    }
+
+    /**
+     * Gets an instance of the Customer API
+     *
+     * @return Customers
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Invoices(): Invoices {
+        return super.resolve('invoices');
+    }
+
+    /**
+     * Gets an instance of the Invoice API
+     *
+     * @return Invoices
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Plans(): Plans {
+        return super.resolve('plans');
+    }
+
+    /**
+     * Gets an instance of the Plan API
+     *
+     * @return Plans
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Products(): Products {
+        return super.resolve('products');
+    }
+
+    /**
+     * Gets an instance of the Product API
+     *
+     * @return Products
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Subscriptions(): Subscriptions {
+        return super.resolve('subscriptions');
+    }
+
+    /**
+     * Gets an instance of the Subscription API
+     *
+     * @return Subscriptions
+     */
+
+    /* istanbul ignore next Simple Method */
+    get SubscriptionItems(): SubscriptionItems {
+        return super.resolve('subscription-items');
+    }
+
+    /**
+     * Gets an instance of the SubscriptionItem API
+     *
+     * @return SubscriptionItems
+     */
+
+    /* istanbul ignore next Simple Method */
+    get Usages(): Usages {
+        return super.resolve('usages');
+    }
+
+    /**
+     * Gets an instance of the Usage API
+     *
+     * @return Usages
+     */
+
     protected boot() {
         super.boot();
         /*
@@ -95,138 +227,6 @@ class Billing extends Container {
             );
         });
 
-    }
-
-    /**
-     * Gets an instance of the Config Bag
-     *
-     * @returns Config
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Config(): Config {
-        return super.resolve('config');
-    }
-
-    /**
-     * Gets an instance of the LogManager
-     *
-     * @return LogManager
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Logger(): LogManagerInterface {
-        return super.resolve('logger');
-    }
-
-    /**
-     * Gets Constants instance
-     *
-     * @return LogManager
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Constants() {
-        return Constants;
-    }
-
-    /**
-     * Gets an instance of the Translator
-     *
-     * @return Translator
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Translator(): Translator {
-        return super.resolve('translator');
-    }
-
-    /**
-     * Gets an instance of the Card API
-     *
-     * @return Cards
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Cards(): Cards {
-        return super.resolve('cards');
-    }
-
-    /**
-     * Gets an instance of the Customer API
-     *
-     * @return Customers
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Customers(): Customers {
-        return super.resolve('customers');
-    }
-
-    /**
-     * Gets an instance of the Invoice API
-     *
-     * @return Invoices
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Invoices(): Invoices {
-        return super.resolve('invoices');
-    }
-
-    /**
-     * Gets an instance of the Plan API
-     *
-     * @return Plans
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Plans(): Plans {
-        return super.resolve('plans');
-    }
-
-    /**
-     * Gets an instance of the Product API
-     *
-     * @return Products
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Products(): Products {
-        return super.resolve('products');
-    }
-
-    /**
-     * Gets an instance of the Subscription API
-     *
-     * @return Subscriptions
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Subscriptions(): Subscriptions {
-        return super.resolve('subscriptions');
-    }
-
-    /**
-     * Gets an instance of the SubscriptionItem API
-     *
-     * @return SubscriptionItems
-     */
-
-    /* istanbul ignore next Simple Method */
-    get SubscriptionItems(): SubscriptionItems {
-        return super.resolve('subscription-items');
-    }
-
-    /**
-     * Gets an instance of the Usage API
-     *
-     * @return Usages
-     */
-
-    /* istanbul ignore next Simple Method */
-    get Usages(): Usages {
-        return super.resolve('usages');
     }
 }
 

@@ -1,20 +1,18 @@
-import { AxiosResponse } from 'axios';
+import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { Collection, DocType } from '../Models/Models';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import {Collection, DocType} from '../Models/Models';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
 /**
  * DocTypes
  */
-class DocTypes extends Service
-{
+class DocTypes extends Service {
     /**
      * Lists DocTypes
      * @returns Promise<DocType[]>
      */
-    list()
-    {
+    list() {
         return this.client
             .get<JsonResponse<Collection<DocType>>>(`1/doctypes`)
             .then((response: AxiosResponse<JsonResponse<Collection<DocType>>>) => {
@@ -29,7 +27,7 @@ class DocTypes extends Service
      */
     get(docTypeId: Xuid<SupportedXuid.DocType>) {
         return this.client
-            .get<JsonResponse<DocType>>(`1/doctypes/${ docTypeId }`)
+            .get<JsonResponse<DocType>>(`1/doctypes/${docTypeId}`)
             .then((response: AxiosResponse<JsonResponse<DocType>>) => {
                 return response.data.data;
             });

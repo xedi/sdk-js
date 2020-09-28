@@ -6,7 +6,7 @@ import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
- * Mapping Collections Groups
+ * Mapping Collections
  */
 class MappingCollections extends Service {
 

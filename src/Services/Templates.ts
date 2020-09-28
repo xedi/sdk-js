@@ -1,15 +1,14 @@
 import JsonResponse from "../Interfaces/JsonResponse";
-import { Collection } from "../Models/Models";
-import { AxiosResponse } from "axios";
+import {Collection} from "../Models/Models";
+import {AxiosResponse} from "axios";
 import Service from "./Service";
 import Template from "../Models/Template";
-import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import Xuid, {SupportedXuid} from "../Utils/Xuid";
 
 /**
  * Tempaltes
  */
-class Templates extends Service
-{
+class Templates extends Service {
     /**
      * Get all templates
      * @returns Promise<Template>
@@ -29,7 +28,7 @@ class Templates extends Service
      */
     get(templateId: Xuid<SupportedXuid.Template>) {
         return this.client
-            .get<JsonResponse<Template>>(`1/templates/${ templateId }`)
+            .get<JsonResponse<Template>>(`1/templates/${templateId}`)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data;
             });
@@ -55,7 +54,7 @@ class Templates extends Service
      */
     update(templateId: Xuid<SupportedXuid.Template>, template: Template) {
         return this.client
-            .patch<JsonResponse<Template>>(`1/templates/${ templateId }`, template)
+            .patch<JsonResponse<Template>>(`1/templates/${templateId}`, template)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data
             });
@@ -68,7 +67,7 @@ class Templates extends Service
      */
     delete(templateId: Xuid<SupportedXuid.Template>) {
         return this.client
-            .delete<JsonResponse<Template>>(`1/templates/${ templateId }`)
+            .delete<JsonResponse<Template>>(`1/templates/${templateId}`)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response;
             });
@@ -81,7 +80,7 @@ class Templates extends Service
      */
     restore(TemplateId: Xuid<SupportedXuid.Template>) {
         return this.client
-            .put<JsonResponse<Template>>(`1/templates/${ TemplateId }`)
+            .put<JsonResponse<Template>>(`1/templates/${TemplateId}`)
             .then((response: AxiosResponse<JsonResponse<Template>>) => {
                 return response.data.data
             });
