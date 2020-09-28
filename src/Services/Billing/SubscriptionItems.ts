@@ -3,8 +3,7 @@ import JsonResponse from "../../Interfaces/JsonResponse";
 import {SubscriptionItem} from "../../Models/Models";
 import {AxiosResponse} from "axios";
 
-class SubscriptionItems extends Service
-{
+class SubscriptionItems extends Service {
 
     /**
      * Get subscription item by its entity id

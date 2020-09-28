@@ -1,15 +1,14 @@
 import JsonResponse from "../Interfaces/JsonResponse";
-import { Collection } from "../Models/Models";
-import { AxiosResponse } from "axios";
+import {Collection} from "../Models/Models";
+import {AxiosResponse} from "axios";
 import Service from "./Service";
 import Stage from "../Models/Stage";
-import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import Xuid, {SupportedXuid} from "../Utils/Xuid";
 
 /**
  * Stage
  */
-class Stages extends Service
-{
+class Stages extends Service {
     /**
      * Get all stages
      * @returns Promise<Stage>
@@ -29,7 +28,7 @@ class Stages extends Service
      */
     get(stageId: Xuid<SupportedXuid.Stage>) {
         return this.client
-            .get<JsonResponse<Stage>>(`1/stages/${ stageId }`)
+            .get<JsonResponse<Stage>>(`1/stages/${stageId}`)
             .then((response: AxiosResponse<JsonResponse<Stage>>) => {
                 return response.data.data;
             });
@@ -56,7 +55,7 @@ class Stages extends Service
      */
     update(stageId: Xuid<SupportedXuid.Stage>, stage: Stage) {
         return this.client
-            .patch<JsonResponse<Stage>>(`1/stages/${ stageId }`, stage)
+            .patch<JsonResponse<Stage>>(`1/stages/${stageId}`, stage)
             .then((response: AxiosResponse<JsonResponse<Stage>>) => {
                 return response.data.data
             });
@@ -69,7 +68,7 @@ class Stages extends Service
      */
     delete(stageId: Xuid<SupportedXuid.Stage>) {
         return this.client
-            .delete<JsonResponse<Stage>>(`1/stages/${ stageId }`)
+            .delete<JsonResponse<Stage>>(`1/stages/${stageId}`)
             .then((response: AxiosResponse<JsonResponse<Stage>>) => {
                 return response;
             });

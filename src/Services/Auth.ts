@@ -1,26 +1,41 @@
-import { AxiosResponse } from 'axios';
+import {AxiosResponse} from 'axios';
 import Service from './Service';
-import { User, Business } from '../Models/Models';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import {Business, User} from '../Models/Models';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import AuthResponse from '../Interfaces/AuthResponse';
 
 /**
  * Auth
  */
-class Auth extends Service
-{
+class Auth extends Service {
     /**
      * Logged in User
      */
     private _user: User | null | void = undefined;
 
     /**
+     * Gets the current user
+     * @returns User|void
+     */
+    get user(): User | null | void {
+        return this._user;
+    }
+
+    /**
      * Current business context
      */
     private _business: Business | null | void = undefined;
 
+    /**
+     * Gets the current business context
+     * @returns Business|void
+     */
+    get business(): Business | null | void {
+        return this._business;
+    }
+
     boot(): Service {
-        [ 'auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected' ].forEach(event => {
+        ['auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected'].forEach(event => {
             this.registerEvent(event);
         });
 
@@ -44,9 +59,9 @@ class Auth extends Service
             .then(resp => {
                 this._user = null;
                 this._business = null;
-                [ 'access_token', 'refresh_token' ].forEach(this.config.delete.bind(this.config));
+                ['access_token', 'refresh_token'].forEach(this.config.delete.bind(this.config));
 
-                this.trigger('auth_deleted', { method: 'logout' });
+                this.trigger('auth_deleted', {method: 'logout'});
 
                 return resp;
             });
@@ -60,7 +75,7 @@ class Auth extends Service
      */
     login(email: string, password: string) {
         return this.client
-            .post<AuthResponse>('1/auth', { email, password })
+            .post<AuthResponse>('1/auth', {email, password})
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
@@ -102,7 +117,7 @@ class Auth extends Service
         const refreshToken = this.config.get('refresh_token');
 
         return this.client
-            .post<AuthResponse>('1/auth/token', { 'refresh_token' : refreshToken })
+            .post<AuthResponse>('1/auth/token', {'refresh_token': refreshToken})
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
@@ -132,7 +147,7 @@ class Auth extends Service
      */
     switchContexts(businessUuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .patch<AuthResponse>('1/auth/token', { 'business_uuid': businessUuid })
+            .patch<AuthResponse>('1/auth/token', {'business_uuid': businessUuid})
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
@@ -157,7 +172,7 @@ class Auth extends Service
 
     requestClaim(claim: string, password: string) {
         return this.client
-            .post<AuthResponse>('1/auth/challenge', { claim, password })
+            .post<AuthResponse>('1/auth/challenge', {claim, password})
             .then(
                 (resp: AxiosResponse<AuthResponse>) => {
                     const body = resp.data;
@@ -185,25 +200,9 @@ class Auth extends Service
                     return resp
                 },
                 (error) => {
-                    this.trigger('claim_rejected', error.response.data.error );
+                    this.trigger('claim_rejected', error.response.data.error);
                 }
             );
-    }
-
-    /**
-     * Gets the current user
-     * @returns User|void
-     */
-    get user(): User | null | void {
-        return this._user;
-    }
-
-    /**
-     * Gets the current business context
-     * @returns Business|void
-     */
-    get business(): Business | null | void {
-        return this._business;
     }
 }
 

@@ -1,8 +1,8 @@
 import Service from "./Service";
 import JsonResponse from "../Interfaces/JsonResponse";
-import { Collection, Mailbox } from "../Models/Models";
-import { AxiosResponse } from "axios";
-import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import {Collection, Mailbox} from "../Models/Models";
+import {AxiosResponse} from "axios";
+import Xuid, {SupportedXuid} from "../Utils/Xuid";
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
@@ -30,7 +30,7 @@ class Mailboxes extends Service {
      */
     listByBusiness(businessXuid: Xuid<SupportedXuid.Business>) {
         return this.client
-            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${ businessXuid }/mailboxes`)
+            .get<JsonResponse<Collection<Mailbox>>>(`1/businesses/${businessXuid}/mailboxes`)
             .then((response: AxiosResponse<JsonResponse<Collection<Mailbox>>>) => {
                 return response.data.data;
             });
@@ -43,7 +43,7 @@ class Mailboxes extends Service {
      */
     get(mailboxId: Xuid<SupportedXuid.Mailbox>) {
         return this.client
-            .get<JsonResponse<Mailbox>>(`1/mailboxes/${ mailboxId }`)
+            .get<JsonResponse<Mailbox>>(`1/mailboxes/${mailboxId}`)
             .then((response: AxiosResponse<JsonResponse<Mailbox>>) => {
                 return response.data.data;
             });

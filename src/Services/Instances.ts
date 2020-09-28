@@ -1,15 +1,14 @@
 import JsonResponse from "../Interfaces/JsonResponse";
-import { Collection } from "../Models/Models";
-import { AxiosResponse } from "axios";
+import {Collection} from "../Models/Models";
+import {AxiosResponse} from "axios";
 import Service from "./Service";
 import Instance from "../Models/Instance";
-import Xuid, { SupportedXuid } from "../Utils/Xuid";
+import Xuid, {SupportedXuid} from "../Utils/Xuid";
 
 /**
  * Instances
  */
-class Instances extends Service
-{
+class Instances extends Service {
     /**
      * Get all Instances
      * @returns Promise<Instance>
@@ -29,7 +28,7 @@ class Instances extends Service
      */
     get(instanceId: Xuid<SupportedXuid.Instance>) {
         return this.client
-            .get<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
+            .get<JsonResponse<Instance>>(`1/instances/${instanceId}`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
                 return response.data.data;
             });
@@ -56,7 +55,7 @@ class Instances extends Service
      */
     delete(instanceId: Xuid<SupportedXuid.Instance>) {
         return this.client
-            .delete<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
+            .delete<JsonResponse<Instance>>(`1/instances/${instanceId}`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
                 return response.data.data;
             });
@@ -69,7 +68,7 @@ class Instances extends Service
      */
     restore(instanceId: Xuid<SupportedXuid.Instance>) {
         return this.client
-            .put<JsonResponse<Instance>>(`1/instances/${ instanceId }`)
+            .put<JsonResponse<Instance>>(`1/instances/${instanceId}`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
                 return response.data.data
             });
@@ -82,7 +81,7 @@ class Instances extends Service
      */
     run(instanceId: Xuid<SupportedXuid.Instance>) {
         return this.client
-            .put<JsonResponse<Instance>>(`1/instances/run/${ instanceId }`)
+            .put<JsonResponse<Instance>>(`1/instances/run/${instanceId}`)
             .then((response: AxiosResponse<JsonResponse<Instance>>) => {
                 return response.data.data
             });

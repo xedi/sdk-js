@@ -1,12 +1,12 @@
-import { AxiosInstance } from "axios";
-import { ConfigInterface } from '../Interfaces/Config';
+import {AxiosInstance} from "axios";
+import {ConfigInterface} from '../Interfaces/Config';
 
 interface EventPayload extends Object {
     method: string;
     data: object;
 };
 
-type EventHandler = (( payload: EventPayload ) => void);
+type EventHandler = ((payload: EventPayload) => void);
 
 /**
  * Service
@@ -51,13 +51,13 @@ abstract class Service {
      * @returns Service
      */
     on(event: string, handler: EventHandler): Service {
-        if (! this.subscriptions.has(event)) {
-           return this;
+        if (!this.subscriptions.has(event)) {
+            return this;
         }
 
         const existingSubscriptions = this.subscriptions.get(event)!;
 
-        this.subscriptions.set(event, existingSubscriptions.concat([ handler ]));
+        this.subscriptions.set(event, existingSubscriptions.concat([handler]));
 
         return this;
     }
@@ -69,7 +69,7 @@ abstract class Service {
      * @returns Service
      */
     once(event: string, handler: EventHandler): Service {
-        if (! this.subscriptions.has(event)) {
+        if (!this.subscriptions.has(event)) {
             return this;
         }
 
@@ -84,7 +84,7 @@ abstract class Service {
             this.subscriptions.set(event, subscriptions!);
         };
 
-        this.subscriptions.set(event, existingSubscriptions.concat([ selfDeletingHandler ]));
+        this.subscriptions.set(event, existingSubscriptions.concat([selfDeletingHandler]));
 
         return this;
     }
@@ -95,7 +95,7 @@ abstract class Service {
      * @returns Service
      */
     registerEvent(event: string): Service {
-        if (! this.subscriptions.has(event)) {
+        if (!this.subscriptions.has(event)) {
             this.subscriptions.set(event, []);
         }
 
@@ -109,7 +109,7 @@ abstract class Service {
      * @returns Service
      */
     trigger(event: string, payload: any): Service {
-        if (! this.subscriptions.has(event)) {
+        if (!this.subscriptions.has(event)) {
             return this;
         }
 

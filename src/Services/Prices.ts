@@ -1,14 +1,13 @@
 import Service from './Service';
-import Xuid, { SupportedXuid } from '../Utils/Xuid';
+import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import { Price, Collection } from '../Models/Models';
-import { AxiosResponse } from 'axios';
+import {Price} from '../Models/Models';
+import {AxiosResponse} from 'axios';
 
 /**
  * Prices
  */
-class Prices extends Service
-{
+class Prices extends Service {
 
     /**
      * Gets prices
@@ -17,7 +16,7 @@ class Prices extends Service
      */
     get(priceId: Xuid<SupportedXuid.Price>) {
         return this.client
-            .get<JsonResponse<Price>>(`1/prices/${ priceId }`)
+            .get<JsonResponse<Price>>(`1/prices/${priceId}`)
             .then((response: AxiosResponse<JsonResponse<Price>>) => {
                 return response.data.data;
             });
@@ -43,7 +42,7 @@ class Prices extends Service
      */
     update(price: Price) {
         return this.client
-            .patch<JsonResponse<Price>>(`1/prices/${ price._id }`, price)
+            .patch<JsonResponse<Price>>(`1/prices/${price._id}`, price)
             .then((response: AxiosResponse<JsonResponse<Price>>) => {
                 return response.data.data
             });
@@ -56,7 +55,7 @@ class Prices extends Service
      */
     delete(priceId: Xuid<SupportedXuid.Price>) {
         return this.client
-            .delete<JsonResponse<Price>>(`1/prices/${ priceId }`)
+            .delete<JsonResponse<Price>>(`1/prices/${priceId}`)
             .then((response: AxiosResponse<JsonResponse<Price>>) => {
                 return response.data.data;
             });

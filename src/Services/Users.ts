@@ -1,6 +1,6 @@
 import Service from './Service';
 import {AxiosResponse} from 'axios';
-import {Collection, User, Permission} from '../Models/Models';
+import {Collection, Permission, User} from '../Models/Models';
 import JsonResponse from '../Interfaces/JsonResponse';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
@@ -80,7 +80,7 @@ class Users extends Service {
 
     getByGroup(groupID: Xuid<SupportedXuid.Group>, params: object): Promise<PaginatedJsonResponse<User>> {
         return this.client
-            .get<PaginatedJsonResponse<User>>(`1/groups/${ groupID }/users`, {params})
+            .get<PaginatedJsonResponse<User>>(`1/groups/${groupID}/users`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
                 return response.data;
             });
