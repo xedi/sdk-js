@@ -5,7 +5,7 @@ import { Collection, DocType } from '../Models/Models';
 import Xuid, { SupportedXuid } from '../Utils/Xuid';
 
 /**
- * Businesses
+ * DocTypes
  */
 class DocTypes extends Service
 {

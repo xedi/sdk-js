@@ -116,6 +116,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.batches', (app: ContainerInterface, config: Config) => {
+            return new Services.Batches(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.users', (app: ContainerInterface, config: Config) => {
             return new Services.Users(
                 config,
@@ -125,6 +132,20 @@ class Xedi extends Container {
 
         this.singleton('services.businesses', (app: ContainerInterface, config: Config) => {
             return new Services.Businesses(
+                config,
+                app.resolve('client')
+            );
+        });
+
+        this.singleton('services.document-groups', (app: ContainerInterface, config: Config) => {
+            return new Services.DocumentGroups(
+                config,
+                app.resolve('client')
+            );
+        });
+
+        this.singleton('services.documents', (app: ContainerInterface, config: Config) => {
+            return new Services.Documents(
                 config,
                 app.resolve('client')
             );
@@ -181,6 +202,13 @@ class Xedi extends Container {
 
         this.singleton('services.mailboxes', (app: ContainerInterface, config: Config) => {
             return new Services.Mailboxes(
+                config,
+                app.resolve('client')
+            );
+        });
+
+        this.singleton('services.mapping-collections', (app: ContainerInterface, config: Config) => {
+            return new Services.MappingCollections(
                 config,
                 app.resolve('client')
             );
@@ -302,6 +330,14 @@ class Xedi extends Container {
     }
 
     /**
+     * Get an instance of the Batches API
+     */
+    static get Batches(): Services.Batches {
+        return this.resolveInstance()
+            .resolve('services.batches');
+    }
+
+    /**
      * Get an instance of the Users API
      */
     static get Users(): Services.Users {
@@ -315,6 +351,22 @@ class Xedi extends Container {
     static get Businesses(): Services.Businesses {
         return this.resolveInstance()
             .resolve('services.businesses');
+    }
+
+    /**
+     * Get an instance of the Document Groups API
+     */
+    static get DocumentGroups(): Services.DocumentGroups {
+        return this.resolveInstance()
+            .resolve('services.document-groups');
+    }
+
+    /**
+     * Get an instance of the Documents API
+     */
+    static get Documents(): Services.Documents {
+        return this.resolveInstance()
+            .resolve('services.documents');
     }
 
     /**
@@ -383,6 +435,14 @@ class Xedi extends Container {
     static get Mailboxes(): Services.Mailboxes {
         return this.resolveInstance()
             .resolve('services.mailboxes');
+    }
+
+    /**
+     * Get an instance of the Mappings API
+     */
+    static get MappingCollections(): Services.MappingCollections {
+        return this.resolveInstance()
+            .resolve('services.mapping-collections');
     }
 
     /**

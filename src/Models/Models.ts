@@ -1,7 +1,10 @@
+import Batch from "./Batch";
 import Business from './Business';
 import Card from './Card';
 import Customer from "./Customer";
 import DocType from "./DocType";
+import Document from "./Document";
+import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
 import Event from './Event';
 import Group from './Group';
@@ -10,6 +13,7 @@ import Invoice from "./Invoice";
 import InvoiceItem from "./InvoiceItem";
 import Mailbox from './Mailbox';
 import Mapping from "./Mapping";
+import MappingCollection from "./MappingCollection";
 import NetworkConfiguration from "./NetworkConfiguration";
 import NetworkConnection from "./NetworkConnection";
 import Notification from "./Notification";
@@ -31,10 +35,13 @@ import Usage from './Usage';
 import User from './User';
 
 type Models =
-    Business
+    Batch
+    | Business
     | Card
     | Customer
     | DocType
+    | Document
+    | DocumentGroup
     | DocumentSetting
     | Event
     | Group
@@ -43,6 +50,7 @@ type Models =
     | InvoiceItem
     | Mailbox
     | Mapping
+    | MappingCollection
     | NetworkConfiguration
     | NetworkConnection
     | Notification
@@ -67,11 +75,14 @@ interface Collection<T = Models> extends Array<T | Models> {
 }
 
 export {
+    Batch,
     Business,
     Card,
     Collection,
     Customer,
     DocType,
+    Document,
+    DocumentGroup,
     DocumentSetting,
     Event,
     Group,
@@ -80,6 +91,7 @@ export {
     InvoiceItem,
     Mailbox,
     Mapping,
+    MappingCollection,
     Models,
     NetworkConfiguration,
     NetworkConnection,
