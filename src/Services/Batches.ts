@@ -1,76 +1,76 @@
 import Service from './Service';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {MappingCollection} from '../Models/Models';
+import {Batch} from '../Models/Models';
 import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
- * Mapping Collections Groups
+ * Batches
  */
 class Batches extends Service {
 
     /**
-     * List mapping collections
+     * List batches
      * @param params
-     * @returns Promise<PaginatedJsonResponse<MappingCollection[]>>
+     * @returns Promise<PaginatedJsonResponse<Batch[]>>
      */
     list(params: object) {
         return this.client
-            .get<PaginatedJsonResponse<MappingCollection>>(`1/mappingcollections`, {params})
-            .then((response: AxiosResponse<PaginatedJsonResponse<MappingCollection>>) => {
+            .get<PaginatedJsonResponse<Batch>>(`1/batches`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Batch>>) => {
                 return response.data;
             });
     }
 
     /**
-     * Gets mapping collection
-     * @param mappingCollectionId
-     * @returns Promise<MappingCollection>
+     * Gets batch
+     * @param batchId
+     * @returns Promise<Batch>
      */
-    get(mappingCollectionId: Xuid<SupportedXuid.MappingCollection>) {
+    get(batchId: Xuid<SupportedXuid.Batch>) {
         return this.client
-            .get<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollectionId}`)
-            .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
+            .get<JsonResponse<Batch>>(`1/batches/${batchId}`)
+            .then((response: AxiosResponse<JsonResponse<Batch>>) => {
                 return response.data.data;
             });
     }
 
     /**
-     * Creates mapping collection
-     * @param mappingCollection
-     * @returns Promise<MappingCollection>
+     * Creates batch
+     * @param batch
+     * @returns Promise<Batch>
      */
-    create(mappingCollection: MappingCollection) {
+    create(batch: Batch) {
         return this.client
-            .post<JsonResponse<MappingCollection>>(`1/mappingcollections`, mappingCollection)
-            .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
+            .post<JsonResponse<Batch>>(`1/batches`, batch)
+            .then((response: AxiosResponse<JsonResponse<Batch>>) => {
                 return response.data.data
             });
     }
 
     /**
-     * Updates mapping collection
-     * @param mappingCollection
-     * @returns Promise<MappingCollection>
+     * Updates batch
+     * @param batch
+     * @returns Promise<Batch>
      */
-    update(mappingCollection: MappingCollection) {
+    update(batch: Batch) {
         return this.client
-            .patch<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollection._id}`, mappingCollection)
-            .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
+            .patch<JsonResponse<Batch>>(`1/batches/${batch._id}`, batch)
+            .then((response: AxiosResponse<JsonResponse<Batch>>) => {
                 return response.data.data
             });
     }
 
     /**
-     * Deletes mapping collection
-     * @param mappingCollectionId
-     * @returns Promise<MappingCollection>
+     * Deletes batch
+     * @param batchId
+     * @returns Promise<Batch>
      */
-    delete(mappingCollectionId: Xuid<SupportedXuid.MappingCollection>) {
+    delete(batchId: Xuid<SupportedXuid.Batch>) {
         return this.client
-            .delete<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollectionId}`)
-            .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
+            .delete<JsonResponse<Batch>>(`1/batches/${batchId}`)
+            .then((response: AxiosResponse<JsonResponse<Batch>>) => {
                 return response;
             });
     }
