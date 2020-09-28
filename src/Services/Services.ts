@@ -1,7 +1,10 @@
 import Auth from "./Auth";
+import Batches from "./Batches"
 import Businesses from "./Businesses";
 import Partners from "./Partners";
 import DocTypes from "./DocTypes";
+import DocumentGroups from "./DocumentGroups";
+import Documents from "./Documents";
 import DocumentSettings from "./DocumentSettings";
 import Events from "./Events";
 import Prices from "./Prices";
@@ -9,6 +12,7 @@ import Partnerships from "./Partnerships";
 import Products from "./Products";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
+import MappingCollections from "./MappingCollections";
 import Mappings from "./Mappings";
 import Accounts from "./Accounts";
 import Templates from "./Templates";
@@ -25,17 +29,21 @@ import Groups from "./Groups";
 export {
     Accounts,
     Auth,
+    Batches,
     Billing,
     Businesses,
     Partners,
     Partnerships,
     DocTypes,
+    DocumentGroups,
+    Documents,
     DocumentSettings,
     Events,
     Prices,
     Products,
     Users,
     Mailboxes,
+    MappingCollections,
     Mappings,
     Templates,
     Transitions,

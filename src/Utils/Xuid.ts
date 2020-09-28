@@ -26,7 +26,10 @@ export enum SupportedXuid {
     GroupType,
     NetworkConfiguration,
     Mapping,
-    DocumentSetting
+    DocumentSetting,
+    Document,
+    Batch,
+    MappingCollection
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
