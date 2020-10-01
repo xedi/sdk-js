@@ -25,7 +25,7 @@ class MailingLists extends Service {
      * @param businessXuid
      * @returns Promise<Instance>
      */
-    list(businessXuid: Xuid<SupportedXuid.Business>) {
+    getByBusiness(businessXuid: Xuid<SupportedXuid.Business>) {
         return this.client
             .get<JsonResponse<Collection<MailingList>>>('1/businesses/' + businessXuid + '/mailinglists')
             .then((resp: AxiosResponse<JsonResponse<Collection<MailingList>>>) => {
