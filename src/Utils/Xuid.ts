@@ -29,7 +29,8 @@ export enum SupportedXuid {
     DocumentSetting,
     Document,
     Batch,
-    MappingCollection
+    MappingCollection,
+    Setting
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;

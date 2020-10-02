@@ -10,6 +10,7 @@ import Events from "./Events";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
+import Settings from "./Settings";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
 import MappingCollections from "./MappingCollections";
@@ -41,6 +42,7 @@ export {
     Events,
     Prices,
     Products,
+    Settings,
     Users,
     Mailboxes,
     MappingCollections,

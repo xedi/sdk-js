@@ -23,6 +23,7 @@ import Permission from './Permission';
 import Plan from './Plan';
 import Price from './Price';
 import Product from './Product';
+import Setting from "./Setting";
 import Stage from './Stage';
 import StripeProduct from "./StripeProduct";
 import StripeTax from "./StripeTax";
@@ -60,6 +61,7 @@ type Models =
     | Plan
     | Price
     | Product
+    | Setting
     | Stage
     | StripeProduct
     | StripeTax
@@ -102,6 +104,7 @@ export {
     Plan,
     Price,
     Product,
+    Setting,
     Stage,
     StripeProduct,
     StripeTax,
