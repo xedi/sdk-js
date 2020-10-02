@@ -48,6 +48,19 @@ class Mailboxes extends Service {
                 return response.data.data;
             });
     }
+
+    /**
+     * Create mailbox
+     * @param mailbox
+     * @returns Promise<Mailbox>
+     */
+    create(mailbox: Mailbox) {
+        return this.client
+            .post<JsonResponse<Mailbox>>(`1/mailboxes`, mailbox)
+            .then((response: AxiosResponse<JsonResponse<Mailbox>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default Mailboxes;
