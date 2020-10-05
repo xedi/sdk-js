@@ -8,6 +8,7 @@ import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
 import Users from "./Users";
+import Locations from "./Locations"
 import Mailboxes from "./Mailboxes";
 import Mappings from "./Mappings";
 import Accounts from "./Accounts";
@@ -35,6 +36,7 @@ export {
     Prices,
     Products,
     Users,
+    Locations,
     Mailboxes,
     Mappings,
     Templates,
