@@ -19,8 +19,9 @@ import NetworkConnection from "./NetworkConnection";
 import Notification from "./Notification";
 import Partner from "./Partner";
 import Partnership from "./Partnership";
-import Permission from './Permission';
 import Plan from './Plan';
+import Permission from './Permission';
+import PolicyAcceptance from './PolicyAcceptance';
 import Price from './Price';
 import Product from './Product';
 import Setting from "./Setting";
@@ -60,6 +61,7 @@ type Models =
     | Partnership
     | Permission
     | Plan
+    | PolicyAcceptance
     | Price
     | Product
     | Setting
@@ -104,6 +106,7 @@ export {
     Partnership,
     Permission,
     Plan,
+    PolicyAcceptance,
     Price,
     Product,
     Setting,
