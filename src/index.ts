@@ -325,6 +325,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.policyacceptances', (app: ContainerInterface, config: Config) => {
+            return new Services.PolicyAcceptances(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -579,6 +586,14 @@ class Xedi extends Container {
     static get MailingLists(): Services.MailingLists {
         return this.resolveInstance()
             .resolve('services.mailinglists');
+    }
+
+     /**
+     * Get an instance of the Policy Acceptances API
+     */
+    static get PolicyAcceptances(): Services.PolicyAcceptances {
+        return this.resolveInstance()
+            .resolve('services.policyacceptances');
     }
 }
 

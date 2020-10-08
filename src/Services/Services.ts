@@ -26,7 +26,8 @@ import NetworkConfigurations from "./NetworkConfigurations";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
 import Groups from "./Groups";
-import MailingLists from "./MailingLists"
+import MailingLists from "./MailingLists";
+import PolicyAcceptances from "./PolicyAcceptances";
 
 export {
     Accounts,
@@ -41,6 +42,7 @@ export {
     Documents,
     DocumentSettings,
     Events,
+    PolicyAcceptances,
     Prices,
     Products,
     Settings,
