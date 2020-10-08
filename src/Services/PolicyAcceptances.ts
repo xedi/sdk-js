@@ -39,7 +39,7 @@ class PolicyAcceptances extends Service {
      */
     update(policyAcceptance: PolicyAcceptance) {
         return this.client
-            .put<JsonResponse<PolicyAcceptance>>('1/policies/' + policyAcceptance.contextId , policyAcceptance)
+            .put<JsonResponse<PolicyAcceptance>>('1/policies/' + policyAcceptance.context_id , policyAcceptance)
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data
             });
