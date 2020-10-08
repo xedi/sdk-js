@@ -11,9 +11,9 @@ class PolicyAcceptances extends Service {
      * @param policyacceptance
      * @returns Promise<Instance>
      */
-    create(policy_acceptance: PolicyAcceptance) {
+    create(policyAcceptance: PolicyAcceptance) {
         return this.client
-            .post<JsonResponse<PolicyAcceptance>>(`1/policies`, policy_acceptance)
+            .post<JsonResponse<PolicyAcceptance>>(`1/policies`, policyAcceptance)
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data
             });
@@ -21,12 +21,12 @@ class PolicyAcceptances extends Service {
 
     /**
      * Get a Policy Acceptance
-     * @param context_id
+     * @param contextId
      * @returns Promise<Instance>
      */
-    get(context_id: string) {
+    get(contextId: string) {
         return this.client
-            .get<JsonResponse<PolicyAcceptance>>('1/policies/' + context_id )
+            .get<JsonResponse<PolicyAcceptance>>('1/policies/' + contextId )
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data;
             });
@@ -34,12 +34,12 @@ class PolicyAcceptances extends Service {
 
     /**
      * Update a policy acceptance
-     * @param policy_acceptance
+     * @param policyAcceptance
      * @returns Promise<Instance>
      */
-    update(policy_acceptance: PolicyAcceptance) {
+    update(policyAcceptance: PolicyAcceptance) {
         return this.client
-            .put<JsonResponse<PolicyAcceptance>>('1/policies/' + policy_acceptance.context_id , policy_acceptance)
+            .put<JsonResponse<PolicyAcceptance>>('1/policies/' + policyAcceptance.contextId , policyAcceptance)
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data
             });
@@ -47,12 +47,12 @@ class PolicyAcceptances extends Service {
 
     /**
      * Delete a policy acceptance
-     * @param context_id
+     * @param contextId
      * @returns Promise<Instance>
      */
-    delete(context_id: string) {
+    delete(contextId: string) {
         return this.client
-            .delete<JsonResponse<null>>('1/policies/' + context_id )
+            .delete<JsonResponse<null>>('1/policies/' + contextId )
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             });
@@ -60,13 +60,13 @@ class PolicyAcceptances extends Service {
 
     /**
      * Check a policy acceptance
-     * @param context_id
+     * @param contextId
      * @param policy
      * @returns Promise<Instance>
      */
-    check(context_id: string, policy: string) {
+    check(contextId: string, policy: string) {
         return this.client
-            .get<JsonResponse<null>>('1/policies/' + context_id + '/check/' + policy)
+            .get<JsonResponse<null>>('1/policies/' + contextId + '/check/' + policy)
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             });

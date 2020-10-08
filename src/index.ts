@@ -589,8 +589,8 @@ class Xedi extends Container {
     }
 
      /**
-     * Get an instance of the Policy Acceptances API
-     */
+      * Get an instance of the Policy Acceptances API
+      */
     static get PolicyAcceptances(): Services.PolicyAcceptances {
         return this.resolveInstance()
             .resolve('services.policyacceptances');
