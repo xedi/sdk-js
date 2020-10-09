@@ -71,11 +71,12 @@ class Auth extends Service {
      * Login and obtain a token pair
      * @param email
      * @param password
+     * @param realm
      * @returns Object
      */
-    login(email: string, password: string) {
+    login(email: string, password: string, realm: string = 'API_GATEWAY') {
         return this.client
-            .post<AuthResponse>('1/auth', {email, password})
+            .post<AuthResponse>('1/auth', {email, password, realm})
             .then((resp: AxiosResponse<AuthResponse>) => {
                 const body = resp.data;
 
