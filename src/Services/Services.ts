@@ -28,6 +28,7 @@ import Notifications from "./Notifications";
 import Groups from "./Groups";
 import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
+import BusinessInvites from "./BusinessInvites";
 
 export {
     Accounts,
@@ -59,5 +60,6 @@ export {
     NetworkConnections,
     Notifications,
     Groups,
-    MailingLists
+    MailingLists,
+    BusinessInvites,
 };

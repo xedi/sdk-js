@@ -333,6 +333,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.businessinvites', (app: ContainerInterface, config: Config) => {
+            return new Services.BusinessInvites(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -600,6 +607,14 @@ class Xedi extends Container {
     static get PolicyAcceptances(): Services.PolicyAcceptances {
         return this.resolveInstance()
             .resolve('services.policyacceptances');
+    }
+
+    /**
+      * Get an instance of the BusinessInvites API
+      */
+     static get BusinessInvites(): Services.BusinessInvites {
+        return this.resolveInstance()
+            .resolve('services.businessinvites');
     }
 }
 
