@@ -36,6 +36,7 @@ import Transition from './Transition';
 import Usage from './Usage';
 import User from './User';
 import MailingList from './MailingList';
+import BusinessInvite from './BusinessInvite';
 
 type Models =
     Batch
@@ -75,7 +76,8 @@ type Models =
     | Transition
     | Usage
     | User
-    | MailingList;
+    | MailingList
+    | BusinessInvite;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -120,5 +122,6 @@ export {
     Transition,
     Usage,
     User,
-    MailingList
+    MailingList,
+    BusinessInvite
 };
