@@ -604,8 +604,8 @@ class Xedi extends Container {
     }
 
     /**
-      * Get an instance of the BusinessInvites API
-      */
+     * Get an instance of the BusinessInvites API
+     */
      static get BusinessInvites(): Services.BusinessInvites {
         return this.resolveInstance()
             .resolve('services.businessinvites');

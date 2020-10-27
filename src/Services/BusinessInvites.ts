@@ -90,9 +90,9 @@ class BusinessInvites extends Service {
      *
      * @returns Promise<PaginatedJsonResponse<BusinessInvite[]>>
      */
-    pending(business_id: Xuid<SupportedXuid.Business>) {
+    pending(businessId: Xuid<SupportedXuid.Business>) {
         return this.client
-             .get<PaginatedJsonResponse<BusinessInvite>>('1/businessinvites/business/' + business_id)
+             .get<PaginatedJsonResponse<BusinessInvite>>('1/businessinvites/business/' + businessId)
              .then((response: AxiosResponse<PaginatedJsonResponse<BusinessInvite>>) => {
                  return response.data.data;
             });
