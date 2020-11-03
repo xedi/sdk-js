@@ -3,6 +3,7 @@ import Service from './Service';
 import {Business, User} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import AuthResponse from '../Interfaces/AuthResponse';
+import JsonResponse from "../Interfaces/JsonResponse";
 
 /**
  * Auth
@@ -202,6 +203,49 @@ class Auth extends Service {
                 },
                 (error) => {
                     this.trigger('claim_rejected', error.response.data.error);
+                }
+            );
+    }
+
+    /**
+     * Forgot password
+     * @param email
+     */
+    forgotPassword(email: string) {
+        return this.client
+            .get<AuthResponse>(`1/auth/password/forgot/${email}`)
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
+
+    /**
+     * Check if valid password reset token
+     * @param token
+     */
+    checkPasswordResetToken(token: string) {
+        return this.client
+            .get<AuthResponse>(`1/auth/password/checkToken/${token}`)
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
+
+    /**
+     * Reset password
+     * @param token
+     * @param password
+     */
+    resetPassword(token: string, password: string) {
+        return this.client
+            .post<AuthResponse>(`1/auth/password/token/${token}`, {password})
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
                 }
             );
     }
