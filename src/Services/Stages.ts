@@ -36,7 +36,7 @@ class Stages extends Service {
 
     /**
      * Create a stage
-     * @param Stage
+     * @param stage
      * @returns Promise<Stage>
      */
     create(stage: Stage) {
