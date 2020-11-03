@@ -47,6 +47,14 @@ class Stages extends Service {
             });
     }
 
+    setState(stage: Stage) {
+        return this.client
+            .post<JsonResponse<Stage>>(`1/stages/${stage._id}/mark/${stage.state}`)
+            .then((response: AxiosResponse<JsonResponse<Stage>>) => {
+                return response.data.data
+            });
+    }
+
     /**
      * Update a  stage
      * @param stageId
