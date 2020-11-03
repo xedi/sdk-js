@@ -318,6 +318,20 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.mailinglists', (app: ContainerInterface, config: Config) => {
+            return new Services.MailingLists(
+                config,
+                app.resolve('client')
+            );
+        });
+
+        this.singleton('services.policyacceptances', (app: ContainerInterface, config: Config) => {
+            return new Services.PolicyAcceptances(
+                config,
+                app.resolve('client')
+            );
+        });
     }
 
     /**
@@ -564,6 +578,22 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.groups');
+    }
+
+    /**
+     * Get an instance of the MailingLists API
+     */
+    static get MailingLists(): Services.MailingLists {
+        return this.resolveInstance()
+            .resolve('services.mailinglists');
+    }
+
+     /**
+      * Get an instance of the Policy Acceptances API
+      */
+    static get PolicyAcceptances(): Services.PolicyAcceptances {
+        return this.resolveInstance()
+            .resolve('services.policyacceptances');
     }
 }
 

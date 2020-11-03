@@ -29,7 +29,7 @@ describe('Auth@login', () => {
 
     it('should store user details and tokens', async () => {
         nock('http://api.xedi.com')
-            .post('/1/auth', { email: 'test@example.com', password: 'my-password' })
+            .post('/1/auth', { email: 'test@example.com', password: 'my-password', realm: 'API_GATEWAY' })
             .reply(200, positiveAuthenticationResponse);
 
         const mockConfig = new Config();
@@ -39,7 +39,7 @@ describe('Auth@login', () => {
 
         const authService = new Auth(mockConfig, axios);
 
-        await authService.login('test@example.com', 'my-password');
+        await authService.login('test@example.com', 'my-password', 'API_GATEWAY');
 
         expect(mockConfig).to.have.keys('access_token', 'refresh_token').and
             .to.include('access-token').and

@@ -1,0 +1,114 @@
+---
+title: Mailinglists
+description: Using the Mailinglists API
+status: Stable
+---
+
+import {CheckIcon} from '@primer/styled-octicons';
+
+## Introduction
+
+The Mailinglists API allows you to interact with our Mailinglists data.
+
+## Usage
+
+### Create
+
+Create a Mailinglist
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| business_id   | Xuid      | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+| name          | String    | <CheckIcon color="green.5"/>  | 'My List'                                 |
+| description   | String    | <CheckIcon color="green.5"/>  | 'My new shiny Mailinglist'                |
+
+
+**Usage**
+
+```javascript
+    await Xedi.Mailinglist.create({
+        "businees_id": "a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e",
+        "name": "My Mailinglist",
+        "description": "My Shiny new Mailinglist",
+    })
+```
+
+### getByBusiness
+
+List All Mailinglists for a business
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| businessXuid  | Xuid      | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+
+
+**Usage**
+
+```javascript
+    await Xedi.Mailinglist.getByBusiness("a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e");
+```
+
+### Get
+
+Get a mailinglist by id
+
+**Parameters**
+
+| Property         | Type      | Required                      | Example                                   |
+| :--              | :--       | :-:                           | :--                                       |
+| mailinglistXuid  | Xuid      | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16'    |
+
+
+**Usage**
+
+```javascript
+    await Xedi.MailingLists.get("e59631a8-fda6-11ea-a024-01006975ce16");
+```
+
+### Update
+
+Update a mailing list
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| _id           | Xuid      | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16'    |
+| business_id   | Xuid      | <CheckIcon color="green.5"/>  | 'd880a624-fda6-11ea-9ff6-0100f1a50c6e'    |
+| name          | String    | <CheckIcon color="green.5"/>  | 'My update List Name'                     |
+| description   | String    | <CheckIcon color="green.5"/>  | 'My updated Description'                  |
+
+
+**Usage**
+
+```javascript
+    await Xedi.MailingLists.update(
+        {
+            '_id': 'e59631a8-fda6-11ea-a024-01006975ce16',
+            'name': 'My updated list name',
+            'description': 'My updated description',
+            'businees_id': 'd880a624-fda6-11ea-9ff6-0100f1a50c6e'
+        });
+```
+
+
+### Delete
+
+Delete a mailing list
+
+**Parameters**
+
+| Property          | Type      | Required                      | Example                                   |
+| :--               | :--       | :-:                           | :--                                       |
+| mailinglistXuid   | Xuid      | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16'    |
+
+
+**Usage**
+
+```javascript
+    await Xedi.MailingLists.delete('e59631a8-fda6-11ea-a024-01006975ce16');
+```

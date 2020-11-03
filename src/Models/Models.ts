@@ -19,8 +19,9 @@ import NetworkConnection from "./NetworkConnection";
 import Notification from "./Notification";
 import Partner from "./Partner";
 import Partnership from "./Partnership";
-import Permission from './Permission';
 import Plan from './Plan';
+import Permission from './Permission';
+import PolicyAcceptance from './PolicyAcceptance';
 import Price from './Price';
 import Product from './Product';
 import Setting from "./Setting";
@@ -34,6 +35,7 @@ import Template from './Template';
 import Transition from './Transition';
 import Usage from './Usage';
 import User from './User';
+import MailingList from './MailingList';
 
 type Models =
     Batch
@@ -59,6 +61,7 @@ type Models =
     | Partnership
     | Permission
     | Plan
+    | PolicyAcceptance
     | Price
     | Product
     | Setting
@@ -71,7 +74,8 @@ type Models =
     | Template
     | Transition
     | Usage
-    | User;
+    | User
+    | MailingList;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -102,6 +106,7 @@ export {
     Partnership,
     Permission,
     Plan,
+    PolicyAcceptance,
     Price,
     Product,
     Setting,
@@ -114,5 +119,6 @@ export {
     Template,
     Transition,
     Usage,
-    User
+    User,
+    MailingList
 };

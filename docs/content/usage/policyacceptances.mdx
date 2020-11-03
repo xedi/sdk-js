@@ -1,0 +1,111 @@
+---
+title: Policy Acceptances
+description: Using the Policy Acceptances API
+status: Stable
+---
+
+import {CheckIcon} from '@primer/styled-octicons';
+
+## Introduction
+
+The Policy Acceptances API allows you to interact with our Policy Acceptances data.
+
+## Usage
+
+### Create
+
+Create a Policy Acceptance
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| context_id    | String    | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+| policy        | String    | <CheckIcon color="green.5"/>  | 'user_terms | business_terms'             |
+
+
+**Usage**
+
+```javascript
+    await Xedi.policyAcceptances.create({
+        "context_id": "a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e",
+        "policy": "business_terms"
+    })
+```
+
+### Get
+
+Get a policy acceptance by context_id
+
+**Parameters**
+
+| Property         | Type      | Required                      | Example                                   |
+| :--              | :--       | :-:                           | :--                                       |
+| context_id       | string    | <CheckIcon color="green.5"/>  | 'a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e'    |
+
+
+**Usage**
+
+```javascript
+    await Xedi.policyAcceptances.get("a5a4acea-fbf9-11ea-9a4e-0100f1a50c6e");
+```
+
+### Update
+
+Update a Policy Acceptance
+
+**Parameters**
+
+| Property      | Type        | Required                      | Example                                   |
+| :--           | :--         | :-:                           | :--                                       |
+| context_id    | string      | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16'    |
+| policy        | string      | <CheckIcon color="green.5"/>  | 'business_terms'                          |
+
+
+
+**Usage**
+
+```javascript
+    await Xedi.PolicyAcceptances.update(
+        {
+            'context_id': 'e59631a8-fda6-11ea-a024-01006975ce16',
+            'policy': 'business_terms',
+        });
+```
+
+
+### Delete
+
+Delete a Policy Acceptance list
+
+**Parameters**
+
+| Property     | Type      | Required                      | Example                                |
+| :--          | :--       | :-:                           | :--                                    |
+| context_id   | string    | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16' |
+
+
+**Usage**
+
+```javascript
+    await Xedi.PolicyAcceptances.delete('e59631a8-fda6-11ea-a024-01006975ce16');
+```
+
+### Check
+
+Check a Policy Acceptance
+
+**Parameters**
+
+| Property      | Type        | Required                      | Example                                   |
+| :--           | :--         | :-:                           | :--                                       |
+| context_id    | string      | <CheckIcon color="green.5"/>  | 'e59631a8-fda6-11ea-a024-01006975ce16'    |
+| policy        | string      | <CheckIcon color="green.5"/>  | 'business_terms'                          |
+
+
+
+**Usage**
+
+```javascript
+    await Xedi.PolicyAcceptances.check('e59631a8-fda6-11ea-a024-01006975ce16', 'business_terms');
+```
