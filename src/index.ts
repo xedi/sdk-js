@@ -5,6 +5,7 @@ import * as Services from './Services/Services';
 import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
 import ContainerInterface from './Interfaces/Container';
 import GraphQlClient from './Utils/GraphQlClient';
+import CountryCodes from './Utils/CountryCodes';
 
 /**
  * Xedi
@@ -572,6 +573,11 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('utilities.graphql');
+    }
+
+    static get CountryCodes(): CountryCodes
+    {
+        return new CountryCodes();
     }
 
     static get Groups(): Services.Groups
