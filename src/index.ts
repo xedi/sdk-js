@@ -49,7 +49,7 @@ class Xedi extends Container {
 
                     if (isClientError && 'www-authenticate' in response.headers) {
                         const authenticateHeader = AuthenticateHeader.parse(response.headers['www-authenticate']);
-                        const requiresRefresh = (authenticateHeader.error_description || '').includes('token expired');
+                        const requiresRefresh = (authenticateHeader.error_description || '').includes('access token expired');
 
                         if (requiresRefresh) {
                             this.resolve('config').delete('access_token');
