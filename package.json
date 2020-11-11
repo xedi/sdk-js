@@ -1,6 +1,6 @@
 {
   "name": "@xedi/sdk-js",
-  "version": "1.22.0",
+  "version": "1.22.1",
   "description": "JavaScript wrapper for XEDI API",
   "browser": "./lib/sdk.min.js",
   "homepage": "https://github.com/xedi/sdk-js",
