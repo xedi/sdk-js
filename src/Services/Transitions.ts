@@ -46,6 +46,13 @@ class Transitions extends Service {
             });
     }
 
+    transition(transitionId: Xuid<SupportedXuid.Transition>) {
+        return this.client
+            .post<JsonResponse<Transition>>(`1/transitions/${transitionId}`)
+            .then((response: AxiosResponse<JsonResponse<Transition>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default Transitions;
