@@ -1,7 +1,7 @@
 ---
 title: Transitions
 description: Using the Transitions API
-status: New
+status: Stable
 source: https://github.com/xedi/sdk-js/blob/master/src/Services/Transitions.ts
 ---
 
@@ -18,13 +18,13 @@ The Transitions API gives the ability to fully configure each transition between
 
 Retreive the list of transitions.
 
-#### Usage 
+**Usage**
 
 ``` javascript
 const transitions = await Xedi.Transitions.list();
 ```
 
-#### Response
+**Response**
 
 ``` json
 [
@@ -57,19 +57,19 @@ const transitions = await Xedi.Transitions.list();
 
 Retrieve a transition by Id.
 
-#### Parameters
+**Parameters**
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
 | id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
 
-#### Usage 
+**Usage**
 
 ``` javascript
 const transition = await Xedi.Transitions.get('5076455a-a18e-11ea-8618-0242ac120002');
 ```
 
-#### Response
+**Response**
 
 ``` json
 {
@@ -89,7 +89,7 @@ const transition = await Xedi.Transitions.get('5076455a-a18e-11ea-8618-0242ac120
 
 Create a transition
 
-#### Parameters
+**Parameters**
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
@@ -99,7 +99,7 @@ Create a transition
 | description | string | | My first transition |
 | is_automtic | bool | <CheckIcon color="green.5"/> | 1 |
 
-#### Usage
+**Usage**
 
 ``` javascript
 const transition = await Xedi.Transitions.create(
@@ -114,7 +114,7 @@ const transition = await Xedi.Transitions.create(
 );
 ```
 
-#### Response
+**Response**
 
 ``` json
 {
@@ -134,7 +134,7 @@ const transition = await Xedi.Transitions.create(
 
 Update a transition
 
-#### Parameters
+**Parameters**
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
@@ -145,7 +145,7 @@ Update a transition
 | description | string | | My first transition |
 | is_automtic | bool | <CheckIcon color="green.5"/> | 1 |
 
-#### Usage
+**Usage**
 
 ``` javascript
 const transition = await Xedi.Transitions.create(
@@ -161,7 +161,7 @@ const transition = await Xedi.Transitions.create(
 );
 ```
 
-#### Response
+**Response**
 
 ``` json
 {
@@ -181,22 +181,54 @@ const transition = await Xedi.Transitions.create(
 
 Delete a transition.
 
-#### Parameters
+**Parameters**
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
 | id | Xuid | <CheckIcon color="green.5"/> | '5076455a-a18e-11ea-8618-0242ac120002' |
 
-#### Usage 
+**Usage**
 
 ``` javascript
 const transition = await Xedi.Transitions.delete('5076455a-a18e-11ea-8618-0242ac120002');
 ```
 
-#### Response
+**Response**
 
 ``` json
 {
-  "_id": "5076455a-a18e-11ea-8618-0242ac120002"  
+  "_id": "5076455a-a18e-11ea-8618-0242ac120002"
+}
+```
+
+### Transition
+
+Transition between two stages as defined by the given Transition
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| id | Xuid | <CheckIcon color="green.5" /> | '5076455a-a18e-11ea-8618-0242ac120002' |
+
+**Usage**
+
+``` javascript
+const transition = await Xedi.Transitions.transition('5076455a-a18e-11ea-8618-0242ac120002');
+```
+
+**Response**
+
+``` json
+{
+    "_id": "5076455a-a18e-11ea-8618-0242ac120002",
+    "from_id": "9cabdeca-a0fe-11ea-8530-0242ac120002",
+    "to_id": "a099e2de-a0fe-11ea-b9be-0242ac120002",
+    "workflow_id": "9c82245e-a0fe-11ea-b1cf-01009cb3fa40",
+    "workflow_type": "template",
+    "description": "My updated transition",
+    "is_automtic": 1,
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:27:03"
 }
 ```
