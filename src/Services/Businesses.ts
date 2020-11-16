@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
-import {Business} from '../Models/Models';
+import {Business, User} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
 /**
@@ -63,6 +63,21 @@ class Businesses extends Service {
         return this.client
             .get<PaginatedJsonResponse<Business>>(`1/users/${userId}/businesses`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
+                return response.data;
+            });
+    }
+
+    /**
+     * Get users for business
+     *
+     * @param businessId
+     *
+     * @returns Promise<PaginatedJsonResponse<User[]>>
+     */
+    users(businessId: Xuid<SupportedXuid.Business>): Promise<PaginatedJsonResponse<User>> {
+        return this.client
+            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`)
+            .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
                 return response.data;
             });
     }

@@ -30,7 +30,8 @@ export enum SupportedXuid {
     Document,
     Batch,
     MappingCollection,
-    Setting
+    Setting,
+    BusinessInvite
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
