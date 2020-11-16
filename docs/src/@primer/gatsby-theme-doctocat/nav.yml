@@ -14,6 +14,8 @@
       url: /usage/auth
     - title: Businesses
       url: /usage/businesses
+    - title: Business Invites
+      url: /usage/businessinvites
     - title: Events
       url: /usage/events
     - title: GraphQL
