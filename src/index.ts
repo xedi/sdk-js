@@ -5,6 +5,7 @@ import * as Services from './Services/Services';
 import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
 import ContainerInterface from './Interfaces/Container';
 import GraphQlClient from './Utils/GraphQlClient';
+import CountryCodes from './Utils/CountryCodes';
 
 /**
  * Xedi
@@ -48,7 +49,7 @@ class Xedi extends Container {
 
                     if (isClientError && 'www-authenticate' in response.headers) {
                         const authenticateHeader = AuthenticateHeader.parse(response.headers['www-authenticate']);
-                        const requiresRefresh = (authenticateHeader.error_description || '').includes('token expired');
+                        const requiresRefresh = (authenticateHeader.error_description || '').includes('access token expired');
 
                         if (requiresRefresh) {
                             this.resolve('config').delete('access_token');
@@ -579,6 +580,11 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('utilities.graphql');
+    }
+
+    static get CountryCodes(): CountryCodes
+    {
+        return new CountryCodes();
     }
 
     static get Groups(): Services.Groups
