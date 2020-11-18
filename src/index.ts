@@ -67,6 +67,8 @@ class Xedi extends Container {
 
                         const requiresReauth = authenticateHeader.error === 'invalid_token';
                         if (requiresReauth) {
+                            this.resolve('services.auth')
+                                .trigger('auth_timeout', {});
                             this.resetInstance('services.auth');
 
                             return Promise.reject('Re-Authentication required');
