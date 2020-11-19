@@ -36,7 +36,7 @@ class Auth extends Service {
     }
 
     boot(): Service {
-        ['auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected'].forEach(event => {
+        ['auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected', 'auth_timeout'].forEach(event => {
             this.registerEvent(event);
         });
 
