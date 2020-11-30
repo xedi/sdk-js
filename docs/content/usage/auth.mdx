@@ -465,3 +465,41 @@ Emits `auth_deleted` on successful revocation of the refresh token.
 **Response**
 
 `null`
+
+## Change Password
+
+Update the password for a user
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| userUuid | String | <CheckIcon color="green.5"/> | "92ac7274-9369-11ea-9521-01002da17977" |
+| newPassword | String | <CheckIcon color="green.5"/> | super-secret-password |
+
+
+**Usage**
+
+```javascript
+Xedi.Auth.changePassword('92ac7274-9369-11ea-9521-01002da17977', 'super-secret-password');
+```
+
+**Response**
+
+```json
+{
+
+    "_id": "92ac7274-9369-11ea-9521-01002da17977",
+    "email": "t.stark@avengers.org",
+    "first_name": "Anthony",
+    "last_name": "Stark",
+    "job_title": "Iron Man",
+    "contact_no": "(970) 517-1743 x67916",
+    "avatar": "https://assets.avengers.org/images/iron_man.png",
+    "created_at": "2020-05-11 10:27:03",
+    "updated_at": "2020-05-11 10:30:14",
+    "is_active": 1
+
+    }
+}
+```

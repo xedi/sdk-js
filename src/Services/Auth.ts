@@ -249,6 +249,22 @@ class Auth extends Service {
                 }
             );
     }
+
+    /**
+     * Change Password
+     * @param userUuid
+     * @param newPassword
+     */
+    changePassword(userUuid: Xuid<SupportedXuid.User>, newPassword: string)
+    {
+        return this.client
+            .patch<AuthResponse>(`1/auth/accounts/${userUuid}/password`, {password: newPassword})
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
 }
 
 export default Auth;
