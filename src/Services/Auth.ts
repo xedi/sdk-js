@@ -265,6 +265,22 @@ class Auth extends Service {
                 }
             );
     }
+
+    /**
+     * Change Email
+     * @param userUuid
+     * @param email
+     */
+    changeEmail(userUuid: Xuid<SupportedXuid.User>, email: string)
+    {
+        return this.client
+            .put<AuthResponse>(`1/users/${userUuid}/email`, {email: email})
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
 }
 
 export default Auth;
