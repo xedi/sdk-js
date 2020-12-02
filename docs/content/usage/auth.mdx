@@ -503,3 +503,29 @@ Xedi.Auth.changePassword('92ac7274-9369-11ea-9521-01002da17977', 'super-secret-p
     }
 }
 ```
+
+## Change Email
+
+Update the Email for a user
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| userUuid | String | <CheckIcon color="green.5"/> | "92ac7274-9369-11ea-9521-01002da17977" |
+| email | String | <CheckIcon color="green.5"/> | some_new@email.com |
+
+
+**Usage**
+
+```javascript
+Xedi.Auth.changeEmail('92ac7274-9369-11ea-9521-01002da17977', 'some_new@email.com');
+```
+
+**Response**
+
+```json
+{
+    "data": []
+}
+```
