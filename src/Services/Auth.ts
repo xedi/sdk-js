@@ -274,7 +274,7 @@ class Auth extends Service {
     changeEmail(userUuid: Xuid<SupportedXuid.User>, email: string)
     {
         return this.client
-            .put<AuthResponse>(`1/users/${userUuid}/email`, {email: email})
+            .put<AuthResponse>(`1/users/${userUuid}/email`, {"email": email})
             .then(
                 (resp: AxiosResponse<JsonResponse<any>>) => {
                     return resp
