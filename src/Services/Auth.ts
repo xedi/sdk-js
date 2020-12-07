@@ -1,6 +1,6 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
-import {Business, User} from '../Models/Models';
+import {Business, User, PasswordChange} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import AuthResponse from '../Interfaces/AuthResponse';
 import JsonResponse from "../Interfaces/JsonResponse";
@@ -255,16 +255,11 @@ class Auth extends Service {
      * @param userUuid
      * @param newPassword
      */
-    changePassword(userUuid: Xuid<SupportedXuid.User>, newPassword: string, confirmPassword: string, currentPassword: string)
+    changePassword(userUuid: Xuid<SupportedXuid.User>, params: PasswordChange)
     {
         return this.client
             .patch<AuthResponse>(
-                `1/auth/accounts/${userUuid}/password`,
-                {
-                    password: newPassword,
-                    password_confirmation: confirmPassword,
-                    current_password: currentPassword
-                })
+                `1/auth/accounts/${userUuid}/password`, params)
             .then(
                 (resp: AxiosResponse<JsonResponse<any>>) => {
                     return resp
