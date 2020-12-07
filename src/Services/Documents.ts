@@ -63,6 +63,19 @@ class Documents extends Service {
     }
 
     /**
+     * Updates document
+     * @param document
+     * @returns Promise<Document>
+     */
+    markAsRead(document: Document) {
+        return this.client
+            .put<JsonResponse<Document>>(`1/documents/${document._id}/read`, document)
+            .then((response: AxiosResponse<JsonResponse<Document>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
      * Deletes document
      * @param documentId
      * @returns Promise<Document>
