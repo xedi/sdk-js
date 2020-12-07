@@ -474,16 +474,12 @@ Update the password for a user
 
 | Property | Type | Required | Example |
 | :-- | :-- | :-: | :-- |
-| userUuid | String | <CheckIcon color="green.5"/> | "92ac7274-9369-11ea-9521-01002da17977" |
-| newPassword | String | <CheckIcon color="green.5"/> | super-secret-password |
-| confirmPassword | String | <CheckIcon color="green.5"/> | super-secret-password |
-| currentPassword | String | <CheckIcon color="green.5"/> | my-current-password |
-
+| params | Password | <CheckIcon color="green.5"/> | {user_id: '92ac7274-9369-11ea-9521-01002da17977', password: "new-password", password_confirmation: "new-password", current_password: "old-password" }|
 
 **Usage**
 
 ```javascript
-Xedi.Auth.changePassword('92ac7274-9369-11ea-9521-01002da17977', 'super-secret-password');
+Xedi.Auth.changePassword({ user_id: '92ac7274-9369-11ea-9521-01002da17977',  password: "new-password", password_confirmation: "new-password", current_password: "old-password" });
 ```
 
 **Response**
