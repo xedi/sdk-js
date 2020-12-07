@@ -255,10 +255,16 @@ class Auth extends Service {
      * @param userUuid
      * @param newPassword
      */
-    changePassword(userUuid: Xuid<SupportedXuid.User>, newPassword: string, currentPassword: string)
+    changePassword(userUuid: Xuid<SupportedXuid.User>, newPassword: string, confirmPassword: string, currentPassword: string)
     {
         return this.client
-            .patch<AuthResponse>(`1/auth/accounts/${userUuid}/password`, {password: newPassword, current_password: currentPassword})
+            .patch<AuthResponse>(
+                `1/auth/accounts/${userUuid}/password`,
+                {
+                    password: newPassword,
+                    password_confirmation: confirmPassword,
+                    current_password: currentPassword
+                })
             .then(
                 (resp: AxiosResponse<JsonResponse<any>>) => {
                     return resp
