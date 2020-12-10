@@ -302,6 +302,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.files', (app: ContainerInterface, config: Config) => {
+            return new Services.Files(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.billing', (app: ContainerInterface, config: Config) => {
             return new Services.Billing(
                 this
@@ -433,6 +440,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.events');
+    }
+
+    /**
+     * Get an instance of the Files API
+     */
+    static get Files(): Services.Files
+    {
+        return this.resolveInstance()
+            .resolve('services.Files');
     }
 
     /**

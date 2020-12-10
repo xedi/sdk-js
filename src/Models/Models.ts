@@ -7,6 +7,7 @@ import Document from "./Document";
 import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
 import Event from './Event';
+import File from './File';
 import Group from './Group';
 import Instance from './Instance';
 import Invoice from "./Invoice";
@@ -49,6 +50,7 @@ type Models =
     | DocumentGroup
     | DocumentSetting
     | Event
+    | File
     | Group
     | Instance
     | Invoice
@@ -95,6 +97,7 @@ export {
     DocumentGroup,
     DocumentSetting,
     Event,
+    File,
     Group,
     Instance,
     Invoice,
