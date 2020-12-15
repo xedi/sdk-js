@@ -1,6 +1,6 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
-import {Business, User} from '../Models/Models';
+import {Business, User, Password} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import AuthResponse from '../Interfaces/AuthResponse';
 import JsonResponse from "../Interfaces/JsonResponse";
@@ -36,7 +36,7 @@ class Auth extends Service {
     }
 
     boot(): Service {
-        ['auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected'].forEach(event => {
+        ['auth_updated', 'auth_deleted', 'claim_required', 'claim_granted', 'claim_rejected', 'auth_timeout'].forEach(event => {
             this.registerEvent(event);
         });
 
@@ -243,6 +243,39 @@ class Auth extends Service {
     resetPassword(token: string, password: string) {
         return this.client
             .post<AuthResponse>(`1/auth/password/token/${token}`, {password})
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
+
+    /**
+     * Change Password
+     * @param userUuid
+     * @param newPassword
+     */
+    changePassword(params: Password)
+    {
+        return this.client
+            .patch<AuthResponse>(
+                `1/auth/accounts/${params.user_id}/password`, params)
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
+
+    /**
+     * Change Email
+     * @param userUuid
+     * @param email
+     */
+    changeEmail(userUuid: Xuid<SupportedXuid.User>, email: string)
+    {
+        return this.client
+            .put<AuthResponse>(`1/users/${userUuid}/email`, {"email": email})
             .then(
                 (resp: AxiosResponse<JsonResponse<any>>) => {
                     return resp
