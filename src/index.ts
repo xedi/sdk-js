@@ -280,6 +280,12 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+        this.singleton('services.files', (app: ContainerInterface, config: Config) => {
+            return new Services.Files(
+                config,
+                app.resolve('client')
+            );
+        });
 
         this.singleton('services.network-configurations', (app: ContainerInterface, config: Config) => {
             return new Services.NetworkConfigurations(
@@ -297,6 +303,12 @@ class Xedi extends Container {
 
         this.singleton('services.events', (app: ContainerInterface, config: Config) => {
             return new Services.Events(
+                config,
+                app.resolve('client')
+            );
+        });
+        this.singleton('services.files', (app: ContainerInterface, config: Config) => {
+            return new Services.Files(
                 config,
                 app.resolve('client')
             );
@@ -433,6 +445,12 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.events');
+    }
+
+    static get Files(): Services.Files
+    {
+        return this.resolveInstance()
+            .resolve('services.files');
     }
 
     /**
