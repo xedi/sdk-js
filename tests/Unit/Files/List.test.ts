@@ -5,6 +5,17 @@ import nock from "nock";
 import Config from "../../../src/Config/Config";
 import Axios, { AxiosInstance } from "axios";
 import { Files } from "../../../src/Services/Services";
+import Xuid, { SupportedXuid } from '../../../src/Utils/Xuid';
+
+interface ListParams extends Object
+{
+  page: number;
+  type: string;
+  business_id: Xuid<SupportedXuid.Business>;
+  user_id: Xuid<SupportedXuid.User>;
+  network_connection_id: string;
+  network_configuration_id: string;
+}
 
 describe('Files@list', () => {
     it('should return a list of files' , async () => {
