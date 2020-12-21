@@ -13,10 +13,11 @@ class Files extends Service
 
     /**
      * List all files
+     * @param params
      * @param pageNumber
      * @returns Promise<file>
      */
-    list(pageNumber: number = 1) {
+    list(params: object, pageNumber: number = 1) {
         return this.client
         .get<PaginatedJsonResponse<File>>('1/files')
         .then((response: AxiosResponse<PaginatedJsonResponse<File>>) => {
@@ -27,11 +28,12 @@ class Files extends Service
     /**
      * Create file
      * @param file
+     * @param params
      * @returns Promise<file>
      */
-    create(file: File) {
+    create(file: File, params: object) {
         return this.client
-            .post<JsonResponse<File>>(`1/filees`, file)
+            .post<JsonResponse<File>>(`1/files`, file)
             .then((response: AxiosResponse<JsonResponse<File>>) => {
                 return response.data.data;
             });

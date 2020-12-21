@@ -307,12 +307,6 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
-        this.singleton('services.files', (app: ContainerInterface, config: Config) => {
-            return new Services.Files(
-                config,
-                app.resolve('client')
-            );
-        });
 
         this.singleton('services.billing', (app: ContainerInterface, config: Config) => {
             return new Services.Billing(
