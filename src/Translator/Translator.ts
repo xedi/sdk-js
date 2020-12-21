@@ -50,13 +50,17 @@ class Translator
 
         const languagePack = TranslationLoader.get(language);
 
-        if (! languagePack?.has(label.toLowerCase())) {
+        if (! languagePack?.has(label)) {
+            label = label.toLowerCase();
+        }
+
+        if (! languagePack?.has(label)) {
             this.logger.dev?.warn(`${label} is not present in the ${language} pack`);
 
             return label;
         }
 
-        return sprintf(languagePack.get(label.toLowerCase())!, ...parameters);
+        return sprintf(languagePack.get(label)!, ...parameters);
     }
 }
 
