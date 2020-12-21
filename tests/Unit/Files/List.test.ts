@@ -41,7 +41,7 @@ describe('Files@list', () => {
         });
 
         const filesService = new Files(mockConfig, axios);
-        const response = await filesService.list();
+        const response = await filesService.list(axios);
 
         assert.isArray(response);
         assert.lengthOf(response, 2);
