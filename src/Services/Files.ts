@@ -5,19 +5,28 @@ import JsonResponse from '../Interfaces/JsonResponse';
 import {File} from '../Models/Models';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
 
+interface ListParams extends Object
+{
+  page: number;
+  type: string;
+  business_id: Xuid<SupportedXuid.Business>;
+  user_id: Xuid<SupportedXuid.User>;
+  network_connection_id: string;
+  network_configuration_id: string;
+}
+
 /**
  * Files Api
  */
 class Files extends Service
 {
-
     /**
      * List all files
      * @param params
      * @param pageNumber
      * @returns Promise<file>
      */
-    list(params: object, pageNumber: number = 1) {
+    list(params: ListParams) {
         return this.client
         .get<PaginatedJsonResponse<File>>('1/files')
         .then((response: AxiosResponse<PaginatedJsonResponse<File>>) => {
@@ -33,7 +42,7 @@ class Files extends Service
      */
     create(file: File, params: object) {
         return this.client
-            .post<JsonResponse<File>>(`1/files`, file)
+            .post<JsonResponse<File>>(`1/files`, Object.assign(params, { file }))
             .then((response: AxiosResponse<JsonResponse<File>>) => {
                 return response.data.data;
             });

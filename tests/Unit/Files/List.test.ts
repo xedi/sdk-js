@@ -40,8 +40,17 @@ describe('Files@list', () => {
             baseURL: 'http://api-gateway.localhost'
         });
 
+        const params: ListParams = {
+            page: 1,
+            type: 'test',
+            business_id: 'business-id',
+            user_id: 'user-id',
+            network_connection_id: 'test-id',
+            network_configuration_id: 'test-id',
+        }
+
         const filesService = new Files(mockConfig, axios);
-        const response = await filesService.list(axios);
+        const response = await filesService.list(params);
 
         assert.isArray(response);
         assert.lengthOf(response, 2);
