@@ -28,7 +28,7 @@ class Files extends Service
      */
     list(params: ListParams) {
         return this.client
-        .get<PaginatedJsonResponse<File>>('1/files')
+        .get<PaginatedJsonResponse<File>>('1/files', { params })
         .then((response: AxiosResponse<PaginatedJsonResponse<File>>) => {
             return response.data.data
         });
