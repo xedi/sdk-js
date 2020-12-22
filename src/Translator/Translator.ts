@@ -38,7 +38,7 @@ class Translator
         parameters: TranslationParameters[] = [],
         language: string
     ): TranslationResponse {
-        const original_label = label;
+        const originalLabel = label;
 
         if (! language) {
             language = this.config.get('language', 'en');
@@ -59,7 +59,7 @@ class Translator
         if (! languagePack?.has(label)) {
             this.logger.dev?.warn(`${label} is not present in the ${language} pack`);
 
-            return original_label;
+            return originalLabel;
         }
 
         return sprintf(languagePack.get(label)!, ...parameters);
