@@ -38,7 +38,7 @@ class Translator
         parameters: TranslationParameters[] = [],
         language: string
     ): TranslationResponse {
-        let original_label = label;
+        const original_label = label;
 
         if (! language) {
             language = this.config.get('language', 'en');
