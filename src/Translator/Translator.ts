@@ -38,6 +38,8 @@ class Translator
         parameters: TranslationParameters[] = [],
         language: string
     ): TranslationResponse {
+        const originalLabel = label;
+
         if (! language) {
             language = this.config.get('language', 'en');
         }
@@ -50,13 +52,17 @@ class Translator
 
         const languagePack = TranslationLoader.get(language);
 
-        if (! languagePack?.has(label.toLowerCase())) {
-            this.logger.dev?.warn(`${label} is not present in the ${language} pack`);
-
-            return label;
+        if (! languagePack?.has(label)) {
+            label = label.toLowerCase();
         }
 
-        return sprintf(languagePack.get(label.toLowerCase())!, ...parameters);
+        if (! languagePack?.has(label)) {
+            this.logger.dev?.warn(`${label} is not present in the ${language} pack`);
+
+            return originalLabel;
+        }
+
+        return sprintf(languagePack.get(label)!, ...parameters);
     }
 }
 

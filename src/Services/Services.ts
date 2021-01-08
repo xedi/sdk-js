@@ -7,6 +7,7 @@ import DocumentGroups from "./DocumentGroups";
 import Documents from "./Documents";
 import DocumentSettings from "./DocumentSettings";
 import Events from "./Events";
+import Files from "./Files";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
@@ -43,6 +44,7 @@ export {
     Documents,
     DocumentSettings,
     Events,
+    Files,
     PolicyAcceptances,
     Prices,
     Products,
