@@ -5,21 +5,19 @@ import JsonResponse from '../Interfaces/JsonResponse';
 import {File} from '../Models/Models';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
 
-interface ListParams extends Object
-{
-  page: number;
-  type: string;
-  business_id: Xuid<SupportedXuid.Business>;
-  user_id: Xuid<SupportedXuid.User>;
-  network_connection_id: string;
-  network_configuration_id: string;
+interface ListParams extends Object {
+    page: number;
+    type: string;
+    business_id: Xuid<SupportedXuid.Business>;
+    user_id: Xuid<SupportedXuid.User>;
+    network_connection_id: string;
+    network_configuration_id: string;
 }
 
 /**
  * Files Api
  */
-class Files extends Service
-{
+class Files extends Service {
     /**
      * List all files
      * @param params
@@ -28,21 +26,24 @@ class Files extends Service
      */
     list(params: ListParams) {
         return this.client
-        .get<PaginatedJsonResponse<File>>('1/files', { params })
-        .then((response: AxiosResponse<PaginatedJsonResponse<File>>) => {
-            return response.data.data
-        });
+            .get<PaginatedJsonResponse<File>>('1/files', {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<File>>) => {
+                return response.data.data
+            });
     }
 
     /**
      * Create file
-     * @param file
      * @param params
      * @returns Promise<file>
      */
-    create(file: File, params: object) {
+    create(params: FormData) {
         return this.client
-            .post<JsonResponse<File>>(`1/files`, Object.assign(params, { file }))
+            .post<JsonResponse<File>>(`1/files`, params, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
             .then((response: AxiosResponse<JsonResponse<File>>) => {
                 return response.data.data;
             });
