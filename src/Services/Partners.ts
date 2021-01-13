@@ -1,7 +1,7 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {Collection, Partner} from '../Models/Models';
+import {Partner, Collection} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
 /**
@@ -10,7 +10,7 @@ import Xuid, {SupportedXuid} from '../Utils/Xuid';
 class Partners extends Service {
     /**
      * Lists Partners
-     * @returns Promise<Business[]>
+     * @returns Promise<Partner[]>
      */
     list() {
         return this.client
@@ -35,14 +35,27 @@ class Partners extends Service {
 
     /**
      * Creates Partner
-     * @param business
+     * @param partner
      * @returns Promise<Partner>
      */
-    create(business: Partner) {
+    create(partner: Partner) {
         return this.client
-            .post<JsonResponse<Partner>>(`1/partners`, business)
+            .post<JsonResponse<Partner>>(`1/partners`, partner)
             .then((response: AxiosResponse<JsonResponse<Partner>>) => {
                 return response.data.data;
+            });
+    }
+
+    /**
+     * Update a partner
+     * @param partner
+     * @returns Promise<Partner>
+     */
+    update(partner: Partner) {
+        return this.client
+            .patch<JsonResponse<Partner>>(`1/partners/${partner._id}`, partner)
+            .then((response: AxiosResponse<JsonResponse<Partner>>) => {
+                return response.data.data
             });
     }
 
