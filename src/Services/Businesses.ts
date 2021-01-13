@@ -52,6 +52,19 @@ class Businesses extends Service {
     }
 
     /**
+     * Update a business
+     * @param business
+     * @returns Promise<business>
+     */
+    update(business: Business) {
+        return this.client
+            .patch<JsonResponse<Business>>(`1/businesses/${business._id}`, business)
+            .then((response: AxiosResponse<JsonResponse<Business>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
      * Gets by user
      *
      * @param userId
