@@ -6,6 +6,7 @@ import AuthenticateHeader from './Utils/AuthenticateHeaderParser';
 import ContainerInterface from './Interfaces/Container';
 import GraphQlClient from './Utils/GraphQlClient';
 import CountryCodes from './Utils/CountryCodes';
+import Businesses from './Constants/Businesses';
 
 /**
  * Xedi
@@ -617,6 +618,16 @@ class Xedi extends Container {
      static get BusinessInvites(): Services.BusinessInvites {
         return this.resolveInstance()
             .resolve('services.businessinvites');
+    }
+
+    /**
+     * Get constants
+     */
+    static get Constants(): object
+    {
+        return {
+            Businesses
+        };
     }
 }
 
