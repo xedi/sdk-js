@@ -94,6 +94,18 @@ class Businesses extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Remove User from Business
+     *
+     * @param businessId
+     * @param userId
+     *
+     * @returns Promise<Business>
+     */
+    removeUserFromBusiness(businessId: Xuid<SupportedXuid.Business>, userId: Xuid<SupportedXuid.User>) {
+        return this.client.delete<null>(`1/businesses/${businessId}/users/${userId}`);
+    }
 }
 
 export default Businesses;
