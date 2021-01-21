@@ -84,12 +84,13 @@ class Businesses extends Service {
      * Get users for business
      *
      * @param businessId
+     * @param params
      *
      * @returns Promise<PaginatedJsonResponse<User[]>>
      */
-    users(businessId: Xuid<SupportedXuid.Business>): Promise<PaginatedJsonResponse<User>> {
+    users(businessId: Xuid<SupportedXuid.Business>, params: object): Promise<PaginatedJsonResponse<User>> {
         return this.client
-            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`)
+            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
                 return response.data;
             });
