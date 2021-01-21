@@ -1,8 +1,9 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {Partner, Collection} from '../Models/Models';
+import {Partner} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * Partners
@@ -10,13 +11,13 @@ import Xuid, {SupportedXuid} from '../Utils/Xuid';
 class Partners extends Service {
     /**
      * Lists Partners
-     * @returns Promise<Partner[]>
+     * @returns Promise<PaginatedJsonResponse<Partner[]>>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Partner>>>(`1/partners`)
-            .then((response: AxiosResponse<JsonResponse<Collection<Partner>>>) => {
-                return response.data.data;
+            .get<PaginatedJsonResponse<Partner>>(`1/partners`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Partner>>) => {
+                return response.data;
             });
     }
 
