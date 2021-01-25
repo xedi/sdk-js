@@ -8,7 +8,7 @@ class PolicyAcceptances extends Service {
 
     /**
      * Create a Policy Acceptance
-     * @param policyacceptance
+     * @param policyAcceptance
      * @returns Promise<Instance>
      */
     create(policyAcceptance: PolicyAcceptance) {
