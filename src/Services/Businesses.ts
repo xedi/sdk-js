@@ -52,6 +52,19 @@ class Businesses extends Service {
     }
 
     /**
+     * Update a business
+     * @param business
+     * @returns Promise<business>
+     */
+    update(business: Business) {
+        return this.client
+            .patch<JsonResponse<Business>>(`1/businesses/${business._id}`, business)
+            .then((response: AxiosResponse<JsonResponse<Business>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
      * Gets by user
      *
      * @param userId
@@ -71,15 +84,28 @@ class Businesses extends Service {
      * Get users for business
      *
      * @param businessId
+     * @param params
      *
      * @returns Promise<PaginatedJsonResponse<User[]>>
      */
-    users(businessId: Xuid<SupportedXuid.Business>): Promise<PaginatedJsonResponse<User>> {
+    users(businessId: Xuid<SupportedXuid.Business>, params: object): Promise<PaginatedJsonResponse<User>> {
         return this.client
-            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`)
+            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
                 return response.data;
             });
+    }
+
+    /**
+     * Remove User from Business
+     *
+     * @param businessId
+     * @param userId
+     *
+     * @returns Promise<Business>
+     */
+    removeUserFromBusiness(businessId: Xuid<SupportedXuid.Business>, userId: Xuid<SupportedXuid.User>) {
+        return this.client.delete<null>(`1/businesses/${businessId}/users/${userId}`);
     }
 }
 

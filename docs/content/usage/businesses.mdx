@@ -295,3 +295,30 @@ const businesses = await Xedi.Businesses.getByUser('f3ce14b8-b542-11ea-aded-0100
     "total": 1
 }
 ```
+<Flex alignItems="center">
+    <H3>Remove User From Business</H3>
+    <Box mx="auto" />
+</Flex>
+
+Remove a user from a business, by deleting their businessUser data
+
+**Parameters**
+
+| Property | Type | Required | Example |
+| :-- | :-- | :-: | :-- |
+| business_uuid | UUID | <CheckIcon color="green.5"/> | f3ce14b8-b542-11ea-aded-01002da17977 |
+| user_id       | UUID | <CheckIcon color="green.5"/> | c52abc50-b499-11ea-a48c-0100f1a50c6e |
+
+**Usage**
+
+```js
+await Xedi.Businesses.removeUserFromBusiness('f3ce14b8-b542-11ea-aded-01002da17977', 'c52abc50-b499-11ea-a48c-0100f1a50c6e');
+```
+
+**Response**
+
+```json
+{
+    "data": []
+}
+```
