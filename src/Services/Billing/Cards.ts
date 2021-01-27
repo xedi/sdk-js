@@ -9,9 +9,9 @@ class Cards extends Service {
      * List cards
      * @returns Promise<Card>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Card>>>(`1/billing/cards`)
+            .get<JsonResponse<Collection<Card>>>(`1/billing/cards`, {params})
             .then((response: AxiosResponse<JsonResponse<Collection<Card>>>) => {
                 return response.data.data;
             });
@@ -22,9 +22,9 @@ class Cards extends Service {
      * @param cardId
      * @returns Promise<Card>
      */
-    get(cardId: string) {
+    get(params: object, cardId: string) {
         return this.client
-            .get<JsonResponse<Card>>(`1/billing/cards/${cardId}`)
+            .get<JsonResponse<Card>>(`1/billing/cards/${cardId}`, {params})
             .then((response: AxiosResponse<JsonResponse<Card>>) => {
                 return response.data.data;
             });
