@@ -60,6 +60,18 @@ class Partners extends Service {
             });
     }
 
+    /**
+     * Search Partners
+     * @returns Promise<PaginatedJsonResponse<Partner[]>>
+     */
+    search(params: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Partner>>(`1/search/partners`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Partner>>) => {
+                return response.data;
+            });
+    }
+
 }
 
 export default Partners;
