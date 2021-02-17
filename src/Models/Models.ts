@@ -12,6 +12,7 @@ import Group from './Group';
 import Instance from './Instance';
 import Invoice from "./Invoice";
 import InvoiceItem from "./InvoiceItem";
+import Layout from "./Layout";
 import Mailbox from './Mailbox';
 import Mapping from "./Mapping";
 import MappingCollection from "./MappingCollection";
@@ -55,6 +56,7 @@ type Models =
     | Instance
     | Invoice
     | InvoiceItem
+    | Layout
     | Mailbox
     | Mapping
     | MappingCollection
@@ -102,6 +104,7 @@ export {
     Instance,
     Invoice,
     InvoiceItem,
+    Layout,
     Mailbox,
     Mapping,
     MappingCollection,

@@ -25,7 +25,7 @@ class Subscriptions extends Service {
      */
     getByEntity(entityId: string) {
         return this.client
-            .get<JsonResponse<Subscription>>(`api/functional/product/${entityId}/subscription`)
+            .get<JsonResponse<Subscription>>(`1/billing/functional/product/${entityId}/subscription`)
             .then((response: AxiosResponse<JsonResponse<Subscription>>) => {
                 return response.data;
             });

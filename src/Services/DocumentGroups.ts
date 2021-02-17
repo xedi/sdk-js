@@ -12,12 +12,12 @@ class DocumentGroups extends Service {
 
     /**
      * List document groups
-     * @param params
+     * @param config
      * @returns Promise<PaginatedJsonResponse<DocumentGroup[]>>
      */
-    list(params: object) {
+    list(config: object) {
         return this.client
-            .get<PaginatedJsonResponse<DocumentGroup>>(`1/documentgroups`, {params})
+            .get<PaginatedJsonResponse<DocumentGroup>>(`1/documentgroups`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<DocumentGroup>>) => {
                 return response.data;
             });
@@ -26,11 +26,12 @@ class DocumentGroups extends Service {
     /**
      * Gets document group
      * @param documentGroupId
+     * @param config
      * @returns Promise<DocumentGroup>
      */
-    get(documentGroupId: Xuid<SupportedXuid.DocumentGroup>) {
+    get(documentGroupId: Xuid<SupportedXuid.DocumentGroup>, config: object) {
         return this.client
-            .get<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}`)
+            .get<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}`, config)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response.data.data;
             });
