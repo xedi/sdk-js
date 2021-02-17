@@ -27,6 +27,7 @@ import NetworkConfigurations from "./NetworkConfigurations";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
 import Groups from "./Groups";
+import Layouts from "./Layouts";
 import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
@@ -62,6 +63,7 @@ export {
     NetworkConnections,
     Notifications,
     Groups,
+    Layouts,
     MailingLists,
     BusinessInvites,
 };

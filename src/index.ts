@@ -261,6 +261,14 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.layouts', (app: ContainerInterface, config: Config) => {
+            return new Services.Layouts(
+
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.stages', (app: ContainerInterface, config: Config) => {
             return new Services.Stages(
                 config,
@@ -547,6 +555,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.instances');
+    }
+
+    /**
+     * Get an instance of layouts API
+     */
+    static get Layouts(): Services.Layouts
+    {
+        return this.resolveInstance()
+            .resolve('services.layouts');
 
     }
 
