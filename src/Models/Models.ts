@@ -2,7 +2,7 @@ import Batch from "./Batch";
 import Business from './Business';
 import Card from './Card';
 import Customer from "./Customer";
-import DocType from "./DocType";
+import DocumentType from "./DocumentType";
 import Document from "./Document";
 import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
@@ -46,7 +46,7 @@ type Models =
     | Business
     | Card
     | Customer
-    | DocType
+    | DocumentType
     | Document
     | DocumentGroup
     | DocumentSetting
@@ -94,7 +94,7 @@ export {
     Card,
     Collection,
     Customer,
-    DocType,
+    DocumentType,
     Document,
     DocumentGroup,
     DocumentSetting,

@@ -3,7 +3,7 @@ import Xuid, {SupportedXuid} from '../Utils/Xuid';
 /**
  * DocType
  */
-export default interface DocType extends Object {
+export default interface DocumentType extends Object {
     _id: Xuid<SupportedXuid.DocType>;
     type: string;
     message_types: {

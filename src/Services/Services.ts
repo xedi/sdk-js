@@ -2,7 +2,7 @@ import Auth from "./Auth";
 import Batches from "./Batches"
 import Businesses from "./Businesses";
 import Partners from "./Partners";
-import DocTypes from "./DocTypes";
+import DocumentTypes from "./DocumentTypes";
 import DocumentGroups from "./DocumentGroups";
 import Documents from "./Documents";
 import DocumentSettings from "./DocumentSettings";
@@ -40,7 +40,7 @@ export {
     Businesses,
     Partners,
     Partnerships,
-    DocTypes,
+    DocumentTypes,
     DocumentGroups,
     Documents,
     DocumentSettings,
