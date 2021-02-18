@@ -75,6 +75,21 @@ class DocumentGroups extends Service {
                 return response;
             });
     }
+
+    /**
+     * Gets associated instance
+     * @param documentGroupId
+     * @param config
+     * @returns Promise<DocumentGroup>
+     */
+    instance(documentGroupId: Xuid<SupportedXuid.DocumentGroup>, config: object) {
+        return this.client
+            .get<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}/instance`, config)
+            .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
+                return response.data.data;
+            });
+    }
+
 }
 
 export default DocumentGroups;

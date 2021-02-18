@@ -176,8 +176,8 @@ class Xedi extends Container {
             );
         });
 
-        this.singleton('services.doc-types', (app: ContainerInterface, config: Config) => {
-            return new Services.DocTypes(
+        this.singleton('services.document-types', (app: ContainerInterface, config: Config) => {
+            return new Services.DocumentTypes(
                 config,
                 app.resolve('client')
             );
@@ -424,12 +424,12 @@ class Xedi extends Container {
     }
 
     /**
-     * Get an instance of the DocTypes API
+     * Get an instance of the DocumentTypes API
      */
-    static get DocTypes(): Services.DocTypes
+    static get DocumentTypes(): Services.DocumentTypes
     {
         return this.resolveInstance()
-            .resolve('services.doc-types');
+            .resolve('services.document-types');
     }
 
     /**
