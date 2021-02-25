@@ -39,7 +39,7 @@ class Users extends Service {
      */
     update(user: User) {
         return this.client
-            .patch<JsonResponse<User>>(`1/users/${user._id}`, user)
+            .put<JsonResponse<User>>(`1/users/${user._id}`, user)
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data
             });

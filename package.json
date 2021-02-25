@@ -32,7 +32,6 @@
   ],
   "author": "Chris Smith <chris@xedi.com>",
   "license": "Apache-2.0",
-  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^7.0.2",
