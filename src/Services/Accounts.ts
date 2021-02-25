@@ -51,7 +51,7 @@ class Accounts extends Service {
      */
     verify(verificationToken: string) {
         return this.client
-            .post<JsonResponse<User>>('1/auth/verification', {token: verificationToken})
+            .get<JsonResponse<User>>('1/auth/' + verificationToken + '/verify')
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data;
             });
