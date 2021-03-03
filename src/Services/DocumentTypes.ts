@@ -16,7 +16,7 @@ class DocumentTypes extends Service {
         return this.client
             .get<JsonResponse<Collection<DocumentType>>>(`1/documenttypes`)
             .then((response: AxiosResponse<JsonResponse<Collection<DocumentType>>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 

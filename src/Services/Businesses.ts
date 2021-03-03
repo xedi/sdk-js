@@ -107,6 +107,18 @@ class Businesses extends Service {
     removeUserFromBusiness(businessId: Xuid<SupportedXuid.Business>, userId: Xuid<SupportedXuid.User>) {
         return this.client.delete<null>(`1/businesses/${businessId}/users/${userId}`);
     }
+
+    /**
+     * Search Businesses
+     * @returns Promise<PaginatedJsonResponse<Business[]>>
+     */
+    search(params: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Business>>(`1/search/businesses`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Businesses;
