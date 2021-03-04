@@ -7,6 +7,7 @@ import Document from "./Document";
 import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
 import Event from './Event';
+import Field from "./Field";
 import File from './File';
 import Group from './Group';
 import Instance from './Instance';
@@ -51,6 +52,7 @@ type Models =
     | DocumentGroup
     | DocumentSetting
     | Event
+    | Field
     | File
     | Group
     | Instance
@@ -99,6 +101,7 @@ export {
     DocumentGroup,
     DocumentSetting,
     Event,
+    Field,
     File,
     Group,
     Instance,

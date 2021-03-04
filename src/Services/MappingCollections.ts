@@ -1,7 +1,7 @@
 import Service from './Service';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
-import {MappingCollection} from '../Models/Models';
+import {Field, MappingCollection} from '../Models/Models';
 import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
@@ -72,6 +72,19 @@ class MappingCollections extends Service {
             .delete<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollectionId}`)
             .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
                 return response;
+            });
+    }
+
+    /**
+     * Gets fields for mapping collection
+     * @param mappingCollectionId
+     * @returns Promise<Field[]>
+     */
+    fields(mappingCollectionId: Xuid<SupportedXuid.MappingCollection>) {
+        return this.client
+            .get<JsonResponse<Field>>(`1/mappingcollections/${mappingCollectionId}/fields`)
+            .then((response: AxiosResponse<JsonResponse<Field>>) => {
+                return response.data.data;
             });
     }
 }
