@@ -13,11 +13,11 @@ class Templates extends Service {
      * Get all templates
      * @returns Promise<Template>
      */
-    list() {
+    list(config: object) {
         return this.client
-            .get<JsonResponse<Collection<Template>>>(`1/templates`)
+            .get<JsonResponse<Collection<Template>>>(`1/templates`, config)
             .then((response: AxiosResponse<JsonResponse<Collection<Template>>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
