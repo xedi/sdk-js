@@ -4,6 +4,7 @@ import {AxiosResponse} from "axios";
 import Service from "./Service";
 import Template from "../Models/Template";
 import Xuid, {SupportedXuid} from "../Utils/Xuid";
+import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
 /**
  * Tempaltes
@@ -11,12 +12,13 @@ import Xuid, {SupportedXuid} from "../Utils/Xuid";
 class Templates extends Service {
     /**
      * Get all templates
+     * @param config
      * @returns Promise<Template>
      */
     list(config: object) {
         return this.client
-            .get<JsonResponse<Collection<Template>>>(`1/templates`, config)
-            .then((response: AxiosResponse<JsonResponse<Collection<Template>>>) => {
+            .get<PaginatedJsonResponse<Template>>(`1/templates`, config)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Template>>) => {
                 return response.data;
             });
     }
