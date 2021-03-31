@@ -12,6 +12,7 @@ import Files from "./Files";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
+import Schemas from "./Schemas";
 import Settings from "./Settings";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
@@ -51,6 +52,7 @@ export {
     PolicyAcceptances,
     Prices,
     Products,
+    Schemas,
     Settings,
     Users,
     Mailboxes,

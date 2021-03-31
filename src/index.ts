@@ -204,6 +204,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.schemas', (app: ContainerInterface, config: Config) => {
+            return new Services.Schemas(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.settings', (app: ContainerInterface, config: Config) => {
             return new Services.Settings(
                 config,
@@ -488,6 +495,14 @@ class Xedi extends Container {
     static get Products(): Services.Products {
         return this.resolveInstance()
             .resolve('services.products');
+    }
+
+    /**
+     * Get an instance of the Schema API
+     */
+    static get Schemas(): Services.Products {
+        return this.resolveInstance()
+            .resolve('services.schemas');
     }
 
     /**
