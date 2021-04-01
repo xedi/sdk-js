@@ -16,7 +16,7 @@ class Schemas extends Service {
      */
     parse(params: object) {
         return this.client
-            .get<PaginatedJsonResponse<Schema>>(`1/schemas`, {params})
+            .post<PaginatedJsonResponse<Schema>>(`1/schemas/parse`, params)
             .then((response: AxiosResponse<PaginatedJsonResponse<Schema>>) => {
                 return response.data;
             });
