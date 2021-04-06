@@ -85,6 +85,18 @@ class Users extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Gravatar check
+     * @param emailMd5
+     */
+    gravatar(emailMd5: string): Promise<AxiosResponse> {
+        return this.client
+            .get(`1/gravatar/${emailMd5}`)
+            .then((response: AxiosResponse) => {
+                return response.data;
+            });
+    }
 }
 
 export default Users;
