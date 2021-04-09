@@ -21,6 +21,18 @@ class Schemas extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Resolve file type
+     * @param params
+     */
+    resolve(params: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Schema>>(`1/schemas/resolve`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Schema>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Schemas;

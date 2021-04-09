@@ -4,6 +4,7 @@ import JsonResponse from '../Interfaces/JsonResponse';
 import {Field, MappingCollection} from '../Models/Models';
 import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
+import Mapping from "../Models/Mapping";
 
 /**
  * Mapping Collections
@@ -84,6 +85,19 @@ class MappingCollections extends Service {
         return this.client
             .get<JsonResponse<Field>>(`1/mappingcollections/${mappingCollectionId}/fields`)
             .then((response: AxiosResponse<JsonResponse<Field>>) => {
+                return response.data.data;
+            });
+    }
+
+    /**
+     * Gets mappings for mapping collection
+     * @param format
+     * @returns Promise<Mapping[]>
+     */
+    mappings(format: string) {
+        return this.client
+            .get<JsonResponse<Mapping>>(`1/mappingcollections/${format}/mappings`)
+            .then((response: AxiosResponse<JsonResponse<Mapping>>) => {
                 return response.data.data;
             });
     }
