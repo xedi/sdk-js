@@ -73,6 +73,18 @@ class Fields extends Service {
                 return response;
             });
     }
+
+    /**
+     * Search Fields
+     * @returns Promise<PaginatedJsonResponse<Field[]>>
+     */
+    search(params: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Field>>(`1/search/fields`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Field>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Fields;
