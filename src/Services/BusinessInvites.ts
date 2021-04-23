@@ -19,7 +19,7 @@ class BusinessInvites extends Service {
      */
     create(invite: BusinessInvite) {
         return this.client
-            .post<JsonResponse<BusinessInvite>>('1/businessinvites/business/' + invite.business_id, invite)
+            .post<JsonResponse<BusinessInvite>>('1/businesses/' + invite.business_id + '/invites', invite)
             .then((response: AxiosResponse<JsonResponse<BusinessInvite>>) => {
                 return response.data.data;
             });
@@ -92,7 +92,7 @@ class BusinessInvites extends Service {
      */
     pending(businessId: Xuid<SupportedXuid.Business>) {
         return this.client
-             .get<PaginatedJsonResponse<BusinessInvite>>('1/businessinvites/business/' + businessId + '/pending')
+             .get<PaginatedJsonResponse<BusinessInvite>>('1/businesses/' + businessId + '/invites/pending')
              .then((response: AxiosResponse<PaginatedJsonResponse<BusinessInvite>>) => {
                  return response.data.data;
             });
