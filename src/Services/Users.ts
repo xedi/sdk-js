@@ -39,7 +39,7 @@ class Users extends Service {
      */
     update(user: User) {
         return this.client
-            .patch<JsonResponse<User>>(`1/users/${user._id}`, user)
+            .put<JsonResponse<User>>(`1/users/${user._id}`, user)
             .then((response: AxiosResponse<JsonResponse<User>>) => {
                 return response.data.data
             });
@@ -82,6 +82,18 @@ class Users extends Service {
         return this.client
             .get<PaginatedJsonResponse<User>>(`1/groups/${groupID}/users`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
+                return response.data;
+            });
+    }
+
+    /**
+     * Gravatar check
+     * @param emailMd5
+     */
+    gravatar(emailMd5: string): Promise<AxiosResponse> {
+        return this.client
+            .get(`1/gravatar/${emailMd5}`)
+            .then((response: AxiosResponse) => {
                 return response.data;
             });
     }

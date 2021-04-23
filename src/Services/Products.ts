@@ -25,11 +25,12 @@ class Products extends Service {
     /**
      * Gets products
      * @param productId
+     * @param config
      * @returns Promise<Product>
      */
-    get(productId: Xuid<SupportedXuid.Product>) {
+    get(productId: Xuid<SupportedXuid.Product>, config: object) {
         return this.client
-            .get<JsonResponse<Product>>(`1/products/${productId}`)
+            .get<JsonResponse<Product>>(`1/products/${productId}`, config)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
                 return response.data.data;
             });

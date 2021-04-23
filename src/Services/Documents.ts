@@ -12,12 +12,12 @@ class Documents extends Service {
 
     /**
      * List documents
-     * @param params
+     * @param config
      * @returns Promise<PaginatedJsonResponse<Document[]>>
      */
-    list(params: object) {
+    list(config: object) {
         return this.client
-            .get<PaginatedJsonResponse<Document>>(`1/documents`, {params})
+            .get<PaginatedJsonResponse<Document>>(`1/documents`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<Document>>) => {
                 return response.data;
             });
@@ -26,11 +26,12 @@ class Documents extends Service {
     /**
      * Gets document
      * @param documentId
+     * @param config
      * @returns Promise<Document>
      */
-    get(documentId: Xuid<SupportedXuid.Document>) {
+    get(documentId: Xuid<SupportedXuid.Document>, config: object) {
         return this.client
-            .get<JsonResponse<Document>>(`1/documents/${documentId}`)
+            .get<JsonResponse<Document>>(`1/documents/${documentId}`, config)
             .then((response: AxiosResponse<JsonResponse<Document>>) => {
                 return response.data.data;
             });
@@ -85,6 +86,18 @@ class Documents extends Service {
             .delete<JsonResponse<Document>>(`1/documents/${documentId}`)
             .then((response: AxiosResponse<JsonResponse<Document>>) => {
                 return response;
+            });
+    }
+
+    /**
+     * Search Documents
+     * @returns Promise<PaginatedJsonResponse<Document[]>>
+     */
+    search(params: object, headers: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Document>>(`1/search/documents`, params, {headers})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Document>>) => {
+                return response.data;
             });
     }
 }

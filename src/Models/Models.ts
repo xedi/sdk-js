@@ -2,7 +2,7 @@ import Batch from "./Batch";
 import Business from './Business';
 import Card from './Card';
 import Customer from "./Customer";
-import DocType from "./DocType";
+import DocumentType from "./DocumentType";
 import Document from "./Document";
 import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
@@ -12,6 +12,7 @@ import Group from './Group';
 import Instance from './Instance';
 import Invoice from "./Invoice";
 import InvoiceItem from "./InvoiceItem";
+import Layout from "./Layout";
 import Mailbox from './Mailbox';
 import Mapping from "./Mapping";
 import MappingCollection from "./MappingCollection";
@@ -45,7 +46,7 @@ type Models =
     | Business
     | Card
     | Customer
-    | DocType
+    | DocumentType
     | Document
     | DocumentGroup
     | DocumentSetting
@@ -55,6 +56,7 @@ type Models =
     | Instance
     | Invoice
     | InvoiceItem
+    | Layout
     | Mailbox
     | Mapping
     | MappingCollection
@@ -92,7 +94,7 @@ export {
     Card,
     Collection,
     Customer,
-    DocType,
+    DocumentType,
     Document,
     DocumentGroup,
     DocumentSetting,
@@ -102,6 +104,7 @@ export {
     Instance,
     Invoice,
     InvoiceItem,
+    Layout,
     Mailbox,
     Mapping,
     MappingCollection,

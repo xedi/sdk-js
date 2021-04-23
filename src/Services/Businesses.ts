@@ -84,13 +84,13 @@ class Businesses extends Service {
      * Get users for business
      *
      * @param businessId
-     * @param params
+     * @param config
      *
      * @returns Promise<PaginatedJsonResponse<User[]>>
      */
-    users(businessId: Xuid<SupportedXuid.Business>, params: object): Promise<PaginatedJsonResponse<User>> {
+    users(businessId: Xuid<SupportedXuid.Business>, config: object): Promise<PaginatedJsonResponse<User>> {
         return this.client
-            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`, {params})
+            .get<PaginatedJsonResponse<User>>(`1/businesses/${businessId}/users`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<User>>) => {
                 return response.data;
             });
@@ -106,6 +106,18 @@ class Businesses extends Service {
      */
     removeUserFromBusiness(businessId: Xuid<SupportedXuid.Business>, userId: Xuid<SupportedXuid.User>) {
         return this.client.delete<null>(`1/businesses/${businessId}/users/${userId}`);
+    }
+
+    /**
+     * Search Businesses
+     * @returns Promise<PaginatedJsonResponse<Business[]>>
+     */
+    search(params: object) {
+        return this.client
+            .post<PaginatedJsonResponse<Business>>(`1/search/businesses`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
+                return response.data;
+            });
     }
 }
 

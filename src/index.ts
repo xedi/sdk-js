@@ -176,8 +176,8 @@ class Xedi extends Container {
             );
         });
 
-        this.singleton('services.doc-types', (app: ContainerInterface, config: Config) => {
-            return new Services.DocTypes(
+        this.singleton('services.document-types', (app: ContainerInterface, config: Config) => {
+            return new Services.DocumentTypes(
                 config,
                 app.resolve('client')
             );
@@ -255,6 +255,14 @@ class Xedi extends Container {
 
         this.singleton('services.instances', (app: ContainerInterface, config: Config) => {
             return new Services.Instances(
+
+                config,
+                app.resolve('client')
+            );
+        });
+
+        this.singleton('services.layouts', (app: ContainerInterface, config: Config) => {
+            return new Services.Layouts(
 
                 config,
                 app.resolve('client')
@@ -416,12 +424,12 @@ class Xedi extends Container {
     }
 
     /**
-     * Get an instance of the DocTypes API
+     * Get an instance of the DocumentTypes API
      */
-    static get DocTypes(): Services.DocTypes
+    static get DocumentTypes(): Services.DocumentTypes
     {
         return this.resolveInstance()
-            .resolve('services.doc-types');
+            .resolve('services.document-types');
     }
 
     /**
@@ -547,6 +555,15 @@ class Xedi extends Container {
     {
         return this.resolveInstance()
             .resolve('services.instances');
+    }
+
+    /**
+     * Get an instance of layouts API
+     */
+    static get Layouts(): Services.Layouts
+    {
+        return this.resolveInstance()
+            .resolve('services.layouts');
 
     }
 

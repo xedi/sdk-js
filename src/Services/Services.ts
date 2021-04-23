@@ -2,7 +2,7 @@ import Auth from "./Auth";
 import Batches from "./Batches"
 import Businesses from "./Businesses";
 import Partners from "./Partners";
-import DocTypes from "./DocTypes";
+import DocumentTypes from "./DocumentTypes";
 import DocumentGroups from "./DocumentGroups";
 import Documents from "./Documents";
 import DocumentSettings from "./DocumentSettings";
@@ -27,6 +27,7 @@ import NetworkConfigurations from "./NetworkConfigurations";
 import NetworkConnections from "./NetworkConnections";
 import Notifications from "./Notifications";
 import Groups from "./Groups";
+import Layouts from "./Layouts";
 import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
@@ -39,7 +40,7 @@ export {
     Businesses,
     Partners,
     Partnerships,
-    DocTypes,
+    DocumentTypes,
     DocumentGroups,
     Documents,
     DocumentSettings,
@@ -62,6 +63,7 @@ export {
     NetworkConnections,
     Notifications,
     Groups,
+    Layouts,
     MailingLists,
     BusinessInvites,
 };

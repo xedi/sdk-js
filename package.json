@@ -1,6 +1,6 @@
 {
   "name": "@xedi/sdk-js",
-  "version": "1.32.0",
+  "version": "1.32.7",
   "description": "JavaScript wrapper for XEDI API",
   "browser": "./lib/sdk.min.js",
   "homepage": "https://github.com/xedi/sdk-js",
@@ -32,7 +32,6 @@
   ],
   "author": "Chris Smith <chris@xedi.com>",
   "license": "Apache-2.0",
-  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^7.0.2",

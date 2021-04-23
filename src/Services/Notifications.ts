@@ -11,12 +11,12 @@ class Notifications extends Service {
 
     /**
      * Lists notifications
-     * @param params
+     * @param config
      * @returns Promise<PaginatedJsonResponse<Notification[]>>
      */
-    list(params: object) {
+    list(config: object) {
         return this.client
-            .get<PaginatedJsonResponse<Notification>>(`1/notifications`, {params})
+            .get<PaginatedJsonResponse<Notification>>(`1/notifications`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<Notification>>) => {
                 return response.data;
             });

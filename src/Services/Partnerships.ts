@@ -12,12 +12,12 @@ class Partnerships extends Service {
 
     /**
      * Get by business
-     * @param params object
+     * @param config object
      * @returns <Promise>Partnership[]>
      */
-    list(params: object) {
+    list(config: object) {
         return this.client
-            .get<PaginatedJsonResponse<Partnership>>(`1/partnerships`, {params})
+            .get(`1/partnerships`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<Partnership>>) => {
                 return response.data;
             });
@@ -26,11 +26,12 @@ class Partnerships extends Service {
     /**
      * Gets partnerships
      * @param partnershipId
+     * @param headers
      * @returns Promise<Partnership>
      */
-    get(partnershipId: Xuid<SupportedXuid.Partnership>) {
+    get(partnershipId: Xuid<SupportedXuid.Partnership>, headers: object) {
         return this.client
-            .get<JsonResponse<Partnership>>(`1/partnerships/${partnershipId}`)
+            .get(`1/partnerships/${partnershipId}`, {headers})
             .then((response: AxiosResponse<JsonResponse<Partnership>>) => {
                 return response.data.data;
             });
