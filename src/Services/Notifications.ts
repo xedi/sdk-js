@@ -40,9 +40,9 @@ class Notifications extends Service {
      * @param notification_id
      * @returns Promise
      */
-    delete(notification_id: string) {
+    delete(notificationId: string) {
         return this.client
-            .delete<JsonResponse<null>>(`1/notifications/` + notification_id)
+            .delete<JsonResponse<null>>(`1/notifications/` + notificationId)
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             })
