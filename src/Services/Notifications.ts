@@ -34,6 +34,19 @@ class Notifications extends Service {
                 return response.data.data;
             });
     }
+
+    /**
+     * Delete notification
+     * @param notification_id
+     * @returns Promise
+     */
+    delete(notification_id: string) {
+        return this.client
+            .delete<JsonResponse<null>>(`1/notifications/` + notification_id)
+            .then((response: AxiosResponse<JsonResponse<null>>) => {
+                return response.data.data;
+            })
+    }
 }
 
 export default Notifications;
