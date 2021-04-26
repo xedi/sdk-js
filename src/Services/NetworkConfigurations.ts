@@ -16,7 +16,7 @@ class NetworkConfigurations extends Service {
      */
     create(networkConfiguration: NetworkConfiguration) {
         return this.client
-            .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations`, networkConfiguration)
+            .post<JsonResponse<NetworkConfiguration>>(`1/network-configurations`, networkConfiguration)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response.data.data
             });
@@ -29,7 +29,7 @@ class NetworkConfigurations extends Service {
      */
     update(networkConfiguration: NetworkConfiguration) {
         return this.client
-            .patch<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/${networkConfiguration._id}`, networkConfiguration)
+            .patch<JsonResponse<NetworkConfiguration>>(`1/network-configurations/${networkConfiguration._id}`, networkConfiguration)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response.data.data
             });
@@ -42,7 +42,7 @@ class NetworkConfigurations extends Service {
      */
     delete(configurationId: Xuid<SupportedXuid.NetworkConfiguration>) {
         return this.client
-            .delete<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/${configurationId}`)
+            .delete<JsonResponse<NetworkConfiguration>>(`1/network-configurations/${configurationId}`)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response;
             });
@@ -54,7 +54,7 @@ class NetworkConfigurations extends Service {
      */
     ftpConnect(params: object) {
         return this.client
-            .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/ftp`, params)
+            .post<JsonResponse<NetworkConfiguration>>(`1/network-configurations/ftp`, params)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response.data.data;
             });
@@ -66,7 +66,7 @@ class NetworkConfigurations extends Service {
      */
     sftpConnect(params: object) {
         return this.client
-            .post<JsonResponse<NetworkConfiguration>>(`1/networkconfigurations/sftp`, params)
+            .post<JsonResponse<NetworkConfiguration>>(`1/network-configurations/sftp`, params)
             .then((response: AxiosResponse<JsonResponse<NetworkConfiguration>>) => {
                 return response.data.data;
             });

@@ -18,7 +18,7 @@ class NetworkConnections extends Service {
      */
     list(pageNumber: number = 1) {
         return this.client
-            .get<PaginatedJsonResponse<NetworkConnection>>('1/networkconnections', {params: {page: pageNumber}})
+            .get<PaginatedJsonResponse<NetworkConnection>>('1/network-connections', {params: {page: pageNumber}})
             .then((response: AxiosResponse<PaginatedJsonResponse<NetworkConnection>>) => {
                 return response.data;
             });
@@ -31,7 +31,7 @@ class NetworkConnections extends Service {
      */
     get(connectionId: Xuid<SupportedXuid.NetworkConnection>) {
         return this.client
-            .get<JsonResponse<NetworkConnection>>(`1/networkconnections/${connectionId}`)
+            .get<JsonResponse<NetworkConnection>>(`1/network-connections/${connectionId}`)
             .then((response: AxiosResponse<JsonResponse<NetworkConnection>>) => {
                 return response.data.data;
             });
@@ -44,7 +44,7 @@ class NetworkConnections extends Service {
      */
     create(networkConnection: NetworkConnection) {
         return this.client
-            .post<JsonResponse<NetworkConnection>>(`1/networkconnections`, networkConnection)
+            .post<JsonResponse<NetworkConnection>>(`1/network-connections`, networkConnection)
             .then((response: AxiosResponse<JsonResponse<NetworkConnection>>) => {
                 return response.data.data
             });
@@ -58,7 +58,7 @@ class NetworkConnections extends Service {
      */
     update(connectionId: Xuid<SupportedXuid.NetworkConnection>, networkConnection: NetworkConnection) {
         return this.client
-            .patch<JsonResponse<NetworkConnection>>(`1/networkconnections/${connectionId}`, networkConnection)
+            .patch<JsonResponse<NetworkConnection>>(`1/network-connections/${connectionId}`, networkConnection)
             .then((response: AxiosResponse<JsonResponse<NetworkConnection>>) => {
                 return response.data.data
             });
@@ -71,7 +71,7 @@ class NetworkConnections extends Service {
      */
     delete(connectionId: Xuid<SupportedXuid.NetworkConnection>) {
         return this.client
-            .delete<JsonResponse<NetworkConnection>>(`1/networkconnections/${connectionId}`)
+            .delete<JsonResponse<NetworkConnection>>(`1/network-connections/${connectionId}`)
             .then((response: AxiosResponse<JsonResponse<NetworkConnection>>) => {
                 return response;
             });

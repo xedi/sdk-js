@@ -17,7 +17,7 @@ class MappingCollections extends Service {
      */
     list(params: object) {
         return this.client
-            .get<PaginatedJsonResponse<MappingCollection>>(`1/mappingcollections`, {params})
+            .get<PaginatedJsonResponse<MappingCollection>>(`1/mapping-collections`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<MappingCollection>>) => {
                 return response.data;
             });
@@ -30,7 +30,7 @@ class MappingCollections extends Service {
      */
     get(mappingCollectionId: Xuid<SupportedXuid.MappingCollection>) {
         return this.client
-            .get<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollectionId}`)
+            .get<JsonResponse<MappingCollection>>(`1/mapping-collections/${mappingCollectionId}`)
             .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
                 return response.data.data;
             });
@@ -43,7 +43,7 @@ class MappingCollections extends Service {
      */
     create(mappingCollection: MappingCollection) {
         return this.client
-            .post<JsonResponse<MappingCollection>>(`1/mappingcollections`, mappingCollection)
+            .post<JsonResponse<MappingCollection>>(`1/mapping-collections`, mappingCollection)
             .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
                 return response.data.data
             });
@@ -56,7 +56,7 @@ class MappingCollections extends Service {
      */
     update(mappingCollection: MappingCollection) {
         return this.client
-            .patch<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollection._id}`, mappingCollection)
+            .patch<JsonResponse<MappingCollection>>(`1/mapping-collections/${mappingCollection._id}`, mappingCollection)
             .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
                 return response.data.data
             });
@@ -69,7 +69,7 @@ class MappingCollections extends Service {
      */
     delete(mappingCollectionId: Xuid<SupportedXuid.MappingCollection>) {
         return this.client
-            .delete<JsonResponse<MappingCollection>>(`1/mappingcollections/${mappingCollectionId}`)
+            .delete<JsonResponse<MappingCollection>>(`1/mapping-collections/${mappingCollectionId}`)
             .then((response: AxiosResponse<JsonResponse<MappingCollection>>) => {
                 return response;
             });

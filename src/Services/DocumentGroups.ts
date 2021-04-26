@@ -17,7 +17,7 @@ class DocumentGroups extends Service {
      */
     list(config: object) {
         return this.client
-            .get<PaginatedJsonResponse<DocumentGroup>>(`1/documentgroups`, config)
+            .get<PaginatedJsonResponse<DocumentGroup>>(`1/document-groups`, config)
             .then((response: AxiosResponse<PaginatedJsonResponse<DocumentGroup>>) => {
                 return response.data;
             });
@@ -31,7 +31,7 @@ class DocumentGroups extends Service {
      */
     get(documentGroupId: Xuid<SupportedXuid.DocumentGroup>, config: object) {
         return this.client
-            .get<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}`, config)
+            .get<JsonResponse<DocumentGroup>>(`1/document-groups/${documentGroupId}`, config)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response.data.data;
             });
@@ -44,7 +44,7 @@ class DocumentGroups extends Service {
      */
     create(documentGroup: DocumentGroup) {
         return this.client
-            .post<JsonResponse<DocumentGroup>>(`1/documentgroups`, documentGroup)
+            .post<JsonResponse<DocumentGroup>>(`1/document-groups`, documentGroup)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response.data.data
             });
@@ -57,7 +57,7 @@ class DocumentGroups extends Service {
      */
     update(documentGroup: DocumentGroup) {
         return this.client
-            .patch<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroup._id}`, documentGroup)
+            .patch<JsonResponse<DocumentGroup>>(`1/document-groups/${documentGroup._id}`, documentGroup)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response.data.data
             });
@@ -70,7 +70,7 @@ class DocumentGroups extends Service {
      */
     delete(documentGroupId: Xuid<SupportedXuid.DocumentGroup>) {
         return this.client
-            .delete<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}`)
+            .delete<JsonResponse<DocumentGroup>>(`1/document-groups/${documentGroupId}`)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response;
             });
@@ -84,7 +84,7 @@ class DocumentGroups extends Service {
      */
     instance(documentGroupId: Xuid<SupportedXuid.DocumentGroup>, config: object) {
         return this.client
-            .get<JsonResponse<DocumentGroup>>(`1/documentgroups/${documentGroupId}/instance`, config)
+            .get<JsonResponse<DocumentGroup>>(`1/document-groups/${documentGroupId}/instance`, config)
             .then((response: AxiosResponse<JsonResponse<DocumentGroup>>) => {
                 return response.data.data;
             });

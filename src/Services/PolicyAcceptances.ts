@@ -13,7 +13,7 @@ class PolicyAcceptances extends Service {
      */
     create(policyAcceptance: PolicyAcceptance) {
         return this.client
-            .post<JsonResponse<PolicyAcceptance>>(`1/policies`, policyAcceptance)
+            .post<JsonResponse<PolicyAcceptance>>(`1/policy-acceptances`, policyAcceptance)
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data
             });
@@ -26,7 +26,7 @@ class PolicyAcceptances extends Service {
      */
     get(contextId: string) {
         return this.client
-            .get<JsonResponse<PolicyAcceptance>>('1/policies/' + contextId )
+            .get<JsonResponse<PolicyAcceptance>>('1/policy-acceptances/' + contextId )
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data;
             });
@@ -39,7 +39,7 @@ class PolicyAcceptances extends Service {
      */
     update(policyAcceptance: PolicyAcceptance) {
         return this.client
-            .put<JsonResponse<PolicyAcceptance>>('1/policies/' + policyAcceptance.context_id , policyAcceptance)
+            .put<JsonResponse<PolicyAcceptance>>('1/policy-acceptances/' + policyAcceptance.context_id , policyAcceptance)
             .then((response: AxiosResponse<JsonResponse<PolicyAcceptance>>) => {
                 return response.data.data
             });
@@ -52,7 +52,7 @@ class PolicyAcceptances extends Service {
      */
     delete(contextId: string) {
         return this.client
-            .delete<JsonResponse<null>>('1/policies/' + contextId )
+            .delete<JsonResponse<null>>('1/policy-acceptances/' + contextId )
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             });
@@ -66,7 +66,7 @@ class PolicyAcceptances extends Service {
      */
     check(contextId: string, policy: string) {
         return this.client
-            .get<JsonResponse<null>>('1/policies/' + contextId + '/check/' + policy)
+            .get<JsonResponse<null>>('1/policy-acceptances/' + contextId + '/check/' + policy)
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             });
@@ -79,7 +79,7 @@ class PolicyAcceptances extends Service {
      */
     getPolicy(policy: string) {
         return this.client
-            .get<JsonResponse<null>>('1/policies/policy/' + policy)
+            .get<JsonResponse<null>>('1/policy-acceptances/policy/' + policy)
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data.data;
             });

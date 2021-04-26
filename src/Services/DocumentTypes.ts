@@ -14,7 +14,7 @@ class DocumentTypes extends Service {
      */
     list() {
         return this.client
-            .get<JsonResponse<Collection<DocumentType>>>(`1/documenttypes`)
+            .get<JsonResponse<Collection<DocumentType>>>(`1/document-types`)
             .then((response: AxiosResponse<JsonResponse<Collection<DocumentType>>>) => {
                 return response.data;
             });
@@ -27,7 +27,7 @@ class DocumentTypes extends Service {
      */
     get(documentTypeId: Xuid<SupportedXuid.DocType>) {
         return this.client
-            .get<JsonResponse<DocumentType>>(`1/documenttypes/${documentTypeId}`)
+            .get<JsonResponse<DocumentType>>(`1/document-types/${documentTypeId}`)
             .then((response: AxiosResponse<JsonResponse<DocumentType>>) => {
                 return response.data.data;
             });

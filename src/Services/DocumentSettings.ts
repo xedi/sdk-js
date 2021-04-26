@@ -16,7 +16,7 @@ class DocumentSettings extends Service {
      */
     create(documentSetting: DocumentSetting) {
         return this.client
-            .post<JsonResponse<DocumentSetting>>(`1/documentsettings`, documentSetting)
+            .post<JsonResponse<DocumentSetting>>(`1/document-settings`, documentSetting)
             .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
                 return response.data.data
             });
@@ -29,7 +29,7 @@ class DocumentSettings extends Service {
      */
     update(documentSetting: DocumentSetting) {
         return this.client
-            .patch<JsonResponse<DocumentSetting>>(`1/documentsettings/${documentSetting._id}`, documentSetting)
+            .patch<JsonResponse<DocumentSetting>>(`1/document-settings/${documentSetting._id}`, documentSetting)
             .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
                 return response.data.data
             });
@@ -42,7 +42,7 @@ class DocumentSettings extends Service {
      */
     delete(documentSettingId: Xuid<SupportedXuid.DocumentSetting>) {
         return this.client
-            .delete<JsonResponse<DocumentSetting>>(`1/documentsettings/${documentSettingId}`)
+            .delete<JsonResponse<DocumentSetting>>(`1/document-settings/${documentSettingId}`)
             .then((response: AxiosResponse<JsonResponse<DocumentSetting>>) => {
                 return response;
             });

@@ -16,7 +16,7 @@ class TaxRates extends Service {
      */
     list(params: object) {
         return this.client
-            .get<PaginatedJsonResponse<TaxRate>>(`1/tax`, {params})
+            .get<PaginatedJsonResponse<TaxRate>>(`1/tax-rates`, {params})
             .then((response: AxiosResponse<PaginatedJsonResponse<TaxRate>>) => {
                 return response.data;
             });
@@ -29,7 +29,7 @@ class TaxRates extends Service {
      */
     get(taxRateId: Xuid<SupportedXuid.TaxRate>) {
         return this.client
-            .get<JsonResponse<TaxRate>>(`1/tax/${taxRateId}`)
+            .get<JsonResponse<TaxRate>>(`1/tax-rates/${taxRateId}`)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response.data.data;
             });
@@ -42,7 +42,7 @@ class TaxRates extends Service {
      */
     create(product: TaxRate) {
         return this.client
-            .post<JsonResponse<TaxRate>>(`1/tax`, product)
+            .post<JsonResponse<TaxRate>>(`1/tax-rates`, product)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response.data.data
             });
@@ -55,7 +55,7 @@ class TaxRates extends Service {
      */
     update(product: TaxRate) {
         return this.client
-            .patch<JsonResponse<TaxRate>>(`1/tax/${product._id}`, product)
+            .patch<JsonResponse<TaxRate>>(`1/tax-rates/${product._id}`, product)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response.data.data
             });
@@ -68,7 +68,7 @@ class TaxRates extends Service {
      */
     delete(taxRateId: Xuid<SupportedXuid.TaxRate>) {
         return this.client
-            .delete<JsonResponse<TaxRate>>(`1/tax/${taxRateId}`)
+            .delete<JsonResponse<TaxRate>>(`1/tax-rates/${taxRateId}`)
             .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
                 return response;
             });
