@@ -39,12 +39,12 @@ class Layouts extends Service {
 
     /**
      * Creates document
-     * @param document
+     * @param layout
      * @returns Promise<Layout>
      */
-    create(document: Layout) {
+    create(layout: Layout) {
         return this.client
-            .post<JsonResponse<Layout>>(`1/layouts`, document)
+            .post<JsonResponse<Layout>>(`1/layouts`, layout)
             .then((response: AxiosResponse<JsonResponse<Layout>>) => {
                 return response.data.data
             });
@@ -52,12 +52,12 @@ class Layouts extends Service {
 
     /**
      * Updates document
-     * @param document
+     * @param layout
      * @returns Promise<Layout>
      */
-    update(document: Layout) {
+    update(layout: Layout) {
         return this.client
-            .patch<JsonResponse<Layout>>(`1/layouts/${document._id}`, document)
+            .patch<JsonResponse<Layout>>(`1/layouts/${layout._id}`, layout)
             .then((response: AxiosResponse<JsonResponse<Layout>>) => {
                 return response.data.data
             });
@@ -65,19 +65,19 @@ class Layouts extends Service {
 
     /**
      * Updates document
-     * @param document
+     * @param layout
      * @returns Promise<Layout>
      */
-    markAsRead(document: Layout) {
+    markAsRead(layout: Layout) {
         return this.client
-            .put<JsonResponse<Layout>>(`1/layouts/${document._id}/read`, document)
+            .put<JsonResponse<Layout>>(`1/layouts/${layout._id}/read`, layout)
             .then((response: AxiosResponse<JsonResponse<Layout>>) => {
                 return response.data.data
             });
     }
 
     /**
-     * Deletes document
+     * Deletes layout
      * @param layoutId
      * @returns Promise<Layout>
      */
