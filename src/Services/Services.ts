@@ -33,6 +33,7 @@ import Layouts from "./Layouts";
 import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
+import ApiTokens from "./ApiTokens";
 
 export {
     Accounts,
@@ -70,4 +71,5 @@ export {
     Layouts,
     MailingLists,
     BusinessInvites,
+    ApiTokens,
 };

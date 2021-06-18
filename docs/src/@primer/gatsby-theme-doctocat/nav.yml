@@ -10,6 +10,8 @@
   children:
     - title: Accounts
       url: /usage/accounts
+    - title: API Tokens
+      url: /usage/apitokens
     - title: Auth
       url: /usage/auth
     - title: Businesses

@@ -370,6 +370,13 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.apitokens', (app: ContainerInterface, config: Config) => {
+           return new Services.ApiTokens(
+               config,
+               app.resolve('client')
+           )
+        });
     }
 
     /**
@@ -663,6 +670,14 @@ class Xedi extends Container {
     static get BusinessInvites(): Services.BusinessInvites {
         return this.resolveInstance()
             .resolve('services.businessinvites');
+    }
+
+    /**
+     * Get an instance of the APITokens API
+     */
+    static get ApiTokens(): Services.ApiTokens {
+        return this.resolveInstance()
+            .resolve('services.apitokens');
     }
 
     /**
