@@ -1,0 +1,91 @@
+---
+title: Api Tokens
+description: Using the API tokens API
+status: Stable
+source: https://github.com/xedi/sdk-js/blob/master/src/Services/ApiTokens.ts
+---
+
+import {CheckIcon} from '@primer/styled-octicons';
+import {Box,Flex,Label} from '@primer/components';
+import {H3} from '@primer/gatsby-theme-doctocat/src/components/heading';
+
+## Introduction
+
+The API tokens api allows you to manage access tokens for your business.
+
+## Usage
+
+### Generate
+Generate a token
+
+**Parameters**
+
+**Usage**
+
+```js
+const token = await Xedi.ApiTokens.generate();
+```
+
+**Response**
+
+```json
+{
+    "data": {
+        "tokens": {
+            "api_token":"[example-returned-token]",
+            "type":"bearer"
+         },
+        "business":"6f39ddd6-cf59-11eb-acd6-0100f1a50c6e"}
+     }
+}
+```
+
+
+### Show
+Show the token for the currently authed business. Note that the returned token is partially redacted. For security
+reasons you will only see the first (8) characters of the returned token.  If you have lost your token, you must
+delete and re-create a new one.
+
+**Parameters**
+
+**Usage**
+
+```js
+const token = await Xedi.ApiTokens.show();
+```
+
+**Response**
+
+```json
+{
+    "data": {
+        "tokens": {
+            "api_token":"[example-partially-returned-token]",
+            "type":"bearer"
+         },
+        "business":"6f39ddd6-cf59-11eb-acd6-0100f1a50c6e"}
+     }
+}
+```
+
+
+### Delete
+Delete a token by token id
+
+**Parameters**
+
+| Property      | Type      | Required                      | Example                                   |
+| :--           | :--       | :-:                           | :--                                       |
+| token_id      | XUID      | <CheckIcon color="green.5"/>  | "d1dfb302-b53d-11ea-95d2-0100f1a50c6e"    |
+
+**Usage**
+
+```js
+const token = await Xedi.ApiTokens.delete("d1dfb302-b53d-11ea-95d2-0100f1a50c6e");
+```
+
+**Response**
+
+```json
+{}
+```
