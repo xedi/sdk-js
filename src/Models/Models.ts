@@ -7,6 +7,7 @@ import Document from "./Document";
 import DocumentGroup from "./DocumentGroup";
 import DocumentSetting from "./DocumentSetting";
 import Event from './Event';
+import Field from "./Field";
 import File from './File';
 import Group from './Group';
 import Instance from './Instance';
@@ -25,6 +26,7 @@ import Plan from './Plan';
 import Permission from './Permission';
 import PolicyAcceptance from './PolicyAcceptance';
 import Price from './Price';
+import Schema from "./Schema";
 import Product from './Product';
 import Setting from "./Setting";
 import Stage from './Stage';
@@ -51,6 +53,7 @@ type Models =
     | DocumentGroup
     | DocumentSetting
     | Event
+    | Field
     | File
     | Group
     | Instance
@@ -70,6 +73,7 @@ type Models =
     | PolicyAcceptance
     | Price
     | Product
+    | Schema
     | Setting
     | Stage
     | StripeProduct
@@ -99,6 +103,7 @@ export {
     DocumentGroup,
     DocumentSetting,
     Event,
+    Field,
     File,
     Group,
     Instance,
@@ -119,6 +124,7 @@ export {
     PolicyAcceptance,
     Price,
     Product,
+    Schema,
     Setting,
     Stage,
     StripeProduct,

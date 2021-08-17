@@ -7,10 +7,12 @@ import DocumentGroups from "./DocumentGroups";
 import Documents from "./Documents";
 import DocumentSettings from "./DocumentSettings";
 import Events from "./Events";
+import Fields from "./Fields";
 import Files from "./Files";
 import Prices from "./Prices";
 import Partnerships from "./Partnerships";
 import Products from "./Products";
+import Schemas from "./Schemas";
 import Settings from "./Settings";
 import Users from "./Users";
 import Mailboxes from "./Mailboxes";
@@ -31,6 +33,7 @@ import Layouts from "./Layouts";
 import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
+import ApiTokens from "./ApiTokens";
 
 export {
     Accounts,
@@ -45,10 +48,12 @@ export {
     Documents,
     DocumentSettings,
     Events,
+    Fields,
     Files,
     PolicyAcceptances,
     Prices,
     Products,
+    Schemas,
     Settings,
     Users,
     Mailboxes,
@@ -66,4 +71,5 @@ export {
     Layouts,
     MailingLists,
     BusinessInvites,
+    ApiTokens,
 };

@@ -89,7 +89,7 @@ class Xedi extends Container {
 
                                                 client.request(request)
                                                     .then(resolve);
-                                             }
+                                            }
                                         )
                                         .trigger(
                                             'claim_required',
@@ -204,6 +204,13 @@ class Xedi extends Container {
             );
         });
 
+        this.singleton('services.schemas', (app: ContainerInterface, config: Config) => {
+            return new Services.Schemas(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.settings', (app: ContainerInterface, config: Config) => {
             return new Services.Settings(
                 config,
@@ -255,7 +262,6 @@ class Xedi extends Container {
 
         this.singleton('services.instances', (app: ContainerInterface, config: Config) => {
             return new Services.Instances(
-
                 config,
                 app.resolve('client')
             );
@@ -263,7 +269,6 @@ class Xedi extends Container {
 
         this.singleton('services.layouts', (app: ContainerInterface, config: Config) => {
             return new Services.Layouts(
-
                 config,
                 app.resolve('client')
             );
@@ -289,6 +294,14 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+
+        this.singleton('services.fields', (app: ContainerInterface, config: Config) => {
+            return new Services.Fields(
+                config,
+                app.resolve('client')
+            );
+        });
+
         this.singleton('services.files', (app: ContainerInterface, config: Config) => {
             return new Services.Files(
                 config,
@@ -356,6 +369,13 @@ class Xedi extends Container {
                 config,
                 app.resolve('client')
             );
+        });
+
+        this.singleton('services.apitokens', (app: ContainerInterface, config: Config) => {
+           return new Services.ApiTokens(
+               config,
+               app.resolve('client')
+           )
         });
     }
 
@@ -426,8 +446,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the DocumentTypes API
      */
-    static get DocumentTypes(): Services.DocumentTypes
-    {
+    static get DocumentTypes(): Services.DocumentTypes {
         return this.resolveInstance()
             .resolve('services.document-types');
     }
@@ -435,8 +454,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the DocumentSettings API
      */
-    static get DocumentSettings(): Services.DocumentSettings
-    {
+    static get DocumentSettings(): Services.DocumentSettings {
         return this.resolveInstance()
             .resolve('services.document-settings');
     }
@@ -444,14 +462,20 @@ class Xedi extends Container {
     /**
      * Get an instance of the Events API
      */
-    static get Events(): Services.Events
-    {
+    static get Events(): Services.Events {
         return this.resolveInstance()
             .resolve('services.events');
     }
 
-    static get Files(): Services.Files
-    {
+    /**
+     * Get an instance of the Fields API
+     */
+    static get Fields(): Services.Fields {
+        return this.resolveInstance()
+            .resolve('services.fields');
+    }
+
+    static get Files(): Services.Files {
         return this.resolveInstance()
             .resolve('services.files');
     }
@@ -459,8 +483,7 @@ class Xedi extends Container {
     /**
      * Get an instance of the Partnerships API
      */
-    static get Partnerships(): Services.Partnerships
-    {
+    static get Partnerships(): Services.Partnerships {
         return this.resolveInstance()
             .resolve('services.partnerships');
     }
@@ -479,6 +502,14 @@ class Xedi extends Container {
     static get Products(): Services.Products {
         return this.resolveInstance()
             .resolve('services.products');
+    }
+
+    /**
+     * Get an instance of the Schema API
+     */
+    static get Schemas(): Services.Products {
+        return this.resolveInstance()
+            .resolve('services.schemas');
     }
 
     /**
@@ -532,8 +563,7 @@ class Xedi extends Container {
     /**
      * Get an instance of Templates API
      */
-    static get Templates(): Services.Templates
-    {
+    static get Templates(): Services.Templates {
         return this.resolveInstance()
             .resolve('services.templates');
     }
@@ -541,8 +571,7 @@ class Xedi extends Container {
     /**
      * Get an instance of Transitoins API
      */
-    static get Transitions(): Services.Transitions
-    {
+    static get Transitions(): Services.Transitions {
         return this.resolveInstance()
             .resolve('services.transitions');
 
@@ -551,8 +580,7 @@ class Xedi extends Container {
     /**
      * Get an instance of Instances API
      */
-    static get Instances(): Services.Instances
-    {
+    static get Instances(): Services.Instances {
         return this.resolveInstance()
             .resolve('services.instances');
     }
@@ -560,8 +588,7 @@ class Xedi extends Container {
     /**
      * Get an instance of layouts API
      */
-    static get Layouts(): Services.Layouts
-    {
+    static get Layouts(): Services.Layouts {
         return this.resolveInstance()
             .resolve('services.layouts');
 
@@ -570,8 +597,7 @@ class Xedi extends Container {
     /**
      * Get an instance of Stages API
      */
-    static get Stages(): Services.Stages
-    {
+    static get Stages(): Services.Stages {
         return this.resolveInstance()
             .resolve('services.stages');
     }
@@ -608,19 +634,16 @@ class Xedi extends Container {
     /**
      * Get an instance of the GraphQL Client
      */
-    static get GraphQL(): GraphQlClient
-    {
+    static get GraphQL(): GraphQlClient {
         return this.resolveInstance()
             .resolve('utilities.graphql');
     }
 
-    static get CountryCodes(): CountryCodes
-    {
+    static get CountryCodes(): CountryCodes {
         return new CountryCodes();
     }
 
-    static get Groups(): Services.Groups
-    {
+    static get Groups(): Services.Groups {
         return this.resolveInstance()
             .resolve('services.groups');
     }
@@ -633,9 +656,9 @@ class Xedi extends Container {
             .resolve('services.mailinglists');
     }
 
-     /**
-      * Get an instance of the Policy Acceptances API
-      */
+    /**
+     * Get an instance of the Policy Acceptances API
+     */
     static get PolicyAcceptances(): Services.PolicyAcceptances {
         return this.resolveInstance()
             .resolve('services.policyacceptances');
@@ -644,16 +667,23 @@ class Xedi extends Container {
     /**
      * Get an instance of the BusinessInvites API
      */
-     static get BusinessInvites(): Services.BusinessInvites {
+    static get BusinessInvites(): Services.BusinessInvites {
         return this.resolveInstance()
             .resolve('services.businessinvites');
     }
 
     /**
+     * Get an instance of the APITokens API
+     */
+    static get ApiTokens(): Services.ApiTokens {
+        return this.resolveInstance()
+            .resolve('services.apitokens');
+    }
+
+    /**
      * Get constants
      */
-    static get Constants(): object
-    {
+    static get Constants(): object {
         return {
             Businesses
         };
