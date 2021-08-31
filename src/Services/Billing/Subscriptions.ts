@@ -30,6 +30,17 @@ class Subscriptions extends Service {
                 return response.data;
             });
     }
+    /**
+     * Get subscription for current business for a given entity (any purchasable)
+     * @param params
+     */
+    createCheckoutSession(params: object ) {
+        return this.client
+            .post<JsonResponse<Subscription>>(`1/billing/subscriptions/create-checkout-session`, params)
+            .then((response: AxiosResponse<JsonResponse<Subscription>>) => {
+                return response.data;
+            });
+    }
 
     /**
      * Subscribe to entity (Purchase)

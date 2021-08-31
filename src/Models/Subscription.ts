@@ -36,4 +36,6 @@ export default interface Subscription extends Object {
     tax_percent: number;
     trial_end: number;
     trial_start: number;
+    success_url: string;
+    cancel_url: string;
 }
