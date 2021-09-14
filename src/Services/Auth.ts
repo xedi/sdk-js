@@ -282,6 +282,20 @@ class Auth extends Service {
                 }
             );
     }
+
+    /**
+     * Resend Verification Email
+     * @param userUuid
+     */
+    resendVerification(userUuid: Xuid<SupportedXuid.User>)
+    {
+        return this.client.get<AuthResponse>(`1/auth/token/resend`)
+            .then(
+                (resp: AxiosResponse<JsonResponse<any>>) => {
+                    return resp
+                }
+            );
+    }
 }
 
 export default Auth;
