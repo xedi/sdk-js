@@ -30,14 +30,22 @@ class Invoices extends Service {
     }
 
     /**
-     * Get latest invoice
+     * Get unpaid invoices
      * @returns Promise<Invoice>
      */
-    latest() {
+    unpaid() {
         return this.client
-            .get<JsonResponse<Invoice>>('1/billing/invoices/latest')
+            .get<JsonResponse<Invoice>>('1/billing/invoices/unpaid')
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data.data;
+            });
+    }
+
+    pay(invoice_id: string) {
+        return this.client
+            .get<JsonResponse<Invoice>>('1/billing/invoices/' + invoice_id + '/pay')
+            .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
+                return response.data;
             });
     }
 }
