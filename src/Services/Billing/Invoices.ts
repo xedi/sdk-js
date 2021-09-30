@@ -41,9 +41,9 @@ class Invoices extends Service {
             });
     }
 
-    pay(invoice_id: string) {
+    pay(invoiceId: string) {
         return this.client
-            .get<JsonResponse<Invoice>>('1/billing/invoices/' + invoice_id + '/pay')
+            .get<JsonResponse<Invoice>>('1/billing/invoices/' + invoiceId + '/pay')
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data;
             });
