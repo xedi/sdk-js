@@ -61,6 +61,19 @@ class Mailboxes extends Service {
                 return response.data.data;
             });
     }
+
+    /**
+     * Update mailbox
+     * @param mailbox
+     * @returns Promise<Mailbox>
+     */
+    update(mailbox: Mailbox) {
+        return this.client
+            .patch<JsonResponse<Mailbox>>(`1/mailboxes/` + mailbox._id, mailbox)
+            .then((response: AxiosResponse<JsonResponse<Mailbox>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default Mailboxes;

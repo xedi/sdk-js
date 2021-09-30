@@ -7,7 +7,7 @@ class Invoices extends Service {
 
     /**
      * Get invoices
-     * @returns Promise<Business>
+     * @returns Promise<Invoice>
      */
     list() {
         return this.client
@@ -19,13 +19,33 @@ class Invoices extends Service {
 
     /**
      * Get upcoming invoice
-     * @returns Promise<Business>
+     * @returns Promise<Invoice>
      */
     upcoming() {
         return this.client
             .get<JsonResponse<Invoice>>('1/billing/invoices/upcoming')
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data.data;
+            });
+    }
+
+    /**
+     * Get unpaid invoices
+     * @returns Promise<Invoice>
+     */
+    unpaid() {
+        return this.client
+            .get<JsonResponse<Invoice>>('1/billing/invoices/unpaid')
+            .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
+                return response.data.data;
+            });
+    }
+
+    pay(invoiceId: string) {
+        return this.client
+            .get<JsonResponse<Invoice>>('1/billing/invoices/' + invoiceId + '/pay')
+            .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
+                return response.data;
             });
     }
 }
