@@ -119,6 +119,21 @@ class Businesses extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Enable Billing
+     *
+     * @param businessId
+     *
+     * @return Promise<boolean>
+     */
+    enableBilling(businessId: Xuid<SupportedXuid.Business> ) {
+        return this.client
+            .post<boolean>(`1/businesses/${businessId}/enableBilling`)
+            .then((response: AxiosResponse<boolean>) => {
+                return response;
+            })
+    }
 }
 
 export default Businesses;
