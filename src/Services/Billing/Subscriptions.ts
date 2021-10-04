@@ -67,6 +67,20 @@ class Subscriptions extends Service {
                 return response.data
             });
     }
+
+
+    /**
+     * Get basic subscription data and totals for a business
+     * @param businessId
+     */
+    getSubscriptionTotals(businessId: string) {
+        return this.client
+            .get<JsonResponse<null>>(`1/businesses/${businessId}/subscriptions`)
+            .then((response:AxiosResponse<JsonResponse<null>>) => {
+                return response.data;
+            });
+    }
+
 }
 
 export default Subscriptions;
