@@ -34,7 +34,8 @@ export enum SupportedXuid {
     BusinessInvite,
     File,
     Layout,
-    Field
+    Field,
+    ProductInformation
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
