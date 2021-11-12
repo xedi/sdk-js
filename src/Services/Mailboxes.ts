@@ -74,6 +74,19 @@ class Mailboxes extends Service {
                 return response.data.data;
             });
     }
+
+    /**
+     * Delete a mailbox
+     * @param mailboxId
+     * @return JsonResponse<null>
+     */
+    delete(mailboxId:  Xuid<SupportedXuid.Mailbox>) {
+        return this.client
+            .delete<JsonResponse<null>>('1/mailboxes/' + mailboxId)
+            .then((response: AxiosResponse<JsonResponse<null>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default Mailboxes;
