@@ -35,19 +35,20 @@ class ProductInformations extends Service {
                 return response.data.data;
             });
     }
-    //
-    // /**
-    //  * Creates products
-    //  * @param product
-    //  * @returns Promise<Product>
-    //  */
-    // create(product: Product) {
-    //     return this.client
-    //         .post<JsonResponse<Product>>(`1/products`, product)
-    //         .then((response: AxiosResponse<JsonResponse<Product>>) => {
-    //             return response.data.data
-    //         });
-    // }
+
+
+    /**
+     * Creates products
+     * @param product
+     * @returns Promise<Product>
+     */
+    fillData(product: Product) {
+        return this.client
+            .post<JsonResponse<Product>>(`1/productInformation/fillData`, product)
+            .then((response: AxiosResponse<JsonResponse<Product>>) => {
+                return response.data.data
+            });
+    }
     //
     // /**
     //  * Updates products
