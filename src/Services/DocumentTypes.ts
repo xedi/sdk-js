@@ -12,9 +12,9 @@ class DocumentTypes extends Service {
      * Lists Document types
      * @returns Promise<DocumentType[]>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<DocumentType>>>(`1/documenttypes`)
+            .get<JsonResponse<Collection<DocumentType>>>(`1/documenttypes`, params)
             .then((response: AxiosResponse<JsonResponse<Collection<DocumentType>>>) => {
                 return response.data;
             });
