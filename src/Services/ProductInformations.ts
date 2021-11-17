@@ -46,7 +46,7 @@ class ProductInformations extends Service {
         return this.client
             .post<JsonResponse<Product>>(`1/productInformation/fillData`, product)
             .then((response: AxiosResponse<JsonResponse<Product>>) => {
-                return response.data.data
+                return response.data
             });
     }
     //
