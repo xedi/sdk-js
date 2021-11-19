@@ -13,6 +13,7 @@ type RegistrationParameters = {
     job_title?: string;
     avatar?: URL;
     password: string;
+    token?: string;
 };
 
 /**
