@@ -34,6 +34,7 @@ import MailingLists from "./MailingLists";
 import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
 import ApiTokens from "./ApiTokens";
+import ProductInformations from "./ProductInformations";
 
 export {
     Accounts,
@@ -72,4 +73,5 @@ export {
     MailingLists,
     BusinessInvites,
     ApiTokens,
+    ProductInformations,
 };

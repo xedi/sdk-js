@@ -154,6 +154,12 @@ class Xedi extends Container {
                 app.resolve('client')
             );
         });
+        this.singleton('services.product-information', (app: ContainerInterface, config: Config) => {
+            return new Services.ProductInformations(
+                config,
+                app.resolve('client')
+            );
+        });
 
         this.singleton('services.notifications', (app: ContainerInterface, config: Config) => {
             return new Services.Notifications(
@@ -678,6 +684,13 @@ class Xedi extends Container {
     static get ApiTokens(): Services.ApiTokens {
         return this.resolveInstance()
             .resolve('services.apitokens');
+    }
+    /**
+     * Get an instance of the APITokens API
+     */
+    static get ProductInformations(): Services.ProductInformations {
+        return this.resolveInstance()
+            .resolve('services.product-information');
     }
 
     /**
