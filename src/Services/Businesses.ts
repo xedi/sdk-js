@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
 import PaginatedJsonResponse from '../Interfaces/PaginatedJsonResponse';
-import {Business, User} from '../Models/Models';
+import {Business, User, TaxRate} from '../Models/Models';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 
 /**
@@ -19,7 +19,7 @@ class Businesses extends Service {
      */
     list(params: object): Promise<PaginatedJsonResponse<Business>> {
         return this.client
-            .get<PaginatedJsonResponse<Business>>(`1/businesses`, {params})
+            .get<PaginatedJsonResponse<Business>>(`1/businesses`, params)
             .then((response: AxiosResponse<PaginatedJsonResponse<Business>>) => {
                 return response.data;
             });
@@ -131,8 +131,25 @@ class Businesses extends Service {
         return this.client
             .post<boolean>(`1/businesses/${businessId}/enableBilling`)
             .then((response: AxiosResponse<boolean>) => {
+
                 return response;
             })
+    }
+
+    /**
+     * Set Tax Codes for a business
+     *
+     * @param businessId
+     * @param params
+     *
+     * @returns Promise<PaginatedJsonResponse<TaxRate[]>>
+     */
+    setTaxCodes(businessId: Xuid<SupportedXuid.Business>, params: object) {
+        return this.client
+            .post<JsonResponse<TaxRate>>(`1/businesses/${businessId}/taxRates`, params)
+            .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
+                return response.data;
+            });
     }
 }
 
