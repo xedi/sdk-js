@@ -151,6 +151,22 @@ class Businesses extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Get Tax Codes for a business
+     *
+     * @param businessId
+     * @param params
+     *
+     * @returns Promise<PaginatedJsonResponse<TaxRate[]>>
+     */
+    getTaxCodes(businessId: Xuid<SupportedXuid.Business>, params: object) {
+        return this.client
+            .get<JsonResponse<TaxRate>>(`1/businesses/${businessId}/taxRates`, params)
+            .then((response: AxiosResponse<JsonResponse<TaxRate>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Businesses;
