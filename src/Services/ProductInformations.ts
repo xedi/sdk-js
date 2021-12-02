@@ -49,6 +49,45 @@ class ProductInformations extends Service {
                 return response.data
             });
     }
+
+    /**
+     * Creates products
+     * @param product
+     * @returns Promise<Product>
+     */
+    create(product: Product) {
+        return this.client
+            .post<JsonResponse<Product>>(`1/productInformation`, product)
+            .then((response: AxiosResponse<JsonResponse<Product>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
+     * Updates products
+     * @param product
+     * @returns Promise<Product>
+     */
+    update(product: Product) {
+        return this.client
+            .patch<JsonResponse<Product>>(`1/productInformation/${product._id}`, product)
+            .then((response: AxiosResponse<JsonResponse<Product>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
+     * Deletes products
+     * @param productId
+     * @returns Promise<Product>
+     */
+    delete(productId: Xuid<SupportedXuid.Product>) {
+        return this.client
+            .delete<JsonResponse<Product>>(`1/productInformation/${productId}`)
+            .then((response: AxiosResponse<JsonResponse<Product>>) => {
+                return response;
+            });
+    }
 }
 
 export default ProductInformations;
