@@ -6,9 +6,9 @@ import {AxiosResponse} from "axios";
 import Xuid, {SupportedXuid} from "../Utils/Xuid";
 
 class Transitions extends Service {
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Transition>>>(`1/transitions`)
+            .get<JsonResponse<Collection<Transition>>>(`1/transitions`, params)
             .then((response: AxiosResponse<JsonResponse<Collection<Transition>>>) => {
                 return response.data.data;
             });
