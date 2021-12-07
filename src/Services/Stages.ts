@@ -13,9 +13,9 @@ class Stages extends Service {
      * Get all stages
      * @returns Promise<Stage>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Stage>>>(`1/stages`)
+            .get<JsonResponse<Collection<Stage>>>(`1/stages`, params)
             .then((response: AxiosResponse<JsonResponse<Collection<Stage>>>) => {
                 return response.data.data;
             });

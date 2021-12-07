@@ -47,7 +47,7 @@ describe('Transitions@list', () => {
         });
 
         const transitionService = new Transitions(mockConfig, axios);
-        const response = await transitionService.list();
+        const response = await transitionService.list({});
 
         assert.isArray(response);
         assert.lengthOf(response, 2);

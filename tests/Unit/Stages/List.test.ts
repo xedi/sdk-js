@@ -45,7 +45,7 @@ describe('Stages@list', () => {
         });
 
         const stagesService = new Stages(mockConfig, axios);
-        const response = await stagesService.list();
+        const response = await stagesService.list({});
 
         assert.isArray(response);
         assert.lengthOf(response, 2);
