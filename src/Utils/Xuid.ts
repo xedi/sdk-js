@@ -35,7 +35,10 @@ export enum SupportedXuid {
     File,
     Layout,
     Field,
-    ProductInformation
+    ProductInformation,
+    Task,
+    Pipeline,
+    TaskArgument
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;

@@ -35,6 +35,9 @@ import PolicyAcceptances from "./PolicyAcceptances";
 import BusinessInvites from "./BusinessInvites";
 import ApiTokens from "./ApiTokens";
 import ProductInformations from "./ProductInformations";
+import Pipelines from "./Pipelines";
+import TaskArguments from "./TaskArguments";
+import Tasks from "./Tasks";
 
 export {
     Accounts,
@@ -74,4 +77,7 @@ export {
     BusinessInvites,
     ApiTokens,
     ProductInformations,
+    Pipelines,
+    TaskArguments,
+    Tasks,
 };
