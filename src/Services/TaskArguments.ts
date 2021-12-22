@@ -3,6 +3,7 @@ import {Collection} from "../Models/Models";
 import {AxiosResponse} from "axios";
 import Service from "./Service";
 import TaskArgument from "../Models/TaskArgument";
+import TaskValue from "../Models/TaskValue";
 import Xuid, {SupportedXuid} from "../Utils/Xuid";
 
 /**
@@ -44,6 +45,19 @@ class TaskArguments extends Service {
         return this.client
             .post<JsonResponse<TaskArgument>>(`1/taskArguments`, taskArgument)
             .then((response: AxiosResponse<JsonResponse<TaskArgument>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
+     * Create a taskArgument value
+     * @param TaskValue
+     * @returns Promise<TaskValue>
+     */
+    setValue(taskValue: TaskValue) {
+        return this.client
+            .post<JsonResponse<TaskValue>>(`1/taskArguments/value`, taskValue)
+            .then((response: AxiosResponse<JsonResponse<TaskValue>>) => {
                 return response.data.data
             });
     }
