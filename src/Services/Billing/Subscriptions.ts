@@ -46,10 +46,11 @@ class Subscriptions extends Service {
      * Subscribe to entity (Purchase)
      *
      * @param entityId
+     * @param params
      */
-    subscribe(entityId: string) {
+    subscribe(entityId: string, params:object) {
         return this.client
-            .get<JsonResponse<AxiosResponse>>(`1/billing/subscriptions/${entityId}/subscribe`)
+            .post<JsonResponse<AxiosResponse>>(`1/billing/subscriptions/${entityId}/subscribe`, params)
             .then((response: AxiosResponse) => {
                 return response.data;
             });

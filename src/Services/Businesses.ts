@@ -124,12 +124,13 @@ class Businesses extends Service {
      * Enable Billing
      *
      * @param businessId
+     * @param params
      *
      * @return Promise<boolean>
      */
-    enableBilling(businessId: Xuid<SupportedXuid.Business> ) {
+    enableBilling(businessId: Xuid<SupportedXuid.Business>, params: object ) {
         return this.client
-            .post<boolean>(`1/businesses/${businessId}/enableBilling`)
+            .post<boolean>(`1/businesses/${businessId}/enableBilling`, params)
             .then((response: AxiosResponse<boolean>) => {
 
                 return response;
