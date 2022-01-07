@@ -383,6 +383,27 @@ class Xedi extends Container {
                app.resolve('client')
            )
         });
+
+        this.singleton('services.pipelines', (app: ContainerInterface, config: Config) => {
+            return new Services.Pipelines(
+                config,
+                app.resolve('client')
+            )
+         });
+
+        this.singleton('services.tasks', (app: ContainerInterface, config: Config) => {
+            return new Services.Tasks(
+                config,
+                app.resolve('client')
+            )
+         });
+
+        this.singleton('services.taskarguments', (app: ContainerInterface, config: Config) => {
+            return new Services.TaskArguments(
+                config,
+                app.resolve('client')
+            )
+         });
     }
 
     /**
@@ -691,6 +712,30 @@ class Xedi extends Container {
     static get ProductInformations(): Services.ProductInformations {
         return this.resolveInstance()
             .resolve('services.product-information');
+    }
+
+    /**
+     * Get an instance of the Pipelines API
+     */
+    static get Pipelines(): Services.ProductInformations {
+        return this.resolveInstance()
+            .resolve('services.pipelines');
+        }
+
+    /**
+     * Get an instance of the Tasks API
+     */
+    static get Tasks(): Services.ProductInformations {
+        return this.resolveInstance()
+            .resolve('services.tasks');
+    }
+
+    /**
+     * Get an instance of the Tasks API
+     */
+    static get TaskArguments(): Services.ProductInformations {
+        return this.resolveInstance()
+            .resolve('services.taskarguments');
     }
 
     /**
