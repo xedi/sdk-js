@@ -8,5 +8,5 @@ export default interface Pipeline extends Object {
     'name': string,
     'stage_id': Xuid<SupportedXuid.Stage>;
     'state': PipelineState;
-    'stop_on_failure': Boolean
+    'stop_on_failure': boolean
 }

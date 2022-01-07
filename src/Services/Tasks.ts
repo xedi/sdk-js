@@ -35,12 +35,12 @@ class Tasks extends Service {
             });
     }
 
-     /**
+    /**
      * Create a task
      * @param Task
      * @returns Promise<Task>
      */
-      create(task: Task) {
+    create(task: Task) {
         return this.client
             .post<JsonResponse<Task>>(`1/tasks`, task)
             .then((response: AxiosResponse<JsonResponse<Task>>) => {

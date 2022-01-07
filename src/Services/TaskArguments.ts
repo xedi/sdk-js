@@ -36,12 +36,12 @@ class TaskArguments extends Service {
             });
     }
 
-     /**
+    /**
      * Create a taskArgument
      * @param TaskArgument
      * @returns Promise<TaskArgument>
      */
-      create(taskArgument: TaskArgument) {
+    create(taskArgument: TaskArgument) {
         return this.client
             .post<JsonResponse<TaskArgument>>(`1/taskArguments`, taskArgument)
             .then((response: AxiosResponse<JsonResponse<TaskArgument>>) => {

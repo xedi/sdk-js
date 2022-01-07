@@ -730,7 +730,7 @@ class Xedi extends Container {
             .resolve('services.tasks');
     }
 
-        /**
+    /**
      * Get an instance of the Tasks API
      */
     static get TaskArguments(): Services.ProductInformations {
