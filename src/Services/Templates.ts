@@ -50,6 +50,19 @@ class Templates extends Service {
     }
 
     /**
+     * Duplicates a template
+     * @param templateId
+     * @returns Promise<Template>
+     */
+    duplicate(templateId: string) {
+        return this.client
+            .put<JsonResponse<Template>>(`1/templates/${templateId}/duplicate`)
+            .then((response: AxiosResponse<JsonResponse<Template>>) => {
+                return response.data.data
+            });
+    }
+
+    /**
      * Updates templates
      * @param template
      * @returns Promise<Template>
