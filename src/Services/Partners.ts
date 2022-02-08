@@ -2,6 +2,7 @@ import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
 import {Partner} from '../Models/Models';
+import PartnerField from '../Models/PartnerField';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
@@ -70,6 +71,49 @@ class Partners extends Service {
             .then((response: AxiosResponse<PaginatedJsonResponse<Partner>>) => {
                 return response.data;
             });
+    }
+
+    /**
+     * Map Field for partner
+     * @param partnerId
+     * @param params
+     * @returns Promise<JsonResponse<Partner>>
+     */
+    mapfield(partnerId: Xuid<SupportedXuid.Partner>, fieldId: string, params: object) {
+        return this.client
+        .post<JsonResponse<Partner>>(`1/partners/${partnerId}/field/${fieldId}`, params)
+        .then((response: AxiosResponse<JsonResponse<Partner>>) => {
+            return response.data;
+        });
+    }
+
+
+    /**
+     * Removed Maped Field for partner
+     * @param partnerId
+     * @param params
+     * @returns Promise<JsonResponse<Partner>>
+     */
+     unmapfield(partnerId: Xuid<SupportedXuid.Partner>, fieldId: string) {
+        return this.client
+        .delete<JsonResponse<PartnerField>>(`1/partners/${partnerId}/field/${fieldId}`)
+        .then((response: AxiosResponse<JsonResponse<PartnerField>>) => {
+            return response;
+        });
+    }
+
+    /**
+     * PartnerFields mapped fields for this partner
+     * @param partnerId
+     * @returns
+     */
+    partnerfields(partnerId:  Xuid<SupportedXuid.Partner>)
+    {
+        return this.client
+        .get<JsonResponse<PartnerField>>(`1/partners/${partnerId}/fields`)
+        .then((response: AxiosResponse<JsonResponse<PartnerField>>) => {
+            return response;
+        });
     }
 
 }

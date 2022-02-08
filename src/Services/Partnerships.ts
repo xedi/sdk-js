@@ -2,6 +2,7 @@ import Service from './Service';
 import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import JsonResponse from '../Interfaces/JsonResponse';
 import {Partnership} from '../Models/Models';
+import PartnershipField from '../Models/PartnershipField';
 import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
 
@@ -75,6 +76,23 @@ class Partnerships extends Service {
                 return response;
             });
     }
+
+    fields(partnershipId: Xuid<SupportedXuid.Partnership>) {
+        return this.client
+            .get<JsonResponse<PartnershipField[]>>(`1/partnerships/${partnershipId}/fields`)
+            .then((response: AxiosResponse<JsonResponse<PartnershipField[]>>) => {
+                return response;
+        });
+    }
+
+    updateFieldValues(partnershipId: Xuid<SupportedXuid.Partnership>, params: object) {
+        return this.client
+            .patch<JsonResponse<PartnershipField[]>>(`1/partnerships/${partnershipId}/fields`, params)
+            .then((response: AxiosResponse<JsonResponse<PartnershipField[]>>) => {
+                return response;
+        });
+    }
+
 }
 
 export default Partnerships;
