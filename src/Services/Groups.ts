@@ -54,9 +54,10 @@ class Groups extends Service {
     }
 
     /**
-     * Gets by user
+     * Add to a group
      *
      * @param userId
+     * @param groupId
      * @param params
      *
      * @returns Promise<PaginatedJsonResponse<Group[]>>
@@ -70,10 +71,10 @@ class Groups extends Service {
     }
 
     /**
-     * Gets by user
+     * remove user from a group
      *
      * @param userId
-     * @param params
+     * @param groupId
      *
      * @returns Promise<PaginatedJsonResponse<Group[]>>
      */
