@@ -16,7 +16,7 @@ class Groups extends Service {
      */
     list(userId: Xuid<SupportedXuid.User>, params: object): Promise<PaginatedJsonResponse<Group>> {
         return this.client
-            .get<PaginatedJsonResponse<Group>>('1/groups', {params})
+            .get<PaginatedJsonResponse<Group>>('1/groups', params)
             .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
                 return response.data;
             });
@@ -48,6 +48,38 @@ class Groups extends Service {
     getByUser(userId: Xuid<SupportedXuid.User>, params: object): Promise<PaginatedJsonResponse<Group>> {
         return this.client
             .get<PaginatedJsonResponse<Group>>(`1/users/${userId}/groups`, {params})
+            .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
+                return response.data;
+            });
+    }
+
+    /**
+     * Gets by user
+     *
+     * @param userId
+     * @param params
+     *
+     * @returns Promise<PaginatedJsonResponse<Group[]>>
+     */
+    addUserToGroup(userId: Xuid<SupportedXuid.User>, groupId: Xuid<SupportedXuid.Group>, params: object): Promise<PaginatedJsonResponse<Group>> {
+        return this.client
+            .put<PaginatedJsonResponse<Group>>(`1/groups/${groupId}/memberships/${userId}`, params)
+            .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
+                return response.data;
+            });
+    }
+
+    /**
+     * Gets by user
+     *
+     * @param userId
+     * @param params
+     *
+     * @returns Promise<PaginatedJsonResponse<Group[]>>
+     */
+    removeUserFromGroup(userId: Xuid<SupportedXuid.User>, groupId: Xuid<SupportedXuid.Group>): Promise<PaginatedJsonResponse<Group>> {
+        return this.client
+            .delete<PaginatedJsonResponse<Group>>(`1/groups/${groupId}/memberships/${userId}`)
             .then((response: AxiosResponse<PaginatedJsonResponse<Group>>) => {
                 return response.data;
             });
