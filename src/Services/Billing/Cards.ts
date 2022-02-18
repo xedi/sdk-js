@@ -11,7 +11,7 @@ class Cards extends Service {
      */
     list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Card>>>(`1/billing/cards`, {params})
+            .get<JsonResponse<Collection<Card>>>(`1/billing/cards`, params)
             .then((response: AxiosResponse<JsonResponse<Collection<Card>>>) => {
                 return response.data.data;
             });

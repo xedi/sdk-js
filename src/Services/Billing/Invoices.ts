@@ -7,11 +7,14 @@ class Invoices extends Service {
 
     /**
      * Get invoices
+     *
+     * @param params
+     *
      * @returns Promise<Invoice>
      */
-    list() {
+    list(params: object) {
         return this.client
-            .get<JsonResponse<Collection<Invoice>>>('1/billing/invoices')
+            .get<JsonResponse<Collection<Invoice>>>('1/billing/invoices', params)
             .then((response: AxiosResponse<JsonResponse<Collection<Invoice>>>) => {
                 return response.data.data;
             });
@@ -19,11 +22,14 @@ class Invoices extends Service {
 
     /**
      * Get upcoming invoice
+     *
+     * @param params
+     *
      * @returns Promise<Invoice>
      */
-    upcoming() {
+    upcoming(params: object) {
         return this.client
-            .get<JsonResponse<Invoice>>('1/billing/invoices/upcoming')
+            .get<JsonResponse<Invoice>>('1/billing/invoices/upcoming', params)
             .then((response: AxiosResponse<JsonResponse<Invoice>>) => {
                 return response.data.data;
             });
