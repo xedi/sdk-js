@@ -105,7 +105,7 @@ class Documents extends Service {
     /**
      * converts documents to pdf
      * @param documentId
-     * 
+     *
      * @returns Promise<PDF>
      */
     convert(documentId: Xuid<SupportedXuid.Document>) {
