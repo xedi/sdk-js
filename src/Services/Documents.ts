@@ -4,6 +4,7 @@ import JsonResponse from '../Interfaces/JsonResponse';
 import {Document} from '../Models/Models';
 import {AxiosResponse} from 'axios';
 import PaginatedJsonResponse from "../Interfaces/PaginatedJsonResponse";
+import * as stream from 'stream';
 
 /**
  * Documents
@@ -100,6 +101,19 @@ class Documents extends Service {
                 return response.data;
             });
     }
-}
 
+    /**
+     * converts documents to pdf
+     * @param documentId
+     *
+     * @returns Promise<PDF>
+     */
+    convert(documentId: Xuid<SupportedXuid.Document>) {
+        return this.client
+            .get<Blob>(`1/documents/${documentId}/convert`, { responseType: 'blob' })
+            .then((response: AxiosResponse<Blob>) => {
+                return response;
+            });
+    }
+}
 export default Documents;
