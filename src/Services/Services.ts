@@ -38,6 +38,7 @@ import ProductInformations from "./ProductInformations";
 import Pipelines from "./Pipelines";
 import TaskArguments from "./TaskArguments";
 import Tasks from "./Tasks";
+import Locations from "./Locations";
 
 export {
     Accounts,
@@ -80,4 +81,5 @@ export {
     Pipelines,
     TaskArguments,
     Tasks,
+    Locations,
 };

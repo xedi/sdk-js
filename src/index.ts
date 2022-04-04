@@ -404,6 +404,13 @@ class Xedi extends Container {
                 app.resolve('client')
             )
          });
+
+        this.singleton('services.locations', (app: ContainerInterface, config: Config) => {
+            return new Services.Locations(
+                config,
+                app.resolve('client')
+            )
+        });
     }
 
     /**
@@ -736,6 +743,14 @@ class Xedi extends Container {
     static get TaskArguments(): Services.ProductInformations {
         return this.resolveInstance()
             .resolve('services.taskarguments');
+    }
+
+    /**
+     * Get an instance of the Locations API
+     */
+    static get Locations(): Services.Locations {
+        return this.resolveInstance()
+            .resolve('services.locations');
     }
 
     /**
