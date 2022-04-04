@@ -86,12 +86,12 @@ class Locations extends Service {
     }
 
     /**
-    * Delete a location by ID
-    *
-    * @param locationId
-    *
-    * @returns Promise<JsonResponse<Location>>
-    */
+     * Delete a location by ID
+     *
+     * @param locationId
+     *
+     * @returns Promise<JsonResponse<Location>>
+     */
     delete(locationId: Xuid<SupportedXuid.Location>) {
        return this.client
            .delete<JsonResponse<Location>>(`1/locations/${locationId}`)
