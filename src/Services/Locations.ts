@@ -21,7 +21,7 @@ class Locations extends Service {
         return this.client
             .get<PaginatedJsonResponse<Location[]>>(`1/locations`, params)
             .then((response: AxiosResponse<PaginatedJsonResponse<Location[]>>) => {
-                return response.data.data;
+                return response.data;
         });
 }
 
@@ -36,7 +36,7 @@ class Locations extends Service {
         return this.client
             .get<PaginatedJsonResponse<Location[]>>(`1/locations/business/${businessId}`)
             .then((response: AxiosResponse<PaginatedJsonResponse<Location[]>>) => {
-                return response.data.data;
+                return response.data;
             });
 }
 
@@ -51,7 +51,7 @@ class Locations extends Service {
         return this.client
             .get<JsonResponse<Location>>(`1/locations/${locationId}`)
             .then((response: AxiosResponse<JsonResponse<Location>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
@@ -64,9 +64,9 @@ class Locations extends Service {
      */
     create(location: Location) {
         return this.client
-            .post<JsonResponse<Location>>('1/locations')
+            .post<JsonResponse<Location>>('1/locations', location)
             .then((response: AxiosResponse<JsonResponse<Location>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
@@ -79,9 +79,9 @@ class Locations extends Service {
      */
      update(location: Location) {
         return this.client
-            .patch<JsonResponse<Location>>('1/locations')
+            .patch<JsonResponse<Location>>('1/locations/' + location._id, location)
             .then((response: AxiosResponse<JsonResponse<Location>>) => {
-                return response.data.data;
+                return response.data;
             });
     }
 
@@ -96,7 +96,7 @@ class Locations extends Service {
        return this.client
            .delete<JsonResponse<Location>>(`1/locations/${locationId}`)
            .then((response: AxiosResponse<JsonResponse<Location>>) => {
-               return response.data.data;
+               return response.data;
            });
    }
 }
