@@ -99,6 +99,21 @@ class Locations extends Service {
                return response.data;
            });
    }
+
+    /**
+     * Search
+     *
+     * @param params
+     *
+     * @returns Promise<JsonResponse<Location>>
+     */
+    search(params: object) {
+        return this.client
+            .get<JsonResponse<Location>>(`1/locations/search`, params)
+            .then((response: AxiosResponse<JsonResponse<Location>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default Locations;
