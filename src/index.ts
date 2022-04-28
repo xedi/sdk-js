@@ -411,6 +411,13 @@ class Xedi extends Container {
                 app.resolve('client')
             )
         });
+
+        this.singleton('services.unleashedcustomers', (app: ContainerInterface, config: Config) => {
+            return new Services.UnleashedCustomers(
+                config,
+                app.resolve('client')
+            )
+        });
     }
 
     /**
@@ -752,6 +759,14 @@ class Xedi extends Container {
         return this.resolveInstance()
             .resolve('services.locations');
     }
+
+    /**
+     * Get an instance of the Unleashed Customers API
+     */
+         static get UnleashedCustomers(): Services.UnleashedCustomers {
+            return this.resolveInstance()
+                .resolve('services.unleashedcustomers');
+        }
 
     /**
      * Get constants

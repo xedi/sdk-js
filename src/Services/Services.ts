@@ -39,6 +39,7 @@ import Pipelines from "./Pipelines";
 import TaskArguments from "./TaskArguments";
 import Tasks from "./Tasks";
 import Locations from "./Locations";
+import UnleashedCustomers from "./UnleashedCustomers";
 
 export {
     Accounts,
@@ -82,4 +83,5 @@ export {
     TaskArguments,
     Tasks,
     Locations,
+    UnleashedCustomers,
 };
