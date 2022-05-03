@@ -411,6 +411,13 @@ class Xedi extends Container {
                 app.resolve('client')
             )
         });
+
+        this.singleton('services.businesstypes', (app: ContainerInterface, config: Config) => {
+            return new Services.BusinessTypes(
+                config,
+                app.resolve('client')
+            )
+        });
     }
 
     /**
@@ -751,6 +758,14 @@ class Xedi extends Container {
     static get Locations(): Services.Locations {
         return this.resolveInstance()
             .resolve('services.locations');
+    }
+
+    /**
+     * Get an instance of the Business type API
+     */
+    static get BusinessTypes(): Services.BusinessTypes {
+        return this.resolveInstance()
+            .resolve('services.businesstypes');
     }
 
     /**
