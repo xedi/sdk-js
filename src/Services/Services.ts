@@ -40,6 +40,7 @@ import TaskArguments from "./TaskArguments";
 import Tasks from "./Tasks";
 import Locations from "./Locations";
 import BusinessTypes from "./BusinessTypes";
+import UnleashedCustomers from "./UnleashedCustomers";
 
 export {
     Accounts,
@@ -84,4 +85,5 @@ export {
     Tasks,
     Locations,
     BusinessTypes,
+    UnleashedCustomers
 };
