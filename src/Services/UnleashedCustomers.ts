@@ -19,6 +19,26 @@ class UnleashedCustomers extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Toggle Unleashed Order Forwarder
+     * @returns Promise<>
+     */
+    toggle(params: object) {
+        return this.client
+            .post<JsonResponse<any>>(`1/unleashed/togglepartnership`, params)
+            .then((response: AxiosResponse<JsonResponse<any>>) => {
+                return response.data;
+            });
+    }
+
+    getConfig(partnershipId: string) {
+        return this.client
+            .get<JsonResponse<any>>(`1/unleashed/getconfig/${partnershipId}`)
+            .then((response: AxiosResponse<JsonResponse<any>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default UnleashedCustomers;
