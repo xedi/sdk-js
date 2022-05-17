@@ -41,6 +41,7 @@ import Tasks from "./Tasks";
 import Locations from "./Locations";
 import BusinessTypes from "./BusinessTypes";
 import UnleashedCustomers from "./UnleashedCustomers";
+import ScheduledJobs from "./SchedueledJobs";
 
 export {
     Accounts,
@@ -85,5 +86,6 @@ export {
     Tasks,
     Locations,
     BusinessTypes,
-    UnleashedCustomers
+    UnleashedCustomers,
+    ScheduledJobs
 };

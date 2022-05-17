@@ -425,6 +425,13 @@ class Xedi extends Container {
                 app.resolve('client')
             )
         });
+
+        this.singleton('services.scheduledjobs', (app: ContainerInterface, config: Config) => {
+            return new Services.ScheduledJobs(
+                config,
+                app.resolve('client')
+            )
+        });
     }
 
     /**
@@ -781,6 +788,14 @@ class Xedi extends Container {
     static get UnleashedCustomers(): Services.UnleashedCustomers {
         return this.resolveInstance()
             .resolve('services.unleashedcustomers');
+    }
+
+    /**
+     * Get an instance of the ScheduledJobs API
+     */
+    static get ScheduledJobs(): Services.ScheduledJobs {
+        return this.resolveInstance()
+            .resolve('services.scheduledjobs');
     }
 
     /**
