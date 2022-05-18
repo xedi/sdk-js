@@ -43,6 +43,9 @@ import MailingList from './MailingList';
 import BusinessInvite from './BusinessInvite';
 import Password from './Password';
 import Location from './Location';
+import BusinessType from './BusinessType';
+import UnleashedCustomer from './UnleashedCustomer';
+import ScheduledJob from './ScheduledJob';
 
 type Models =
     Batch
@@ -89,7 +92,10 @@ type Models =
     | MailingList
     | BusinessInvite
     | Password
-    | Location;
+    | Location
+    | BusinessType
+    | UnleashedCustomer
+    | ScheduledJob;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -141,5 +147,8 @@ export {
     MailingList,
     BusinessInvite,
     Password,
-    Location
+    Location,
+    BusinessType,
+    UnleashedCustomer,
+    ScheduledJob
 };

@@ -42,7 +42,10 @@ export enum SupportedXuid {
     TaskValue,
     PartnerField,
     PartnershipField,
-    Location
+    Location,
+    BusinessType,
+    UnleashedCustomer,
+    ScheduledJob
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
