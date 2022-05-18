@@ -26,7 +26,7 @@ class ScheduledJobs extends Service {
      */
     create(scheduledJob: ScheduledJob) {
         return this.client
-            .post<JsonResponse<ScheduledJob>>(`1/scheduledjobs`)
+            .post<JsonResponse<ScheduledJob>>(`1/scheduledjobs`, scheduledJob)
             .then((response: AxiosResponse<JsonResponse<ScheduledJob>>) => {
                 return response.data;
             });
