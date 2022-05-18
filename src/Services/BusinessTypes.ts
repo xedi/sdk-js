@@ -33,31 +33,31 @@ class BusinessTypes extends Service {
             });
     }
 
-     /**
+    /**
      * Creates document group
      * @param businessType
      * @returns Promise<BusinessType>
      */
-    create(BusinessType: BusinessType) {
+    create(businessType: BusinessType) {
         return this.client
-            .post<JsonResponse<BusinessType>>(`1/businesstypes`, BusinessType)
+            .post<JsonResponse<BusinessType>>(`1/businesstypes`, businessType)
             .then((response: AxiosResponse<JsonResponse<BusinessType>>) => {
                 return response.data.data
             });
     }
-    
-        /**
-         * Updates document group
-         * @param businessType
-         * @returns Promise<BusinessType>
-         */
-        update(BusinessType: BusinessType) {
-            return this.client
-                .patch<JsonResponse<BusinessType>>(`1/businesstypes/${BusinessType._id}`, BusinessType)
-                .then((response: AxiosResponse<JsonResponse<BusinessType>>) => {
-                    return response.data.data
-                });
-        }
+
+    /**
+     * Updates document group
+     * @param businessType
+     * @returns Promise<BusinessType>
+     */
+    update(businessType: BusinessType) {
+        return this.client
+            .patch<JsonResponse<BusinessType>>(`1/businesstypes/${businessType._id}`, businessType)
+            .then((response: AxiosResponse<JsonResponse<BusinessType>>) => {
+                return response.data.data
+            });
+    }
 }
 
 export default BusinessTypes;

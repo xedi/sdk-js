@@ -36,9 +36,9 @@ class ScheduledJobs extends Service {
      * Show a Schedueled Job by id
      * @returns Promise<ScheduledJob>
      */
-    show(job_id: Xuid<SupportedXuid.ScheduledJob>) {
+    show(jobId: Xuid<SupportedXuid.ScheduledJob>) {
         return this.client
-            .get<JsonResponse<ScheduledJob>>(`1/scheduledjobs/${job_id}`)
+            .get<JsonResponse<ScheduledJob>>(`1/scheduledjobs/${jobId}`)
             .then((response: AxiosResponse<JsonResponse<ScheduledJob>>) => {
                 return response.data;
             });
@@ -60,9 +60,9 @@ class ScheduledJobs extends Service {
      * Delete a Schedueled Job by id
      * @returns Promise<ScheduledJob>
      */
-    delete(job_id: Xuid<SupportedXuid.ScheduledJob>) {
+    delete(jobId: Xuid<SupportedXuid.ScheduledJob>) {
         return this.client
-            .delete<JsonResponse<null>>(`1/scheduledjobs/${job_id}`)
+            .delete<JsonResponse<null>>(`1/scheduledjobs/${jobId}`)
             .then((response: AxiosResponse<JsonResponse<null>>) => {
                 return response.data;
             });
