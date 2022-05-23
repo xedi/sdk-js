@@ -39,6 +39,18 @@ class UnleashedCustomers extends Service {
                 return response.data;
             });
     }
+
+    /**
+     * Sync Unleashed Customers
+     * @returns Promise<UnleashedCustomer[]>
+     */
+    sync(params: object) {
+        return this.client
+            .post<JsonResponse<Collection<UnleashedCustomer>>>(`1/unleashed/sync`, params)
+            .then((response: AxiosResponse<JsonResponse<Collection<UnleashedCustomer>>>) => {
+                return response.data;
+            });
+    }
 }
 
 export default UnleashedCustomers;
