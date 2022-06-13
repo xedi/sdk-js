@@ -97,6 +97,21 @@ class TradeInvites extends Service {
                  return response.data.data;
             });
     }
+
+    /**
+     * Get all trade invitations for a business
+     *
+     * @param businessId
+     *
+     * @returns Promise<PaginatedJsonResponse<TradeInvite[]>>
+     */
+    getForBusiness(businessId: Xuid<SupportedXuid.Business>) {
+        return this.client
+            .get<PaginatedJsonResponse<TradeInvite>>('1/tradeinvites/business/' + businessId)
+            .then((response: AxiosResponse<PaginatedJsonResponse<TradeInvite>>) => {
+                return response.data.data;
+            });
+    }
 }
 
 export default TradeInvites;
