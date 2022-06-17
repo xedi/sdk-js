@@ -46,6 +46,7 @@ import Location from './Location';
 import BusinessType from './BusinessType';
 import UnleashedCustomer from './UnleashedCustomer';
 import ScheduledJob from './ScheduledJob';
+import TradeInvite from "./TradeInvite";
 
 type Models =
     Batch
@@ -95,7 +96,8 @@ type Models =
     | Location
     | BusinessType
     | UnleashedCustomer
-    | ScheduledJob;
+    | ScheduledJob
+    | TradeInvite;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -150,5 +152,6 @@ export {
     Location,
     BusinessType,
     UnleashedCustomer,
-    ScheduledJob
+    ScheduledJob,
+    TradeInvite
 };
