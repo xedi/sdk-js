@@ -23,6 +23,18 @@ class Tasks extends Service {
     }
 
     /**
+     * Get task by operation name
+     * @returns Promise<Task>
+     */
+    getByOperation(operation: string) {
+        return this.client
+            .get<JsonResponse<Collection<Task>>>(`1/tasks/operations/${operation}`)
+            .then((response: AxiosResponse<JsonResponse<Collection<Task>>>) => {
+                return response.data.data;
+            });
+    }
+
+    /**
      * Get a task
      * @param taskId
      * @returns Promise<Task>
@@ -74,7 +86,6 @@ class Tasks extends Service {
                 return response;
             });
     }
-
 }
 
 export default Tasks;
