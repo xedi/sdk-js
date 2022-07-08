@@ -32,13 +32,13 @@ class UnleashedCustomers extends Service {
             });
     }
 
-    getConfig(partnershipId: string) {
+/*    getConfig(partnershipId: string) {
         return this.client
             .get<JsonResponse<any>>(`1/unleashed/getconfig/${partnershipId}`)
             .then((response: AxiosResponse<JsonResponse<any>>) => {
                 return response.data;
             });
-    }
+    }*/
 
     /**
      * Sync Unleashed Customers

@@ -439,6 +439,13 @@ class Xedi extends Container {
                 app.resolve('client')
             )
         });
+
+        this.singleton('services.integrations', (app: ContainerInterface, config: Config) => {
+            return new Services.Integrations(
+                config,
+                app.resolve('client')
+            )
+        });
     }
 
     /**
@@ -811,6 +818,14 @@ class Xedi extends Container {
     static get TradeInvites(): Services.TradeInvites {
         return this.resolveInstance()
             .resolve('services.tradeinvites');
+    }
+
+    /**
+     * Get an instance of the Integrations API
+     */
+    static get Integrations(): Services.Integrations {
+        return this.resolveInstance()
+            .resolve('services.integrations');
     }
 
     /**

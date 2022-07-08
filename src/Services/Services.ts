@@ -43,6 +43,7 @@ import BusinessTypes from "./BusinessTypes";
 import UnleashedCustomers from "./UnleashedCustomers";
 import ScheduledJobs from "./SchedueledJobs";
 import TradeInvites from "./TradeInvites";
+import Integrations from "./Integrations";
 
 export {
     Accounts,
@@ -89,5 +90,6 @@ export {
     BusinessTypes,
     UnleashedCustomers,
     ScheduledJobs,
-    TradeInvites
+    TradeInvites,
+    Integrations
 };

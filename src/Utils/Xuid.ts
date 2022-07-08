@@ -46,7 +46,8 @@ export enum SupportedXuid {
     BusinessType,
     UnleashedCustomer,
     ScheduledJob,
-    TradeInvite
+    TradeInvite,
+    TaskStatus
 };
 /* tslint:disable-next-line:no-shadowed-variable */
 type Xuid<SupportedXuid> = string;
