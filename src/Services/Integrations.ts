@@ -1,8 +1,9 @@
 import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
-import Xuid, {SupportedXuid} from '../Utils/Xuid';
 import TaskStatus from "../Models/TaskStatus";
+import {Collection} from "../Models/Models";
+import ExternalRequestLog from "../Models/ExternalRequestLog";
 
 /**
  * Integrations
@@ -42,6 +43,18 @@ class Integrations extends Service {
             .get<JsonResponse<any>>(`1/integrations/getconfig`, {params})
             .then((response: AxiosResponse<JsonResponse<any>>) => {
                 return response.data;
+            });
+    }
+
+    /**
+     * Logs
+     * @param params
+     */
+    logs(params: object) {
+        return this.client
+            .get<JsonResponse<Collection<ExternalRequestLog>>>(`1/integrations/logs`, params)
+            .then((response: AxiosResponse<JsonResponse<Collection<ExternalRequestLog>>>) => {
+                return response.data.data;
             });
     }
 }
