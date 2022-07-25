@@ -48,6 +48,7 @@ import UnleashedCustomer from './UnleashedCustomer';
 import ScheduledJob from './ScheduledJob';
 import TradeInvite from "./TradeInvite";
 import TaskStatus from "./TaskStatus";
+import ExternalRequestLog from "./ExternalRequestLog";
 
 type Models =
     Batch
@@ -99,7 +100,8 @@ type Models =
     | UnleashedCustomer
     | ScheduledJob
     | TradeInvite
-    | TaskStatus;
+    | TaskStatus
+    | ExternalRequestLog;
 
 interface Collection<T = Models> extends Array<T | Models> {
 }
@@ -156,5 +158,6 @@ export {
     UnleashedCustomer,
     ScheduledJob,
     TradeInvite,
-    TaskStatus
+    TaskStatus,
+    ExternalRequestLog
 };
