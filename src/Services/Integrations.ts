@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios';
 import Service from './Service';
 import JsonResponse from '../Interfaces/JsonResponse';
 import TaskStatus from "../Models/TaskStatus";
-import {Collection} from "../Models/Models";
+import {Collection, UnleashedCustomer} from "../Models/Models";
 import ExternalRequestLog from "../Models/ExternalRequestLog";
 
 /**
@@ -55,6 +55,18 @@ class Integrations extends Service {
             .get<JsonResponse<Collection<ExternalRequestLog>>>(`1/integrations/logs`, params)
             .then((response: AxiosResponse<JsonResponse<Collection<ExternalRequestLog>>>) => {
                 return response.data.data;
+            });
+    }
+
+    /**
+     * Sync
+     * @returns Promise<any[]>
+     */
+    sync(params: object) {
+        return this.client
+            .post<JsonResponse<Collection<any>>>(`1/integrations/sync`, params)
+            .then((response: AxiosResponse<JsonResponse<Collection<any>>>) => {
+                return response.data;
             });
     }
 }
