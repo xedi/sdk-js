@@ -59,6 +59,18 @@ class Integrations extends Service {
     }
 
     /**
+     * Resend-Request
+     * @param logId
+     */
+    resendRequest(logId: string) {
+        return this.client
+            .get<JsonResponse<Collection<ExternalRequestLog>>>(`1/integrations/resend-request/` + logId)
+            .then((response: AxiosResponse<JsonResponse<Collection<ExternalRequestLog>>>) => {
+                return response.data.data;
+            });
+    }
+
+    /**
      * Sync
      * @returns Promise<any[]>
      */
